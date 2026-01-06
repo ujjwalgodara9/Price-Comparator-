@@ -3,14 +3,12 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Checkbox } from './ui/checkbox';
 import { Select } from './ui/select';
 import { Input } from './ui/input';
-import { platformNames } from '../data/mockProducts';
+import { platformNames, allPlatforms } from '../data/platformData';
 
 interface FilterPanelProps {
   filters: ComparisonFilters;
   onFiltersChange: (filters: ComparisonFilters) => void;
 }
-
-const allPlatforms: Platform[] = ['amazon', 'flipkart', 'myntra', 'nykaa', 'meesho', 'ajio', 'snapdeal', 'tatacliq'];
 
 export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
   const handlePlatformToggle = (platform: Platform) => {
@@ -119,6 +117,22 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
           </Select>
         </div>
 
+        {/* Delivery Time */}
+        <div>
+          <label className="text-sm font-medium mb-2 block">Max Delivery Time (minutes)</label>
+          <Input
+            type="number"
+            placeholder="e.g., 30"
+            value={filters.maxDeliveryTime || ''}
+            onChange={(e) =>
+              onFiltersChange({
+                ...filters,
+                maxDeliveryTime: e.target.value ? Number(e.target.value) : undefined,
+              })
+            }
+          />
+        </div>
+
         {/* Sort By */}
         <div>
           <label className="text-sm font-medium mb-2 block">Sort By</label>
@@ -133,6 +147,7 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
           >
             <option value="price-low">Price: Low to High</option>
             <option value="price-high">Price: High to Low</option>
+            <option value="delivery-time">Fastest Delivery</option>
             <option value="rating">Highest Rated</option>
             <option value="reviews">Most Reviews</option>
           </Select>

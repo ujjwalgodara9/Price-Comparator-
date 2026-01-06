@@ -14,7 +14,7 @@ function App() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState<ComparisonFilters>({
-    platforms: ['amazon', 'flipkart', 'myntra', 'nykaa', 'meesho', 'ajio', 'snapdeal', 'tatacliq'],
+    platforms: ['zepto', 'swiggy-instamart', 'bigbasket', 'blinkit', 'dunzo'],
     sortBy: 'price-low',
   });
 
@@ -29,8 +29,19 @@ function App() {
   useEffect(() => {
     if (location) {
       // Search products whenever location, query, or filters change
-      const results = ProductService.searchProducts(searchQuery, location, filters);
-      setProducts(results);
+      const searchProducts = async () => {
+        setLoading(true);
+        try {
+          const results = await ProductService.searchProducts(searchQuery, location, filters);
+          setProducts(results);
+        } catch (error) {
+          console.error('Error searching products:', error);
+          setProducts([]);
+        } finally {
+          setLoading(false);
+        }
+      };
+      searchProducts();
     }
   }, [location, searchQuery, filters]);
 
@@ -47,7 +58,7 @@ function App() {
 
   const groupedProducts = ProductService.groupProductsByName(products);
 
-  if (loading || !location) {
+  if (loading && !location) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
@@ -81,7 +92,14 @@ function App() {
 
           {/* Products Area */}
           <div className="lg:col-span-3">
-            {searchQuery && (
+            {loading && searchQuery && (
+              <div className="mb-6 flex items-center gap-2">
+                <Loader2 className="h-4 w-4 animate-spin text-primary" />
+                <p className="text-muted-foreground">Searching for products...</p>
+              </div>
+            )}
+            
+            {!loading && searchQuery && (
               <div className="mb-6">
                 <p className="text-muted-foreground">
                   Found {products.length} product{products.length !== 1 ? 's' : ''} for "{searchQuery}"
@@ -89,15 +107,15 @@ function App() {
               </div>
             )}
 
-            {groupedProducts.size === 0 ? (
+            {!loading && groupedProducts.size === 0 ? (
               <div className="text-center py-12">
                 <p className="text-muted-foreground text-lg">
                   {searchQuery
                     ? 'No products found. Try a different search term.'
-                    : 'Search for products to compare prices across platforms'}
+                    : 'Search for products to compare prices and delivery times across fast e-commerce platforms'}
                 </p>
               </div>
-            ) : (
+            ) : !loading ? (
               Array.from(groupedProducts.entries()).map(([productName, productList]) => (
                 <ProductComparisonTable
                   key={productName}
@@ -105,7 +123,7 @@ function App() {
                   productName={productName}
                 />
               ))
-            )}
+            ) : null}
           </div>
         </div>
       </main>

@@ -12,9 +12,12 @@ export interface Product {
   features: string[];
   link: string;
   location: string;
+  deliveryTime?: string; // e.g., "10-15 mins", "30 mins", "1 hour"
+  deliveryFee?: number;
+  originalPrice?: number; // For showing discounts
 }
 
-export type Platform = 'amazon' | 'flipkart' | 'myntra' | 'nykaa' | 'meesho' | 'ajio' | 'snapdeal' | 'tatacliq';
+export type Platform = 'zepto' | 'swiggy-instamart' | 'bigbasket' | 'flipkart-minutes' | 'blinkit' | 'dunzo' | 'demart-ready' | 'amazon-prime-now';
 
 export interface LocationData {
   city: string;
@@ -31,6 +34,7 @@ export interface ComparisonFilters {
   minPrice?: number;
   maxPrice?: number;
   minRating?: number;
-  sortBy: 'price-low' | 'price-high' | 'rating' | 'reviews';
+  sortBy: 'price-low' | 'price-high' | 'rating' | 'reviews' | 'delivery-time';
+  maxDeliveryTime?: number; // Maximum delivery time in minutes
 }
 

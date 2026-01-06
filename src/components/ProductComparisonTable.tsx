@@ -2,8 +2,8 @@ import { Product } from '../types/product';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
-import { Star, ExternalLink, TrendingDown, TrendingUp } from 'lucide-react';
-import { platformNames, platformColors } from '../data/mockProducts';
+import { Star, ExternalLink, TrendingDown, TrendingUp, Clock, Truck } from 'lucide-react';
+import { platformNames, platformColors, platformIcons } from '../data/platformData';
 
 interface ProductComparisonTableProps {
   products: Product[];
@@ -50,6 +50,7 @@ export function ProductComparisonTable({ products, productName }: ProductCompari
                 >
                   <div className="flex items-center justify-between mb-3">
                     <Badge className={platformColor}>
+                      <span className="mr-1">{platformIcons[product.platform]}</span>
                       {platformNames[product.platform]}
                     </Badge>
                     {isLowest && (
@@ -89,19 +90,36 @@ export function ProductComparisonTable({ products, productName }: ProductCompari
                     <div className="text-2xl font-bold mb-1">
                       {product.currency} {product.price.toLocaleString()}
                     </div>
+                    {product.originalPrice && product.originalPrice > product.price && (
+                      <div className="text-sm text-muted-foreground line-through mb-1">
+                        {product.currency} {product.originalPrice.toLocaleString()}
+                      </div>
+                    )}
+                    {product.deliveryFee && product.deliveryFee > 0 && (
+                      <div className="text-xs text-muted-foreground mb-1">
+                        + {product.currency} {product.deliveryFee.toLocaleString()} delivery
+                      </div>
+                    )}
                     {!isLowest && diff > 0 && (
-                      <div className="flex items-center gap-1 text-sm text-red-600">
+                      <div className="flex items-center gap-1 text-sm text-red-600 mt-1">
                         <TrendingUp className="h-3 w-3" />
                         <span>{product.currency} {diff.toLocaleString()} ({percent}%) more</span>
                       </div>
                     )}
                     {isLowest && (
-                      <div className="flex items-center gap-1 text-sm text-green-600">
+                      <div className="flex items-center gap-1 text-sm text-green-600 mt-1">
                         <TrendingDown className="h-3 w-3" />
                         <span>Lowest price</span>
                       </div>
                     )}
                   </div>
+
+                  {product.deliveryTime && (
+                    <div className="mb-3 flex items-center gap-2 text-sm text-muted-foreground">
+                      <Clock className="h-4 w-4" />
+                      <span>Delivery: {product.deliveryTime}</span>
+                    </div>
+                  )}
 
                   <Button
                     className="w-full"

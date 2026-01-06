@@ -1,0 +1,35 @@
+curl ^"https://bff-gateway.zepto.com/lms/api/v2/get_page?latitude=13.035819079405993^&longitude=77.53113274824308^&page_type=HOME^&version=v2^&show_new_eta_banner=true^&page_size=1^&enforce_platform_type=DESKTOP^" ^
+  -H ^"accept: application/json, text/plain, */*^" ^
+  -H ^"accept-language: en-US,en;q=0.9,en-IN;q=0.8^" ^
+  -H ^"app_sub_platform: WEB^" ^
+  -H ^"app_version: 14.4.4^" ^
+  -H ^"appversion: 14.4.4^" ^
+  -H ^"auth_from_cookie: true^" ^
+  -H ^"auth_revamp_flow: v2^" ^
+  -H ^"compatible_components: CONVENIENCE_FEE,RAIN_FEE,EXTERNAL_COUPONS,STANDSTILL,BUNDLE,MULTI_SELLER_ENABLED,PIP_V1,ROLLUPS,SCHEDULED_DELIVERY,SAMPLING_ENABLED,ETA_NORMAL_WITH_149_DELIVERY,ETA_NORMAL_WITH_199_DELIVERY,HOMEPAGE_V2,NEW_ETA_BANNER,VERTICAL_FEED_PRODUCT_GRID,AUTOSUGGESTION_PAGE_ENABLED,AUTOSUGGESTION_PIP,AUTOSUGGESTION_AD_PIP,BOTTOM_NAV_FULL_ICON,COUPON_WIDGET_CART_REVAMP,DELIVERY_UPSELLING_WIDGET,MARKETPLACE_CATEGORY_GRID,NO_PLATFORM_CHECK_ENABLED_V2,SUPER_SAVER:1,SUPERSTORE_V1,PROMO_CASH:0,24X7_ENABLED_V1,TABBED_CAROUSEL_V2,HP_V4_FEED,WIDGET_BASED_ETA,PC_REVAMP_1,NO_COST_EMI_V1,PRE_SEARCH,ITEMISATION_ENABLED,ZEPTO_PASS,ZEPTO_PASS:5,BACHAT_FOR_ALL,SAMPLING_UPSELL_CAMPAIGN,DISCOUNTED_ADDONS_ENABLED,UPSELL_COUPON_SS:0,ENABLE_FLOATING_CART_BUTTON,NEW_FEE_STRUCTURE,NEW_BILL_INFO,RE_PROMISE_ETA_ORDER_SCREEN_ENABLED,SUPERSTORE_V1,MANUALLY_APPLIED_DELIVERY_FEE_RECEIVABLE,MARKETPLACE_REPLACEMENT,ZEPTO_PASS,ZEPTO_PASS:5,ZEPTO_PASS_RENEWAL,CART_REDESIGN_ENABLED,SHIPMENT_WIDGETIZATION_ENABLED,TABBED_CAROUSEL_V2,24X7_ENABLED_V1,PROMO_CASH:0,HOMEPAGE_V2,SUPER_SAVER:1,NO_PLATFORM_CHECK_ENABLED_V2,HP_V4_FEED,GIFT_CARD,SCLP_ADD_MONEY,GIFTING_ENABLED,OFSE,WIDGET_BASED_ETA,PC_REVAMP_1,NEW_ETA_BANNER,NO_COST_EMI_V1,ITEMISATION_ENABLED,SWAP_AND_SAVE_ON_CART,WIDGET_RESTRUCTURE,PRICING_CAMPAIGN_ID,BACHAT_FOR_ALL,TABBED_CAROUSEL_V3,CART_LMS:2,SAMPLING_UPSELL_CAMPAIGN,DISCOUNTED_ADDONS_ENABLED,UPSELL_COUPON_SS:0,SIZE_EXCHANGE_ENABLED,ENABLE_FLOATING_CART_BUTTON,SAMPLING_V3,HYBRID_CAMPAIGN,^" ^
+  -b ^"_gcl_au=1.1.1510813121.1766643130; _ga=GA1.1.1356063821.1766643131; _fbp=fb.1.1766643135841.329298588807440352; mp_dcc8757645c1c32f4481b555710c7039_mixpanel=^%^7B^%^22distinct_id^%^22^%^3A^%^22^%^24device^%^3A31be304b-8869-470f-8ccf-cc8ebf402858^%^22^%^2C^%^22^%^24device_id^%^22^%^3A^%^2231be304b-8869-470f-8ccf-cc8ebf402858^%^22^%^2C^%^22^%^24search_engine^%^22^%^3A^%^22google^%^22^%^2C^%^22^%^24initial_referrer^%^22^%^3A^%^22https^%^3A^%^2F^%^2Fwww.google.com^%^2F^%^22^%^2C^%^22^%^24initial_referring_domain^%^22^%^3A^%^22www.google.com^%^22^%^2C^%^22__mps^%^22^%^3A^%^7B^%^7D^%^2C^%^22__mpso^%^22^%^3A^%^7B^%^22^%^24initial_referrer^%^22^%^3A^%^22https^%^3A^%^2F^%^2Fwww.google.com^%^2F^%^22^%^2C^%^22^%^24initial_referring_domain^%^22^%^3A^%^22www.google.com^%^22^%^7D^%^2C^%^22__mpus^%^22^%^3A^%^7B^%^7D^%^2C^%^22__mpa^%^22^%^3A^%^7B^%^7D^%^2C^%^22__mpu^%^22^%^3A^%^7B^%^7D^%^2C^%^22__mpr^%^22^%^3A^%^5B^%^5D^%^2C^%^22__mpap^%^22^%^3A^%^5B^%^5D^%^7D; _ga_52LKG2B3L1=GS2.1.s1767717454^$o4^$g1^$t1767719456^$j19^$l0^$h1548801581; amp_adc4c4=Tts_i57icKELviWBjxAK2W...1jea4jana.1jea4kl46.0.0.0; aws-waf-token=db0fd9d6-77e2-438e-8182-dab328205512:HgoAlUl3FOFeAQAA:MD1kHuYJ8ltXotmp62jxDeZoqtJqIsq+srlO1vDwLA8xlcg/8aLsOScHtSIXnxzCnaYdxIWHNS8om6qY6F3pmCaZt1W79JrgBmZ04uvHLRPAyzYwFjdBnyjfr2ZPt5Mu3Uwuf/TIjAanrrb2GZvwkKYzNowrhOMdiXbCEr8lePX1SHS3jav8AsZNWEzp7D2LBzp0cFyCUwtrzC+48IOiaxg1xyikekN9GljhttSg5vQazQ==^" ^
+  -H ^"device_id: 40f22607-a632-45e5-8416-ba33177a0c21^" ^
+  -H ^"deviceid: 40f22607-a632-45e5-8416-ba33177a0c21^" ^
+  -H ^"marketplace_type: SUPER_SAVER^" ^
+  -H ^"origin: https://www.zepto.com^" ^
+  -H ^"platform: WEB^" ^
+  -H ^"priority: u=1, i^" ^
+  -H ^"referer: https://www.zepto.com/^" ^
+  -H ^"request-signature: fbe0eddf053865646f6f6fd838b20c41885a4e0abcaee33bac9515e5befe0859^" ^
+  -H ^"request_id: 5d70e750-789b-4e26-8b13-fda44c23a344^" ^
+  -H ^"requestid: 5d70e750-789b-4e26-8b13-fda44c23a344^" ^
+  -H ^"sec-fetch-dest: empty^" ^
+  -H ^"sec-fetch-mode: cors^" ^
+  -H ^"sec-fetch-site: same-site^" ^
+  -H ^"session_id: c79173f5-a7a8-4c41-9c42-e857a4ceb1e8^" ^
+  -H ^"sessionid: c79173f5-a7a8-4c41-9c42-e857a4ceb1e8^" ^
+  -H ^"source: DIRECT^" ^
+  -H ^"store_etas: ^{^\^"34404f78-ff38-402a-a367-29b31e477ca3^\^":10,^\^"abd85a95-f3f3-42fd-aeb0-71b9127335f5^\^":13^}^" ^
+  -H ^"store_id: 34404f78-ff38-402a-a367-29b31e477ca3^" ^
+  -H ^"store_ids: 34404f78-ff38-402a-a367-29b31e477ca3,abd85a95-f3f3-42fd-aeb0-71b9127335f5^" ^
+  -H ^"storeid: 34404f78-ff38-402a-a367-29b31e477ca3^" ^
+  -H ^"tenant: ZEPTO^" ^
+  -H ^"user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1 Edg/143.0.0.0^" ^
+  -H ^"x-csrf-secret: AmIfRemu4bE^" ^
+  -H ^"x-timezone: 940ca0b15658f9e895a7fdea19f973d357383dbecaf778e1eae50418770a1d0b^" ^
+  -H ^"x-xsrf-token: oN3hu3cDEnRprYRyFItFQ:-A4keaxqfcoga2HhyDd1dHNVe4Y.4wVG8iLm/ubeCggbN084fgvmEzHIYJOCcrQaCyGxp7g^"
