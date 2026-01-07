@@ -6,7 +6,7 @@ A modern product comparison website for quick delivery platforms like Zepto, Swi
 
 **Terminal 1 - Backend:**
 ```bash
-cd backend-example
+cd backend
 pip install -r requirements.txt
 python server.py
 ```
@@ -42,7 +42,7 @@ src/
 ├── types/             # TypeScript definitions
 └── data/              # Platform configurations
 
-backend-example/
+backend/
 ├── server.py          # Flask API server
 ├── requirements.txt   # Python dependencies
 └── zepto_headers_config.py
