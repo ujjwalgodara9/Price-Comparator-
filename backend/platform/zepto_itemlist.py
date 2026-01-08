@@ -51,7 +51,7 @@ with sync_playwright() as p:
     page = context.new_page()
 
     page.goto(
-        "https://www.zepto.com/search?query=protonics+adapter",
+        "https://www.zepto.com/search?query=atta",
         wait_until="domcontentloaded"
     )
 
