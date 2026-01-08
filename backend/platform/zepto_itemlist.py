@@ -1,6 +1,10 @@
 from playwright.sync_api import sync_playwright
 import re
 import time
+import json
+import os
+import uuid
+from datetime import datetime
 
 def parse_products(raw_text):
     products = re.split(r'\n?ADD\n?', raw_text)
@@ -37,7 +41,7 @@ def parse_products(raw_text):
 
 
 with sync_playwright() as p:
-    browser = p.chromium.launch(headless=False)
+    browser = p.chromium.launch(headless=True)
 
     context = browser.new_context(
         viewport={"width": 390, "height": 844},
@@ -50,8 +54,10 @@ with sync_playwright() as p:
 
     page = context.new_page()
 
+    search_query = "atta"
+
     page.goto(
-        "https://www.zepto.com/search?query=atta",
+        "https://www.zepto.com/search?query=" + search_query,
         wait_until="domcontentloaded"
     )
 
@@ -92,3 +98,24 @@ with sync_playwright() as p:
         print(r)
 
     browser.close()
+
+    # Save results to JSON file
+    output_dir = os.path.join(os.path.dirname(__file__), "product_data")
+    os.makedirs(output_dir, exist_ok=True)
+    
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"zepto_search_{search_query}_{timestamp}.json"
+    filepath = os.path.join(output_dir, filename)
+    
+    output_data = {
+        "search_query": search_query,
+        "timestamp": datetime.now().isoformat(),
+        "total_products": len(results),
+        "products": results
+    }
+    
+    with open(filepath, 'w', encoding='utf-8') as f:
+        json.dump(output_data, f, indent=2, ensure_ascii=False)
+    
+    print(f"\n✅ Results saved to: {filepath}")
+    print(f"Total products found: {len(results)}")
