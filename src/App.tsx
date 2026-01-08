@@ -5,7 +5,7 @@ import { ProductComparisonTable } from './components/ProductComparisonTable';
 import { LocationDisplay } from './components/LocationDisplay';
 import { LocationService } from './services/locationService';
 import { ProductService } from './services/productService';
-import { Product, LocationData, ComparisonFilters, Platform } from './types/product';
+import { Product, LocationData, ComparisonFilters } from './types/product';
 import { Loader2 } from 'lucide-react';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState<ComparisonFilters>({
-    platforms: ['zepto', 'swiggy-instamart', 'bigbasket', 'blinkit', 'dunzo'],
+    platforms: ['zepto'],
     sortBy: 'price-low',
   });
 
@@ -30,12 +30,27 @@ function App() {
     if (location) {
       // Search products whenever location, query, or filters change
       const searchProducts = async () => {
+        console.log('[App] useEffect triggered - searching:', {
+          searchQuery,
+          location,
+          platforms: filters.platforms,
+        });
+        
+        // Don't search if query is empty
+        if (!searchQuery.trim()) {
+          console.log('[App] Empty query, skipping search');
+          setProducts([]);
+          setLoading(false);
+          return;
+        }
+        
         setLoading(true);
         try {
           const results = await ProductService.searchProducts(searchQuery, location, filters);
+          console.log('[App] Search results:', results.length, 'products');
           setProducts(results);
         } catch (error) {
-          console.error('Error searching products:', error);
+          console.error('[App] Error searching products:', error);
           setProducts([]);
         } finally {
           setLoading(false);
@@ -46,6 +61,7 @@ function App() {
   }, [location, searchQuery, filters]);
 
   const handleSearch = (query: string) => {
+    console.log('[App] handleSearch called with query:', query);
     setSearchQuery(query);
   };
 
@@ -76,7 +92,7 @@ function App() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-2xl font-bold">Product Compare</h1>
-            <LocationDisplay location={location} onRefresh={handleRefreshLocation} />
+            {location && <LocationDisplay location={location} onRefresh={handleRefreshLocation} />}
           </div>
           <SearchBar onSearch={handleSearch} />
         </div>
@@ -92,7 +108,7 @@ function App() {
 
           {/* Products Area */}
           <div className="lg:col-span-3">
-            {loading && searchQuery && (
+            {loading && searchQuery && location && (
               <div className="mb-6 flex items-center gap-2">
                 <Loader2 className="h-4 w-4 animate-spin text-primary" />
                 <p className="text-muted-foreground">Searching for products...</p>

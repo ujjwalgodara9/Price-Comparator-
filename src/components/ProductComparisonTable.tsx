@@ -71,6 +71,13 @@ export function ProductComparisonTable({ products, productName }: ProductCompari
                     />
                   </div>
 
+                  <div className="mb-3">
+                    <h3 className="font-semibold text-base line-clamp-2 mb-2">{product.name}</h3>
+                    {product.description && (
+                      <p className="text-xs text-muted-foreground line-clamp-2">{product.description}</p>
+                    )}
+                  </div>
+
                   <div className="space-y-2 mb-3">
                     <div className="flex items-center gap-2">
                       <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />

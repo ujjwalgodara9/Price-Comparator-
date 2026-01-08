@@ -87,14 +87,8 @@ export class PlatformScraper {
     // In production, implement platform-specific scrapers
     
     const scraperMap: Record<Platform, () => Promise<ScrapeResult>> = {
-      'zepto': () => this.scrapeZepto(query, location),
-      'swiggy-instamart': () => this.scrapeSwiggyInstamart(query, location),
-      'bigbasket': () => this.scrapeBigBasket(query, location),
-      'flipkart-minutes': () => this.scrapeFlipkartMinutes(query, location),
-      'blinkit': () => this.scrapeBlinkit(query, location),
-      'dunzo': () => this.scrapeDunzo(query, location),
-      'demart-ready': () => this.scrapeDemartReady(query, location),
-      'amazon-prime-now': () => this.scrapeAmazonPrimeNow(query, location),
+      'google': () => this.scrapeGoogle(query, location),
+      'google-search': () => this.scrapeGoogleSearch(query, location),
     };
 
     const scraper = scraperMap[platform];

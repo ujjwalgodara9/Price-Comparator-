@@ -17,21 +17,38 @@ export class FastEcommerceAPI {
     location: LocationData,
     platforms: Platform[]
   ): Promise<Product[]> {
+    console.log('[FastEcommerceAPI] searchProducts called:', {
+      query,
+      location,
+      platforms,
+      API_BASE_URL: this.API_BASE_URL,
+    });
+    
     if (!query.trim()) {
+      console.log('[FastEcommerceAPI] Empty query, returning empty array');
       return [];
     }
 
     try {
-      // Try to use backend API first
-      if (this.API_BASE_URL !== '/api') {
+      // Always try to use backend API if configured
+      if (this.API_BASE_URL && this.API_BASE_URL !== '/api') {
+        console.log('[FastEcommerceAPI] Using backend API:', this.API_BASE_URL);
         return await this.searchViaBackendAPI(query, location, platforms);
       }
 
-      // Fallback to direct scraping (may have CORS issues)
-      return await PlatformScraper.searchProducts(query, location, platforms);
+      // If no backend URL configured, try relative /api (proxy mode)
+      console.log('[FastEcommerceAPI] Using relative API path (proxy mode)');
+      return await this.searchViaBackendAPI(query, location, platforms);
     } catch (error) {
-      console.error('Error searching products:', error);
-      return [];
+      console.error('[FastEcommerceAPI] Error searching products:', error);
+      // Fallback to direct scraping only if API fails
+      console.log('[FastEcommerceAPI] Attempting fallback to PlatformScraper');
+      try {
+        return await PlatformScraper.searchProducts(query, location, platforms);
+      } catch (fallbackError) {
+        console.error('[FastEcommerceAPI] Fallback also failed:', fallbackError);
+        return [];
+      }
     }
   }
 
@@ -43,24 +60,59 @@ export class FastEcommerceAPI {
     location: LocationData,
     platforms: Platform[]
   ): Promise<Product[]> {
-    const response = await fetch(`${this.API_BASE_URL}/search`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query,
-        location,
-        platforms,
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`API request failed: ${response.statusText}`);
+    // Build API URL - handle both absolute and relative paths
+    let url: string;
+    if (this.API_BASE_URL.startsWith('http')) {
+      // Absolute URL (e.g., http://localhost:3001)
+      url = `${this.API_BASE_URL}/api/search`;
+    } else {
+      // Relative URL (e.g., /api or empty)
+      url = `/api/search`;
     }
+    
+    const payload = {
+      query,
+      location,
+      platforms,
+    };
+    
+    console.log('[FRONTEND] Making API request:', {
+      url,
+      method: 'POST',
+      payload,
+      apiBaseUrl: this.API_BASE_URL,
+    });
+    
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
 
-    const data = await response.json();
-    return data.products || [];
+      console.log('[FRONTEND] API Response:', {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok,
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('[FRONTEND] API Error Response:', errorText);
+        throw new Error(`API request failed: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      console.log('[FRONTEND] API Data received:', {
+        productCount: data.products?.length || 0,
+      });
+      return data.products || [];
+    } catch (error) {
+      console.error('[FRONTEND] API Request Error:', error);
+      throw error;
+    }
   }
 
   /**

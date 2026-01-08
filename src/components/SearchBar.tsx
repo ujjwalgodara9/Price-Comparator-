@@ -13,7 +13,12 @@ export function SearchBar({ onSearch, placeholder = "Search for groceries, essen
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSearch(query);
+    console.log('[SearchBar] Form submitted with query:', query);
+    if (query.trim()) {
+      onSearch(query);
+    } else {
+      console.log('[SearchBar] Empty query, not searching');
+    }
   };
 
   return (

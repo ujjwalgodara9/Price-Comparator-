@@ -17,7 +17,11 @@ export interface Product {
   originalPrice?: number; // For showing discounts
 }
 
-export type Platform = 'zepto' | 'swiggy-instamart' | 'bigbasket' | 'flipkart-minutes' | 'blinkit' | 'dunzo' | 'demart-ready' | 'amazon-prime-now';
+export type Platform = 
+  | 'zepto' 
+  | 'swiggy-instamart' 
+  | 'bigbasket' 
+  | 'blinkit';
 
 export interface LocationData {
   city: string;

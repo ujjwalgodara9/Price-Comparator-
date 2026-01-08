@@ -19,6 +19,7 @@ import requests
 import json
 import uuid
 from zepto_headers_config import get_zepto_headers
+from ecommerce_platform.zepto_itemlist import scrape_zepto_products
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -53,42 +54,69 @@ mock_products = {
 def search_all_platforms():
     """Search endpoint - searches across all platforms"""
     try:
-        data = request.get_json()
+        # Get request data
+        if not request.is_json:
+            return jsonify({'error': 'Request must be JSON'}), 400
+        
+        data = request.get_json() or {}
         query = data.get('query', '')
         location = data.get('location', {})
         platforms = data.get('platforms', ['zepto'])
+        
+        print(f'[API] Received search request: query="{query}", platforms={platforms}, location={location}')
+        
+        if not query or not query.strip():
+            return jsonify({'error': 'Query is required'}), 400
         
         all_products = []
         
         # Search each platform
         for platform in platforms:
             try:
+                print(f'[API] Searching platform: {platform}')
                 products = search_platform(platform, query, location)
+                print(f'[API] Platform {platform} returned {len(products)} products')
                 all_products.extend(products)
             except Exception as error:
-                print(f'Error searching {platform}: {error}')
+                print(f'[API] Error searching {platform}: {error}')
+                import traceback
+                traceback.print_exc()
                 # Continue with other platforms even if one fails
                 continue
         
+        print(f'[API] Total products found: {len(all_products)}')
         return jsonify({'products': all_products})
     except Exception as error:
-        print(f'Search error: {error}')
-        return jsonify({'error': 'Failed to search products'}), 500
+        print(f'[API] Search error: {error}')
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': f'Failed to search products: {str(error)}'}), 500
 
 
 @app.route('/api/search/<platform>', methods=['POST'])
 def search_platform_endpoint(platform):
     """Platform-specific search endpoint"""
     try:
-        data = request.get_json()
+        if not request.is_json:
+            return jsonify({'error': 'Request must be JSON'}), 400
+        
+        data = request.get_json() or {}
         query = data.get('query', '')
         location = data.get('location', {})
         
+        print(f'[API] Platform-specific search: platform={platform}, query="{query}"')
+        
+        if not query or not query.strip():
+            return jsonify({'error': 'Query is required'}), 400
+        
         products = search_platform(platform, query, location)
+        print(f'[API] Platform {platform} returned {len(products)} products')
         return jsonify({'products': products})
     except Exception as error:
-        print(f'Error searching {platform}: {error}')
-        return jsonify({'error': f'Failed to search on {platform}'}), 500
+        print(f'[API] Error searching {platform}: {error}')
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': f'Failed to search on {platform}: {str(error)}'}), 500
 
 
 def search_platform(platform, query, location):
@@ -97,8 +125,7 @@ def search_platform(platform, query, location):
         'zepto': scrape_zepto,
         'swiggy-instamart': scrape_swiggy_instamart,
         'bigbasket': scrape_bigbasket,
-        'blinkit': scrape_blinkit,
-        'dunzo': scrape_dunzo,
+        'blinkit': scrape_blinkit
     }
     
     scraper = platform_map.get(platform)
@@ -108,90 +135,34 @@ def search_platform(platform, query, location):
 
 
 def scrape_zepto(query, location):
-    """Zepto Scraper - Uses actual Zepto API endpoint"""
+    """Zepto Scraper - Uses Playwright to scrape Zepto website"""
     try:
-        lat = location.get('coordinates', {}).get('lat', 13.035819079405993)
-        lng = location.get('coordinates', {}).get('lng', 77.53113274824308)
+        if not query:
+            print('[Zepto] Empty query, returning empty list')
+            return []
         
-        # Zepto's actual API endpoint
-        api_url = 'https://bff-gateway.zepto.com/lms/api/v2/get_page'
+        print(f'[Zepto] Starting scrape for query: "{query}"')
         
-        # Get all required headers from config
-        headers = get_zepto_headers()
+        # Use the Playwright-based scraper from zepto_itemlist
+        # Run in headless mode for production
+        products = scrape_zepto_products(
+            search_query=query,
+            location=location,
+            headless=True,
+            max_products=50
+        )
         
-        params = {
-            'latitude': lat,
-            'longitude': lng,
-            'page_type': 'SEARCH' if query else 'HOME',
-            'version': 'v2',
-            'show_new_eta_banner': True,
-            'page_size': 50,
-            'enforce_platform_type': 'DESKTOP',
-        }
-        
-        if query:
-            params['query'] = query
-        
-        response = requests.get(api_url, params=params, headers=headers, timeout=15)
-        response.raise_for_status()
-        
-        # Parse response - adjust based on actual response structure
-        data = response.json()
-        
-        # Extract products from response (adjust path based on actual structure)
-        items = []
-        if 'data' in data and 'products' in data['data']:
-            items = data['data']['products']
-        elif 'data' in data and 'items' in data['data']:
-            items = data['data']['items']
-        elif 'results' in data:
-            items = data['results']
-        elif 'items' in data:
-            items = data['items']
-        elif 'products' in data:
-            items = data['products']
-        elif isinstance(data, list):
-            items = data
-        
-        # Map to our product format
-        products = []
-        for index, item in enumerate(items):
-            product = {
-                'id': item.get('id') or item.get('product_id') or item.get('productId') or f'zepto-{index}',
-                'name': item.get('name') or item.get('title') or item.get('product_name') or item.get('productName') or '',
-                'description': item.get('description') or item.get('short_description') or item.get('desc') or '',
-                'image': item.get('image') or item.get('image_url') or item.get('imageUrl') or item.get('thumbnail') or item.get('img') or 'https://via.placeholder.com/400',
-                'price': float(item.get('price') or item.get('final_price') or item.get('finalPrice') or item.get('selling_price') or item.get('sellingPrice') or item.get('amount') or 0),
-                'currency': 'INR',
-                'platform': 'zepto',
-                'availability': item.get('in_stock', True) is not False and item.get('available', True) is not False and item.get('is_available', True) is not False,
-                'rating': float(item.get('rating') or item.get('avg_rating') or item.get('averageRating') or item.get('avgRating') or 0),
-                'reviewCount': int(item.get('review_count') or item.get('reviews') or item.get('reviewCount') or 0),
-                'features': item.get('features') or item.get('highlights') or item.get('tags') or [],
-                'link': item.get('url') or item.get('link') or item.get('product_url') or f"https://www.zepto.com/product/{item.get('slug') or item.get('id') or item.get('product_id')}",
-                'location': f"{location.get('city', '')}, {location.get('state', '')}",
-                'deliveryTime': item.get('delivery_time') or item.get('deliveryTime') or item.get('estimated_delivery') or item.get('eta') or '10-15 mins',
-                'deliveryFee': float(item.get('delivery_fee') or item.get('deliveryFee') or item.get('shipping_charge') or item.get('shippingCharge') or 0),
-                'originalPrice': float(item.get('original_price') or item.get('originalPrice') or item.get('mrp') or item.get('list_price') or item.get('listPrice') or 0) or None,
-            }
-            
-            # Filter products based on search query if provided
-            if query:
-                search_lower = query.lower()
-                if search_lower not in product['name'].lower() and search_lower not in product['description'].lower():
-                    continue
-            
-            # Filter out invalid products
-            if product['name'] and product['price'] > 0:
-                products.append(product)
-        
-        print(f'Zepto: Found {len(products)} products')
+        print(f'[Zepto] Scrape completed: Found {len(products)} products for query "{query}"')
         return products
-    except requests.exceptions.RequestException as error:
-        print(f'Zepto scraping error: {error}')
+    except ImportError as error:
+        print(f'[Zepto] Import error - Playwright may not be installed: {error}')
+        import traceback
+        traceback.print_exc()
         return []
     except Exception as error:
-        print(f'Zepto parsing error: {error}')
+        print(f'[Zepto] Scraping error: {error}')
+        import traceback
+        traceback.print_exc()
         return []
 
 
@@ -212,13 +183,6 @@ def scrape_blinkit(query, location):
     """Blinkit Scraper"""
     # Implement Blinkit scraping
     return []
-
-
-def scrape_dunzo(query, location):
-    """Dunzo Scraper"""
-    # Implement Dunzo scraping
-    return []
-
 
 @app.route('/api/product/<platform>/<product_id>', methods=['GET'])
 def get_product_details(platform, product_id):
