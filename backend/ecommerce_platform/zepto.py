@@ -1,81 +1,105 @@
 import os
 import json
-import uuid
-import requests
-import random
 import time
+from datetime import datetime
 from playwright.sync_api import sync_playwright
-from bs4 import BeautifulSoup
 
-# --- CONFIGURATION ---
 STORAGE_FOLDER = "product_data"
-IMAGE_FOLDER = os.path.join(STORAGE_FOLDER, "images")
+os.makedirs(STORAGE_FOLDER, exist_ok=True)
 
-# Ensure directories exist
-os.makedirs(IMAGE_FOLDER, exist_ok=True)
+def set_location(page, city_name):
+    print(f"Setting location to: {city_name}")
+    address_header = page.get_by_test_id("user-address")
+    address_header.wait_for(state="visible")
+    address_header.click()
 
-# --- EXTRACTION FUNCTIONS ---
+    search_container = page.get_by_test_id("address-search-input")
+    search_container.wait_for(state="visible")
 
-def get_product_price(page):
-    """Extracts and cleans the price."""
-    try:
-        # Scoped to avoid strict mode violation
-        price_locator = page.locator("#product-features-wrapper .u-flex.WwbTC.xs2VX")
-        raw_price = price_locator.inner_text()
-        return "".join(raw_price.split())
-    except:
-        return "N/A"
+    search_input = search_container.locator("input")
+    search_input.fill(city_name)
 
-def get_product_highlights(page):
-    """Extracts highlights and parses them into a dictionary."""
-    try:
-        highlights_locator = page.locator("#productHighlights .__9M1qu")
-        if highlights_locator.count() == 0:
-            return {}
+    results_container = page.get_by_test_id("address-search-container")
+    first_result = results_container.get_by_test_id("address-search-item").first
+    first_result.wait_for(state="visible", timeout=10000)
+    first_result.click()
+
+    page.wait_for_load_state("networkidle")
+    time.sleep(5)
+
+def search_and_scroll(page, product_query):
+    print(f"Searching for: {product_query}")
+    # 1. Click search icon and type
+    search_icon = page.get_by_test_id("search-bar-icon")
+    search_icon.click()
+    
+    # Zepto search input usually appears after clicking icon
+    search_input = page.get_by_placeholder("Search for", exact=False)
+    search_input.fill(product_query)
+    page.keyboard.press("Enter")
+    
+    page.wait_for_load_state("networkidle")
+    
+    # 2. Scroll Loop (5 times with 4s wait)
+    for i in range(15):
+        print(f"Scroll iteration {i+1}/15")
+        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+        time.sleep(4)
+
+def extract_product_list(page):
+    print("Extracting all items in one go...")
+    
+    # We run this JavaScript inside the browser context
+    # It finds all cards and extracts their data into a list of dictionaries
+    extraction_script = """
+    () => {
+        const items = document.querySelectorAll('.B4vNQ');
+        return Array.from(items).map(item => {
+            const priceEl = item.querySelector('span.cptQT7');
+            const nameEl = item.querySelector('div.cQAjo6.ch5GgP');
+            const descEl = item.querySelector('div.cyNbxx.c0ZFba span');
+            const timeEl = item.querySelector('div.cTDqth.cTDqth');
+
+            return {
+                "product_name": nameEl ? nameEl.innerText.trim() : "N/A",
+                "price": priceEl ? priceEl.innerText.trim() : "N/A",
+                "description": descEl ? descEl.innerText.trim() : "N/A",
+                "delivery_time": timeEl ? timeEl.innerText.trim() : "N/A"
+            };
+        });
+    }
+    """
+    
+    # This happens almost instantly regardless of how many items there are
+    products = page.evaluate(extraction_script)
+    
+    # Filter out empty entries if any
+    return [p for p in products if p['product_name'] != "N/A"]
+
+def save_to_timestamped_folder(data, platform_name):
+    # 1. Create a unique timestamp (e.g., 2026-01-10_01-30-45)
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    
+    # 2. Define the folder path: scraped_results/run-2026-01-10_01-30-45
+    run_folder = os.path.join(STORAGE_FOLDER, f"run-{timestamp}-zepto")
+    
+    # 3. Create the folder if it doesn't exist
+    os.makedirs(run_folder, exist_ok=True)
+    
+    # 4. Define file path: scraped_results/run-.../zepto.json
+    json_filename = f"{platform_name.lower()}.json"
+    json_path = os.path.join(run_folder, json_filename)
+    
+    # 5. Save the data
+    with open(json_path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=4)
         
-        raw_html = highlights_locator.inner_html()
-        soup = BeautifulSoup(raw_html, 'html.parser')
-        product_info = {}
+    print(f"--- Data Saved Successfully ---")
+    print(f"Folder: {run_folder}")
+    print(f"File: {json_filename}")
+    return json_path
 
-        rows = soup.find_all("div", class_="KjTQZ")
-        for row in rows:
-            key_el = row.find("h3")
-            val_el = row.find("p")
-            if key_el and val_el:
-                key = key_el.get_text(strip=True).lower().replace(" ", "_")
-                val = val_el.get_text(strip=True)
-                product_info[key] = val
-        return product_info
-    except:
-        return {}
-
-def download_image(page, product_name):
-    """Downloads the primary product image."""
-    try:
-        img_locator = page.locator("#left-carousel .rounded-2xl img").first
-        img_url = img_locator.get_attribute("src")
-        
-        if not img_url:
-            return "no_image.jpg"
-
-        # Create a unique but recognizable filename
-        clean_name = "".join(x for x in product_name if x.isalnum())[:20]
-        unique_id = str(uuid.uuid4())[:8]
-        filename = f"{clean_name}_{unique_id}.jpg"
-        filepath = os.path.join(IMAGE_FOLDER, filename)
-
-        img_data = requests.get(img_url).content
-        with open(filepath, 'wb') as f:
-            f.write(img_data)
-        
-        return filename
-    except Exception as e:
-        print(f"Image download error: {e}")
-        return "error.jpg"
-
-# --- CORE LOGIC ---
-
-def extract_zepto_data(url):
+def run_zepto_flow(city, product_name):
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
@@ -84,55 +108,26 @@ def extract_zepto_data(url):
         page = context.new_page()
 
         try:
-            print(f"Fetching: {url}")
-            page.goto(url, wait_until="networkidle")
+            page.goto("https://www.zepto.com", wait_until="networkidle")
             
-            # Allow for some dynamic content to finish loading
-            time.sleep(2)
+            # Location
+            set_location(page, city)
+            
+            # Search and Scroll
+            search_and_scroll(page, product_name)
+            
+            # Scrape
+            final_data_list = extract_product_list(page)
 
-            # 1. Basic Info
-            product_name = page.locator("h1").inner_text().strip()
-            price = get_product_price(page)
+            # Save to File
+            final_saved_path = save_to_timestamped_folder(final_data_list, "zepto")
 
-            # 2. Structured Data
-            highlights = get_product_highlights(page)
-
-            # 3. Assets
-            image_filename = download_image(page, product_name)
-
-            # 4. Compile Final JSON
-            final_data = {
-                "source": "Zepto",
-                "product_name": product_name,
-                "price": price,
-                "image_name": image_filename,
-                "highlights": highlights,
-                "url": url,
-                "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
-            }
-
-            # 5. Save to File
-            # Generate filename like: zepto-OrganicTattvaWheatFlour.json
-            safe_name = "".join(x for x in product_name if x.isalnum())[:30]
-            json_filename = f"zepto-{safe_name}.json"
-            json_path = os.path.join(STORAGE_FOLDER, json_filename)
-
-            with open(json_path, 'w', encoding='utf-8') as f:
-                json.dump(final_data, f, indent=4)
-
-            print(f"Successfully saved data to: {json_path}")
-            return final_data
+            return final_data_list
 
         except Exception as e:
-            print(f"Critical error during extraction: {e}")
+            print(f"Error: {e}")
         finally:
             browser.close()
 
-if __name__ == "__main__":
-    target_url = "https://www.zepto.com/pn/organic-tattva-wheat-flour-chakki-atta/pvid/3587eb86-cc71-4dda-aee1-786f8e1ae3dc"
-    extract_zepto_data(target_url)
-
-# demo urls
-# url = "https://www.zepto.com/pn/fablue-rock-crawler-remote-control-car-for-kids-off-road-car-toy-for-kids/pvid/4295179b-6cbb-4488-b576-4923c6b7c8c1"
-# url = "https://www.zepto.com/pn/organic-tattva-wheat-flour-chakki-atta/pvid/3587eb86-cc71-4dda-aee1-786f8e1ae3dc"
-# url = "https://www.zepto.com/pn/nandini-fresh-toned-fresh-milk-pouch-blue/pvid/25eb526c-9c26-48cd-95a3-8e4058910f8a"
+# Example Usage
+run_zepto_flow("Mumbai", "Atta")
