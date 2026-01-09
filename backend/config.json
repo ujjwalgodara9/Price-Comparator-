@@ -1,3 +1,21 @@
 {
-"cse_id": "7138b3727b1b04d8f"
+    "cse_id": "7138b3727b1b04d8f",
+    "platform": {
+        "zepto": {
+            "scrape": true,
+            "headless": false
+        },
+        "blinkit": {
+            "scrape": true,
+            "headless": false
+        },
+        "swiggy-instamart": {
+            "scrape": false,
+            "headless": true
+        },
+        "bigbasket": {
+            "scrape": false,
+            "headless": true
+        }
+    }
 }

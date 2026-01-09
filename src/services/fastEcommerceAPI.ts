@@ -11,6 +11,7 @@ export class FastEcommerceAPI {
 
   /**
    * Search products across all selected fast e-commerce platforms
+   * First tries to get comparison data, then falls back to search API
    */
   static async searchProducts(
     query: string,
@@ -30,7 +31,23 @@ export class FastEcommerceAPI {
     }
 
     try {
-      // Always try to use backend API if configured
+      // First, try to get comparison data from compare.json
+      console.log('[FastEcommerceAPI] Attempting to fetch comparison data...');
+      const compareProducts = await this.getCompareData();
+      
+      if (compareProducts && compareProducts.length > 0) {
+        console.log(`[FastEcommerceAPI] Found ${compareProducts.length} products from compare.json`);
+        // Filter by selected platforms
+        return compareProducts.filter(p => platforms.includes(p.platform));
+      }
+      
+      console.log('[FastEcommerceAPI] No comparison data found, using search API...');
+    } catch (error) {
+      console.log('[FastEcommerceAPI] Could not load comparison data, using search API:', error);
+    }
+
+    try {
+      // Fallback to search API
       if (this.API_BASE_URL && this.API_BASE_URL !== '/api') {
         console.log('[FastEcommerceAPI] Using backend API:', this.API_BASE_URL);
         return await this.searchViaBackendAPI(query, location, platforms);
@@ -49,6 +66,43 @@ export class FastEcommerceAPI {
         console.error('[FastEcommerceAPI] Fallback also failed:', fallbackError);
         return [];
       }
+    }
+  }
+
+  /**
+   * Get product comparison data from compare.json
+   */
+  private static async getCompareData(): Promise<Product[]> {
+    let url: string;
+    if (this.API_BASE_URL.startsWith('http')) {
+      url = `${this.API_BASE_URL}/api/compare`;
+    } else {
+      url = `/api/compare`;
+    }
+    
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        if (response.status === 404) {
+          console.log('[FastEcommerceAPI] compare.json not found, will use search API');
+        }
+        throw new Error(`Failed to fetch comparison data: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      console.log('[FastEcommerceAPI] Comparison data received:', {
+        productCount: data.products?.length || 0,
+      });
+      return data.products || [];
+    } catch (error) {
+      console.error('[FastEcommerceAPI] Error fetching comparison data:', error);
+      throw error;
     }
   }
 

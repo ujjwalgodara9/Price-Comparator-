@@ -18,13 +18,41 @@ from flask_cors import CORS
 import requests
 import json
 import uuid
-from zepto_headers_config import get_zepto_headers
+import os
 from ecommerce_platform.zepto_itemlist import scrape_zepto_products
+from ecommerce_platform.blinkit_itemlist import scrape_blinkit_products
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
 PORT = 3001
+
+# Load configuration from config.json
+def load_config():
+    """Load configuration from config.json file"""
+    config_path = os.path.join(os.path.dirname(__file__), 'config.json')
+    try:
+        with open(config_path, 'r', encoding='utf-8') as f:
+            config = json.load(f)
+        return config
+    except FileNotFoundError:
+        print(f'[Config] Warning: config.json not found at {config_path}, using defaults')
+        return {}
+    except json.JSONDecodeError as e:
+        print(f'[Config] Error: Invalid JSON in config.json: {e}')
+        return {}
+
+# Load config on startup
+CONFIG = load_config()
+PLATFORM_CONFIG = CONFIG.get('platform', {})
+
+def get_platform_config(platform_name):
+    """Get configuration for a specific platform"""
+    platform_config = PLATFORM_CONFIG.get(platform_name, {})
+    return {
+        'scrape': platform_config.get('scrape', True),  # Default to True if not specified
+        'headless': platform_config.get('headless', True)  # Default to True if not specified
+    }
 
 # Mock data structure - replace with actual scraping logic
 mock_products = {
@@ -121,6 +149,12 @@ def search_platform_endpoint(platform):
 
 def search_platform(platform, query, location):
     """Search a specific platform"""
+    # Check if platform scraping is enabled in config
+    platform_config = get_platform_config(platform)
+    if not platform_config['scrape']:
+        print(f'[API] Platform {platform} is disabled in config.json, skipping...')
+        return []
+    
     platform_map = {
         'zepto': scrape_zepto,
         'swiggy-instamart': scrape_swiggy_instamart,
@@ -130,25 +164,29 @@ def search_platform(platform, query, location):
     
     scraper = platform_map.get(platform)
     if scraper:
-        return scraper(query, location)
+        return scraper(query, location, platform_config)
     return []
 
 
-def scrape_zepto(query, location):
+def scrape_zepto(query, location, platform_config=None):
     """Zepto Scraper - Uses Playwright to scrape Zepto website"""
     try:
         if not query:
             print('[Zepto] Empty query, returning empty list')
             return []
         
-        print(f'[Zepto] Starting scrape for query: "{query}"')
+        # Get headless setting from config
+        if platform_config is None:
+            platform_config = get_platform_config('zepto')
+        headless = platform_config.get('headless', True)
+        
+        print(f'[Zepto] Starting scrape for query: "{query}" (headless={headless})')
         
         # Use the Playwright-based scraper from zepto_itemlist
-        # Run in headless mode for production
         products = scrape_zepto_products(
             search_query=query,
             location=location,
-            headless=True,
+            headless=headless,
             max_products=50
         )
         
@@ -166,23 +204,53 @@ def scrape_zepto(query, location):
         return []
 
 
-def scrape_swiggy_instamart(query, location):
+def scrape_swiggy_instamart(query, location, platform_config=None):
     """Swiggy Instamart Scraper"""
     # Implement Swiggy Instamart scraping
     # Note: Swiggy uses API endpoints that may require authentication
     return []
 
 
-def scrape_bigbasket(query, location):
+def scrape_bigbasket(query, location, platform_config=None):
     """BigBasket Scraper"""
     # Implement BigBasket scraping
     return []
 
 
-def scrape_blinkit(query, location):
-    """Blinkit Scraper"""
-    # Implement Blinkit scraping
-    return []
+def scrape_blinkit(query, location, platform_config=None):
+    """Blinkit Scraper - Uses Playwright to scrape Blinkit website"""
+    try:
+        if not query:
+            print('[Blinkit] Empty query, returning empty list')
+            return []
+        
+        # Get headless setting from config
+        if platform_config is None:
+            platform_config = get_platform_config('blinkit')
+        headless = platform_config.get('headless', True)
+        
+        print(f'[Blinkit] Starting scrape for query: "{query}" (headless={headless})')
+        
+        # Use the Playwright-based scraper from blinkit_itemlist
+        products = scrape_blinkit_products(
+            search_query=query,
+            location=location,
+            headless=headless,
+            max_products=50
+        )
+        
+        print(f'[Blinkit] Scrape completed: Found {len(products)} products for query "{query}"')
+        return products
+    except ImportError as error:
+        print(f'[Blinkit] Import error - Playwright may not be installed: {error}')
+        import traceback
+        traceback.print_exc()
+        return []
+    except Exception as error:
+        print(f'[Blinkit] Scraping error: {error}')
+        import traceback
+        traceback.print_exc()
+        return []
 
 @app.route('/api/product/<platform>/<product_id>', methods=['GET'])
 def get_product_details(platform, product_id):
@@ -204,6 +272,81 @@ def health_check():
     """Health check endpoint"""
     return jsonify({'status': 'ok', 'message': 'Server is running'})
 
+@app.route('/api/config', methods=['GET'])
+def get_config():
+    """Get current scraping configuration"""
+    return jsonify({
+        'platform_config': PLATFORM_CONFIG,
+        'loaded': True
+    })
+
+@app.route('/api/compare', methods=['GET'])
+def get_compare_data():
+    """Get product comparison data from compare.json"""
+    try:
+        compare_path = os.path.join(os.path.dirname(__file__), 'compare.json')
+        
+        if not os.path.exists(compare_path):
+            return jsonify({
+                'error': 'compare.json not found',
+                'message': 'Please run compare.py to generate comparison data'
+            }), 404
+        
+        with open(compare_path, 'r', encoding='utf-8') as f:
+            compare_data = json.load(f)
+        
+        # Transform compare.json structure to Product[] format
+        products = []
+        for item in compare_data.get('products', []):
+            # Each item has a 'platforms' object with platform-specific data
+            for platform_name, platform_data in item.get('platforms', {}).items():
+                product = {
+                    'id': f"{platform_name}-{item.get('name', '').lower().replace(' ', '-')[:20]}",
+                    'name': item.get('name', ''),
+                    'description': item.get('original_names', {}).get(platform_name, ''),
+                    'image': platform_data.get('image', ''),
+                    'price': platform_data.get('price', 0),
+                    'currency': platform_data.get('currency', 'INR'),
+                    'platform': platform_name,
+                    'availability': platform_data.get('availability', True),
+                    'rating': platform_data.get('rating', 0),
+                    'reviewCount': platform_data.get('reviewCount', 0),
+                    'features': [],
+                    'link': platform_data.get('link', ''),
+                    'location': compare_data.get('location', {}).get('city', '') + ', ' + compare_data.get('location', {}).get('state', ''),
+                    'deliveryTime': platform_data.get('deliveryTime', 'N/A'),
+                    'deliveryFee': platform_data.get('deliveryFee', 0),
+                    'originalPrice': None,
+                    'quantity': platform_data.get('quantity', None)
+                }
+                products.append(product)
+        
+        return jsonify({
+            'products': products,
+            'search_query': compare_data.get('search_query', ''),
+            'total_products': len(products),
+            'matched_products': compare_data.get('matched_products', 0),
+            'location': compare_data.get('location', {})
+        })
+    except FileNotFoundError:
+        return jsonify({
+            'error': 'compare.json not found',
+            'message': 'Please run compare.py to generate comparison data'
+        }), 404
+    except json.JSONDecodeError as e:
+        return jsonify({
+            'error': 'Invalid JSON in compare.json',
+            'message': str(e)
+        }), 500
+    except Exception as error:
+        print(f'[API] Error loading compare.json: {error}')
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'error': 'Failed to load comparison data',
+            'message': str(error)
+        }), 500
+
 
 @app.route('/', methods=['GET'])
 def root():
@@ -218,7 +361,7 @@ def root():
             'availability': 'POST /api/availability',
             'health': 'GET /health'
         },
-        'supported_platforms': ['zepto', 'swiggy-instamart', 'bigbasket', 'blinkit', 'dunzo']
+        'supported_platforms': ['zepto', 'swiggy-instamart', 'bigbasket', 'blinkit']
     })
 
 
@@ -242,5 +385,11 @@ def not_found(error):
 if __name__ == '__main__':
     print(f'Fast E-commerce API server (Flask) running on port {PORT}')
     print(f'Set VITE_API_BASE_URL=http://localhost:{PORT} in your .env file')
+    print('\n[Config] Platform scraping configuration:')
+    for platform, config in PLATFORM_CONFIG.items():
+        status = '✓ ENABLED' if config.get('scrape', False) else '✗ DISABLED'
+        headless = 'headless' if config.get('headless', True) else 'visible'
+        print(f'  {platform}: {status} ({headless})')
+    print()
     app.run(host='0.0.0.0', port=PORT, debug=True)
 

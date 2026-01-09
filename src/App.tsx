@@ -14,7 +14,7 @@ function App() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState<ComparisonFilters>({
-    platforms: ['zepto'],
+    platforms: ['zepto', 'blinkit'],
     sortBy: 'price-low',
   });
 

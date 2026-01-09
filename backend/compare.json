@@ -1,0 +1,358 @@
+{
+  "search_query": "atta",
+  "timestamp": "2026-01-09T19:46:04.764407",
+  "total_products": 15,
+  "matched_products": 2,
+  "location": {
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "country": "India",
+    "coordinates": {
+      "lat": 13.036008575219546,
+      "lng": 77.53111496773504
+    }
+  },
+  "products": [
+    {
+      "name": "Fortune Chakki Fresh Atta",
+      "original_names": {
+        "blinkit": "Fortune Chakki Fresh (100% Atta, 0% Maida) Atta (10 kg)",
+        "zepto": "Fortune Chakki Fresh Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 411.0,
+          "currency": "INR",
+          "quantity": "10 kg",
+          "deliveryTime": "8 MINS",
+          "deliveryFee": 0,
+          "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/9123518e-f80b-495f-8aca-5ddf38801940.png",
+          "link": "https://blinkit.com/s/?q=atta",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        },
+        "zepto": {
+          "price": 47.0,
+          "currency": "INR",
+          "quantity": null,
+          "deliveryTime": "10-15 mins",
+          "deliveryFee": 0,
+          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1830-1960,pr-true,f-auto,q-40/cms/product_variant/0382fd84-7bb8-42ca-8647-e6c87b35c438.jpeg",
+          "link": "https://www.zepto.com/search?query=atta",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        }
+      },
+      "similarity_score": 1.0
+    },
+    {
+      "name": "Aashirvaad Superior Mp Atta",
+      "original_names": {
+        "blinkit": "Aashirvaad Shudh Chakki Atta (100% Atta, 0% Maida) (5 kg)",
+        "zepto": "Aashirvaad Superior MP Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 239.0,
+          "currency": "INR",
+          "quantity": "5 kg",
+          "deliveryTime": "8 MINS",
+          "deliveryFee": 0,
+          "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/f581d9f1-2de2-4ae8-a8d8-c95608891a08.png",
+          "link": "https://blinkit.com/s/?q=atta",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        },
+        "zepto": {
+          "price": 110.0,
+          "currency": "INR",
+          "quantity": null,
+          "deliveryTime": "10-15 mins",
+          "deliveryFee": 0,
+          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-2001-2001,pr-true,f-auto,q-40/cms/product_variant/6a2da313-e704-48cc-a9fa-5c4d71e2e7d7.jpeg",
+          "link": "https://www.zepto.com/search?query=atta",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        }
+      },
+      "similarity_score": 0.6145454545454545
+    },
+    {
+      "name": "Pillsbury Chakki Fresh Superior Quality Atta",
+      "original_names": {
+        "blinkit": "Pillsbury Chakki Fresh Superior-Quality Atta (100% atta, 0% Maida)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 411.0,
+          "currency": "INR",
+          "quantity": null,
+          "deliveryTime": "8 MINS",
+          "deliveryFee": 0,
+          "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/da/cms-assets/cms/product/f581d9f1-2de2-4ae8-a8d8-c95608891a08.jpg?dpr_multiplier=3.00",
+          "link": "https://blinkit.com/s/?q=atta",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Shudh Chakki Atta",
+      "original_names": {
+        "blinkit": "Aashirvaad Shudh Chakki Atta (100% Atta, 0% Maida) (10 kg)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 456.0,
+          "currency": "INR",
+          "quantity": "10 kg",
+          "deliveryTime": "8 MINS",
+          "deliveryFee": 0,
+          "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/1ffe2e61-fdfa-4ef7-af29-e81521f57471.png",
+          "link": "https://blinkit.com/s/?q=atta",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Whole Farm Chakki Atta",
+      "original_names": {
+        "blinkit": "Whole Farm Chakki Atta (100% Atta, 0% Maida)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 360.0,
+          "currency": "INR",
+          "quantity": null,
+          "deliveryTime": "8 MINS",
+          "deliveryFee": 0,
+          "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/5a934f90-7342-41d6-a084-b1cb5b2d751d.png",
+          "link": "https://blinkit.com/s/?q=atta",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Organic Atta",
+      "original_names": {
+        "blinkit": "Aashirvaad Organic Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 289.0,
+          "currency": "INR",
+          "quantity": null,
+          "deliveryTime": "8 MINS",
+          "deliveryFee": 0,
+          "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/0a222058-6fb7-4df3-9419-decfd65529f9.png",
+          "link": "https://blinkit.com/s/?q=atta",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Patanjali Wheat Flour Atta Bran Traditional Chakki Gehu Atta Soft And Fluffy Roti",
+      "original_names": {
+        "zepto": "Patanjali Wheat Flour Atta With Bran | Traditional Chakki Gehu Atta | For Soft and Fluffy Roti"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 64.0,
+          "currency": "INR",
+          "quantity": null,
+          "deliveryTime": "10-15 mins",
+          "deliveryFee": 0,
+          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1200-1200,pr-true,f-auto,q-40/cms/product_variant/fe012e99-e612-4ef9-a3b7-f260f37479f6.jpg",
+          "link": "https://www.zepto.com/pn/aashirvaad-atta-superior-mp-whole-wheat-no-maida-pouch/pvid/ae6045b0-0526-4401-8a18-cb55592249e6",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Atta Superior Mp Whole Wheat No Maida Pouch",
+      "original_names": {
+        "zepto": "Aashirvaad Atta - Superior MP Whole Wheat, No Maida | Pouch"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 64.0,
+          "currency": "INR",
+          "quantity": null,
+          "deliveryTime": "10-15 mins",
+          "deliveryFee": 0,
+          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1200-1200,pr-true,f-auto,q-40/cms/product_variant/fe012e99-e612-4ef9-a3b7-f260f37479f6.jpg",
+          "link": "https://www.zepto.com/pn/aashirvaad-atta-superior-mp-whole-wheat-no-maida-pouch/pvid/ae6045b0-0526-4401-8a18-cb55592249e6",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Organic 100 Organic Whole Wheat Atta 0 Maida",
+      "original_names": {
+        "zepto": "Aashirvaad Organic 100% Organic Whole Wheat Atta, 0% Maida"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 294.0,
+          "currency": "INR",
+          "quantity": null,
+          "deliveryTime": "10-15 mins",
+          "deliveryFee": 0,
+          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1200-1200,pr-true,f-auto,q-40/cms/product_variant/e033e992-2f91-4dd1-b3eb-2c6da5313c3b.jpg",
+          "link": "https://www.zepto.com/search?query=atta",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Right Shift High Protein Multigrain Atta High Fibre Low Gi 18 G 4 Rotis",
+      "original_names": {
+        "zepto": "Right Shift High Protein Multigrain + Atta | High fibre, Low GI | 18 g - 4 rotis"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 278.0,
+          "currency": "INR",
+          "quantity": "18 g",
+          "deliveryTime": "10-15 mins",
+          "deliveryFee": 0,
+          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-2048-2048,pr-true,f-auto,q-40/cms/product_variant/88077010-bdc8-4b50-b2d8-1381b06d484a.jpeg",
+          "link": "https://www.zepto.com/pn/right-shift-high-protein-multigrain-atta-high-fibre-low-gi-18-g-4-rotis/pvid/28c6faa7-b304-4f9f-b1b3-8ba1a7b13009",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Fortune Chakki Fresh Atta",
+      "original_names": {
+        "zepto": "Fortune Chakki Fresh Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 249.0,
+          "currency": "INR",
+          "quantity": null,
+          "deliveryTime": "10-15 mins",
+          "deliveryFee": 0,
+          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1830-1960,pr-true,f-auto,q-40/cms/product_variant/9e899e8f-6052-4161-aeb7-eef019d4cd5f.jpeg",
+          "link": "https://www.zepto.com/search?query=atta",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Atta Superior Mp Whole Wheat No Maida Pouch",
+      "original_names": {
+        "zepto": "Aashirvaad Atta - Superior MP Whole Wheat, No Maida | Pouch"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 290.0,
+          "currency": "INR",
+          "quantity": null,
+          "deliveryTime": "10-15 mins",
+          "deliveryFee": 0,
+          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1200-1200,pr-true,f-auto,q-40/cms/product_variant/328d7299-f9c2-40ad-a90e-355d3bf810c4.jpg",
+          "link": "https://www.zepto.com/pn/aashirvaad-atta-superior-mp-whole-wheat-no-maida-pouch/pvid/56d997f6-b45a-48bf-823d-c9b5acd6ac8f",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Fortune Chakki Fresh Atta",
+      "original_names": {
+        "zepto": "Fortune Chakki Fresh Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 470.0,
+          "currency": "INR",
+          "quantity": null,
+          "deliveryTime": "10-15 mins",
+          "deliveryFee": 0,
+          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1830-1960,pr-true,f-auto,q-40/cms/product_variant/acb4abf0-a58b-467e-99cd-2b4920fbaa5e.jpeg",
+          "link": "https://www.zepto.com/search?query=atta",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Atta Superior Mp Whole Wheat No Maida Pouch",
+      "original_names": {
+        "zepto": "Aashirvaad Atta - Superior MP Whole Wheat, No Maida | Pouch"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 525.0,
+          "currency": "INR",
+          "quantity": null,
+          "deliveryTime": "10-15 mins",
+          "deliveryFee": 0,
+          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1176-1176,pr-true,f-auto,q-40/cms/product_variant/287c2979-1c57-413f-9329-3dd66f08db22.jpeg",
+          "link": "https://www.zepto.com/search?query=atta",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Multigrain Atta 3 Rotis Fulfils 35 Daily Fibre",
+      "original_names": {
+        "zepto": "Aashirvaad Multigrain Atta | 3 Rotis Fulfils 35% Daily Fibre"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 49.0,
+          "currency": "INR",
+          "quantity": null,
+          "deliveryTime": "10-15 mins",
+          "deliveryFee": 0,
+          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1200-1200,pr-true,f-auto,q-40/cms/product_variant/66ac0d0b-92f9-4e09-b738-4e876ba229f9.jpeg",
+          "link": "https://www.zepto.com/pn/24-mantra-organic-whole-wheat-atta/pvid/0077f3d0-282a-413b-af13-d2ec99296ae7",
+          "rating": 0.0,
+          "reviewCount": 0,
+          "availability": true
+        }
+      },
+      "similarity_score": null
+    }
+  ]
+}

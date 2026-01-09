@@ -51,3 +51,12 @@ backend/
 ## Supported Platforms
 
 Zepto • Swiggy Instamart • BigBasket • Blinkit • Dunzo • Demart Ready • Flipkart Minutes • Amazon Prime Now
+
+
+- Location finding for all the platform
+- Pass the location page for searching and scraping
+- Check the scraping results output platform based json
+- Soritng name matching give output combine json
+- compare display on window
+- Architecture can be async as it gets the data algorithm should start searching and as it gets the pairs in platform start displaying it on website
+- Have to give the merging for quantities too so the search should decrease accross the platforms 

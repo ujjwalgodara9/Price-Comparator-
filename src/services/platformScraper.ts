@@ -163,18 +163,6 @@ export class PlatformScraper {
     }
   }
 
-  private static async scrapeDunzo(query: string, location: LocationData): Promise<ScrapeResult> {
-    // Dunzo API/Scraping logic
-    try {
-      return {
-        success: true,
-        products: [],
-      };
-    } catch (error) {
-      return { success: false, products: [], error: String(error) };
-    }
-  }
-
   private static async scrapeDemartReady(query: string, location: LocationData): Promise<ScrapeResult> {
     // Demart Ready API/Scraping logic
     try {

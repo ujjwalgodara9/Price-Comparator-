@@ -42,7 +42,9 @@ def parse_product_from_card(raw_text):
             not re.match(r'^\d+\.\d+$', line) and  # Skip rating numbers
             not re.match(r'^\(\d+\)$', line) and  # Skip review counts like "(635)"
             not line.lower().startswith('delivery') and
-            not line.lower().startswith('free')
+            not line.lower().startswith('free') and
+            not line.lower().startswith('add') and
+            not line.lower().startswith('mins')
         ):
             name_candidates.append(line)
             # Prefer longer lines as they're more likely to be product names
@@ -71,9 +73,9 @@ def parse_product_from_card(raw_text):
     }
 
 
-def scrape_zepto_products(search_query, location=None, headless=True, max_products=50):
+def scrape_blinkit_products(search_query, location=None, headless=True, max_products=50):
     """
-    Scrape Zepto products using Playwright
+    Scrape Blinkit products using Playwright
     
     Args:
         search_query (str): The search query from frontend
@@ -91,31 +93,42 @@ def scrape_zepto_products(search_query, location=None, headless=True, max_produc
             browser = p.chromium.launch(headless=headless)
 
             context = browser.new_context(
-                viewport={"width": 390, "height": 844},
+                viewport={"width": 1280, "height": 800},
                 user_agent=(
-                    "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) "
-                    "AppleWebKit/605.1.15 (KHTML, like Gecko) "
-                    "Version/16.0 Mobile/15E148 Safari/604.1"
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0.0.0 Safari/537.36"
                 )
             )
 
             page = context.new_page()
 
-            page.goto(
-                "https://www.zepto.com/search?query=" + search_query,
-                wait_until="domcontentloaded"
-            )
+            # Navigate to Blinkit search page
+            search_url = f"https://blinkit.com/s/?q={search_query}"
+            print(f"[Blinkit] Navigating to: {search_url}")
+            page.goto(search_url, wait_until="domcontentloaded")
 
+            # Wait for products to load
             page.wait_for_selector("img", timeout=20000)
+            time.sleep(2)  # Allow page to fully render
 
-            # Trigger lazy loading
+            # Trigger lazy loading by scrolling
             for _ in range(5):
                 page.mouse.wheel(0, 2000)
                 time.sleep(1)
 
+            # Find product cards - Blinkit uses various selectors, try common ones
+            # Look for divs containing price symbols
             cards = page.locator("div").filter(has_text="₹")
             card_count = cards.count()
-            print(f"Found cards: {card_count}")
+            print(f"[Blinkit] Found cards: {card_count}")
+            
+            # Alternative: Look for product container elements
+            if card_count == 0:
+                # Try alternative selectors for Blinkit
+                cards = page.locator("[class*='ProductCard'], [class*='product-card'], a[href*='/prn/']")
+                card_count = cards.count()
+                print(f"[Blinkit] Found cards (alternative): {card_count}")
             
             # Use a set to track seen products and avoid duplicates
             seen_products = set()
@@ -133,28 +146,28 @@ def scrape_zepto_products(search_query, location=None, headless=True, max_produc
                         img_url = (
                             img.get_attribute("src", timeout=2000) or
                             img.get_attribute("data-src", timeout=2000) or
-                            img.get_attribute("data-original", timeout=2000)
+                            img.get_attribute("data-original", timeout=2000) or
+                            img.get_attribute("data-lazy-src", timeout=2000)
                         )
                     except Exception as img_error:
                         # If image scraping fails, continue without image
                         img_url = None
 
                     # ✅ PRODUCT LINK EXTRACTION
-                    product_link = f"https://www.zepto.com/search?query={search_query}"
+                    product_link = f"https://blinkit.com/s/?q={search_query}"
                     try:
-                        # Look for anchor tag with class B4vNQ that contains the product link
-                        # Try multiple approaches to find the link
+                        # Look for anchor tag with product links (Blinkit uses /prn/ for product pages)
                         link_element = None
                         href = None
                         
-                        # First try: direct anchor with class B4vNQ
+                        # First try: anchor with href containing /prn/
                         try:
-                            link_element = card.locator('a.B4vNQ').first
+                            link_element = card.locator('a[href*="/prn/"]').first
                             href = link_element.get_attribute("href", timeout=2000)
                         except:
                             # Second try: any anchor tag within the card
                             try:
-                                link_element = card.locator('a[href*="/pn/"]').first
+                                link_element = card.locator('a').first
                                 href = link_element.get_attribute("href", timeout=2000)
                             except:
                                 pass
@@ -162,60 +175,76 @@ def scrape_zepto_products(search_query, location=None, headless=True, max_produc
                         if href:
                             # If href is relative, make it absolute
                             if href.startswith('/'):
-                                product_link = f"https://www.zepto.com{href}"
+                                product_link = f"https://blinkit.com{href}"
                             elif href.startswith('http'):
                                 product_link = href
                             else:
                                 # If it doesn't start with / or http, prepend the base URL
-                                product_link = f"https://www.zepto.com/{href.lstrip('/')}"
+                                product_link = f"https://blinkit.com/{href.lstrip('/')}"
                     except Exception as link_error:
                         # If link extraction fails, use default search link
-                        product_link = f"https://www.zepto.com/search?query={search_query}"
+                        product_link = f"https://blinkit.com/s/?q={search_query}"
 
-                    # ✅ RATING AND REVIEW COUNT EXTRACTION
+                    # ✅ RATING AND REVIEW COUNT EXTRACTION (if available)
                     rating = 0.0
                     review_count = 0
                     try:
-                        # Look for rating information div
-                        rating_div = card.locator('[data-slot-id="RatingInformation"]').first
-                        # Check if element exists by trying to get count
+                        # Blinkit may use different rating structures
+                        # Try to find rating elements - use text search as fallback
                         try:
-                            if rating_div.count() > 0:
-                                # Extract rating from span with class cPdMhy (contains SVG + rating number)
-                                rating_span = rating_div.locator('span.cPdMhy').first
-                                if rating_span.count() > 0:
-                                    rating_text = rating_span.inner_text(timeout=2000)
-                                    # Extract number from text (e.g., "4.2" from "4.2" or "⭐4.2")
-                                    rating_match = re.search(r'(\d+\.?\d*)', rating_text)
-                                    if rating_match:
-                                        rating = float(rating_match.group(1))
-                                
-                                # Extract review count from span with class cuNaP7 (contains "(678)")
-                                review_span = rating_div.locator('span.cuNaP7').first
-                                if review_span.count() > 0:
-                                    review_text = review_span.inner_text(timeout=2000)
-                                    # Extract number from parentheses (e.g., "678" from "(678)")
-                                    review_match = re.search(r'\((\d+)\)', review_text)
-                                    if review_match:
-                                        review_count = int(review_match.group(1))
-                        except:
-                            # If count() fails, try direct access
-                            try:
-                                rating_text = rating_div.locator('span.cPdMhy').first.inner_text(timeout=2000)
+                            rating_elements = card.locator('[class*="rating"], [class*="Rating"], span[class*="star"]')
+                            if rating_elements.count() > 0:
+                                rating_text = rating_elements.first.inner_text(timeout=2000)
                                 rating_match = re.search(r'(\d+\.?\d*)', rating_text)
                                 if rating_match:
                                     rating = float(rating_match.group(1))
-                                
-                                review_text = rating_div.locator('span.cuNaP7').first.inner_text(timeout=2000)
-                                review_match = re.search(r'\((\d+)\)', review_text)
+                        except:
+                            # Try searching in card text for rating pattern
+                            rating_match = re.search(r'(\d+\.?\d+)\s*(?:★|⭐|stars?)', text, re.IGNORECASE)
+                            if rating_match:
+                                rating = float(rating_match.group(1))
+                        
+                        # Try to find review count
+                        try:
+                            review_elements = card.locator('[class*="review"], [class*="Review"]')
+                            if review_elements.count() > 0:
+                                review_text = review_elements.first.inner_text(timeout=2000)
+                                review_match = re.search(r'\(?(\d+)\)?', review_text)
                                 if review_match:
                                     review_count = int(review_match.group(1))
-                            except:
-                                pass
-                    except Exception as rating_error:
+                        except:
+                            # Try searching in card text for review count pattern
+                            review_match = re.search(r'\((\d+)\)', text)
+                            if review_match:
+                                review_count = int(review_match.group(1))
+                    except:
                         # If rating extraction fails, continue with default values (0)
                         rating = 0.0
                         review_count = 0
+
+                    # ✅ DELIVERY TIME EXTRACTION (Blinkit shows delivery time)
+                    delivery_time = "10-15 mins"
+                    try:
+                        # Look for delivery time text (e.g., "22 mins", "15 mins")
+                        delivery_elements = card.locator('text=/\\d+\\s*mins?/i')
+                        if delivery_elements.count() > 0:
+                            delivery_text = delivery_elements.first.inner_text(timeout=1000)
+                            delivery_time = delivery_text.strip()
+                    except:
+                        pass
+
+                    # ✅ ORIGINAL PRICE EXTRACTION (for discount calculation)
+                    original_price = None
+                    try:
+                        # Look for strikethrough price (MRP)
+                        price_elements = card.locator('[class*="strike"], [class*="original"], [class*="mrp"]')
+                        if price_elements.count() > 0:
+                            original_text = price_elements.first.inner_text(timeout=1000)
+                            original_match = re.search(r'₹\s*(\d+)', original_text)
+                            if original_match:
+                                original_price = float(original_match.group(1))
+                    except:
+                        pass
 
                     # Parse ONE product per card
                     p = parse_product_from_card(text)
@@ -235,27 +264,27 @@ def scrape_zepto_products(search_query, location=None, headless=True, max_produc
                     # Format product to match frontend expectations
                     price_value = float(p.get("price", 0))
                     product = {
-                        "id": f"zepto-{uuid.uuid4().hex[:8]}",
+                        "id": f"blinkit-{uuid.uuid4().hex[:8]}",
                         "name": p.get("name", "").strip(),
                         "description": p.get("other_details", "").strip(),
                         "image": img_url or "https://via.placeholder.com/400",
                         "price": price_value,
                         "currency": "INR",
-                        "platform": "zepto",
+                        "platform": "blinkit",
                         "availability": True,
                         "rating": rating,
                         "reviewCount": review_count,
                         "features": [],
                         "link": product_link,
                         "location": f"{location.get('city', '')}, {location.get('state', '')}" if location else "",
-                        "deliveryTime": "10-15 mins",
+                        "deliveryTime": delivery_time,
                         "deliveryFee": 0,
-                        "originalPrice": None,
+                        "originalPrice": original_price,
                     }
                     
                     # Only add valid products
                     if product["name"] and product["price"] > 0:
-                        print(f"  [Card {i}] Product: {product['name'][:50]}... | Price: ₹{product['price']} | Rating: {rating} ({review_count} reviews) | Link: {product_link[:60]}...")
+                        print(f"  [Card {i}] Product: {product['name'][:50]}... | Price: ₹{product['price']} | Rating: {rating} ({review_count} reviews) | Delivery: {delivery_time} | Link: {product_link[:60]}...")
                         results.append(product)
                     else:
                         print(f"  [Card {i}] Skipped - name: '{product['name']}', price: {product['price']}")
@@ -266,7 +295,7 @@ def scrape_zepto_products(search_query, location=None, headless=True, max_produc
                     continue
 
             browser.close()
-            print(f"[Zepto] Found {len(results)} products for query '{search_query}'")
+            print(f"[Blinkit] Found {len(results)} products for query '{search_query}'")
             
             # ✅ SAVE JSON FOR DEBUGGING
             try:
@@ -276,7 +305,7 @@ def scrape_zepto_products(search_query, location=None, headless=True, max_produc
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                 # Sanitize query for filename
                 safe_query = re.sub(r'[^\w\s-]', '', search_query).strip().replace(' ', '_')[:50]
-                filename = f"zepto_search_{safe_query}_{timestamp}.json"
+                filename = f"blinkit_search_{safe_query}_{timestamp}.json"
                 filepath = os.path.join(output_dir, filename)
                 
                 output_data = {
@@ -290,14 +319,14 @@ def scrape_zepto_products(search_query, location=None, headless=True, max_produc
                 with open(filepath, 'w', encoding='utf-8') as f:
                     json.dump(output_data, f, indent=2, ensure_ascii=False)
                 
-                print(f"[Zepto] Debug JSON saved to: {filepath}")
+                print(f"[Blinkit] Debug JSON saved to: {filepath}")
             except Exception as json_error:
-                print(f"[Zepto] Error saving JSON: {json_error}")
+                print(f"[Blinkit] Error saving JSON: {json_error}")
             
             return results
             
     except Exception as error:
-        print(f"[Zepto] Scraping error: {error}")
+        print(f"[Blinkit] Scraping error: {error}")
         import traceback
         traceback.print_exc()
         return []
@@ -306,14 +335,14 @@ def scrape_zepto_products(search_query, location=None, headless=True, max_produc
 # For standalone script execution
 if __name__ == "__main__":
     search_query = "atta"
-    results = scrape_zepto_products(search_query, headless=True)
+    results = scrape_blinkit_products(search_query, headless=True)
     
     # Save results to JSON file
     output_dir = os.path.join(os.path.dirname(__file__), "product_data")
     os.makedirs(output_dir, exist_ok=True)
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"zepto_search_{search_query}_{timestamp}.json"
+    filename = f"blinkit_search_{search_query}_{timestamp}.json"
     filepath = os.path.join(output_dir, filename)
     
     output_data = {
@@ -326,5 +355,6 @@ if __name__ == "__main__":
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(output_data, f, indent=2, ensure_ascii=False)
     
-    print(f"\n Results saved to: {filepath}")
+    print(f"\n✅ Results saved to: {filepath}")
     print(f"Total products found: {len(results)}")
+

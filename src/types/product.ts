@@ -15,6 +15,7 @@ export interface Product {
   deliveryTime?: string; // e.g., "10-15 mins", "30 mins", "1 hour"
   deliveryFee?: number;
   originalPrice?: number; // For showing discounts
+  quantity?: string; // e.g., "5 kg", "10 kg", "1 kg"
 }
 
 export type Platform = 
