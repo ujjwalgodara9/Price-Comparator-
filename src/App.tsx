@@ -73,6 +73,15 @@ function App() {
   };
 
   const groupedProducts = ProductService.groupProductsByName(products);
+  
+  // Filter to only show products where quantities match across all platforms
+  const filteredGroupedProducts = new Map<string, Product[]>();
+  groupedProducts.forEach((productList, productName) => {
+    // Only include if all products have matching quantities
+    if (ProductService.hasMatchingQuantities(productList)) {
+      filteredGroupedProducts.set(productName, productList);
+    }
+  });
 
   if (loading && !location) {
     return (
@@ -123,22 +132,24 @@ function App() {
               </div>
             )}
 
-            {!loading && groupedProducts.size === 0 ? (
+            {!loading && filteredGroupedProducts.size === 0 ? (
               <div className="text-center py-12">
                 <p className="text-muted-foreground text-lg">
                   {searchQuery
-                    ? 'No products found. Try a different search term.'
+                    ? 'No products found with matching quantities across platforms. Try a different search term.'
                     : 'Search for products to compare prices and delivery times across fast e-commerce platforms'}
                 </p>
               </div>
             ) : !loading ? (
-              Array.from(groupedProducts.entries()).map(([productName, productList]) => (
-                <ProductComparisonTable
-                  key={productName}
-                  products={productList}
-                  productName={productName}
-                />
-              ))
+              Array.from(filteredGroupedProducts.entries())
+                .sort(([nameA], [nameB]) => nameA.localeCompare(nameB, undefined, { sensitivity: 'base', numeric: true }))
+                .map(([productName, productList]) => (
+                  <ProductComparisonTable
+                    key={productName}
+                    products={productList}
+                    productName={productName}
+                  />
+                ))
             ) : null}
           </div>
         </div>

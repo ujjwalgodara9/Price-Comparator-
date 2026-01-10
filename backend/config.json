@@ -1,5 +1,4 @@
 {
-    "cse_id": "7138b3727b1b04d8f",
     "search_debug": true,
     "platform": {
         "zepto": {
@@ -18,5 +17,14 @@
             "scrape": false,
             "headless": true
         }
+    },
+    "matching": {
+        "similarity_threshold": 0.8,
+        "strict_matching": false,
+        "quantity_tolerance_ratio": 2.0,
+        "quantity_tolerance_absolute": 0.5,
+        "boost_similarity_on_quantity_match": 0.2,
+        "word_similarity_weight": 0.4,
+        "sequence_similarity_weight": 0.6
     }
 }

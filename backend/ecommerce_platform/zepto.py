@@ -4,7 +4,9 @@ import time
 from datetime import datetime
 from playwright.sync_api import sync_playwright
 
-STORAGE_FOLDER = "product_data"
+# Get the absolute path to product_data folder (backend/product_data/)
+# ecommerce_platform folder -> parent -> product_data
+STORAGE_FOLDER = os.path.join(os.path.dirname(os.path.dirname(__file__)), "product_data")
 os.makedirs(STORAGE_FOLDER, exist_ok=True)
 
 def set_location(page, location_name):
@@ -41,7 +43,7 @@ def search_and_scroll(page, product_query):
     page.wait_for_load_state("networkidle")
     
     # 2. Scroll Loop (5 times with 4s wait)
-    for i in range(15):
+    for i in range(5):
         print(f"Scroll iteration {i+1}/15")
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
         time.sleep(4)
@@ -80,21 +82,23 @@ def extract_product_list(page):
     # Filter out empty entries if any
     return [p for p in products if p['product_name'] != "N/A"]
 
-def save_to_timestamped_folder(data, platform_name):
-    # 1. Create a unique timestamp (e.g., 2026-01-10_01-30-45)
-    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+def save_to_timestamped_folder(data, platform_name, run_parent_folder=None):
+    # If parent folder is provided, use it; otherwise create a new one
+    if run_parent_folder:
+        # Use the shared parent folder: product_data/run-2026-01-10_20-10-15/
+        run_folder = os.path.join(STORAGE_FOLDER, run_parent_folder)
+        os.makedirs(run_folder, exist_ok=True)
+    else:
+        # Fallback: Create a unique timestamp (e.g., 2026-01-10_01-30-45)
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        run_folder = os.path.join(STORAGE_FOLDER, f"run-{timestamp}-{platform_name.lower()}")
+        os.makedirs(run_folder, exist_ok=True)
     
-    # 2. Define the folder path: scraped_results/run-2026-01-10_01-30-45
-    run_folder = os.path.join(STORAGE_FOLDER, f"run-{timestamp}-zepto")
-    
-    # 3. Create the folder if it doesn't exist
-    os.makedirs(run_folder, exist_ok=True)
-    
-    # 4. Define file path: scraped_results/run-.../zepto.json
+    # Define file path: run_folder/zepto.json (directly in parent folder)
     json_filename = f"{platform_name.lower()}.json"
     json_path = os.path.join(run_folder, json_filename)
     
-    # 5. Save the data
+    # Save the data
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4)
         
@@ -103,7 +107,7 @@ def save_to_timestamped_folder(data, platform_name):
     print(f"File: {json_filename}")
     return json_path
 
-def run_zepto_flow(product_name, location, headless=True, max_products=50):
+def run_zepto_flow(product_name, location, headless=True, max_products=50, run_parent_folder=None, platform_name='zepto'):
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless)
         context = browser.new_context(
@@ -123,8 +127,8 @@ def run_zepto_flow(product_name, location, headless=True, max_products=50):
             # Scrape
             final_data_list = extract_product_list(page)
 
-            # Save to File
-            final_saved_path = save_to_timestamped_folder(final_data_list, "zepto")
+            # Save to File with shared parent folder
+            final_saved_path = save_to_timestamped_folder(final_data_list, platform_name, run_parent_folder=run_parent_folder)
 
             return final_data_list
 

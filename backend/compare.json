@@ -1,18 +1,138 @@
 {
   "search_query": "atta",
-  "timestamp": "2026-01-10T02:16:25.863247",
-  "total_products": 15,
-  "matched_products": 2,
+  "timestamp": "2026-01-11T00:26:15.150342",
+  "total_products": 207,
+  "matched_products": 15,
   "location": {
     "city": "Mumbai",
     "state": "Maharashtra",
     "country": "India",
     "coordinates": {
-      "lat": 13.036008575219546,
-      "lng": 77.53111496773504
+      "lat": 13.0348375,
+      "lng": 77.53055
     }
   },
   "products": [
+    {
+      "name": "Aashirvaad Chakki Premium Mp Sehori Atta",
+      "original_names": {
+        "blinkit": "Aashirvaad Chakki Premium MP Sehori Atta",
+        "zepto": "Aashirvaad Chakki Premium MP Sehori Atta | Gahu Lot | Gahu Peeth"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 379,
+          "quantity": "5 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/aashirvaad-chakki-premium-mp-sehori-atta/prid/580837"
+        },
+        "zepto": {
+          "price": 337,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-chakki-premium-mp-sehori-atta-gahu-lot-gahu-peeth/pvid/8581e553-b32f-48a1-aec5-6c3c07e7b90b"
+        }
+      },
+      "similarity_score": 1.0
+    },
+    {
+      "name": "Fortune Chakki Fresh Atta",
+      "original_names": {
+        "blinkit": "Fortune Chakki Fresh Atta (0% Maida)",
+        "zepto": "Fortune Chakki Fresh Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 50,
+          "quantity": "1 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/fortune-chakki-fresh-atta-0-maida/prid/400417"
+        },
+        "zepto": {
+          "price": 215,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/fortune-chakki-fresh-atta/pvid/14a11cfe-fd72-4901-bf2e-22bc0aba21c0"
+        }
+      },
+      "similarity_score": 1.0
+    },
+    {
+      "name": "Fortune Chakki Fresh Atta",
+      "original_names": {
+        "blinkit": "Fortune Chakki Fresh (100% Atta, 0% Maida) Atta",
+        "zepto": "Fortune Chakki Fresh Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 219,
+          "quantity": "5 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/fortune-chakki-fresh-100-atta-0-maida-atta/prid/380156"
+        },
+        "zepto": {
+          "price": 215,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/fortune-chakki-fresh-atta/pvid/14a11cfe-fd72-4901-bf2e-22bc0aba21c0"
+        }
+      },
+      "similarity_score": 1.0
+    },
+    {
+      "name": "Fortune Premium Sharbati Atta",
+      "original_names": {
+        "blinkit": "Fortune Premium MP Sharbati Atta",
+        "zepto": "Fortune Premium Sharbati Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 289,
+          "quantity": "5 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/fortune-premium-mp-sharbati-atta/prid/544463"
+        },
+        "zepto": {
+          "price": 269,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/fortune-premium-sharbati-atta/pvid/715c2127-d8b8-4563-9064-5397e641baa9"
+        }
+      },
+      "similarity_score": 0.8904918032786885
+    },
+    {
+      "name": "Whole Farm Chakki Atta",
+      "original_names": {
+        "blinkit": "Whole Farm Chakki Atta (100% Atta, 0% Maida)",
+        "zepto": "Whole Wheat Chakki Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 205,
+          "quantity": "5 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/whole-farm-chakki-atta-100-atta-0-maida/prid/514893"
+        },
+        "zepto": {
+          "price": 405,
+          "quantity": "10 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/whole-wheat-chakki-atta/pvid/02f06d00-5bfc-4574-9fe3-d96d443da0f8"
+        }
+      },
+      "similarity_score": 0.8066666666666666
+    },
     {
       "name": "Fortune Chakki Fresh Atta",
       "original_names": {
@@ -21,28 +141,234 @@
       },
       "platforms": {
         "blinkit": {
-          "price": 411.0,
-          "currency": "INR",
+          "price": 433,
           "quantity": "10 kg",
-          "deliveryTime": "8 MINS",
-          "deliveryFee": 0,
-          "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/9123518e-f80b-495f-8aca-5ddf38801940.png",
-          "link": "https://blinkit.com/s/?q=atta",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/fortune-chakki-fresh-100-atta-0-maida-atta-10-kg/prid/380157"
         },
         "zepto": {
-          "price": 47.0,
-          "currency": "INR",
-          "quantity": null,
-          "deliveryTime": "10-15 mins",
-          "deliveryFee": 0,
-          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1830-1960,pr-true,f-auto,q-40/cms/product_variant/0382fd84-7bb8-42ca-8647-e6c87b35c438.jpeg",
-          "link": "https://www.zepto.com/search?query=atta",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
+          "price": 421,
+          "quantity": "10 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/fortune-chakki-fresh-atta/pvid/09100e95-eb80-4089-8f4a-7cad4fc65be7"
+        }
+      },
+      "similarity_score": 1.0
+    },
+    {
+      "name": "Pillsbury Chakki Fresh Atta",
+      "original_names": {
+        "blinkit": "Pillsbury Chakki Fresh Atta (100% atta, 0% Maida)",
+        "zepto": "Pillsbury Chakki Fresh Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 64,
+          "quantity": "1 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/pillsbury-chakki-fresh-atta-100-atta-0-maida/prid/58715"
+        },
+        "zepto": {
+          "price": 50,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/pillsbury-chakki-fresh-atta/pvid/74a23b37-47f9-4a66-a2fe-e185ee6c5fbd"
+        }
+      },
+      "similarity_score": 1.0
+    },
+    {
+      "name": "Pillsbury Gold Sharbati Atta",
+      "original_names": {
+        "blinkit": "Pillsbury Gold Sharbati Atta",
+        "zepto": "Pillsbury Gold Sharbati Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 74,
+          "quantity": "1 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/pillsbury-gold-sharbati-atta/prid/598883"
+        },
+        "zepto": {
+          "price": 273,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/pillsbury-gold-sharbati-atta/pvid/219eef0d-a48a-428a-b4e8-ed6cf810ebda"
+        }
+      },
+      "similarity_score": 1.0
+    },
+    {
+      "name": "Pillsbury Gold Sharbati Atta",
+      "original_names": {
+        "blinkit": "Pillsbury Gold Sharbati Atta",
+        "zepto": "Pillsbury Gold Sharbati Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 286,
+          "quantity": "5 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/pillsbury-gold-sharbati-atta/prid/497142"
+        },
+        "zepto": {
+          "price": 273,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/pillsbury-gold-sharbati-atta/pvid/219eef0d-a48a-428a-b4e8-ed6cf810ebda"
+        }
+      },
+      "similarity_score": 1.0
+    },
+    {
+      "name": "Organic Tattva Organic Ragi Flour",
+      "original_names": {
+        "blinkit": "Organic Tattva Organic Ragi Flour",
+        "zepto": "Organic Tattva Organic Multigrain Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 80,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/organic-tattva-organic-ragi-flour/prid/86974"
+        },
+        "zepto": {
+          "price": 446,
+          "quantity": "5 kg",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/organic-tattva-organic-multigrain-flour/pvid/614e1f29-4932-4360-aa70-df2076d02f9a"
+        }
+      },
+      "similarity_score": 0.8333333333333334
+    },
+    {
+      "name": "24 Mantra Organic Rice Flour",
+      "original_names": {
+        "blinkit": "24 Mantra Organic Rice Flour",
+        "zepto": "24 Mantra Organic Rice Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 62,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/24-mantra-organic-rice-flour/prid/3582"
+        },
+        "zepto": {
+          "price": 50,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/24-mantra-organic-rice-flour/pvid/86d1f213-58df-4bca-869e-652e69d1b217"
+        }
+      },
+      "similarity_score": 1.0
+    },
+    {
+      "name": "24 Mantra Organic Ragi Flour",
+      "original_names": {
+        "blinkit": "24 Mantra Organic Ragi Flour",
+        "zepto": "24 Mantra Organic Ragi Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 75,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/24-mantra-organic-ragi-flour/prid/5751"
+        },
+        "zepto": {
+          "price": 64,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/24-mantra-organic-ragi-flour/pvid/a7861fd9-190c-4bb1-9b00-00e402cf133f"
+        }
+      },
+      "similarity_score": 1.0
+    },
+    {
+      "name": "Satyam Jowar Flour",
+      "original_names": {
+        "blinkit": "Satyam Jowar Flour",
+        "zepto": "Satyam Jowari Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 54,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/satyam-jowar-flour/prid/45082"
+        },
+        "zepto": {
+          "price": 48,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/satyam-jowari-flour/pvid/cf498012-e014-480e-9ce8-3db3124d93c0"
+        }
+      },
+      "similarity_score": 0.8504504504504504
+    },
+    {
+      "name": "Satyam Bajra Flour",
+      "original_names": {
+        "blinkit": "Satyam Bajra Flour",
+        "zepto": "Satyam Bajari Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 47,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/satyam-bajra-flour/prid/45052"
+        },
+        "zepto": {
+          "price": 45,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/satyam-bajari-flour/pvid/d7f12a7b-70ff-4a2b-8392-e4fe297ec4be"
+        }
+      },
+      "similarity_score": 0.8180180180180181
+    },
+    {
+      "name": "Satyam Rice Flour",
+      "original_names": {
+        "blinkit": "Satyam Rice Flour",
+        "zepto": "Satyam Rice Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 39,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/satyam-rice-flour/prid/45115"
+        },
+        "zepto": {
+          "price": 39,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/satyam-rice-flour/pvid/815133f7-2b4b-4760-a25b-ecee7f95a836"
         }
       },
       "similarity_score": 1.0
@@ -50,96 +376,15 @@
     {
       "name": "Aashirvaad Superior Mp Atta",
       "original_names": {
-        "blinkit": "Aashirvaad Shudh Chakki Atta (100% Atta, 0% Maida) (5 kg)",
-        "zepto": "Aashirvaad Superior MP Atta"
+        "blinkit": "Aashirvaad Superior MP Atta (100% Atta, 0% Maida)"
       },
       "platforms": {
         "blinkit": {
-          "price": 239.0,
-          "currency": "INR",
+          "price": 272,
           "quantity": "5 kg",
-          "deliveryTime": "8 MINS",
-          "deliveryFee": 0,
-          "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/f581d9f1-2de2-4ae8-a8d8-c95608891a08.png",
-          "link": "https://blinkit.com/s/?q=atta",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
-        },
-        "zepto": {
-          "price": 110.0,
-          "currency": "INR",
-          "quantity": null,
-          "deliveryTime": "10-15 mins",
-          "deliveryFee": 0,
-          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-2001-2001,pr-true,f-auto,q-40/cms/product_variant/6a2da313-e704-48cc-a9fa-5c4d71e2e7d7.jpeg",
-          "link": "https://www.zepto.com/search?query=atta",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
-        }
-      },
-      "similarity_score": 0.6145454545454545
-    },
-    {
-      "name": "Pillsbury Chakki Fresh Superior Quality Atta",
-      "original_names": {
-        "blinkit": "Pillsbury Chakki Fresh Superior-Quality Atta (100% atta, 0% Maida)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 411.0,
-          "currency": "INR",
-          "quantity": null,
-          "deliveryTime": "8 MINS",
-          "deliveryFee": 0,
-          "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/da/cms-assets/cms/product/f581d9f1-2de2-4ae8-a8d8-c95608891a08.jpg?dpr_multiplier=3.00",
-          "link": "https://blinkit.com/s/?q=atta",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Shudh Chakki Atta",
-      "original_names": {
-        "blinkit": "Aashirvaad Shudh Chakki Atta (100% Atta, 0% Maida) (10 kg)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 456.0,
-          "currency": "INR",
-          "quantity": "10 kg",
-          "deliveryTime": "8 MINS",
-          "deliveryFee": 0,
-          "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/1ffe2e61-fdfa-4ef7-af29-e81521f57471.png",
-          "link": "https://blinkit.com/s/?q=atta",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Whole Farm Chakki Atta",
-      "original_names": {
-        "blinkit": "Whole Farm Chakki Atta (100% Atta, 0% Maida)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 360.0,
-          "currency": "INR",
-          "quantity": null,
-          "deliveryTime": "8 MINS",
-          "deliveryFee": 0,
-          "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/5a934f90-7342-41d6-a084-b1cb5b2d751d.png",
-          "link": "https://blinkit.com/s/?q=atta",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/aashirvaad-superior-mp-atta-100-atta-0-maida/prid/344107"
         }
       },
       "similarity_score": null
@@ -151,58 +396,1339 @@
       },
       "platforms": {
         "blinkit": {
-          "price": 289.0,
-          "currency": "INR",
-          "quantity": null,
-          "deliveryTime": "8 MINS",
-          "deliveryFee": 0,
-          "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/0a222058-6fb7-4df3-9419-decfd65529f9.png",
-          "link": "https://blinkit.com/s/?q=atta",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
+          "price": 64,
+          "quantity": "1 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/aashirvaad-organic-atta/prid/436304"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Patanjali Wheat Flour Atta Bran Traditional Chakki Gehu Atta Soft And Fluffy Roti",
+      "name": "Aashirvaad Premium Blend Chakki Lokwan Atta",
       "original_names": {
-        "zepto": "Patanjali Wheat Flour Atta With Bran | Traditional Chakki Gehu Atta | For Soft and Fluffy Roti"
+        "blinkit": "Aashirvaad Premium Blend Chakki Lokwan Atta"
       },
       "platforms": {
-        "zepto": {
-          "price": 64.0,
-          "currency": "INR",
-          "quantity": null,
-          "deliveryTime": "10-15 mins",
-          "deliveryFee": 0,
-          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1200-1200,pr-true,f-auto,q-40/cms/product_variant/fe012e99-e612-4ef9-a3b7-f260f37479f6.jpg",
-          "link": "https://www.zepto.com/pn/aashirvaad-atta-superior-mp-whole-wheat-no-maida-pouch/pvid/ae6045b0-0526-4401-8a18-cb55592249e6",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
+        "blinkit": {
+          "price": 63,
+          "quantity": "1 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/aashirvaad-premium-blend-chakki-lokwan-atta/prid/611873"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Aashirvaad Atta Superior Mp Whole Wheat No Maida Pouch",
+      "name": "Aashirvaad High Fibre Atta Multigrains 5 Kg",
+      "original_names": {
+        "blinkit": "Aashirvaad High Fibre Atta with Multigrains - 5 kg"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 330,
+          "quantity": "5 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/aashirvaad-high-fibre-atta-with-multigrains-5-kg/prid/108301"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Select 100 Mp Sharbati Atta",
+      "original_names": {
+        "blinkit": "Aashirvaad Select 100% MP Sharbati Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 322,
+          "quantity": "5 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/aashirvaad-select-100-mp-sharbati-atta/prid/7"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Whole Farm Chakki Atta",
+      "original_names": {
+        "blinkit": "Whole Farm Chakki Atta (100% Atta, 0% Maida)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 395,
+          "quantity": "10 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/whole-farm-chakki-atta-100-atta-0-maida/prid/514892"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Organic Atta",
+      "original_names": {
+        "blinkit": "Aashirvaad Organic Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 289,
+          "quantity": "5 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/aashirvaad-organic-atta/prid/436305"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Two Brothers Khapli Wheat Atta Stoneground",
+      "original_names": {
+        "blinkit": "Two Brothers Khapli Wheat Atta, Stoneground"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 418,
+          "quantity": "2 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/two-brothers-khapli-wheat-atta-stoneground/prid/526292"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Silver Coin Traditional Chakki Atta",
+      "original_names": {
+        "blinkit": "Silver Coin Traditional Chakki Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 214,
+          "quantity": "5 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/silver-coin-traditional-chakki-atta/prid/174379"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Superior Mp Atta",
+      "original_names": {
+        "blinkit": "Aashirvaad Superior MP Atta (100% Atta, 0% Maida) (10 kg)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 541,
+          "quantity": "10 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/aashirvaad-superior-mp-atta-100-atta-0-maida-10-kg/prid/68483"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Two Brothers Khapli Multigrain Atta",
+      "original_names": {
+        "blinkit": "Two Brothers Khapli Multigrain Atta (8 grains)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 182,
+          "quantity": "1 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/two-brothers-khapli-multigrain-atta-8-grains/prid/626915"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Wheat Organic Atta 1 Kg",
+      "original_names": {
+        "blinkit": "Organic Tattva Wheat Organic Atta - 1 kg"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 67,
+          "quantity": "1 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/organic-tattva-wheat-organic-atta-1-kg/prid/81299"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Pillsbury Chakki Fresh Superior Quality Atta",
+      "original_names": {
+        "blinkit": "Pillsbury Chakki Fresh Superior-Quality Atta (100% atta, 0% Maida)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 239,
+          "quantity": "5 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/pillsbury-chakki-fresh-superior-quality-atta-100-atta-0-maida/prid/55399"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Two Brothers Khapli Wheat Atta Stoneground",
+      "original_names": {
+        "blinkit": "Two Brothers Khapli Wheat Atta, Stoneground"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 1118,
+          "quantity": "5 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/two-brothers-khapli-wheat-atta-stoneground/prid/653347"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Silver Coin Traditional Chakki Fresh Atta 10 Kg",
+      "original_names": {
+        "blinkit": "Silver Coin Traditional Chakki Fresh Atta 10 kg"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 421,
+          "quantity": "10 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/silver-coin-traditional-chakki-fresh-atta-10-kg/prid/174378"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad High Fibre Atta Multigrains 10 Kg",
+      "original_names": {
+        "blinkit": "Aashirvaad High Fibre Atta with Multigrains - 10 kg"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 650,
+          "quantity": "10 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/aashirvaad-high-fibre-atta-with-multigrains-10-kg/prid/200521"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Samrat Premium Fresh Chakki Atta",
+      "original_names": {
+        "blinkit": "Samrat Premium Fresh Chakki Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 218,
+          "quantity": "5 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/samrat-premium-fresh-chakki-atta/prid/230656"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Praakritik Natural Organic Khapli Wheat Atta 1 Kg",
+      "original_names": {
+        "blinkit": "Praakritik Natural Organic Khapli Wheat Atta - 1 Kg"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 189,
+          "quantity": "1 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/praakritik-natural-organic-khapli-wheat-atta-1-kg/prid/478956"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Pillsbury Chakki Fresh Atta",
+      "original_names": {
+        "blinkit": "Pillsbury Chakki Fresh Atta (100% atta, 0% Maida)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 129,
+          "quantity": "2 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/pillsbury-chakki-fresh-atta-100-atta-0-maida/prid/77876"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Pillsbury Chakki Fresh Atta",
+      "original_names": {
+        "blinkit": "Pillsbury Chakki-Fresh Atta (100% atta, 0% Maida)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 450,
+          "quantity": "10 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/pillsbury-chakki-fresh-atta-100-atta-0-maida/prid/23694"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Two Brothers Roasted Bengal Gram Sattu Atta",
+      "original_names": {
+        "blinkit": "Two Brothers Roasted Bengal Gram Sattu Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 191,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/two-brothers-roasted-bengal-gram-sattu-atta/prid/626986"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Patanjali Traditional Whole Wheat Chakki Atta",
+      "original_names": {
+        "blinkit": "Patanjali Traditional Whole Wheat Chakki Atta (with Bran)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 500,
+          "quantity": "10 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/patanjali-traditional-whole-wheat-chakki-atta-with-bran/prid/55388"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Amul Organic Atta",
+      "original_names": {
+        "blinkit": "Amul Organic Atta (Whole Wheat)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 56,
+          "quantity": "1 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/amul-organic-atta-whole-wheat/prid/498764"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Select 100 Mp Sharbati Atta",
+      "original_names": {
+        "blinkit": "Aashirvaad Select 100% MP Sharbati Atta (10 kg)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 629,
+          "quantity": "10 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/aashirvaad-select-100-mp-sharbati-atta-10-kg/prid/200520"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Whole Farm Premium Makki Atta",
+      "original_names": {
+        "blinkit": "Whole Farm Premium Makki Atta (Maize Flour)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 31,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/whole-farm-premium-makki-atta-maize-flour/prid/537081"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Rajgira Flour",
+      "original_names": {
+        "blinkit": "Bhagirathi Rajgira Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 64,
+          "quantity": "200 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/bhagirathi-rajgira-flour/prid/381022"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Safe Harvest Pesticide Free Roasted Sooji Rava",
+      "original_names": {
+        "blinkit": "Safe Harvest Pesticide-Free Roasted Sooji/Rava"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 53,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/safe-harvest-pesticide-free-roasted-sooji-rava/prid/198081"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Whole Farm Premium Rajgira Amaranth Millet Seeds",
+      "original_names": {
+        "blinkit": "Whole Farm Premium Rajgira/Amaranth Millet Seeds"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 85,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/whole-farm-premium-rajgira-amaranth-millet-seeds/prid/529762"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Makki Atta Makka Atta",
+      "original_names": {
+        "blinkit": "Organic Tattva - Makki Atta (Maize Flour)/Makka Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 60,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/organic-tattva-makki-atta-maize-flour-makka-atta/prid/481358"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Whole Farm Premium Rajgira Flour",
+      "original_names": {
+        "blinkit": "Whole Farm Premium Rajgira Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 39,
+          "quantity": "250 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/whole-farm-premium-rajgira-flour/prid/612724"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "24 Mantra Organic 7 Grain Atta",
+      "original_names": {
+        "blinkit": "24 Mantra Organic 7 Grain Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 101,
+          "quantity": "1 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/24-mantra-organic-7-grain-atta/prid/437289"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Lo Foods Ultra Low Carb Keto Atta",
+      "original_names": {
+        "blinkit": "Lo! Foods Ultra Low Carb Keto Atta (High Protein)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 559,
+          "quantity": "1 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/lo-foods-ultra-low-carb-keto-atta-high-protein/prid/673525"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Multigrain Bhakri Atta",
+      "original_names": {
+        "blinkit": "Bhagirathi Multigrain Bhakri Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 43,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/bhagirathi-multigrain-bhakri-atta/prid/381039"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Sugar Watchers 7 Grain Low Gi Atta",
+      "original_names": {
+        "blinkit": "Sugar Watchers 7-Grain Low GI Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 139,
+          "quantity": "1 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/sugar-watchers-7-grain-low-gi-atta/prid/455651"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Real Thai Rice Paper",
+      "original_names": {
+        "blinkit": "Real Thai Rice Paper"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 190,
+          "quantity": "100 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/real-thai-rice-paper/prid/12035"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Organic Besan",
+      "original_names": {
+        "blinkit": "Organic Tattva Organic Besan"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 106,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/organic-tattva-organic-besan/prid/13452"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Organic White Poha",
+      "original_names": {
+        "blinkit": "Organic Tattva Organic White Poha"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 73,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/organic-tattva-organic-white-poha/prid/13466"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Organic Maida",
+      "original_names": {
+        "blinkit": "Organic Tattva Organic Maida"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 57,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/organic-tattva-organic-maida/prid/5748"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "True Story Organic Bajra Flour",
+      "original_names": {
+        "blinkit": "True Story Organic Bajra Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 55,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/true-story-organic-bajra-flour/prid/518435"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Natureland Wheat Organic Sooji",
+      "original_names": {
+        "blinkit": "Natureland Wheat Organic Sooji"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 65,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/natureland-wheat-organic-sooji/prid/475657"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "24 Mantra Organic Wheat Daliya",
+      "original_names": {
+        "blinkit": "24 Mantra Organic Wheat Daliya"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 58,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/24-mantra-organic-wheat-daliya/prid/32387"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "24 Mantra Organic Sattu",
+      "original_names": {
+        "blinkit": "24 Mantra Organic Sattu"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 124,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/24-mantra-organic-sattu/prid/3796"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Organic Red Poha 500 G",
+      "original_names": {
+        "blinkit": "Organic Tattva Organic Red Poha 500 g"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 90,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/organic-tattva-organic-red-poha-500-g/prid/86976"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Natureland Organic Bajra Flour",
+      "original_names": {
+        "blinkit": "Natureland - Organic Bajra Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 64,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/natureland-organic-bajra-flour/prid/506050"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "24 Mantra Organic Idly Rava Sooji",
+      "original_names": {
+        "blinkit": "24 Mantra Organic Idly Rava/Sooji"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 59,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/24-mantra-organic-idly-rava-sooji/prid/5460"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Wheat Organic Daliya",
+      "original_names": {
+        "blinkit": "Organic Tattva Wheat Organic Daliya"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 60,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/organic-tattva-wheat-organic-daliya/prid/81286"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Pro Nature Red Organic Red Poha",
+      "original_names": {
+        "blinkit": "Pro Nature Red Organic Red Poha"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 91,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/pro-nature-red-organic-red-poha/prid/61810"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Whole Farm Premium Rice Flour Rice Atta",
+      "original_names": {
+        "blinkit": "Whole Farm Premium Rice Flour/Rice Atta"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 33,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/whole-farm-premium-rice-flour-rice-atta/prid/527625"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Whole Farm Premium Corn Flour",
+      "original_names": {
+        "blinkit": "Whole Farm Premium Corn Flour (Starch)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 49,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/whole-farm-premium-corn-flour-starch/prid/527598"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Whole Farm Premium Jowar Flour",
+      "original_names": {
+        "blinkit": "Whole Farm Premium Jowar Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 38,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/whole-farm-premium-jowar-flour/prid/531198"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Whole Farm Premium Ragi Flour",
+      "original_names": {
+        "blinkit": "Whole Farm Premium Ragi Flour (Nachni/Nagli)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 49,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/whole-farm-premium-ragi-flour-nachni-nagli/prid/538338"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Whole Farm Premium Bajra Flour",
+      "original_names": {
+        "blinkit": "Whole Farm Premium Bajra Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 39,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/whole-farm-premium-bajra-flour/prid/603526"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Rice Flour",
+      "original_names": {
+        "blinkit": "Bhagirathi Rice Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 37,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/bhagirathi-rice-flour/prid/32440"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Better Nutrition Bajra Flour 2X Nutrition",
+      "original_names": {
+        "blinkit": "Better Nutrition Bajra Flour – 2X Nutrition"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 110,
+          "quantity": "1 kg",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/better-nutrition-bajra-flour-2x-nutrition/prid/660494"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Katdare Thalipeeth Bhajani Flour Mix",
+      "original_names": {
+        "blinkit": "Katdare Thalipeeth Bhajani Flour Mix"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 50,
+          "quantity": "200 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/katdare-thalipeeth-bhajani-flour-mix/prid/378786"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "True Elements Super Grains Oats Flour",
+      "original_names": {
+        "blinkit": "True Elements Super Grains Oats Flour (Oats Hittu)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 116,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/true-elements-super-grains-oats-flour-oats-hittu/prid/539276"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "K Pra Upwas Bhajani Flour Mix",
+      "original_names": {
+        "blinkit": "K-Pra Upwas Bhajani Flour Mix"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 61,
+          "quantity": "200 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/k-pra-upwas-bhajani-flour-mix/prid/82401"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Weikfield Corn Flour",
+      "original_names": {
+        "blinkit": "Weikfield Corn Flour (Starch)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 33,
+          "quantity": "100 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/weikfield-corn-flour-starch/prid/10958"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Satyam Ragi Flour Nachani Flour",
+      "original_names": {
+        "blinkit": "Satyam Ragi Flour/Nachani Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 51,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/satyam-ragi-flour-nachani-flour/prid/32774"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Bajra Flour",
+      "original_names": {
+        "blinkit": "Bhagirathi Bajra Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 40,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/bhagirathi-bajra-flour/prid/32436"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Double Horse Appam Idiyappam Pathiri Rice Flour",
+      "original_names": {
+        "blinkit": "Double Horse Appam Idiyappam Pathiri Rice Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 57,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/double-horse-appam-idiyappam-pathiri-rice-flour/prid/136970"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "K Pra Thalipeeth Bhajani Flour Mix",
+      "original_names": {
+        "blinkit": "K-Pra Thalipeeth Bhajani Flour Mix"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 39,
+          "quantity": "200 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/k-pra-thalipeeth-bhajani-flour-mix/prid/48129"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "K Pra Jowar Flour",
+      "original_names": {
+        "blinkit": "K-Pra Jowar Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 60,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/k-pra-jowar-flour/prid/556782"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Nachani Ragi Flour",
+      "original_names": {
+        "blinkit": "Bhagirathi Nachani / Ragi Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 55,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/bhagirathi-nachani-ragi-flour/prid/381019"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Katdare Upvas Bhajani Flour Mix",
+      "original_names": {
+        "blinkit": "Katdare Upvas Bhajani Flour Mix"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 65,
+          "quantity": "200 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/katdare-upvas-bhajani-flour-mix/prid/378779"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Double Horse White Puttupodi Rice Flour",
+      "original_names": {
+        "blinkit": "Double Horse White Puttupodi Rice Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 65,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/double-horse-white-puttupodi-rice-flour/prid/189142"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Madam Rice Flour",
+      "original_names": {
+        "blinkit": "Madam Rice Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 43,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/madam-rice-flour/prid/36819"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "K Pra Tandul Bhakari Peeth Rice Flour",
+      "original_names": {
+        "blinkit": "K-Pra Tandul Bhakari Peeth Rice Flour"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 58,
+          "quantity": "500 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/k-pra-tandul-bhakari-peeth-rice-flour/prid/556784"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Katdare Rice Flour Tandul Peeth",
+      "original_names": {
+        "blinkit": "Katdare Rice Flour/Tandul Peeth"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 25,
+          "quantity": "200 g",
+          "deliveryTime": "12 MINS",
+          "image": "",
+          "link": "https://blinkit.com/prn/katdare-rice-flour-tandul-peeth/prid/378871"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Atta Superior Mp Whole Wheat No Maida",
       "original_names": {
         "zepto": "Aashirvaad Atta - Superior MP Whole Wheat, No Maida | Pouch"
       },
       "platforms": {
         "zepto": {
-          "price": 64.0,
-          "currency": "INR",
-          "quantity": null,
-          "deliveryTime": "10-15 mins",
-          "deliveryFee": 0,
-          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1200-1200,pr-true,f-auto,q-40/cms/product_variant/fe012e99-e612-4ef9-a3b7-f260f37479f6.jpg",
-          "link": "https://www.zepto.com/pn/aashirvaad-atta-superior-mp-whole-wheat-no-maida-pouch/pvid/ae6045b0-0526-4401-8a18-cb55592249e6",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
+          "price": 59,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-atta-superior-mp-whole-wheat-no-maida-pouch/pvid/ae6045b0-0526-4401-8a18-cb55592249e6"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Atta Superior Mp Whole Wheat No Maida",
+      "original_names": {
+        "zepto": "Aashirvaad Atta - Superior MP Whole Wheat, No Maida | Pouch"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 263,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-atta-superior-mp-whole-wheat-no-maida-pouch/pvid/56d997f6-b45a-48bf-823d-c9b5acd6ac8f"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Rajdhani Chakki Fresh Atta",
+      "original_names": {
+        "zepto": "Rajdhani Chakki Fresh Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 215,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/rajdhani-chakki-fresh-atta/pvid/f3f0adaf-3c4c-44cc-b731-8cee226e2c0b"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Select Atta",
+      "original_names": {
+        "zepto": "Aashirvaad Select Atta | Made from 100% MP Sharbati Wheat for Softer Rotis"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 63,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-select-atta-made-from-100-mp-sharbati-wheat-for-softer-rotis/pvid/4d8d3c69-074d-45bb-ab13-77f6f0e082ab"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nature Fresh Sampoorna Chakki Atta",
+      "original_names": {
+        "zepto": "Nature Fresh Sampoorna Chakki Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 435,
+          "quantity": "10 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nature-fresh-sampoorna-chakki-atta/pvid/8bf25299-8a37-4698-afbc-926d36cb9a9e"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Atta Superior Mp Whole Wheat No Maida",
+      "original_names": {
+        "zepto": "Aashirvaad Atta - Superior MP Whole Wheat, No Maida | Pouch"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 526,
+          "quantity": "10 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-atta-superior-mp-whole-wheat-no-maida-pouch/pvid/d156ac8e-53c1-4f40-aea8-3de5b28f948d"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "24 Mantra Organic Whole Wheat Atta",
+      "original_names": {
+        "zepto": "24 Mantra Organic Whole Wheat Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 49,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/24-mantra-organic-whole-wheat-atta/pvid/0077f3d0-282a-413b-af13-d2ec99296ae7"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Samrat Mp Chakki Wheat Atta",
+      "original_names": {
+        "zepto": "Samrat Mp Chakki Wheat Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 215,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/samrat-mp-chakki-wheat-atta/pvid/70e94e84-6543-4a9a-bd5d-72afea4d338e"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Pillsbury Atta Godihittu Chakki Fresh",
+      "original_names": {
+        "zepto": "Pillsbury Atta/Godihittu - Chakki Fresh"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 238,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/pillsbury-attagodihittu-chakki-fresh/pvid/9a99b440-cf97-4601-b478-1b6b7ef3f17c"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Mp Lokwan Atta Premium Blend",
+      "original_names": {
+        "zepto": "Aashirvaad MP Lokwan Atta Premium Blend"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 59,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-mp-lokwan-atta-premium-blend/pvid/df4347cf-515f-4cb8-953a-7e84e5e6d3af"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Multigrain Atta",
+      "original_names": {
+        "zepto": "Aashirvaad Multigrain Atta | 3 Rotis Fulfils 35% Daily Fibre"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 299,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-multigrain-atta-3-rotis-fulfils-35-daily-fibre/pvid/16806c97-f2dc-4374-9a1c-c2a45376d0f8"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Chakki Mp Sehori Atta",
+      "original_names": {
+        "zepto": "Aashirvaad Chakki Mp Sehori Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 60,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-chakki-mp-sehori-atta/pvid/315dca47-8635-4de6-84ca-243806cafd0b"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Multigrain Atta",
+      "original_names": {
+        "zepto": "Aashirvaad Multigrain Atta | 3 Rotis Fulfils 35% Daily Fibre"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 62,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-multigrain-atta-3-rotis-fulfils-35-daily-fibre/pvid/ef3f1913-a6e6-4bf6-a940-dc6d4651e88e"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Select Atta",
+      "original_names": {
+        "zepto": "Aashirvaad Select Atta | Made from 100% MP Sharbati Wheat for Softer Rotis"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 290,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-select-atta-made-from-100-mp-sharbati-wheat-for-softer-rotis/pvid/2e1f7fe5-2d09-4282-81c7-b4eaf6b1d86d"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Rajdhani Chakki Fresh Atta",
+      "original_names": {
+        "zepto": "Rajdhani Chakki Fresh Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 215,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/rajdhani-chakki-fresh-atta/pvid/f3f0adaf-3c4c-44cc-b731-8cee226e2c0b"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nature Fresh Sampoorna Chakki Atta",
+      "original_names": {
+        "zepto": "Nature Fresh Sampoorna Chakki Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 211,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nature-fresh-sampoorna-chakki-atta/pvid/113bdb0b-82ad-4882-9462-6b941340065e"
         }
       },
       "similarity_score": null
@@ -214,142 +1740,1707 @@
       },
       "platforms": {
         "zepto": {
-          "price": 294.0,
-          "currency": "INR",
-          "quantity": null,
-          "deliveryTime": "10-15 mins",
-          "deliveryFee": 0,
-          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1200-1200,pr-true,f-auto,q-40/cms/product_variant/e033e992-2f91-4dd1-b3eb-2c6da5313c3b.jpg",
-          "link": "https://www.zepto.com/search?query=atta",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
+          "price": 63,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-organic-100-organic-whole-wheat-atta-0-maida/pvid/d7ab0955-f1a3-44cc-a849-fa43a4bee931"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Right Shift High Protein Multigrain Atta High Fibre Low Gi 18 G 4 Rotis",
+      "name": "Nature Fresh Sampoorna Chakki Atta",
       "original_names": {
-        "zepto": "Right Shift High Protein Multigrain + Atta | High fibre, Low GI | 18 g - 4 rotis"
+        "zepto": "Nature Fresh Sampoorna Chakki Atta"
       },
       "platforms": {
         "zepto": {
-          "price": 278.0,
-          "currency": "INR",
-          "quantity": "18 g",
-          "deliveryTime": "10-15 mins",
-          "deliveryFee": 0,
-          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-2048-2048,pr-true,f-auto,q-40/cms/product_variant/88077010-bdc8-4b50-b2d8-1381b06d484a.jpeg",
-          "link": "https://www.zepto.com/pn/right-shift-high-protein-multigrain-atta-high-fibre-low-gi-18-g-4-rotis/pvid/28c6faa7-b304-4f9f-b1b3-8ba1a7b13009",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
+          "price": 435,
+          "quantity": "10 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nature-fresh-sampoorna-chakki-atta/pvid/8bf25299-8a37-4698-afbc-926d36cb9a9e"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Fortune Chakki Fresh Atta",
+      "name": "Aashirvaad Chakki Premium Mp Sehori Atta",
       "original_names": {
-        "zepto": "Fortune Chakki Fresh Atta"
+        "zepto": "Aashirvaad Chakki Premium Mp Sehori Atta"
       },
       "platforms": {
         "zepto": {
-          "price": 249.0,
-          "currency": "INR",
-          "quantity": null,
-          "deliveryTime": "10-15 mins",
-          "deliveryFee": 0,
-          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1830-1960,pr-true,f-auto,q-40/cms/product_variant/9e899e8f-6052-4161-aeb7-eef019d4cd5f.jpeg",
-          "link": "https://www.zepto.com/search?query=atta",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
+          "price": 78,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-chakki-premium-mp-sehori-atta/pvid/3e9fe22d-7e73-41f4-8cb0-2a51fb6f1849"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Aashirvaad Atta Superior Mp Whole Wheat No Maida Pouch",
+      "name": "Aashirvaad Organic 100 Organic Whole Wheat Atta 0 Maida",
       "original_names": {
-        "zepto": "Aashirvaad Atta - Superior MP Whole Wheat, No Maida | Pouch"
+        "zepto": "Aashirvaad Organic 100% Organic Whole Wheat Atta, 0% Maida"
       },
       "platforms": {
         "zepto": {
-          "price": 290.0,
-          "currency": "INR",
-          "quantity": null,
-          "deliveryTime": "10-15 mins",
-          "deliveryFee": 0,
-          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1200-1200,pr-true,f-auto,q-40/cms/product_variant/328d7299-f9c2-40ad-a90e-355d3bf810c4.jpg",
-          "link": "https://www.zepto.com/pn/aashirvaad-atta-superior-mp-whole-wheat-no-maida-pouch/pvid/56d997f6-b45a-48bf-823d-c9b5acd6ac8f",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
+          "price": 289,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-organic-100-organic-whole-wheat-atta-0-maida/pvid/6b81904d-64e3-48a8-8218-0811995b817a"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Fortune Chakki Fresh Atta",
+      "name": "Organic Tattva Whole Wheat Flour",
       "original_names": {
-        "zepto": "Fortune Chakki Fresh Atta"
+        "zepto": "Organic Tattva Whole Wheat Flour | Chakki Atta"
       },
       "platforms": {
         "zepto": {
-          "price": 470.0,
-          "currency": "INR",
-          "quantity": null,
-          "deliveryTime": "10-15 mins",
-          "deliveryFee": 0,
-          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1830-1960,pr-true,f-auto,q-40/cms/product_variant/acb4abf0-a58b-467e-99cd-2b4920fbaa5e.jpeg",
-          "link": "https://www.zepto.com/search?query=atta",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
+          "price": 65,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/organic-tattva-whole-wheat-flour-chakki-atta/pvid/f91646e6-84e3-4cdd-b012-7dc6404325c3"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Aashirvaad Atta Superior Mp Whole Wheat No Maida Pouch",
+      "name": "Patanjali Wheat Flour Atta Bran",
       "original_names": {
-        "zepto": "Aashirvaad Atta - Superior MP Whole Wheat, No Maida | Pouch"
+        "zepto": "Patanjali Wheat Flour Atta With Bran | Traditional Chakki Gehu Atta | For Soft and Fluffy Roti"
       },
       "platforms": {
         "zepto": {
-          "price": 525.0,
-          "currency": "INR",
-          "quantity": null,
-          "deliveryTime": "10-15 mins",
-          "deliveryFee": 0,
-          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1176-1176,pr-true,f-auto,q-40/cms/product_variant/287c2979-1c57-413f-9329-3dd66f08db22.jpeg",
-          "link": "https://www.zepto.com/search?query=atta",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
+          "price": 234,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/patanjali-wheat-flour-atta-with-bran-traditional-chakki-gehu-atta-for-soft-and-fluffy-roti/pvid/0de96881-8bea-4c43-99a2-3b6e7a8a4404"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Aashirvaad Multigrain Atta 3 Rotis Fulfils 35 Daily Fibre",
+      "name": "Aashirvaad Chakki Premium Mp Sehori Atta",
       "original_names": {
-        "zepto": "Aashirvaad Multigrain Atta | 3 Rotis Fulfils 35% Daily Fibre"
+        "zepto": "Aashirvaad Chakki Premium MP Sehori Atta | Gahu Lot | Gahu Peeth"
       },
       "platforms": {
         "zepto": {
-          "price": 49.0,
-          "currency": "INR",
-          "quantity": null,
-          "deliveryTime": "10-15 mins",
-          "deliveryFee": 0,
-          "image": "https://cdn.zeptonow.com/production/tr:w-312,ar-1200-1200,pr-true,f-auto,q-40/cms/product_variant/66ac0d0b-92f9-4e09-b738-4e876ba229f9.jpeg",
-          "link": "https://www.zepto.com/pn/24-mantra-organic-whole-wheat-atta/pvid/0077f3d0-282a-413b-af13-d2ec99296ae7",
-          "rating": 0.0,
-          "reviewCount": 0,
-          "availability": true
+          "price": 337,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-chakki-premium-mp-sehori-atta-gahu-lot-gahu-peeth/pvid/8581e553-b32f-48a1-aec5-6c3c07e7b90b"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Patanjali Wheat Flour Atta Bran",
+      "original_names": {
+        "zepto": "Patanjali Wheat Flour Atta With Bran | Traditional Chakki Gehu Atta | For Soft and Fluffy Roti"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 234,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/patanjali-wheat-flour-atta-with-bran-traditional-chakki-gehu-atta-for-soft-and-fluffy-roti/pvid/0de96881-8bea-4c43-99a2-3b6e7a8a4404"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Chakki Premium Mp Sehori Atta",
+      "original_names": {
+        "zepto": "Aashirvaad Chakki Premium MP Sehori Atta | Gahu Lot | Gahu Peeth"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 337,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-chakki-premium-mp-sehori-atta-gahu-lot-gahu-peeth/pvid/8581e553-b32f-48a1-aec5-6c3c07e7b90b"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Bajra Atta",
+      "original_names": {
+        "zepto": "Bhagirathi Bajra Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 30,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-bajra-atta/pvid/b2c64704-bbe5-450f-9c68-25ef26366125"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "24 Mantra Organic Whole Wheat Atta",
+      "original_names": {
+        "zepto": "24 Mantra Organic Whole Wheat Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 49,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/24-mantra-organic-whole-wheat-atta/pvid/0077f3d0-282a-413b-af13-d2ec99296ae7"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Patanjali Wheat Flour Atta Bran Traditional Chakki Gehu Atta Soft And Fluffy Roti",
+      "original_names": {
+        "zepto": "Patanjali Wheat Flour Atta With Bran Traditional Chakki Gehu Atta For Soft and Fluffy Roti"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 438,
+          "quantity": "10 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/patanjali-wheat-flour-atta-with-bran-traditional-chakki-gehu-atta-for-soft-and-fluffy-roti/pvid/4e461724-3f74-4323-9eae-01b75e0c1e4a"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Origgo Sharbati Stone Ground Atta Normal Pissai",
+      "original_names": {
+        "zepto": "Origgo Sharbati Stone Ground Atta-Normal Pissai"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 65,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/origgo-sharbati-stone-ground-atta-normal-pissai/pvid/0ea78117-8f1f-42cc-be6e-2e9f16dc00ce"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Pillsbury Atta Multigrains",
+      "original_names": {
+        "zepto": "Pillsbury Atta With Multigrains"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 267,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/pillsbury-atta-with-multigrains/pvid/8ad80401-e58f-4d29-8d64-feb8c9359248"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Select Atta",
+      "original_names": {
+        "zepto": "Aashirvaad Select Atta | Made from 100% MP Sharbati Wheat for Softer Rotis"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 555,
+          "quantity": "10 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-select-atta-made-from-100-mp-sharbati-wheat-for-softer-rotis/pvid/435b32e5-e9a6-4216-be6a-eb4abf1df73d"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Jowar Atta",
+      "original_names": {
+        "zepto": "Bhagirathi Jowar Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 43,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-jowar-atta/pvid/f4f9fcc5-11f2-4258-a498-a18bfd72994d"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Wheat Flour",
+      "original_names": {
+        "zepto": "Organic Tattva Wheat Flour | Chakki Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 324,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/organic-tattva-wheat-flour-chakki-atta/pvid/3587eb86-cc71-4dda-aee1-786f8e1ae3dc"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Premium Mp Sharabati Atta",
+      "original_names": {
+        "zepto": "Bhagirathi Premium MP Sharabati Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 210,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-premium-mp-sharabati-atta/pvid/a76e1ff1-47de-4788-971e-f3dd53ecea0b"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Satyam Nachani",
+      "original_names": {
+        "zepto": "Satyam Nachani | Ragi Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 51,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/satyam-nachani-ragi-flour/pvid/9557fec4-be71-4f91-99ef-4e92b4dc851a"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Makki Atta Maize Flour",
+      "original_names": {
+        "zepto": "Bhagirathi Makki Atta/ Maize Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 30,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-makki-atta-maize-flour/pvid/89d3ccbc-f2d0-475b-9f6c-c38b81575d6d"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "24 Mantra Organic Whole Wheat Atta",
+      "original_names": {
+        "zepto": "24 Mantra Organic Whole Wheat Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 240,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/24-mantra-organic-whole-wheat-atta/pvid/9a7eed43-18b1-4e8a-b2a5-38897c6cff87"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Chapati Wheat Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Chapati Wheat Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 75,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-chapati-wheat-atta/pvid/7a187f51-0fe5-4488-b6fe-47ac49cfa974"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Jiwa 30 Degree Wheat Flour",
+      "original_names": {
+        "zepto": "Jiwa 30 Degree Wheat Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 278,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/jiwa-30-degree-wheat-flour/pvid/e1a279eb-b1f0-40ab-b2d7-36077a5c10ba"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Multigrain Flour",
+      "original_names": {
+        "zepto": "Organic Tattva Multigrain Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 90,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/organic-tattva-multigrain-flour/pvid/c52204c0-8e23-404f-bc7e-dc0450a71696"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Two Brothers Khapli",
+      "original_names": {
+        "zepto": "Two Brothers Khapli | Emmer Long Wheat Atta Stoneground"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 429,
+          "quantity": "2 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/two-brothers-khapli-emmer-long-wheat-atta-stoneground/pvid/370fe3c6-58c9-42a1-af1f-8ce189a3efae"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Annapurna Chakki Whole Wheat Atta",
+      "original_names": {
+        "zepto": "Annapurna Chakki Whole Wheat Atta | No Maida | 10 Kg"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 461,
+          "quantity": "10 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/annapurna-chakki-whole-wheat-atta-no-maida-10-kg/pvid/ff3d3dba-8efb-434a-b978-5421aca71de5"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Chapati Wheat Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Chapati Wheat Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 367,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-chapati-wheat-atta/pvid/bb942fe1-b35a-4192-9688-192935dea69f"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Rajdhani Besan Gram Flour",
+      "original_names": {
+        "zepto": "Rajdhani Besan Gram Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 101,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/rajdhani-besan-gram-flour/pvid/40b8a38c-9ce2-4b31-b59d-e3dc578c60c9"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daily Good Besan Gram Flour Chana Besan",
+      "original_names": {
+        "zepto": "Daily Good Besan / Gram Flour / Chana Besan"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 48,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/daily-good-besan-gram-flour-chana-besan/pvid/c0ab0003-97bb-4579-94c1-03a985fe80c7"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Multigrain Flour",
+      "original_names": {
+        "zepto": "Organic Tattva Multigrain Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 90,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/organic-tattva-multigrain-flour/pvid/c52204c0-8e23-404f-bc7e-dc0450a71696"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Two Brothers Khapli",
+      "original_names": {
+        "zepto": "Two Brothers Khapli | Emmer Long Wheat Atta Stoneground"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 429,
+          "quantity": "2 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/two-brothers-khapli-emmer-long-wheat-atta-stoneground/pvid/370fe3c6-58c9-42a1-af1f-8ce189a3efae"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Annapurna Chakki Whole Wheat Atta",
+      "original_names": {
+        "zepto": "Annapurna Chakki Whole Wheat Atta | No Maida | 10 Kg"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 461,
+          "quantity": "10 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/annapurna-chakki-whole-wheat-atta-no-maida-10-kg/pvid/ff3d3dba-8efb-434a-b978-5421aca71de5"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Satyam Bajari Flour",
+      "original_names": {
+        "zepto": "Satyam Bajari Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 45,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/satyam-bajari-flour/pvid/d7f12a7b-70ff-4a2b-8392-e4fe297ec4be"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Chapati Wheat Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Chapati Wheat Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 367,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-chapati-wheat-atta/pvid/bb942fe1-b35a-4192-9688-192935dea69f"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Satyam Rice Flour",
+      "original_names": {
+        "zepto": "Satyam Rice Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 39,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/satyam-rice-flour/pvid/815133f7-2b4b-4760-a25b-ecee7f95a836"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Rajdhani Besan Gram Flour",
+      "original_names": {
+        "zepto": "Rajdhani Besan Gram Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 101,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/rajdhani-besan-gram-flour/pvid/40b8a38c-9ce2-4b31-b59d-e3dc578c60c9"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daily Good Besan Gram Flour Chana Besan",
+      "original_names": {
+        "zepto": "Daily Good Besan / Gram Flour / Chana Besan"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 48,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/daily-good-besan-gram-flour-chana-besan/pvid/c0ab0003-97bb-4579-94c1-03a985fe80c7"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Phulka Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Phulka Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 367,
+          "quantity": "5 kg",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-phulka-atta/pvid/a6f782fe-9d67-49a9-a0a6-0c36d6579063"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Satyam Jowari Flour Combo",
+      "original_names": {
+        "zepto": "Satyam Jowari Flour Combo"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 96,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/satyam-jowari-flour-combo/pvid/201ed653-7911-4e07-836c-10b610be2e91"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Thalipeeth Bhajani",
+      "original_names": {
+        "zepto": "Bhagirathi Thalipeeth Bhajani | Multigrain Roasted Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 40,
+          "quantity": "200 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-thalipeeth-bhajani-multigrain-roasted-flour/pvid/998e451e-6ae1-4320-b1f6-3c8ef4d0eff9"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Multigrain Wheat Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Multigrain Wheat Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 392,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-multigrain-wheat-atta/pvid/39efe23b-18e6-4975-8228-dbf9016cc6ef"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Two Brothers Stoneground Khapli",
+      "original_names": {
+        "zepto": "Two Brothers Stoneground Khapli | Emmer Wheat Atta, High Fibre"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 246,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/two-brothers-stoneground-khapli-emmer-wheat-atta-high-fibre/pvid/85c59164-fd81-4251-a567-6755b388ab12"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Rice Atta",
+      "original_names": {
+        "zepto": "Bhagirathi Rice Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 73,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-rice-atta/pvid/4f533902-1768-4122-875c-b74d89c937d3"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Satyam Nachani",
+      "original_names": {
+        "zepto": "Satyam Nachani | Ragi Flour Combo"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 102,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/satyam-nachani-ragi-flour-combo/pvid/44ed48a5-7bcb-4d80-8453-ae33adee43bf"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daily Good Bajra Pearl Millet Flour",
+      "original_names": {
+        "zepto": "Daily Good Bajra/Pearl Millet Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 38,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/daily-good-bajrapearl-millet-flour/pvid/4a572954-5674-42cb-87fe-ddb4895cda5e"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Jiwa 30 Degree Gluten Free Flour",
+      "original_names": {
+        "zepto": "Jiwa 30 Degree Gluten Free Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 196,
+          "quantity": "1 kg",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/jiwa-30-degree-gluten-free-flour/pvid/4e16139d-5448-415a-a6cd-3ba1808e62cd"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Makki Atta Maize Flour",
+      "original_names": {
+        "zepto": "Nutrapoorna Makki Atta/ Maize Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 49,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-makki-atta-maize-flour/pvid/8ae8fe84-e241-47fb-8581-99cbfcbd8beb"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Kuttu Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Kuttu Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 25,
+          "quantity": "200 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-kuttu-atta/pvid/37bb458c-590b-4390-92ce-04b01f8c3bbe"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Kulith Peeth",
+      "original_names": {
+        "zepto": "Bhagirathi Kulith Peeth | Horse Gram Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 71,
+          "quantity": "200 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-kulith-peeth-horse-gram-flour/pvid/817ba64e-bc46-4a64-b4c7-159f463a491a"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daily Good Jowar Flour Sorghum Millet",
+      "original_names": {
+        "zepto": "Daily Good Jowar Flour / Sorghum Millet"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 42,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/daily-good-jowar-flour-sorghum-millet/pvid/295dca45-3a22-4ce7-a3ca-5345c2549eb0"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Thalipeeth Bhajani",
+      "original_names": {
+        "zepto": "Bhagirathi Thalipeeth Bhajani | Multigrain Roasted Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 96,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-thalipeeth-bhajani-multigrain-roasted-flour/pvid/fe170ccf-5722-4a5d-9a76-c469ba4ddb81"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daily Good Corn Flour Starch",
+      "original_names": {
+        "zepto": "Daily Good Corn Flour/Starch"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 39,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/daily-good-corn-flourstarch/pvid/31ad3e8b-e689-48c1-956c-ca36d9fcac2c"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Kulith Peeth Ready Mix Horse Gram Flour",
+      "original_names": {
+        "zepto": "Bhagirathi Kulith Peeth Ready Mix Horse Gram Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 66,
+          "quantity": "200 g",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-kulith-peeth-ready-mix-horse-gram-flour/pvid/7ec0b1de-e2e8-4ec5-b0dd-d96720823ce5"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Upwas Bhajani",
+      "original_names": {
+        "zepto": "Bhagirathi Upwas Bhajani | Farali Mix Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 143,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-upwas-bhajani-farali-mix-flour/pvid/54812e59-eeeb-4199-8536-e88fcaddedb1"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Rajgira Peeth",
+      "original_names": {
+        "zepto": "Bhagirathi Rajgira Peeth | Amaranth Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 61,
+          "quantity": "200 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-rajgira-peeth-amaranth-flour/pvid/19e82710-1f2e-4091-8c03-d493d137681b"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Kuttu Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Kuttu Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 25,
+          "quantity": "200 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-kuttu-atta/pvid/37bb458c-590b-4390-92ce-04b01f8c3bbe"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Kulith Peeth",
+      "original_names": {
+        "zepto": "Bhagirathi Kulith Peeth | Horse Gram Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 71,
+          "quantity": "200 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-kulith-peeth-horse-gram-flour/pvid/817ba64e-bc46-4a64-b4c7-159f463a491a"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daily Good Jowar Flour Sorghum Millet",
+      "original_names": {
+        "zepto": "Daily Good Jowar Flour / Sorghum Millet"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 42,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/daily-good-jowar-flour-sorghum-millet/pvid/295dca45-3a22-4ce7-a3ca-5345c2549eb0"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Thalipeeth Bhajani",
+      "original_names": {
+        "zepto": "Bhagirathi Thalipeeth Bhajani | Multigrain Roasted Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 96,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-thalipeeth-bhajani-multigrain-roasted-flour/pvid/fe170ccf-5722-4a5d-9a76-c469ba4ddb81"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Organic Multigrain Flour",
+      "original_names": {
+        "zepto": "Organic Tattva Organic Multigrain Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 446,
+          "quantity": "5 kg",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/organic-tattva-organic-multigrain-flour/pvid/614e1f29-4932-4360-aa70-df2076d02f9a"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daily Good Corn Flour Starch",
+      "original_names": {
+        "zepto": "Daily Good Corn Flour/Starch"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 39,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/daily-good-corn-flourstarch/pvid/31ad3e8b-e689-48c1-956c-ca36d9fcac2c"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Kulith Peeth Ready Mix Horse Gram Flour",
+      "original_names": {
+        "zepto": "Bhagirathi Kulith Peeth Ready Mix Horse Gram Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 66,
+          "quantity": "200 g",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-kulith-peeth-ready-mix-horse-gram-flour/pvid/7ec0b1de-e2e8-4ec5-b0dd-d96720823ce5"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Upwas Bhajani",
+      "original_names": {
+        "zepto": "Bhagirathi Upwas Bhajani | Farali Mix Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 143,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-upwas-bhajani-farali-mix-flour/pvid/54812e59-eeeb-4199-8536-e88fcaddedb1"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Rajgira Peeth",
+      "original_names": {
+        "zepto": "Bhagirathi Rajgira Peeth | Amaranth Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 61,
+          "quantity": "200 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-rajgira-peeth-amaranth-flour/pvid/19e82710-1f2e-4091-8c03-d493d137681b"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Jowar Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Jowar Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 51,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-jowar-atta/pvid/48081596-f0a9-4165-88cc-eed7b55e3fc6"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Rice Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Rice Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 49,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-rice-atta/pvid/6d2e94fe-44b7-46c1-a8c4-483666e75377"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Jowar Flour",
+      "original_names": {
+        "zepto": "Organic Tattva Jowar Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 65,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/organic-tattva-jowar-flour/pvid/76f03c75-396d-4c1a-89c3-44f50a7a5458"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Nachni Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Nachni Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 64,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-nachni-atta/pvid/75df71bf-9bb7-4bbe-b224-5fcf26c80d0f"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Upwas Bhajani",
+      "original_names": {
+        "zepto": "Bhagirathi Upwas Bhajani | Farali Mix Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 55,
+          "quantity": "200 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-upwas-bhajani-farali-mix-flour/pvid/e25bfc9f-7b7e-494b-90d6-eb79aeea1350"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Ragi Atta",
+      "original_names": {
+        "zepto": "Organic Tattva Ragi Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 70,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/organic-tattva-ragi-atta/pvid/c0781799-72e5-4bb2-8b82-d96ffe9aab6f"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Bajra Flour",
+      "original_names": {
+        "zepto": "Organic Tattva Bajra Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 61,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/organic-tattva-bajra-flour/pvid/a0be231a-63a3-472d-9a1b-d8844053f0c5"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Bajri Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Bajri Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 44,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-bajri-atta/pvid/99c1b270-5d29-4896-b06b-2c8c8ce211d6"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Khaman Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Khaman Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 117,
+          "quantity": "500 g",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-khaman-atta/pvid/63dff1c2-b9db-491f-bea6-d9dadf853b98"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Jiwa 30 Degree Jowari Flour",
+      "original_names": {
+        "zepto": "Jiwa 30 Degree Jowari Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 166,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/jiwa-30-degree-jowari-flour/pvid/5b7bbc76-53e8-4992-aab0-3c4ec8875668"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Humpy Farms Ragi",
+      "original_names": {
+        "zepto": "Humpy Farms Ragi | Nachni Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 102,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/humpy-farms-ragi-nachni-flour/pvid/35f82b2f-d69c-4254-abdc-936bc1fb73c5"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Thalipith Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Thalipith Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 91,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-thalipith-atta/pvid/b85ee3eb-b737-429f-b8f0-04ecc3fcdbb6"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Satyam Rajgira Flour",
+      "original_names": {
+        "zepto": "Satyam Rajgira Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 96,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/satyam-rajgira-flour/pvid/f31df531-ef21-4d42-86b4-a820232f8786"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Jiwa 30 Degree Ragi Flour",
+      "original_names": {
+        "zepto": "Jiwa 30 Degree Ragi Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 166,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/jiwa-30-degree-ragi-flour/pvid/8318b9aa-6e44-49b3-9f96-7f864b8c8539"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Kuttu Atta",
+      "original_names": {
+        "zepto": "Bhagirathi Kuttu Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 26,
+          "quantity": "200 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-kuttu-atta/pvid/e83595c9-24b6-41db-ace9-af331bb05a05"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Jiwa 30 Degree Khapli Wheat Flour",
+      "original_names": {
+        "zepto": "Jiwa 30 Degree Khapli Wheat Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 211,
+          "quantity": "1 kg",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/jiwa-30-degree-khapli-wheat-flour/pvid/1216d6d9-ac4c-473a-a692-7fe6dd3cff97"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Natureland Organics Buckwheat Flour",
+      "original_names": {
+        "zepto": "Natureland Organics Buckwheat Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 156,
+          "quantity": "500 g",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/natureland-organics-buckwheat-flour/pvid/98531ab9-7566-47cb-b9e1-44c5e5f6dcc2"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Rajgira Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Rajgira Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 113,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-rajgira-atta/pvid/4821945e-aa3a-4a0f-8906-052d5d41220d"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Kokos Natural Jowar Atta",
+      "original_names": {
+        "zepto": "Kokos Natural Jowar Atta | Sorghum"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 168,
+          "quantity": "1 kg",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/kokos-natural-jowar-atta-sorghum/pvid/61c8a16a-0d97-4780-a137-1f80623823bd"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Jiwa 30 Degree Jowari Flour",
+      "original_names": {
+        "zepto": "Jiwa 30 Degree Jowari Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 166,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/jiwa-30-degree-jowari-flour/pvid/5b7bbc76-53e8-4992-aab0-3c4ec8875668"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Humpy Farms Ragi",
+      "original_names": {
+        "zepto": "Humpy Farms Ragi | Nachni Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 102,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/humpy-farms-ragi-nachni-flour/pvid/35f82b2f-d69c-4254-abdc-936bc1fb73c5"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Thalipith Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Thalipith Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 91,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-thalipith-atta/pvid/b85ee3eb-b737-429f-b8f0-04ecc3fcdbb6"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Satyam Rajgira Flour",
+      "original_names": {
+        "zepto": "Satyam Rajgira Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 96,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/satyam-rajgira-flour/pvid/f31df531-ef21-4d42-86b4-a820232f8786"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Jiwa 30 Degree Ragi Flour",
+      "original_names": {
+        "zepto": "Jiwa 30 Degree Ragi Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 166,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/jiwa-30-degree-ragi-flour/pvid/8318b9aa-6e44-49b3-9f96-7f864b8c8539"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bhagirathi Kuttu Atta",
+      "original_names": {
+        "zepto": "Bhagirathi Kuttu Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 26,
+          "quantity": "200 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/bhagirathi-kuttu-atta/pvid/e83595c9-24b6-41db-ace9-af331bb05a05"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Jiwa 30 Degree Khapli Wheat Flour",
+      "original_names": {
+        "zepto": "Jiwa 30 Degree Khapli Wheat Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 211,
+          "quantity": "1 kg",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/jiwa-30-degree-khapli-wheat-flour/pvid/1216d6d9-ac4c-473a-a692-7fe6dd3cff97"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Natureland Organics Buckwheat Flour",
+      "original_names": {
+        "zepto": "Natureland Organics Buckwheat Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 156,
+          "quantity": "500 g",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/natureland-organics-buckwheat-flour/pvid/98531ab9-7566-47cb-b9e1-44c5e5f6dcc2"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nutrapoorna Rajgira Atta",
+      "original_names": {
+        "zepto": "Nutrapoorna Rajgira Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 113,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/nutrapoorna-rajgira-atta/pvid/4821945e-aa3a-4a0f-8906-052d5d41220d"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Kokos Natural Jowar Atta",
+      "original_names": {
+        "zepto": "Kokos Natural Jowar Atta | Sorghum"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 168,
+          "quantity": "1 kg",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/kokos-natural-jowar-atta-sorghum/pvid/61c8a16a-0d97-4780-a137-1f80623823bd"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Jiwa 30 Degree Chana Sattu Flour",
+      "original_names": {
+        "zepto": "Jiwa 30 Degree Chana Sattu Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 238,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/jiwa-30-degree-chana-sattu-flour/pvid/d4fbe93c-4f5d-41c6-8a90-6685321d3c9c"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Two Brothers Sattu Atta Gluten Free Non Gmo Stoneground",
+      "original_names": {
+        "zepto": "Two Brothers Sattu Atta Gluten Free, Non-Gmo, Stoneground"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 360,
+          "quantity": "1 kg",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/two-brothers-sattu-atta-gluten-free-non-gmo-stoneground/pvid/9cf2ea4e-b66a-43fc-b33a-9a3c06bb4741"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Earthen Story Organic Jowar Atta",
+      "original_names": {
+        "zepto": "Earthen Story Organic Jowar Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 132,
+          "quantity": "900 g",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/earthen-story-organic-jowar-atta/pvid/3faac475-b8fd-48a5-9862-225ecfb8fd9b"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Humpy Farms Jowar Flour",
+      "original_names": {
+        "zepto": "Humpy Farms Jowar Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 149,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/humpy-farms-jowar-flour/pvid/5eb4fb33-9a1d-4e16-8a23-64819338ff79"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aashirvaad Organic 100 Organic Whole Wheat Atta 0 Maida Combo",
+      "original_names": {
+        "zepto": "Aashirvaad Organic 100% Organic Whole Wheat Atta, 0% Maida Combo"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 578,
+          "quantity": "5 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/aashirvaad-organic-100-organic-whole-wheat-atta-0-maida-combo/pvid/740de9d5-66bc-4f45-8dac-e4f89944461e"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daily Good Besan Gram Flour Chana Besan",
+      "original_names": {
+        "zepto": "Daily Good Besan / Gram Flour / Chana Besan"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 96,
+          "quantity": "1 kg",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/daily-good-besan-gram-flour-chana-besan/pvid/bb0b3235-925d-422c-a63b-034dbe0f0378"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daily Good Jowar Flour Sorghum Millet Combo",
+      "original_names": {
+        "zepto": "Daily Good Jowar Flour / Sorghum Millet Combo"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 84,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/daily-good-jowar-flour-sorghum-millet-combo/pvid/fe4101a8-c1e5-4d4f-98fa-e11752daf9d3"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Makki Atta Maize Flour",
+      "original_names": {
+        "zepto": "Organic Tattva Makki Atta/ Maize Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 57,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/organic-tattva-makki-atta-maize-flour/pvid/7692bef2-525f-4fa0-93ec-53cd8b977620"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Organic Tattva Buckwheat",
+      "original_names": {
+        "zepto": "Organic Tattva Buckwheat | Kuttu Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 88,
+          "quantity": "250 g",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/organic-tattva-buckwheat-kuttu-flour/pvid/a72002bf-b377-4140-8217-64327a6dac25"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Praakritik Natural Singhara Atta",
+      "original_names": {
+        "zepto": "Praakritik Natural Singhara Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 200,
+          "quantity": "500 g",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/praakritik-natural-singhara-atta/pvid/9490e660-7d26-42f5-9f04-7c3c59d4e47f"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Phalada Pure Sure Organic Jowar Flour",
+      "original_names": {
+        "zepto": "Phalada Pure & Sure Organic Jowar Flour"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 131,
+          "quantity": "1 kg",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/phalada-pure-sure-organic-jowar-flour/pvid/846cacd4-cef8-4c45-9b1b-f924d1dcbc89"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Praakritik Organic Sattu Atta",
+      "original_names": {
+        "zepto": "Praakritik Organic Sattu Atta"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 138,
+          "quantity": "500 g",
+          "deliveryTime": "N/A",
+          "image": "",
+          "link": "https://www.zepto.com/pn/praakritik-organic-sattu-atta/pvid/5f3c5334-8ed8-49be-b56e-70da5f22db03"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "24 Mantra Organic Ragi Flour Combo",
+      "original_names": {
+        "zepto": "24 Mantra Organic Ragi Flour Combo"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 122,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/24-mantra-organic-ragi-flour-combo/pvid/5746b287-343c-472e-9422-5391932fe712"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Satyam Jowari Flour Combo",
+      "original_names": {
+        "zepto": "Satyam Jowari Flour Combo"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 144,
+          "quantity": "500 g",
+          "deliveryTime": "10 mins",
+          "image": "",
+          "link": "https://www.zepto.com/pn/satyam-jowari-flour-combo/pvid/b522e1e5-9f3f-49ed-90b3-10c179eacaab"
         }
       },
       "similarity_score": null
