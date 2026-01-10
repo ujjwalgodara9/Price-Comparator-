@@ -60,3 +60,22 @@ Zepto • Swiggy Instamart • BigBasket • Blinkit • Dunzo • Demart Ready 
 - compare display on window
 - Architecture can be async as it gets the data algorithm should start searching and as it gets the pairs in platform start displaying it on website
 - Have to give the merging for quantities too so the search should decrease accross the platforms 
+
+Task - 
+
+UI -
+- Changes acc. to data remove the extra part
+Compare 
+- Price comparing
+Frontend
+- Change in UI for same price
+Scraping
+- Every search saving and flaging not to save
+- Cap on scrapping product
+
+
+Testing - 
+- Similarity matching for name 
+- test the price matching in algorithm after name
+- Test the dataset generation and flagging
+- Test the compare 

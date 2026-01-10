@@ -71,7 +71,7 @@ def parse_product_from_card(raw_text):
     }
 
 
-def scrape_zepto_products(search_query, location=None, headless=True, max_products=50):
+def scrape_zepto_products(search_query, location=None, headless=True, max_products=50, search_debug=False, search_timestamp=None):
     """
     Scrape Zepto products using Playwright
     
@@ -270,13 +270,23 @@ def scrape_zepto_products(search_query, location=None, headless=True, max_produc
             
             # ✅ SAVE JSON FOR DEBUGGING
             try:
-                output_dir = os.path.join(os.path.dirname(__file__), "product_data")
-                os.makedirs(output_dir, exist_ok=True)
+                base_dir = os.path.join(os.path.dirname(__file__), "product_data")
                 
-                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                # Sanitize query for filename
-                safe_query = re.sub(r'[^\w\s-]', '', search_query).strip().replace(' ', '_')[:50]
-                filename = f"zepto_search_{safe_query}_{timestamp}.json"
+                if search_debug and search_timestamp:
+                    # Create timestamped folder for this search
+                    output_dir = os.path.join(base_dir, search_timestamp)
+                    os.makedirs(output_dir, exist_ok=True)
+                    # Sanitize query for filename
+                    safe_query = re.sub(r'[^\w\s-]', '', search_query).strip().replace(' ', '_')[:50]
+                    filename = f"zepto_search_{safe_query}.json"
+                else:
+                    # Use current behavior - overwrite in product_data folder
+                    output_dir = base_dir
+                    os.makedirs(output_dir, exist_ok=True)
+                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                    safe_query = re.sub(r'[^\w\s-]', '', search_query).strip().replace(' ', '_')[:50]
+                    filename = f"zepto_search_{safe_query}_{timestamp}.json"
+                
                 filepath = os.path.join(output_dir, filename)
                 
                 output_data = {

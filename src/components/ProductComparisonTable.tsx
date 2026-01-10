@@ -1,13 +1,26 @@
 import { Product } from '../types/product';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
-import { Button } from './ui/button';
-import { Star, ExternalLink, TrendingDown, TrendingUp, Clock, Truck } from 'lucide-react';
-import { platformNames, platformColors, platformIcons } from '../data/platformData';
+import { ExternalLink, Clock } from 'lucide-react';
+import { platformNames, platformColors } from '../data/platformData';
 
 interface ProductComparisonTableProps {
   products: Product[];
   productName: string;
+}
+
+// Helper function to extract numeric value from quantity string (e.g., "5 kg" -> 5)
+function extractQuantityValue(quantity: string | undefined): number {
+  if (!quantity) return 1;
+  const match = quantity.match(/(\d+(?:\.\d+)?)/);
+  return match ? parseFloat(match[1]) : 1;
+}
+
+// Helper function to calculate price per kg
+function calculatePricePerKg(price: number, quantity: string | undefined): number {
+  const qty = extractQuantityValue(quantity);
+  if (qty === 0) return price;
+  return price / qty;
 }
 
 export function ProductComparisonTable({ products, productName }: ProductComparisonTableProps) {
@@ -15,136 +28,113 @@ export function ProductComparisonTable({ products, productName }: ProductCompari
     return null;
   }
 
+  // Sort products by price (lowest first)
   const sortedProducts = [...products].sort((a, b) => a.price - b.price);
-  const lowestPrice = sortedProducts[0].price;
-  const highestPrice = sortedProducts[sortedProducts.length - 1].price;
+  const cheapestProduct = sortedProducts[0];
+  const cheapestPrice = cheapestProduct.price;
 
-  const getPriceDifference = (price: number) => {
-    const diff = price - lowestPrice;
-    const percent = ((diff / lowestPrice) * 100).toFixed(1);
-    return { diff, percent };
-  };
+  // Get the first product's image (they should all be the same product)
+  const productImage = products[0]?.image || '';
+  const productDescription = products[0]?.description || '';
 
   return (
-    <Card className="mb-8">
-      <CardHeader>
-        <CardTitle className="text-xl">{productName}</CardTitle>
-        <p className="text-sm text-muted-foreground">
-          Compare prices across {products.length} platform{products.length !== 1 ? 's' : ''}
-        </p>
-      </CardHeader>
-      <CardContent>
-        <div className="overflow-x-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {sortedProducts.map((product) => {
-              const { diff, percent } = getPriceDifference(product.price);
-              const isLowest = product.price === lowestPrice;
-              const platformColor = platformColors[product.platform];
-
-              return (
-                <div
-                  key={product.id}
-                  className={`border rounded-lg p-4 ${
-                    isLowest ? 'ring-2 ring-green-500 bg-green-50 dark:bg-green-950' : ''
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <Badge className={platformColor}>
-                      <span className="mr-1">{platformIcons[product.platform]}</span>
-                      {platformNames[product.platform]}
-                    </Badge>
-                    {isLowest && (
-                      <Badge variant="default" className="bg-green-500">
-                        Best Price
-                      </Badge>
-                    )}
-                  </div>
-
-                  <div className="aspect-square w-full bg-muted rounded-lg overflow-hidden mb-3">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400?text=No+Image';
-                      }}
-                    />
-                  </div>
-
-                  <div className="mb-3">
-                    <h3 className="font-semibold text-base line-clamp-2 mb-2">{product.name}</h3>
-                    {product.description && (
-                      <p className="text-xs text-muted-foreground line-clamp-2">{product.description}</p>
-                    )}
-                  </div>
-
-                  <div className="space-y-2 mb-3">
-                    <div className="flex items-center gap-2">
-                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      <span className="text-sm font-medium">{product.rating}</span>
-                      <span className="text-xs text-muted-foreground">
-                        ({product.reviewCount.toLocaleString()})
-                      </span>
-                    </div>
-                    {!product.availability && (
-                      <Badge variant="destructive" className="text-xs">
-                        Out of Stock
-                      </Badge>
-                    )}
-                  </div>
-
-                  <div className="mb-3">
-                    <div className="text-2xl font-bold mb-1">
-                      {product.currency} {product.price.toLocaleString()}
-                    </div>
-                    {product.originalPrice && product.originalPrice > product.price && (
-                      <div className="text-sm text-muted-foreground line-through mb-1">
-                        {product.currency} {product.originalPrice.toLocaleString()}
-                      </div>
-                    )}
-                    {product.deliveryFee && product.deliveryFee > 0 && (
-                      <div className="text-xs text-muted-foreground mb-1">
-                        + {product.currency} {product.deliveryFee.toLocaleString()} delivery
-                      </div>
-                    )}
-                    {!isLowest && diff > 0 && (
-                      <div className="flex items-center gap-1 text-sm text-red-600 mt-1">
-                        <TrendingUp className="h-3 w-3" />
-                        <span>{product.currency} {diff.toLocaleString()} ({percent}%) more</span>
-                      </div>
-                    )}
-                    {isLowest && (
-                      <div className="flex items-center gap-1 text-sm text-green-600 mt-1">
-                        <TrendingDown className="h-3 w-3" />
-                        <span>Lowest price</span>
-                      </div>
-                    )}
-                  </div>
-
-                  {product.deliveryTime && (
-                    <div className="mb-3 flex items-center gap-2 text-sm text-muted-foreground">
-                      <Clock className="h-4 w-4" />
-                      <span>Delivery: {product.deliveryTime}</span>
-                    </div>
-                  )}
-
-                  <Button
-                    className="w-full"
-                    variant={isLowest ? 'default' : 'outline'}
-                    asChild
-                  >
-                    <a href={product.link} target="_blank" rel="noopener noreferrer">
-                      Buy Now
-                      <ExternalLink className="ml-2 h-4 w-4" />
-                    </a>
-                  </Button>
-                </div>
-              );
-            })}
+    <Card className="mb-8 bg-card border">
+      <CardContent className="p-6">
+        {/* Product Header Section */}
+        <div className="flex items-start gap-6 mb-6 pb-6 border-b">
+          {/* Product Image */}
+          <div className="flex-shrink-0">
+            <div className="w-32 h-32 bg-muted rounded-lg overflow-hidden">
+              <img
+                src={productImage}
+                alt={productName}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400?text=No+Image';
+                }}
+              />
+            </div>
           </div>
+
+          {/* Product Info */}
+          <div className="flex-1">
+            <h3 className="text-xl font-semibold mb-2">{productName}</h3>
+            {productDescription && (
+              <p className="text-sm text-muted-foreground line-clamp-2">{productDescription}</p>
+            )}
+          </div>
+        </div>
+
+        {/* Platform Comparison Table */}
+        <div className="space-y-3">
+          {sortedProducts.map((product) => {
+            const isCheapest = product.price === cheapestPrice;
+            const platformColor = platformColors[product.platform];
+            const pricePerKg = calculatePricePerKg(product.price, product.quantity);
+            const quantity = product.quantity || '1 pack';
+
+            return (
+              <div
+                key={product.id}
+                className={`flex items-center gap-4 p-4 rounded-lg border transition-colors ${
+                  isCheapest ? 'bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800' : 'bg-muted/30'
+                }`}
+              >
+                {/* Platform Badge */}
+                <div className="flex-shrink-0">
+                  <Badge className={platformColor} style={{ minWidth: '80px', justifyContent: 'center' }}>
+                    {platformNames[product.platform]}
+                  </Badge>
+                </div>
+
+                {/* Quantity */}
+                <div className="flex-shrink-0 min-w-[120px]">
+                  <div className="text-sm font-medium">{quantity}</div>
+                </div>
+
+                {/* Price */}
+                <div className="flex-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg font-bold">
+                      {product.currency} {product.price.toLocaleString()}
+                    </span>
+                    {product.quantity && (
+                      <span className="text-sm text-muted-foreground">
+                        ({product.currency} {pricePerKg.toFixed(2)}/kg)
+                      </span>
+                    )}
+                    <a
+                      href={product.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Delivery Time */}
+                {product.deliveryTime && (
+                  <div className="flex-shrink-0 flex items-center gap-1 text-sm text-muted-foreground min-w-[100px]">
+                    <Clock className="h-4 w-4" />
+                    <span>{product.deliveryTime}</span>
+                  </div>
+                )}
+
+                {/* Cheapest Badge */}
+                {isCheapest && (
+                  <div className="flex-shrink-0">
+                    <Badge className="bg-green-500 hover:bg-green-600 text-white">
+                      CHEAPEST
+                    </Badge>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </CardContent>
     </Card>
   );
 }
-

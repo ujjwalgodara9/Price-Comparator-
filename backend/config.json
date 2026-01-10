@@ -1,5 +1,6 @@
 {
     "cse_id": "7138b3727b1b04d8f",
+    "search_debug": true,
     "platform": {
         "zepto": {
             "scrape": true,
