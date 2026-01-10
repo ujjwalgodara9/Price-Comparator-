@@ -7,8 +7,8 @@ from playwright.sync_api import sync_playwright
 STORAGE_FOLDER = "product_data"
 os.makedirs(STORAGE_FOLDER, exist_ok=True)
 
-def set_location(page, city_name):
-    print(f"Setting location to: {city_name}")
+def set_location(page, location_name):
+    print(f"Setting location to: {location_name}")
     address_header = page.get_by_test_id("user-address")
     address_header.wait_for(state="visible")
     address_header.click()
@@ -17,7 +17,7 @@ def set_location(page, city_name):
     search_container.wait_for(state="visible")
 
     search_input = search_container.locator("input")
-    search_input.fill(city_name)
+    search_input.fill(location_name)
 
     results_container = page.get_by_test_id("address-search-container")
     first_result = results_container.get_by_test_id("address-search-item").first
@@ -103,7 +103,7 @@ def save_to_timestamped_folder(data, platform_name):
     print(f"File: {json_filename}")
     return json_path
 
-def run_zepto_flow(city, product_name):
+def run_zepto_flow(product_name, location):
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(
@@ -115,7 +115,7 @@ def run_zepto_flow(city, product_name):
             page.goto("https://www.zepto.com", wait_until="networkidle")
             
             # Location
-            set_location(page, city)
+            set_location(page, location)
             
             # Search and Scroll
             search_and_scroll(page, product_name)
@@ -133,5 +133,10 @@ def run_zepto_flow(city, product_name):
         finally:
             browser.close()
 
-# Example Usage
-run_zepto_flow("Bandra", "Ghee")
+# # Example Usage
+# run_zepto_flow("Bandra", "Ghee")
+
+
+# For standalone script execution
+if __name__ == "__main__":
+    run_zepto_flow(search_query="atta", location="Mumbai", headless=True, max_products=50)

@@ -17,7 +17,7 @@ def handle_popups(page):
     except:
         pass
 
-def set_blinkit_location(page, city_name):
+def set_blinkit_location(page, location_name):
     handle_popups(page)
     
     # 1. Click on Location Bar auto appear hence commented
@@ -35,7 +35,7 @@ def set_blinkit_location(page, city_name):
     search_input.click() 
     
     # Use press_sequentially to ensure React triggers its search results correctly
-    search_input.press_sequentially(city_name, delay=100) 
+    search_input.press_sequentially(location_name, delay=100) 
     
     # 3. Click first result
     print("Selecting location result...")
@@ -144,7 +144,7 @@ def save_to_timestamped_folder(data, platform_name):
 
 
 # --- MAIN EXECUTION ---
-def run_blinkit_flow(city, product):
+def run_blinkit_flow(product, location):
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         # Use a standard Chrome User-Agent
@@ -156,7 +156,7 @@ def run_blinkit_flow(city, product):
         try:
             page.goto("https://blinkit.com/", wait_until="domcontentloaded")
             
-            set_blinkit_location(page, city)
+            set_blinkit_location(page, location)
             search_blinkit_products(page, product)
             
             final_list = extract_blinkit_data(page)
@@ -166,4 +166,4 @@ def run_blinkit_flow(city, product):
             browser.close()
 
 if __name__ == "__main__":
-    run_blinkit_flow("Mumbai", "Atta")
+    run_blinkit_flow(product="Ghee", location="Mumbai", headless=True, max_products=50)

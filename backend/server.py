@@ -19,8 +19,8 @@ import requests
 import json
 import uuid
 import os
-from ecommerce_platform.zepto_itemlist import scrape_zepto_products
-from ecommerce_platform.blinkit_itemlist import scrape_blinkit_products
+from ecommerce_platform.zepto import run_zepto_flow
+from ecommerce_platform.blinkit import run_blinkit_flow
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -183,7 +183,7 @@ def scrape_zepto(query, location, platform_config=None):
         print(f'[Zepto] Starting scrape for query: "{query}" (headless={headless})')
         
         # Use the Playwright-based scraper from zepto_itemlist
-        products = scrape_zepto_products(
+        products = run_zepto_flow(
             search_query=query,
             location=location,
             headless=headless,
@@ -232,7 +232,7 @@ def scrape_blinkit(query, location, platform_config=None):
         print(f'[Blinkit] Starting scrape for query: "{query}" (headless={headless})')
         
         # Use the Playwright-based scraper from blinkit_itemlist
-        products = scrape_blinkit_products(
+        products = run_blinkit_flow(
             search_query=query,
             location=location,
             headless=headless,
