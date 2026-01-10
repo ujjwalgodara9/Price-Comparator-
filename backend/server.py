@@ -19,6 +19,11 @@ import requests
 import json
 import uuid
 import os
+import threading
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from ecommerce_platform.zepto import run_zepto_flow
+from ecommerce_platform.blinkit import run_blinkit_flow
 from datetime import datetime
 from ecommerce_platform.zepto_itemlist import scrape_zepto_products
 from ecommerce_platform.blinkit_itemlist import scrape_blinkit_products
@@ -88,7 +93,7 @@ mock_products = {
 
 @app.route('/api/search', methods=['POST'])
 def search_all_platforms():
-    """Search endpoint - searches across all platforms"""
+    """Search endpoint - searches across all platforms in parallel"""
     try:
         # Get request data
         if not request.is_json:
@@ -115,6 +120,33 @@ def search_all_platforms():
         # Store products by platform for comparison
         products_by_platform = {}
         
+        # Run all platforms in parallel using ThreadPoolExecutor
+        print(f'[API] Starting parallel search for {len(platforms)} platform(s)')
+        start_time = time.time()
+        
+        with ThreadPoolExecutor(max_workers=len(platforms)) as executor:
+            # Submit all tasks
+            future_to_platform = {
+                executor.submit(search_platform, platform, query, location): platform
+                for platform in platforms
+            }
+            
+            # Wait for all to complete and collect results
+            for future in as_completed(future_to_platform):
+                platform = future_to_platform[future]
+                try:
+                    products = future.result()  # This waits for the result
+                    # Ensure products is a list before processing
+                    if products is None:
+                        products = []
+                    print(f'[API] ✓ Platform {platform} returned {len(products)} products')
+                    all_products.extend(products)
+                except Exception as error:
+                    print(f'[API] ✗ Error searching {platform}: {error}')
+                    import traceback
+                    traceback.print_exc()
+                    # Continue with other platforms even if one fails
+                    continue
         # Search each platform
         for platform in platforms:
             try:
@@ -130,6 +162,9 @@ def search_all_platforms():
                 # Continue with other platforms even if one fails
                 continue
         
+        elapsed = time.time() - start_time
+        print(f'[API] Total products found: {len(all_products)} (completed in {elapsed:.2f}s)')
+        return jsonify({'products': all_products, 'execution_time': elapsed})
         print(f'[API] Total products found: {len(all_products)}')
         
         # Automatically run comparison after search
@@ -394,14 +429,19 @@ def scrape_zepto(query, location, platform_config=None, search_timestamp=None):
         print(f'[Zepto] Starting scrape for query: "{query}" (headless={headless})')
         
         # Use the Playwright-based scraper from zepto_itemlist
-        products = scrape_zepto_products(
-            search_query=query,
-            location=location,
+        # JSON saving is handled within run_zepto_flow
+        products = run_zepto_flow(
+            product_name=query,
+            location=location["city"],
             headless=headless,
             max_products=50,
             search_debug=SEARCH_DEBUG,
             search_timestamp=search_timestamp
         )
+        
+        # Ensure products is a list
+        if products is None:
+            products = []
         
         print(f'[Zepto] Scrape completed: Found {len(products)} products for query "{query}"')
         return products
@@ -445,14 +485,19 @@ def scrape_blinkit(query, location, platform_config=None, search_timestamp=None)
         print(f'[Blinkit] Starting scrape for query: "{query}" (headless={headless})')
         
         # Use the Playwright-based scraper from blinkit_itemlist
-        products = scrape_blinkit_products(
-            search_query=query,
-            location=location,
+        # JSON saving is handled within run_blinkit_flow
+        products = run_blinkit_flow(
+            product_name=query,
+            location=location["city"],
             headless=headless,
             max_products=50,
             search_debug=SEARCH_DEBUG,
             search_timestamp=search_timestamp
         )
+        
+        # Ensure products is a list
+        if products is None:
+            products = []
         
         print(f'[Blinkit] Scrape completed: Found {len(products)} products for query "{query}"')
         return products

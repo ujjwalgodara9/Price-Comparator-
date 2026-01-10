@@ -9,11 +9,11 @@ os.makedirs(STORAGE_FOLDER, exist_ok=True)
 
 def set_location(page, location_name):
     print(f"Setting location to: {location_name}")
-    address_header = page.get_by_test_id("user-address")
-    address_header.wait_for(state="visible")
-    address_header.click()
+    # address_header = page.get_by_test_id("user-address")
+    # address_header.wait_for(state="visible")
+    # address_header.click()
 
-    search_container = page.get_by_test_id("address-search-input")
+    search_container = page.get_by_test_id("search-location")
     search_container.wait_for(state="visible")
 
     search_input = search_container.locator("input")
@@ -103,30 +103,30 @@ def save_to_timestamped_folder(data, platform_name):
     print(f"File: {json_filename}")
     return json_path
 
-def run_zepto_flow(product_name, location, headless=True, max_products=50):
+def run_instamart_flow():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=headless)
+        browser = p.chromium.launch(headless=False)
         context = browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         )
         page = context.new_page()
 
         try:
-            page.goto("https://www.zepto.com", wait_until="networkidle")
+            page.goto("https://www.swiggy.com/instamart/", timeout=6000)
             
             # Location
-            set_location(page, location)
+            set_location(page, 'mumbai')
             
             # Search and Scroll
-            search_and_scroll(page, product_name)
+            search_and_scroll(page, 'coffee')
             
-            # Scrape
-            final_data_list = extract_product_list(page)
+            # # Scrape
+            # final_data_list = extract_product_list(page)
 
-            # Save to File
-            final_saved_path = save_to_timestamped_folder(final_data_list, "zepto")
+            # # Save to File
+            # final_saved_path = save_to_timestamped_folder(final_data_list, "zepto")
 
-            return final_data_list
+            # return final_data_list
 
         except Exception as e:
             print(f"Error: {e}")
@@ -139,4 +139,4 @@ def run_zepto_flow(product_name, location, headless=True, max_products=50):
 
 # For standalone script execution
 if __name__ == "__main__":
-    run_zepto_flow(product_name="atta", location="Mumbai", headless=True, max_products=50)
+    run_instamart_flow()
