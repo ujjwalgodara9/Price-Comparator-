@@ -76,31 +76,40 @@ def extract_blinkit_data(page):
     """Fast extraction using JS evaluate for React structure."""
     extraction_script = """
         () => {
-        // Find all parent containers
         const items = document.querySelectorAll('.tw-relative.tw-flex');
         
         return Array.from(items).map(item => {
-            // 1. Identify the info box
-            const infoBox = item.querySelector('.tw-mb-2.tw-flex.tw-flex-col.tw-text-400');
+            // --- DEBUGGING LOGIC ---
+            // Try to find the ID in 3 different ways common in React apps
+            const roleBtn = item.querySelector('[role="button"]');
+            const anyWithId = item.querySelector('[id]');
+            const parentId = item.id; // Sometimes the parent itself has the ID
+
+            const productId = (roleBtn && roleBtn.id) || (anyWithId && anyWithId.id) || parentId || null;
             
-            // 2. Extract Name (Higher emphasis class)
-            const nameEl = infoBox ? infoBox.querySelector('.tw-text-300.tw-font-semibold.tw-line-clamp-2') : null;
-            
-            // 3. Extract Description (The medium font class you specified)
-            // FIX: Added .innerText here
-            const descEl = infoBox ? infoBox.querySelector('.tw-text-200.tw-font-medium.tw-line-clamp-1') : null;
-            
-            // 4. Time extraction (Looking for the bold uppercase div)
-            const timeEl = item.querySelector('.tw-text-050.tw-font-bold.tw-uppercase');
-            
-            // 5. Price extraction
+            // --- DATA EXTRACTION ---
+            const nameEl = item.querySelector('.tw-text-300.tw-font-semibold');
+            const productName = nameEl ? nameEl.innerText.trim() : "";
+
+            const slug = productName
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+
+            const productLink = productId 
+                ? `https://blinkit.com/prn/${slug}/prid/${productId}` 
+                : "N/A";
+
             const priceEl = item.querySelector('.tw-text-200.tw-font-semibold');
+            const descEl = item.querySelector('.tw-text-200.tw-font-medium.tw-line-clamp-1');
+            const timeEl = item.querySelector('.tw-text-050.tw-font-bold.tw-uppercase');
 
             return {
-                "product_name": nameEl ? nameEl.innerText.trim() : "N/A",
-                "description": descEl ? descEl.innerText.trim() : "N/A",
+                "product_name": productName || "N/A",
                 "price": priceEl ? priceEl.innerText.trim() : "N/A",
-                "delivery_time": timeEl ? timeEl.innerText.trim() : "N/A"
+                "description": descEl ? descEl.innerText.trim() : "N/A",
+                "delivery_time": timeEl ? timeEl.innerText.trim() : "N/A",
+                "product_link": productLink,
             };
         }).filter(p => p.product_name !== "N/A");
     }
@@ -138,7 +147,10 @@ def save_to_timestamped_folder(data, platform_name):
 def run_blinkit_flow(city, product):
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        context = browser.new_context()
+        # Use a standard Chrome User-Agent
+        user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
+        context = browser.new_context(user_agent=user_agent)
+        context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
         page = context.new_page()
         
         try:
