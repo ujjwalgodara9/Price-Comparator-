@@ -19,6 +19,9 @@ import requests
 import json
 import uuid
 import os
+import threading
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from ecommerce_platform.zepto import run_zepto_flow
 from ecommerce_platform.blinkit import run_blinkit_flow
 
@@ -80,7 +83,7 @@ mock_products = {
 
 @app.route('/api/search', methods=['POST'])
 def search_all_platforms():
-    """Search endpoint - searches across all platforms"""
+    """Search endpoint - searches across all platforms in parallel"""
     try:
         # Get request data
         if not request.is_json:
@@ -98,22 +101,34 @@ def search_all_platforms():
         
         all_products = []
         
-        # Search each platform
-        for platform in platforms:
-            try:
-                print(f'[API] Searching platform: {platform}')
-                products = search_platform(platform, query, location)
-                print(f'[API] Platform {platform} returned {len(products)} products')
-                all_products.extend(products)
-            except Exception as error:
-                print(f'[API] Error searching {platform}: {error}')
-                import traceback
-                traceback.print_exc()
-                # Continue with other platforms even if one fails
-                continue
+        # Run all platforms in parallel using ThreadPoolExecutor
+        print(f'[API] Starting parallel search for {len(platforms)} platform(s)')
+        start_time = time.time()
         
-        print(f'[API] Total products found: {len(all_products)}')
-        return jsonify({'products': all_products})
+        with ThreadPoolExecutor(max_workers=len(platforms)) as executor:
+            # Submit all tasks
+            future_to_platform = {
+                executor.submit(search_platform, platform, query, location): platform
+                for platform in platforms
+            }
+            
+            # Wait for all to complete and collect results
+            for future in as_completed(future_to_platform):
+                platform = future_to_platform[future]
+                try:
+                    products = future.result()  # This waits for the result
+                    print(f'[API] ✓ Platform {platform} returned {len(products)} products')
+                    all_products.extend(products)
+                except Exception as error:
+                    print(f'[API] ✗ Error searching {platform}: {error}')
+                    import traceback
+                    traceback.print_exc()
+                    # Continue with other platforms even if one fails
+                    continue
+        
+        elapsed = time.time() - start_time
+        print(f'[API] Total products found: {len(all_products)} (completed in {elapsed:.2f}s)')
+        return jsonify({'products': all_products, 'execution_time': elapsed})
     except Exception as error:
         print(f'[API] Search error: {error}')
         import traceback
@@ -184,8 +199,8 @@ def scrape_zepto(query, location, platform_config=None):
         
         # Use the Playwright-based scraper from zepto_itemlist
         products = run_zepto_flow(
-            search_query=query,
-            location=location,
+            product_name=query,
+            location=location["city"],
             headless=headless,
             max_products=50
         )
@@ -233,8 +248,8 @@ def scrape_blinkit(query, location, platform_config=None):
         
         # Use the Playwright-based scraper from blinkit_itemlist
         products = run_blinkit_flow(
-            search_query=query,
-            location=location,
+            product_name=query,
+            location=location["city"],
             headless=headless,
             max_products=50
         )

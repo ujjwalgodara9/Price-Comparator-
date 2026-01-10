@@ -144,9 +144,9 @@ def save_to_timestamped_folder(data, platform_name):
 
 
 # --- MAIN EXECUTION ---
-def run_blinkit_flow(product, location):
+def run_blinkit_flow(product_name, location, headless=True, max_products=50):
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(headless=headless)
         # Use a standard Chrome User-Agent
         user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
         context = browser.new_context(user_agent=user_agent)
@@ -157,7 +157,7 @@ def run_blinkit_flow(product, location):
             page.goto("https://blinkit.com/", wait_until="domcontentloaded")
             
             set_blinkit_location(page, location)
-            search_blinkit_products(page, product)
+            search_blinkit_products(page, product_name)
             
             final_list = extract_blinkit_data(page)
             save_to_timestamped_folder(final_list, "blinkit")
@@ -166,4 +166,4 @@ def run_blinkit_flow(product, location):
             browser.close()
 
 if __name__ == "__main__":
-    run_blinkit_flow(product="Ghee", location="Mumbai", headless=True, max_products=50)
+    run_blinkit_flow(product_name="Ghee", location="Mumbai", headless=True, max_products=50)
