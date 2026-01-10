@@ -55,6 +55,9 @@ def extract_product_list(page):
     () => {
         const items = document.querySelectorAll('.B4vNQ');
         return Array.from(items).map(item => {
+            const relativeLink = item.getAttribute('href');
+            const fullLink = relativeLink ? `https://www.zepto.com${relativeLink}` : "N/A";
+
             const priceEl = item.querySelector('span.cptQT7');
             const nameEl = item.querySelector('div.cQAjo6.ch5GgP');
             const descEl = item.querySelector('div.cyNbxx.c0ZFba span');
@@ -64,7 +67,8 @@ def extract_product_list(page):
                 "product_name": nameEl ? nameEl.innerText.trim() : "N/A",
                 "price": priceEl ? priceEl.innerText.trim() : "N/A",
                 "description": descEl ? descEl.innerText.trim() : "N/A",
-                "delivery_time": timeEl ? timeEl.innerText.trim() : "N/A"
+                "delivery_time": timeEl ? timeEl.innerText.trim() : "N/A",
+                "product_link": fullLink
             };
         });
     }
@@ -101,7 +105,7 @@ def save_to_timestamped_folder(data, platform_name):
 
 def run_zepto_flow(city, product_name):
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(headless=False)
         context = browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         )
@@ -130,4 +134,4 @@ def run_zepto_flow(city, product_name):
             browser.close()
 
 # Example Usage
-run_zepto_flow("Mumbai", "Atta")
+run_zepto_flow("Bandra", "Ghee")
