@@ -103,9 +103,9 @@ def save_to_timestamped_folder(data, platform_name):
     print(f"File: {json_filename}")
     return json_path
 
-def run_zepto_flow(product_name, location):
+def run_zepto_flow(product_name, location, headless=True, max_products=50):
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(headless=headless)
         context = browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         )
@@ -139,4 +139,4 @@ def run_zepto_flow(product_name, location):
 
 # For standalone script execution
 if __name__ == "__main__":
-    run_zepto_flow(search_query="atta", location="Mumbai", headless=True, max_products=50)
+    run_zepto_flow(product_name="atta", location="Mumbai", headless=True, max_products=50)
