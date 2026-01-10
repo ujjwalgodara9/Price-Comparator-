@@ -117,6 +117,9 @@ def search_all_platforms():
                 platform = future_to_platform[future]
                 try:
                     products = future.result()  # This waits for the result
+                    # Ensure products is a list before processing
+                    if products is None:
+                        products = []
                     print(f'[API] ✓ Platform {platform} returned {len(products)} products')
                     all_products.extend(products)
                 except Exception as error:
@@ -134,32 +137,6 @@ def search_all_platforms():
         import traceback
         traceback.print_exc()
         return jsonify({'error': f'Failed to search products: {str(error)}'}), 500
-
-
-@app.route('/api/search/<platform>', methods=['POST'])
-def search_platform_endpoint(platform):
-    """Platform-specific search endpoint"""
-    try:
-        if not request.is_json:
-            return jsonify({'error': 'Request must be JSON'}), 400
-        
-        data = request.get_json() or {}
-        query = data.get('query', '')
-        location = data.get('location', {})
-        
-        print(f'[API] Platform-specific search: platform={platform}, query="{query}"')
-        
-        if not query or not query.strip():
-            return jsonify({'error': 'Query is required'}), 400
-        
-        products = search_platform(platform, query, location)
-        print(f'[API] Platform {platform} returned {len(products)} products')
-        return jsonify({'products': products})
-    except Exception as error:
-        print(f'[API] Error searching {platform}: {error}')
-        import traceback
-        traceback.print_exc()
-        return jsonify({'error': f'Failed to search on {platform}: {str(error)}'}), 500
 
 
 def search_platform(platform, query, location):
@@ -198,12 +175,17 @@ def scrape_zepto(query, location, platform_config=None):
         print(f'[Zepto] Starting scrape for query: "{query}" (headless={headless})')
         
         # Use the Playwright-based scraper from zepto_itemlist
+        # JSON saving is handled within run_zepto_flow
         products = run_zepto_flow(
             product_name=query,
             location=location["city"],
             headless=headless,
             max_products=50
         )
+        
+        # Ensure products is a list
+        if products is None:
+            products = []
         
         print(f'[Zepto] Scrape completed: Found {len(products)} products for query "{query}"')
         return products
@@ -247,12 +229,17 @@ def scrape_blinkit(query, location, platform_config=None):
         print(f'[Blinkit] Starting scrape for query: "{query}" (headless={headless})')
         
         # Use the Playwright-based scraper from blinkit_itemlist
+        # JSON saving is handled within run_blinkit_flow
         products = run_blinkit_flow(
             product_name=query,
             location=location["city"],
             headless=headless,
             max_products=50
         )
+        
+        # Ensure products is a list
+        if products is None:
+            products = []
         
         print(f'[Blinkit] Scrape completed: Found {len(products)} products for query "{query}"')
         return products
