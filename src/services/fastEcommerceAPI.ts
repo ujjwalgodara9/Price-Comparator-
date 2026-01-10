@@ -11,7 +11,8 @@ export class FastEcommerceAPI {
 
   /**
    * Search products across all selected fast e-commerce platforms
-   * First tries to get comparison data, then falls back to search API
+   * Always calls search API which triggers scraping, comparison, and returns results
+   * The backend automatically scrapes, compares, and returns comparison results
    */
   static async searchProducts(
     query: string,
@@ -31,36 +32,28 @@ export class FastEcommerceAPI {
     }
 
     try {
-      // First, try to get comparison data from compare.json
-      console.log('[FastEcommerceAPI] Attempting to fetch comparison data...');
-      const compareProducts = await this.getCompareData();
+      // Always call search API which triggers:
+      // 1. Scraping from all platforms
+      // 2. Automatic comparison
+      // 3. Saving to compare.json
+      // 4. Returning comparison results directly
+      console.log('[FastEcommerceAPI] Calling search API (will scrape, compare, and return results)...');
+      const products = await this.searchViaBackendAPI(query, location, platforms);
       
-      if (compareProducts && compareProducts.length > 0) {
-        console.log(`[FastEcommerceAPI] Found ${compareProducts.length} products from compare.json`);
+      if (products && products.length > 0) {
+        console.log(`[FastEcommerceAPI] Received ${products.length} products from search API`);
         // Filter by selected platforms
-        return compareProducts.filter(p => platforms.includes(p.platform));
+        return products.filter(p => platforms.includes(p.platform));
       }
       
-      console.log('[FastEcommerceAPI] No comparison data found, using search API...');
-    } catch (error) {
-      console.log('[FastEcommerceAPI] Could not load comparison data, using search API:', error);
-    }
-
-    try {
-      // Fallback to search API
-      if (this.API_BASE_URL && this.API_BASE_URL !== '/api') {
-        console.log('[FastEcommerceAPI] Using backend API:', this.API_BASE_URL);
-        return await this.searchViaBackendAPI(query, location, platforms);
-      }
-
-      // If no backend URL configured, try relative /api (proxy mode)
-      console.log('[FastEcommerceAPI] Using relative API path (proxy mode)');
-      return await this.searchViaBackendAPI(query, location, platforms);
+      console.log('[FastEcommerceAPI] No products found in search results');
+      return [];
+      
     } catch (error) {
       console.error('[FastEcommerceAPI] Error searching products:', error);
-      // Fallback to direct scraping only if API fails
-      console.log('[FastEcommerceAPI] Attempting fallback to PlatformScraper');
+      // Fallback to PlatformScraper if API fails
       try {
+        console.log('[FastEcommerceAPI] Fallback: attempting direct scraping');
         return await PlatformScraper.searchProducts(query, location, platforms);
       } catch (fallbackError) {
         console.error('[FastEcommerceAPI] Fallback also failed:', fallbackError);

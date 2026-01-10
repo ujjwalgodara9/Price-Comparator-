@@ -91,11 +91,52 @@ def calculate_similarity(name1: str, name2: str) -> float:
     return similarity
 
 
+def compare_quantities(qty1: Optional[str], qty2: Optional[str]) -> bool:
+    """
+    Compare two quantity strings to see if they represent the same quantity
+    Returns True if quantities match or are similar
+    """
+    if not qty1 or not qty2:
+        return True  # If one doesn't have quantity, don't reject the match
+    
+    # Extract numeric values and units
+    def parse_quantity(qty_str: str):
+        # Extract number and unit
+        match = re.search(r'(\d+(?:\.\d+)?)\s*(kg|g|gm|gram|kilograms?|grams?|pack|pcs?|pieces?)', qty_str, re.IGNORECASE)
+        if match:
+            value = float(match.group(1))
+            unit = match.group(2).lower()
+            # Normalize units
+            if unit in ['kg', 'kilogram', 'kilograms']:
+                return (value, 'kg')
+            elif unit in ['g', 'gm', 'gram', 'grams']:
+                return (value / 1000, 'kg')  # Convert to kg for comparison
+            elif unit in ['pack', 'pcs', 'pieces', 'pc']:
+                return (value, 'pack')
+        return None
+    
+    qty1_parsed = parse_quantity(qty1)
+    qty2_parsed = parse_quantity(qty2)
+    
+    if not qty1_parsed or not qty2_parsed:
+        return True  # If we can't parse, don't reject the match
+    
+    value1, unit1 = qty1_parsed
+    value2, unit2 = qty2_parsed
+    
+    # Quantities match if they have the same unit and same value
+    if unit1 == unit2 and abs(value1 - value2) < 0.01:  # Allow small floating point differences
+        return True
+    
+    return False
+
+
 def find_matching_products(products1: List[Dict], products2: List[Dict], 
                           similarity_threshold: float = 0.6) -> List[Dict]:
     """
     Find matching products between two product lists
     Returns a list of matched products with platform-specific data
+    First matches by name similarity, then checks quantity matching
     """
     matched_products = []
     used_indices_1 = set()
@@ -105,19 +146,51 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
     for i, product1 in enumerate(products1):
         if i in used_indices_1:
             continue
+        
+        # Extract quantity from product1 name
+        qty1 = extract_quantity(product1['name'])
             
         best_match_idx = None
         best_similarity = 0
+        best_quantity_match = False
+        
+        # First pass: Find all potential matches and prioritize quantity matches
+        potential_matches = []
         
         for j, product2 in enumerate(products2):
             if j in used_indices_2:
                 continue
             
+            # First check name similarity
             similarity = calculate_similarity(product1['name'], product2['name'])
             
-            if similarity > best_similarity and similarity >= similarity_threshold:
-                best_similarity = similarity
-                best_match_idx = j
+            if similarity >= similarity_threshold:
+                # Extract quantity from product2 name
+                qty2 = extract_quantity(product2['name'])
+                
+                # Check if quantities match
+                quantity_matches = compare_quantities(qty1, qty2)
+                
+                # Store potential match with metadata
+                potential_matches.append({
+                    'index': j,
+                    'similarity': similarity,
+                    'quantity_matches': quantity_matches,
+                    'boosted_similarity': min(1.0, similarity + 0.2) if quantity_matches else similarity
+                })
+        
+        # Now select the best match: prioritize quantity matches, then by similarity
+        if potential_matches:
+            # Sort: quantity matches first, then by boosted similarity
+            potential_matches.sort(
+                key=lambda x: (not x['quantity_matches'], -x['boosted_similarity']),
+                reverse=False
+            )
+            
+            best_match = potential_matches[0]
+            best_match_idx = best_match['index']
+            best_similarity = best_match['similarity']  # Use original similarity for score
+            best_quantity_match = best_match['quantity_matches']
         
         if best_match_idx is not None:
             # Found a match
@@ -125,8 +198,7 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
             used_indices_1.add(i)
             used_indices_2.add(best_match_idx)
             
-            # Extract quantity from names
-            qty1 = extract_quantity(product1['name'])
+            # Extract quantities (we already have qty1, just extract qty2)
             qty2 = extract_quantity(product2['name'])
             
             # Use the more normalized name as the product name
