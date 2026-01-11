@@ -46,13 +46,13 @@ def set_blinkit_location(page, location_name):
     first_result = page.locator('.address-container-v1 [class*="LocationSearchList__LocationListContainer"]').first
     
     # Ensure it's ready for interaction
-    first_result.wait_for(state="visible", timeout=15000)
+    first_result.wait_for(state="visible", timeout=10000)
     first_result.click()
     
     # 4. Final stabilizing wait
     print("Location set. Refreshing catalog...")
     # page.wait_for_load_state("domcontentloaded")
-    time.sleep(5)
+    time.sleep(2)
 
 def search_blinkit_products(page, query):
     handle_popups(page)
@@ -65,15 +65,15 @@ def search_blinkit_products(page, query):
     time.sleep(2)
     page.keyboard.type(query)
     page.keyboard.press("Enter")
+    page.evaluate("document.body.style.zoom = '50%'")
     # page.wait_for_load_state("networkidle")
-    time.sleep(2)
+    time.sleep(3)
     
-    # 2. Scroll Loop (5 times, 4s wait)
     for i in range(5):
         handle_popups(page)
         print(f"Scrolling Blinkit... ({i+1}/5)")
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-        time.sleep(4)
+        time.sleep(3)
 
 def extract_blinkit_data(page):
     """Fast extraction using JS evaluate for React structure."""
@@ -150,6 +150,7 @@ def save_to_timestamped_folder(data, platform_name, run_parent_folder=None):
 
 # --- MAIN EXECUTION ---
 def run_blinkit_flow(product_name, location, headless=True, max_products=50, run_parent_folder=None, platform_name='blinkit'):
+    start_time = time.time()
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless)
         # Use a standard Chrome User-Agent
@@ -168,6 +169,8 @@ def run_blinkit_flow(product_name, location, headless=True, max_products=50, run
             save_to_timestamped_folder(final_list, platform_name, run_parent_folder=run_parent_folder)
             
             # Return the products list so server.py can use them
+            time_end = time.time()
+            print(f"--- Blinkit Total Time Taken: {time_end - start_time:.2f}) seconds ---")
             return final_list
             
         except Exception as e:
@@ -179,4 +182,4 @@ def run_blinkit_flow(product_name, location, headless=True, max_products=50, run
             browser.close()
 
 if __name__ == "__main__":
-    run_blinkit_flow(product_name="Ghee", location="Mumbai", headless=True, max_products=50)
+    run_blinkit_flow(product_name="atta", location="Mumbai", headless=False, max_products=50)
