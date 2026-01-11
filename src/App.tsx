@@ -142,7 +142,18 @@ function App() {
               </div>
             ) : !loading ? (
               Array.from(filteredGroupedProducts.entries())
-                .sort(([nameA], [nameB]) => nameA.localeCompare(nameB, undefined, { sensitivity: 'base', numeric: true }))
+                .sort(([nameA], [nameB]) => {
+                  // Custom sort: letters before numbers
+                  const startsWithLetterA = /^[a-zA-Z]/.test(nameA);
+                  const startsWithLetterB = /^[a-zA-Z]/.test(nameB);
+                  
+                  // If one starts with letter and other with number, letter comes first
+                  if (startsWithLetterA && !startsWithLetterB) return -1;
+                  if (!startsWithLetterA && startsWithLetterB) return 1;
+                  
+                  // Both start with same type (letter or number), sort normally
+                  return nameA.localeCompare(nameB, undefined, { sensitivity: 'base', numeric: true });
+                })
                 .map(([productName, productList]) => (
                   <ProductComparisonTable
                     key={productName}
