@@ -7,22 +7,32 @@ from playwright.sync_api import sync_playwright
 STORAGE_FOLDER = "product_data"
 os.makedirs(STORAGE_FOLDER, exist_ok=True)
 
+def setup_automatic_handlers(page):
+    # Defining the complex locator exactly as you requested
+    try_again_button = page.locator('button.sc-iGgWBj.gVfwdV.hIVl0').filter(
+        has=page.locator('span.sc-gEvEer.jvMXGN div.sc-gEvEer.eMfGmB', has_text="Try Again")
+    )
+    
+    def recover_from_error():
+        try:
+            print("--- Error Interceptor Triggered ---")
+            # Force a small wait to ensure the button is actually clickable
+            try_again_button.wait_for(state="visible", timeout=5000)
+            try_again_button.click()
+            print("Successfully clicked 'Try Again'")
+            
+            # Wait for the page to actually start loading content again
+            page.wait_for_load_state("domcontentloaded")
+        except Exception as e:
+            print(f"Handler failed to click button: {e}")
+
+    # Register the handler
+    page.add_locator_handler(try_again_button, recover_from_error)
 
 
-def handle_popups(page):
-    """Closes the Download App modal if it appears."""
-    error_button = page.locator(".sc-gEvEer.eMfGmB")
-    try:
-        # Wait for a short time to see if the error page appears
-        # If it's not there, it will move to the 'except' block
-        error_button.wait_for(state="visible", timeout=1000)
-        print("Error page detected. Clicking retry button...")
-        error_button.click()
-    except:
-        print("No error page detected. Continuing with normal flow.")
-
+    
 def set_location(page, location_name):
-    handle_popups(page)
+    
     print(f"Setting location to: {location_name}")
     # this is commented for automation browser popup already opens location selector
     # address_header = page.get_by_test_id("address-line")
@@ -40,15 +50,9 @@ def set_location(page, location_name):
     # We use a generic locator since the DOM probably updated
     page.locator("input[placeholder*='Search']").fill(location_name)
 
-    # 3. Wait for results and click the first suggestion
-    # Swiggy location suggestions usually have a specific icon or class
-    # 1. Use the dot (.) for the class selector
-    # 2. Add a wait for the suggestions to actually populate
     first_result = page.locator("._11n32").first
-
-    # Increase timeout slightly—sometimes location APIs take a second to respond
     first_result.wait_for(state="visible")
-    page.wait_for_timeout(4000)
+    page.wait_for_timeout(2000)
     first_result.click()
     # Wait for catalog to transition
     page.wait_for_load_state("domcontentloaded")
@@ -56,11 +60,12 @@ def set_location(page, location_name):
     page.locator(".sc-gEvEer.jvMXGN").click()
 
 def search_and_scroll(page, product_query):
-    handle_popups(page)
+    page.wait_for_timeout(2000)
+    
     print(f"Searching for: {product_query}")
     
     # 1. Click search and type
-    page.wait_for_timeout(5000)
+    page.wait_for_timeout(2000)
     page.get_by_test_id("search-container").click()
     page.locator("input._18fRo").click()
     page.wait_for_timeout(2000)
@@ -69,15 +74,23 @@ def search_and_scroll(page, product_query):
     page.keyboard.press("Enter")
     
     page.wait_for_load_state("domcontentloaded")
-    handle_popups(page)
+    
     page.wait_for_timeout(5000)
-    page.evaluate("document.body.style.zoom = '50%'")
+    page.evaluate("document.body.style.zoom = '10%'")
     
     # 2. Scroll Loop (5 iterations is usually enough for Instamart's lazy load)
     for i in range(5):
         print(f"Scrolling Instamart... ({i+1}/5)")
-        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-        time.sleep(4)
+        page.evaluate("""
+            (selector) => {
+                const container = document.querySelector(selector);
+                if (container) {
+                    // Scroll to the bottom of this specific element
+                    container.scrollTop = container.scrollHeight;
+                }
+            }
+        """, "._2_95H")
+        page.wait_for_timeout(5000)
 
 def extract_product_list(page):
     print("Extracting Instamart items...")
@@ -145,6 +158,7 @@ def save_to_timestamped_folder(data, platform_name):
     return json_path
 
 def run_instamart_flow(product_name, location, headless=True, max_products=50):
+    start_time = time.time()
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless)
         # Using a mobile-friendly or standard desktop context
@@ -155,16 +169,21 @@ def run_instamart_flow(product_name, location, headless=True, max_products=50):
         )
         context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
         page = context.new_page()
+        setup_automatic_handlers(page)
 
         try:
             # Set a more reasonable timeout
-            page.goto("https://www.swiggy.com/instamart/", wait_until="domcontentloaded", timeout=3000)
+            page.goto("https://www.swiggy.com/instamart/", wait_until="domcontentloaded", timeout=10000)
+            # 
             
             set_location(page, location)
             search_and_scroll(page, product_name)
             
             final_data_list = extract_product_list(page)
             save_to_timestamped_folder(final_data_list, "instamart")
+
+            time_end = time.time()
+            print(f"--- Instamart Total Time Taken: {time_end - start_time:.2f}) seconds ---")
 
             return final_data_list
 
