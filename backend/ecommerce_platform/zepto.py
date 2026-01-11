@@ -84,13 +84,15 @@ def extract_product_list(page):
             const nameEl = item.querySelector('div.cQAjo6.ch5GgP');
             const descEl = item.querySelector('div.cyNbxx.c0ZFba span');
             const timeEl = item.querySelector('div.cTDqth.cTDqth');
+            const imgEl = item.querySelector('img.c2ahfT');
 
             return {
                 "product_name": nameEl ? nameEl.innerText.trim() : "N/A",
                 "price": priceEl ? priceEl.innerText.trim() : "N/A",
                 "description": descEl ? descEl.innerText.trim() : "N/A",
                 "delivery_time": timeEl ? timeEl.innerText.trim() : "N/A",
-                "product_link": fullLink
+                "product_link": fullLink,
+                "image_url": imgEl ? imgEl.getAttribute('src') : "N/A"
             };
         });
     }

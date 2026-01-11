@@ -100,17 +100,17 @@ def extract_blinkit_data(page):
         const items = document.querySelectorAll('.tw-relative.tw-flex');
         
         return Array.from(items).map(item => {
-            // --- DEBUGGING LOGIC ---
-            // Try to find the ID in 3 different ways common in React apps
             const roleBtn = item.querySelector('[role="button"]');
             const anyWithId = item.querySelector('[id]');
-            const parentId = item.id; // Sometimes the parent itself has the ID
+            const parentId = item.id;
 
             const productId = (roleBtn && roleBtn.id) || (anyWithId && anyWithId.id) || parentId || null;
             
-            // --- DATA EXTRACTION ---
             const nameEl = item.querySelector('.tw-text-300.tw-font-semibold');
             const productName = nameEl ? nameEl.innerText.trim() : "";
+
+            const imgEl = item.querySelector('img.tw-opacity-100');
+            const imageUrl = imgEl ? imgEl.getAttribute('src') : "N/A";
 
             const slug = productName
                 .toLowerCase()
@@ -118,6 +118,7 @@ def extract_blinkit_data(page):
                 .replace(/^-+|-+$/g, '');
 
             const productLink = productId 
+                .toLowerCase()
                 ? `https://blinkit.com/prn/${slug}/prid/${productId}` 
                 : "N/A";
 
@@ -131,6 +132,7 @@ def extract_blinkit_data(page):
                 "description": descEl ? descEl.innerText.trim() : "N/A",
                 "delivery_time": timeEl ? timeEl.innerText.trim() : "N/A",
                 "product_link": productLink,
+                "image_url": imageUrl
             };
         }).filter(p => p.product_name !== "N/A");
     }
