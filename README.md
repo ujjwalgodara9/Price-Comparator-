@@ -52,7 +52,7 @@ backend/
 
 Zepto • Swiggy Instamart • BigBasket • Blinkit • Dunzo • Demart Ready • Flipkart Minutes • Amazon Prime Now
 
-
+Architecture
 - Location finding for all the platform
 - Pass the location page for searching and scraping
 - Check the scraping results output platform based json
@@ -64,18 +64,31 @@ Zepto • Swiggy Instamart • BigBasket • Blinkit • Dunzo • Demart Ready 
 Task - 
 
 UI -
+- Exposing location API key, have to hide it    
 - Changes acc. to data remove the extra part
+- Remove the detect my location in initial loading
+- Make UI better
+- Change in UI for same price
+
 Compare 
 - Price comparing
-Frontend
-- Change in UI for same price
-Scraping
-- Every search saving and flaging not to save
-- Cap on scrapping product
+- Filter should only run the compare again not to scrape again 
+- Internally it is counting twice
+- Check the similarity score strict, Aashriwad organic atta 
 
+Scraping
+- Scraping Image for product all the platformm because of product might not be present in all the platform
+- Show first which has all the matches in order
+- For bigbasket the kg's are intact so the json will differ have to unified for all platforms
+- Remove the location hardcoded Mumbai
+
+GCP
+- make the server.log active for GCP
 
 Testing - 
 - Similarity matching for name 
 - test the price matching in algorithm after name
 - Test the dataset generation and flagging
 - Test the compare 
+- Every search saving and flaging not to save
+- Cap on scrapping product

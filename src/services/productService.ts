@@ -1,6 +1,5 @@
 import { Product, ComparisonFilters, LocationData } from '../types/product';
 import { FastEcommerceAPI } from './fastEcommerceAPI';
-import { LocationService } from './locationService';
 
 export class ProductService {
   private static cachedProducts: Map<string, { products: Product[]; timestamp: number }> = new Map();
@@ -129,6 +128,96 @@ export class ProductService {
     });
 
     return grouped;
+  }
+
+  /**
+   * Check if all products in a group have matching quantities
+   * Returns true only if all products have the same quantity (or all have no quantity)
+   * Uses tolerance-based matching similar to backend (allows quantities within 2x range)
+   */
+  static hasMatchingQuantities(products: Product[]): boolean {
+    if (products.length <= 1) {
+      return true; // Single product or empty, no comparison needed
+    }
+
+    // Extract and parse quantities
+    const parsedQuantities = products
+      .map(p => p.quantity ? this.parseQuantity(p.quantity) : null)
+      .filter(qty => qty !== null) as Array<{ value: number; unit: string }>;
+
+    // If no products have quantities, consider them matching
+    if (parsedQuantities.length === 0) {
+      return true;
+    }
+
+    // If some products have quantities and others don't, they don't match
+    if (parsedQuantities.length < products.length) {
+      return false;
+    }
+
+    // Convert all to kg for comparison
+    const quantitiesInKg = parsedQuantities.map(qty => {
+      if (qty.unit === 'g' || qty.unit === 'gm' || qty.unit === 'gram') {
+        return qty.value / 1000; // Convert grams to kg
+      } else if (qty.unit === 'kg' || qty.unit === 'kilogram') {
+        return qty.value;
+      } else {
+        // For packs or unknown units, can't compare, so return null
+        return null;
+      }
+    });
+
+    // If any quantity couldn't be converted, check if they're all the same string
+    if (quantitiesInKg.some(qty => qty === null)) {
+      // Fallback to string comparison
+      const quantityStrings = products
+        .map(p => p.quantity?.trim().toLowerCase())
+        .filter(qty => qty);
+      if (quantityStrings.length === 0) return true;
+      const firstQty = quantityStrings[0];
+      return quantityStrings.every(qty => qty === firstQty);
+    }
+
+    // Check if all quantities are within tolerance (2x range, similar to backend)
+    const firstQty = quantitiesInKg[0]!;
+    const toleranceRatio = 2.0;
+    
+    return quantitiesInKg.every(qty => {
+      if (qty === null) return false;
+      // Exact match (within floating point tolerance)
+      if (Math.abs(qty - firstQty) < 0.01) return true;
+      // Tolerance-based matching: allow quantities within 2x range
+      const ratio = Math.max(qty, firstQty) / Math.min(qty, firstQty);
+      return ratio <= toleranceRatio;
+    });
+  }
+
+  /**
+   * Parse quantity string to extract value and unit
+   * Returns { value: number, unit: string } or null if can't parse
+   */
+  private static parseQuantity(quantity: string): { value: number; unit: string } | null {
+    const normalized = quantity.trim().toLowerCase();
+    
+    // Extract numeric value and unit
+    const match = normalized.match(/(\d+(?:\.\d+)?)\s*(kg|g|gm|gram|kilograms?|grams?|pack|pcs?|pieces?)/);
+    if (!match) {
+      return null;
+    }
+
+    const value = parseFloat(match[1]);
+    let unit = match[2].toLowerCase();
+
+    // Normalize units
+    if (unit === 'gram' || unit === 'grams' || unit === 'gm') {
+      unit = 'g';
+    } else if (unit === 'kilogram' || unit === 'kilograms') {
+      unit = 'kg';
+    } else if (unit === 'pc' || unit === 'pcs' || unit === 'pieces') {
+      unit = 'pack';
+    }
+
+    return { value, unit };
   }
 
   private static sortProducts(products: Product[], sortBy: ComparisonFilters['sortBy']): Product[] {

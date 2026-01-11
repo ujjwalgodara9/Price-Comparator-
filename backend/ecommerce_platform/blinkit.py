@@ -4,7 +4,10 @@ import time
 from datetime import datetime
 from playwright.sync_api import sync_playwright
 
-STORAGE_FOLDER = "product_data"
+# Get the absolute path to product_data folder (backend/product_data/)
+# ecommerce_platform folder -> parent -> product_data
+STORAGE_FOLDER = os.path.join(os.path.dirname(os.path.dirname(__file__)), "product_data")
+os.makedirs(STORAGE_FOLDER, exist_ok=True)
 
 def handle_popups(page):
     """Closes the Download App modal if it appears."""
@@ -119,21 +122,23 @@ def extract_blinkit_data(page):
 
 
 
-def save_to_timestamped_folder(data, platform_name):
-    # 1. Create a unique timestamp (e.g., 2026-01-10_01-30-45)
-    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+def save_to_timestamped_folder(data, platform_name, run_parent_folder=None):
+    # If parent folder is provided, use it; otherwise create a new one
+    if run_parent_folder:
+        # Use the shared parent folder: product_data/run-2026-01-10_20-10-15/
+        run_folder = os.path.join(STORAGE_FOLDER, run_parent_folder)
+        os.makedirs(run_folder, exist_ok=True)
+    else:
+        # Fallback: Create a unique timestamp (e.g., 2026-01-10_01-30-45)
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        run_folder = os.path.join(STORAGE_FOLDER, f"run-{timestamp}-{platform_name.lower()}")
+        os.makedirs(run_folder, exist_ok=True)
     
-    # 2. Define the folder path: scraped_results/run-2026-01-10_01-30-45
-    run_folder = os.path.join(STORAGE_FOLDER, f"run-{timestamp}-blinkit")
-    
-    # 3. Create the folder if it doesn't exist
-    os.makedirs(run_folder, exist_ok=True)
-    
-    # 4. Define file path: scraped_results/run-.../zepto.json
+    # Define file path: run_folder/blinkit.json (directly in parent folder)
     json_filename = f"{platform_name.lower()}.json"
     json_path = os.path.join(run_folder, json_filename)
     
-    # 5. Save the data
+    # Save the data
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4)
         
@@ -144,7 +149,7 @@ def save_to_timestamped_folder(data, platform_name):
 
 
 # --- MAIN EXECUTION ---
-def run_blinkit_flow(product_name, location, headless=True, max_products=50):
+def run_blinkit_flow(product_name, location, headless=True, max_products=50, run_parent_folder=None, platform_name='blinkit'):
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless)
         # Use a standard Chrome User-Agent
@@ -160,8 +165,16 @@ def run_blinkit_flow(product_name, location, headless=True, max_products=50):
             search_blinkit_products(page, product_name)
             
             final_list = extract_blinkit_data(page)
-            save_to_timestamped_folder(final_list, "blinkit")
+            save_to_timestamped_folder(final_list, platform_name, run_parent_folder=run_parent_folder)
             
+            # Return the products list so server.py can use them
+            return final_list
+            
+        except Exception as e:
+            print(f"[Blinkit] Error during scraping: {e}")
+            import traceback
+            traceback.print_exc()
+            return []  # Return empty list on error
         finally:
             browser.close()
 

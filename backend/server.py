@@ -26,13 +26,14 @@ from ecommerce_platform.zepto import run_zepto_flow
 from ecommerce_platform.blinkit import run_blinkit_flow
 from ecommerce_platform.instamart import run_instamart_flow
 from datetime import datetime
-from ecommerce_platform.zepto_itemlist import scrape_zepto_products
-from ecommerce_platform.blinkit_itemlist import scrape_blinkit_products
 # Import comparison functions from compare.py
 from compare import (
     find_matching_products,
     extract_quantity,
-    normalize_product_name
+    normalize_product_name,
+    normalize_product_data,
+    compare_products_in_memory,
+    save_comparison_to_json
 )
 
 app = Flask(__name__)
@@ -59,6 +60,7 @@ def load_config():
 CONFIG = load_config()
 PLATFORM_CONFIG = CONFIG.get('platform', {})
 SEARCH_DEBUG = CONFIG.get('search_debug', False)
+MATCHING_CONFIG = CONFIG.get('matching', {})
 
 def get_platform_config(platform_name):
     """Get configuration for a specific platform"""
@@ -68,28 +70,7 @@ def get_platform_config(platform_name):
         'headless': platform_config.get('headless', True)  # Default to True if not specified
     }
 
-# Mock data structure - replace with actual scraping logic
-mock_products = {
-    'zepto': [
-        {
-            'id': 'z1',
-            'name': 'Sample Product',
-            'description': 'Product description',
-            'image': 'https://via.placeholder.com/400',
-            'price': 299,
-            'currency': 'INR',
-            'platform': 'zepto',
-            'availability': True,
-            'rating': 4.5,
-            'reviewCount': 120,
-            'features': [],
-            'link': 'https://www.zepto.com/product/1',
-            'location': 'Mumbai, Maharashtra',
-            'deliveryTime': '10-15 mins',
-            'deliveryFee': 0,
-        },
-    ],
-}
+
 
 
 @app.route('/api/search', methods=['POST'])
@@ -110,11 +91,10 @@ def search_all_platforms():
         if not query or not query.strip():
             return jsonify({'error': 'Query is required'}), 400
         
-        # Generate shared timestamp for this search if search_debug is enabled
-        search_timestamp = None
-        if SEARCH_DEBUG:
-            search_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            print(f'[API] Search debug enabled - using timestamp folder: {search_timestamp}')
+        # Generate shared parent folder for this search run
+        # Format: run-2026-01-10_13-28-30 (consistent format)
+        run_parent_folder = f"run-{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
+        print(f'[API] Using parent folder: {run_parent_folder}')
         
         all_products = []
         
@@ -126,9 +106,9 @@ def search_all_platforms():
         start_time = time.time()
         
         with ThreadPoolExecutor(max_workers=len(platforms)) as executor:
-            # Submit all tasks
+            # Submit all tasks with shared parent folder
             future_to_platform = {
-                executor.submit(search_platform, platform, query, location): platform
+                executor.submit(search_platform, platform, query, location, run_parent_folder): platform
                 for platform in platforms
             }
             
@@ -141,39 +121,46 @@ def search_all_platforms():
                     if products is None:
                         products = []
                     print(f'[API] ✓ Platform {platform} returned {len(products)} products')
+                    
+                    # Debug: Check if products have platform field set
+                    if products:
+                        sample_product = products[0]
+                        product_platform = sample_product.get('platform', 'MISSING')
+                        print(f'[API] Debug: Sample product from {platform} has platform field: "{product_platform}"')
+                        if product_platform == 'MISSING' or product_platform != platform:
+                            print(f'[API] Warning: Platform field mismatch! Expected "{platform}", got "{product_platform}"')
+                            # Fix platform field if missing or incorrect
+                            for p in products:
+                                p['platform'] = platform
+                    
                     all_products.extend(products)
+                    products_by_platform[platform] = products
                 except Exception as error:
                     print(f'[API] ✗ Error searching {platform}: {error}')
                     import traceback
                     traceback.print_exc()
                     # Continue with other platforms even if one fails
                     continue
-        # Search each platform
-        for platform in platforms:
-            try:
-                print(f'[API] Searching platform: {platform}')
-                products = search_platform(platform, query, location, search_timestamp=search_timestamp)
-                print(f'[API] Platform {platform} returned {len(products)} products')
-                all_products.extend(products)
-                products_by_platform[platform] = products
-            except Exception as error:
-                print(f'[API] Error searching {platform}: {error}')
-                import traceback
-                traceback.print_exc()
-                # Continue with other platforms even if one fails
-                continue
         
         elapsed = time.time() - start_time
         print(f'[API] Total products found: {len(all_products)} (completed in {elapsed:.2f}s)')
-        return jsonify({'products': all_products, 'execution_time': elapsed})
-        print(f'[API] Total products found: {len(all_products)}')
+        
+        # Debug: Check platform distribution before comparison
+        platform_distribution = {}
+        for product in all_products:
+            platform = product.get('platform', 'unknown')
+            platform_distribution[platform] = platform_distribution.get(platform, 0) + 1
+        print(f'[API] Platform distribution in all_products: {platform_distribution}')
+        print(f'[API] Products by platform dict: {[(p, len(prods)) for p, prods in products_by_platform.items()]}')
         
         # Automatically run comparison after search
         matched_products = []
         if len(all_products) > 0:
             print(f'[API] Running automatic comparison...')
             try:
-                matched_products = compare_products_in_memory(all_products, query, location)
+                # Pass matching config to comparison function
+                matching_config = CONFIG.get('matching', {})
+                matched_products = compare_products_in_memory(all_products, query, location, config=matching_config)
                 
                 if matched_products:
                     # Save comparison results to compare.json
@@ -247,13 +234,7 @@ def search_platform_endpoint(platform):
         if not query or not query.strip():
             return jsonify({'error': 'Query is required'}), 400
         
-        # Generate shared timestamp for this search if search_debug is enabled
-        search_timestamp = None
-        if SEARCH_DEBUG:
-            search_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            print(f'[API] Search debug enabled - using timestamp folder: {search_timestamp}')
-        
-        products = search_platform(platform, query, location, search_timestamp=search_timestamp)
+        products = search_platform(platform, query, location)
         print(f'[API] Platform {platform} returned {len(products)} products')
         return jsonify({'products': products})
     except Exception as error:
@@ -263,138 +244,9 @@ def search_platform_endpoint(platform):
         return jsonify({'error': f'Failed to search on {platform}: {str(error)}'}), 500
 
 
-def compare_products_in_memory(all_products: list, query: str, location: dict) -> list:
-    """
-    Compare products from multiple platforms in memory
-    Groups products by platform and runs comparison algorithm
-    Returns matched and unmatched products in comparison format
-    """
-    try:
-        if len(all_products) == 0:
-            return []
-        
-        # Group products by platform
-        products_by_platform = {}
-        for product in all_products:
-            platform = product.get('platform', 'unknown')
-            if platform not in products_by_platform:
-                products_by_platform[platform] = []
-            products_by_platform[platform].append(product)
-        
-        print(f'[Compare] Grouped products by platform: {list(products_by_platform.keys())}')
-        
-        # Get platform lists for comparison
-        platform_names = list(products_by_platform.keys())
-        
-        if len(platform_names) < 2:
-            # If only one platform, no need to compare, just format for comparison structure
-            print(f'[Compare] Only one platform found, skipping comparison')
-            matched_products = []
-            for platform, products in products_by_platform.items():
-                for product in products:
-                    qty = extract_quantity(product.get('name', ''))
-                    matched_products.append({
-                        'name': normalize_product_name(product.get('name', '')).title(),
-                        'original_names': {
-                            platform: product.get('name', '')
-                        },
-                        'platforms': {
-                            platform: {
-                                'price': product.get('price', 0),
-                                'currency': product.get('currency', 'INR'),
-                                'quantity': qty,
-                                'deliveryTime': product.get('deliveryTime', 'N/A'),
-                                'deliveryFee': product.get('deliveryFee', 0),
-                                'image': product.get('image', ''),
-                                'link': product.get('link', ''),
-                                'rating': product.get('rating', 0),
-                                'reviewCount': product.get('reviewCount', 0),
-                                'availability': product.get('availability', True)
-                            }
-                        },
-                        'similarity_score': None
-                    })
-            return matched_products
-        
-        # Compare products from first two platforms (can be extended for more platforms)
-        platform1 = platform_names[0]
-        platform2 = platform_names[1] if len(platform_names) > 1 else None
-        
-        products1 = products_by_platform[platform1]
-        products2 = products_by_platform[platform2] if platform2 else []
-        
-        print(f'[Compare] Comparing {len(products1)} {platform1} products with {len(products2)} {platform2} products')
-        
-        # Run comparison
-        matched_products = find_matching_products(products1, products2, similarity_threshold=0.6)
-        
-        # Add products from remaining platforms (if any)
-        for platform in platform_names[2:]:
-            products = products_by_platform[platform]
-            # Compare with already matched products (simplified - could be improved)
-            for product in products:
-                qty = extract_quantity(product.get('name', ''))
-                matched_products.append({
-                    'name': normalize_product_name(product.get('name', '')).title(),
-                    'original_names': {
-                        platform: product.get('name', '')
-                    },
-                    'platforms': {
-                        platform: {
-                            'price': product.get('price', 0),
-                            'currency': product.get('currency', 'INR'),
-                            'quantity': qty,
-                            'deliveryTime': product.get('deliveryTime', 'N/A'),
-                            'deliveryFee': product.get('deliveryFee', 0),
-                            'image': product.get('image', ''),
-                            'link': product.get('link', ''),
-                            'rating': product.get('rating', 0),
-                            'reviewCount': product.get('reviewCount', 0),
-                            'availability': product.get('availability', True)
-                        }
-                    },
-                    'similarity_score': None
-                })
-        
-        print(f'[Compare] Comparison complete: {len(matched_products)} total products, {len([p for p in matched_products if p.get("similarity_score") is not None])} matched')
-        
-        return matched_products
-        
-    except Exception as error:
-        print(f'[Compare] Error during comparison: {error}')
-        import traceback
-        traceback.print_exc()
-        return []
 
 
-def save_comparison_to_json(matched_products: list, query: str, location: dict, output_file: str = 'compare.json'):
-    """
-    Save comparison results to compare.json
-    """
-    try:
-        output_data = {
-            'search_query': query,
-            'timestamp': datetime.now().isoformat(),
-            'total_products': len(matched_products),
-            'matched_products': len([p for p in matched_products if p.get('similarity_score') is not None]),
-            'location': location,
-            'products': matched_products
-        }
-        
-        output_path = os.path.join(os.path.dirname(__file__), output_file)
-        with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(output_data, f, indent=2, ensure_ascii=False)
-        
-        print(f'[Compare] Comparison results saved to: {output_path}')
-        return output_path
-    except Exception as error:
-        print(f'[Compare] Error saving comparison to JSON: {error}')
-        import traceback
-        traceback.print_exc()
-        return None
-
-
-def search_platform(platform, query, location, search_timestamp=None):
+def search_platform(platform, query, location, run_parent_folder=None):
     """Search a specific platform"""
     # Check if platform scraping is enabled in config
     platform_config = get_platform_config(platform)
@@ -404,18 +256,18 @@ def search_platform(platform, query, location, search_timestamp=None):
     
     platform_map = {
         'zepto': scrape_zepto,
-        'swiggy-instamart': scrape_swiggy_instamart,
-        'bigbasket': scrape_bigbasket,
+        # 'swiggy-instamart': scrape_swiggy_instamart,
+        # 'bigbasket': scrape_bigbasket,
         'blinkit': scrape_blinkit
     }
     
     scraper = platform_map.get(platform)
     if scraper:
-        return scraper(query, location, platform_config, search_timestamp=search_timestamp)
+        return scraper(query, location, platform_config, run_parent_folder=run_parent_folder, platform_name=platform)
     return []
 
 
-def scrape_zepto(query, location, platform_config=None, search_timestamp=None):
+def scrape_zepto(query, location, platform_config=None, run_parent_folder=None, platform_name='zepto'):
     """Zepto Scraper - Uses Playwright to scrape Zepto website"""
     try:
         if not query:
@@ -429,23 +281,25 @@ def scrape_zepto(query, location, platform_config=None, search_timestamp=None):
         
         print(f'[Zepto] Starting scrape for query: "{query}" (headless={headless})')
         
-        # Use the Playwright-based scraper from zepto_itemlist
-        # JSON saving is handled within run_zepto_flow
-        products = run_zepto_flow(
+        # Use the Playwright-based scraper from zepto
+        raw_products = run_zepto_flow(
             product_name=query,
             location=location["city"],
             headless=headless,
             max_products=50,
-            search_debug=SEARCH_DEBUG,
-            search_timestamp=search_timestamp
+            run_parent_folder=run_parent_folder,
+            platform_name=platform_name
         )
         
         # Ensure products is a list
-        if products is None:
-            products = []
+        if raw_products is None:
+            raw_products = []
         
-        print(f'[Zepto] Scrape completed: Found {len(products)} products for query "{query}"')
-        return products
+        # Normalize product data to standard format
+        normalized_products = [normalize_product_data(p, platform_name) for p in raw_products]
+        
+        print(f'[Zepto] Scrape completed: Found {len(normalized_products)} products for query "{query}"')
+        return normalized_products
     except ImportError as error:
         print(f'[Zepto] Import error - Playwright may not be installed: {error}')
         import traceback
@@ -507,7 +361,7 @@ def scrape_bigbasket(query, location, platform_config=None):
     return []
 
 
-def scrape_blinkit(query, location, platform_config=None, search_timestamp=None):
+def scrape_blinkit(query, location, platform_config=None, run_parent_folder=None, platform_name='blinkit'):
     """Blinkit Scraper - Uses Playwright to scrape Blinkit website"""
     try:
         if not query:
@@ -521,23 +375,25 @@ def scrape_blinkit(query, location, platform_config=None, search_timestamp=None)
         
         print(f'[Blinkit] Starting scrape for query: "{query}" (headless={headless})')
         
-        # Use the Playwright-based scraper from blinkit_itemlist
-        # JSON saving is handled within run_blinkit_flow
-        products = run_blinkit_flow(
+        # Use the Playwright-based scraper from blinkit
+        raw_products = run_blinkit_flow(
             product_name=query,
             location=location["city"],
             headless=headless,
             max_products=50,
-            search_debug=SEARCH_DEBUG,
-            search_timestamp=search_timestamp
+            run_parent_folder=run_parent_folder,
+            platform_name=platform_name
         )
         
         # Ensure products is a list
-        if products is None:
-            products = []
+        if raw_products is None:
+            raw_products = []
         
-        print(f'[Blinkit] Scrape completed: Found {len(products)} products for query "{query}"')
-        return products
+        # Normalize product data to standard format
+        normalized_products = [normalize_product_data(p, platform_name) for p in raw_products]
+        
+        print(f'[Blinkit] Scrape completed: Found {len(normalized_products)} products for query "{query}"')
+        return normalized_products
     except ImportError as error:
         print(f'[Blinkit] Import error - Playwright may not be installed: {error}')
         import traceback
