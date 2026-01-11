@@ -9,6 +9,24 @@ from playwright.sync_api import sync_playwright
 STORAGE_FOLDER = os.path.join(os.path.dirname(os.path.dirname(__file__)), "product_data")
 os.makedirs(STORAGE_FOLDER, exist_ok=True)
 
+def remove_duplicate_products(product_list):
+    """
+    Removes exact duplicate dictionaries from a list while preserving order.
+    """
+    seen = set()
+    unique_products = []
+    
+    for product in product_list:
+        # Convert dict to a sorted tuple of items so it can be hashed/tracked
+        # sorting keys ensures {'a':1, 'b':2} and {'b':2, 'a':1} are seen as same
+        product_tuple = tuple(sorted(product.items()))
+        
+        if product_tuple not in seen:
+            unique_products.append(product)
+            seen.add(product_tuple)
+            
+    return unique_products
+
 def handle_popups(page):
     """Closes the Download App modal if it appears."""
     try:
@@ -166,6 +184,10 @@ def run_blinkit_flow(product_name, location, headless=True, max_products=50, run
             search_blinkit_products(page, product_name)
             
             final_list = extract_blinkit_data(page)
+
+            # Remove Duplicates
+            final_list = remove_duplicate_products(final_list)
+
             save_to_timestamped_folder(final_list, platform_name, run_parent_folder=run_parent_folder)
             
             # Return the products list so server.py can use them
