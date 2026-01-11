@@ -8,7 +8,7 @@ A modern product comparison website for quick delivery platforms like Zepto, Swi
 ```bash
 cd backend
 pip install -r requirements.txt
-python server.py
+python app.py
 ```
 
 **Terminal 2 - Frontend:**
@@ -43,7 +43,7 @@ src/
 └── data/              # Platform configurations
 
 backend/
-├── server.py          # Flask API server
+├── app.py             # Flask API server
 ├── requirements.txt   # Python dependencies
 └── zepto_headers_config.py
 ```

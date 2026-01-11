@@ -8,7 +8,7 @@ Installation:
 pip install flask flask-cors requests beautifulsoup4 lxml
 
 Usage:
-python server.py
+python app.py
 
 Then set VITE_API_BASE_URL=http://localhost:3001 in your .env file
 """
@@ -39,7 +39,7 @@ from compare import (
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-PORT = 3001
+PORT = 8080
 
 # Load configuration from config.json
 def load_config():
@@ -549,4 +549,5 @@ if __name__ == '__main__':
         print(f'  {platform}: {status} ({headless})')
     print()
     app.run(host='0.0.0.0', port=PORT, debug=True)
+
 

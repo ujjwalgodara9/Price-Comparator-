@@ -3,11 +3,11 @@
     "platform": {
         "zepto": {
             "scrape": true,
-            "headless": true
+            "headless": false
         },
         "blinkit": {
             "scrape": true,
-            "headless": true
+            "headless": false
         },
         "swiggy-instamart": {
             "scrape": true,
