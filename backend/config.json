@@ -11,11 +11,11 @@
         },
         "swiggy-instamart": {
             "scrape": false,
-            "headless": true
+            "headless": false
         },
         "bigbasket": {
             "scrape": false,
-            "headless": true
+            "headless": false
         }
     },
     "matching": {

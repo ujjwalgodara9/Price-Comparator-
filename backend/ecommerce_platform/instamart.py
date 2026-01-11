@@ -7,136 +7,174 @@ from playwright.sync_api import sync_playwright
 STORAGE_FOLDER = "product_data"
 os.makedirs(STORAGE_FOLDER, exist_ok=True)
 
+
+
+def handle_popups(page):
+    """Closes the Download App modal if it appears."""
+    error_button = page.locator(".sc-gEvEer.eMfGmB")
+    try:
+        # Wait for a short time to see if the error page appears
+        # If it's not there, it will move to the 'except' block
+        error_button.wait_for(state="visible", timeout=1000)
+        print("Error page detected. Clicking retry button...")
+        error_button.click()
+    except:
+        print("No error page detected. Continuing with normal flow.")
+
 def set_location(page, location_name):
+    handle_popups(page)
     print(f"Setting location to: {location_name}")
-    # address_header = page.get_by_test_id("user-address")
+    # this is commented for automation browser popup already opens location selector
+    # address_header = page.get_by_test_id("address-line")
     # address_header.wait_for(state="visible")
     # address_header.click()
 
+    # Select the container by test-id
     search_container = page.get_by_test_id("search-location")
-    search_container.wait_for(state="visible")
+    page.wait_for_timeout(2000)
 
-    search_input = search_container.locator("input")
-    search_input.fill(location_name)
+    # 1. Click it to trigger the real input field
+    search_container.click()
 
-    results_container = page.get_by_test_id("address-search-container")
-    first_result = results_container.get_by_test_id("address-search-item").first
-    first_result.wait_for(state="visible", timeout=10000)
+    # 2. Now look for the input (it might be global or inside the container now)
+    # We use a generic locator since the DOM probably updated
+    page.locator("input[placeholder*='Search']").fill(location_name)
+
+    # 3. Wait for results and click the first suggestion
+    # Swiggy location suggestions usually have a specific icon or class
+    # 1. Use the dot (.) for the class selector
+    # 2. Add a wait for the suggestions to actually populate
+    first_result = page.locator("._11n32").first
+
+    # Increase timeout slightly—sometimes location APIs take a second to respond
+    first_result.wait_for(state="visible")
+    page.wait_for_timeout(4000)
     first_result.click()
-
-    page.wait_for_load_state("networkidle")
-    time.sleep(5)
+    # Wait for catalog to transition
+    page.wait_for_load_state("domcontentloaded")
+    page.wait_for_timeout(3000)
+    page.locator(".sc-gEvEer.jvMXGN").click()
 
 def search_and_scroll(page, product_query):
+    handle_popups(page)
     print(f"Searching for: {product_query}")
-    # 1. Click search icon and type
-    search_icon = page.get_by_test_id("search-bar-icon")
-    search_icon.click()
     
-    # Zepto search input usually appears after clicking icon
-    search_input = page.get_by_placeholder("Search for", exact=False)
-    search_input.fill(product_query)
+    # 1. Click search and type
+    page.wait_for_timeout(5000)
+    page.get_by_test_id("search-container").click()
+    page.locator("input._18fRo").click()
+    page.wait_for_timeout(2000)
+    page.locator("input._18fRo").fill(product_query)
+    page.wait_for_timeout(3000)
     page.keyboard.press("Enter")
     
-    page.wait_for_load_state("networkidle")
+    page.wait_for_load_state("domcontentloaded")
+    handle_popups(page)
+    page.wait_for_timeout(5000)
+    page.evaluate("document.body.style.zoom = '50%'")
     
-    # 2. Scroll Loop (5 times with 4s wait)
-    for i in range(15):
-        print(f"Scroll iteration {i+1}/15")
+    # 2. Scroll Loop (5 iterations is usually enough for Instamart's lazy load)
+    for i in range(5):
+        print(f"Scrolling Instamart... ({i+1}/5)")
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
         time.sleep(4)
 
 def extract_product_list(page):
-    print("Extracting all items in one go...")
+    print("Extracting Instamart items...")
     
-    # We run this JavaScript inside the browser context
-    # It finds all cards and extracts their data into a list of dictionaries
     extraction_script = """
     () => {
-        const items = document.querySelectorAll('.B4vNQ');
-        return Array.from(items).map(item => {
-            const relativeLink = item.getAttribute('href');
-            const fullLink = relativeLink ? `https://www.zepto.com${relativeLink}` : "N/A";
+        // 1. Select all product card containers
+        const items = document.querySelectorAll('div._3Rr1X');
 
-            const priceEl = item.querySelector('span.cptQT7');
-            const nameEl = item.querySelector('div.cQAjo6.ch5GgP');
-            const descEl = item.querySelector('div.cyNbxx.c0ZFba span');
-            const timeEl = item.querySelector('div.cTDqth.cTDqth');
+        return Array.from(items).map(item => {
+            
+            // --- DATA EXTRACTION ---
+
+            // Time (e.g., "10 MINS")
+            const timeEl = item.querySelector('.sc-gEvEer.ePxHTM.GOJ8s._1y_Uf');
+            const deliveryTime = timeEl ? timeEl.innerText.trim() : "N/A";
+
+            // Product Name
+            const nameEl = item.querySelector('.sc-gEvEer.iPErou._1lbNR');
+            const productName = nameEl ? nameEl.innerText.trim() : "N/A";
+
+            // Description (Special handling: text only, excluding child elements)
+            const descEl = item.querySelector('.sc-gEvEer.bCqPoH._3wq_F');
+            let description = "N/A";
+            if (descEl) {
+                // This takes the direct text node of the div and ignores <span> or <div> children
+                description = Array.from(descEl.childNodes)
+                    .filter(node => node.nodeType === Node.TEXT_NODE)
+                    .map(node => node.textContent.trim())
+                    .join(' ') || descEl.firstChild?.textContent?.trim() || "N/A";
+            }
+
+            // Price
+            const priceEl = item.querySelector('.sc-gEvEer.iQcBUp._2jn41');
+            const price = priceEl ? priceEl.innerText.trim() : "N/A";
+
+            // --- LINK LOGIC ---
+            // to be done
 
             return {
-                "product_name": nameEl ? nameEl.innerText.trim() : "N/A",
-                "price": priceEl ? priceEl.innerText.trim() : "N/A",
-                "description": descEl ? descEl.innerText.trim() : "N/A",
-                "delivery_time": timeEl ? timeEl.innerText.trim() : "N/A",
-                "product_link": fullLink
+                "product_name": productName,
+                "price": price,
+                "description": description,
+                "delivery_time": deliveryTime,
+                "product_link": []
             };
-        });
+        }).filter(p => p.product_name !== "N/A");
     }
     """
-    
-    # This happens almost instantly regardless of how many items there are
     products = page.evaluate(extraction_script)
-    
-    # Filter out empty entries if any
     return [p for p in products if p['product_name'] != "N/A"]
 
 def save_to_timestamped_folder(data, platform_name):
-    # 1. Create a unique timestamp (e.g., 2026-01-10_01-30-45)
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    
-    # 2. Define the folder path: scraped_results/run-2026-01-10_01-30-45
-    run_folder = os.path.join(STORAGE_FOLDER, f"run-{timestamp}-zepto")
-    
-    # 3. Create the folder if it doesn't exist
+    run_folder = os.path.join(STORAGE_FOLDER, f"run-{timestamp}-{platform_name}")
     os.makedirs(run_folder, exist_ok=True)
     
-    # 4. Define file path: scraped_results/run-.../zepto.json
     json_filename = f"{platform_name.lower()}.json"
     json_path = os.path.join(run_folder, json_filename)
     
-    # 5. Save the data
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4)
         
-    print(f"--- Data Saved Successfully ---")
-    print(f"Folder: {run_folder}")
-    print(f"File: {json_filename}")
+    print(f"--- {platform_name} Data Saved ---")
     return json_path
 
-def run_instamart_flow():
+def run_instamart_flow(product_name, location, headless=True, max_products=50):
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=headless)
+        # Using a mobile-friendly or standard desktop context
+        user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
         context = browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            viewport={'width': 1280, 'height': 800},
+            user_agent=user_agent
         )
+        context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
         page = context.new_page()
 
         try:
-            page.goto("https://www.swiggy.com/instamart/", timeout=6000)
+            # Set a more reasonable timeout
+            page.goto("https://www.swiggy.com/instamart/", wait_until="domcontentloaded", timeout=3000)
             
-            # Location
-            set_location(page, 'mumbai')
+            set_location(page, location)
+            search_and_scroll(page, product_name)
             
-            # Search and Scroll
-            search_and_scroll(page, 'coffee')
-            
-            # # Scrape
-            # final_data_list = extract_product_list(page)
+            final_data_list = extract_product_list(page)
+            save_to_timestamped_folder(final_data_list, "instamart")
 
-            # # Save to File
-            # final_saved_path = save_to_timestamped_folder(final_data_list, "zepto")
-
-            # return final_data_list
+            return final_data_list
 
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"Extraction Error: {e}")
+            # Take a screenshot for debugging if it fails
+            page.screenshot(path="instamart_error.png")
         finally:
             browser.close()
 
-# # Example Usage
-# run_zepto_flow("Bandra", "Ghee")
-
-
 # For standalone script execution
 if __name__ == "__main__":
-    run_instamart_flow()
+    run_instamart_flow(product_name="atta", location="Mumbai", headless=False, max_products=50)

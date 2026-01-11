@@ -24,6 +24,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from ecommerce_platform.zepto import run_zepto_flow
 from ecommerce_platform.blinkit import run_blinkit_flow
+from ecommerce_platform.instamart import run_instamart_flow
 from datetime import datetime
 # Import comparison functions from compare.py
 from compare import (
@@ -311,11 +312,47 @@ def scrape_zepto(query, location, platform_config=None, run_parent_folder=None, 
         return []
 
 
-def scrape_swiggy_instamart(query, location, platform_config=None):
-    """Swiggy Instamart Scraper"""
-    # Implement Swiggy Instamart scraping
-    # Note: Swiggy uses API endpoints that may require authentication
-    return []
+def scrape_swiggy_instamart(query, location, platform_config=None, search_timestamp=None):
+    """instamart Scraper - Uses Playwright to scrape instamart website"""
+    try:
+        if not query:
+            print('[instamart] Empty query, returning empty list')
+            return []
+        
+        # Get headless setting from config
+        if platform_config is None:
+            platform_config = get_platform_config('instamart')
+        headless = platform_config.get('headless', True)
+        
+        print(f'[instamart] Starting scrape for query: "{query}" (headless={headless})')
+        
+        # Use the Playwright-based scraper from instamart_itemlist
+        # JSON saving is handled within run_instamart_flow
+        products = run_instamart_flow(
+            product_name=query,
+            location=location["city"],
+            headless=headless,
+            max_products=50,
+            search_debug=SEARCH_DEBUG,
+            search_timestamp=search_timestamp
+        )
+        
+        # Ensure products is a list
+        if products is None:
+            products = []
+        
+        print(f'[instamart] Scrape completed: Found {len(products)} products for query "{query}"')
+        return products
+    except ImportError as error:
+        print(f'[instamart] Import error - Playwright may not be installed: {error}')
+        import traceback
+        traceback.print_exc()
+        return []
+    except Exception as error:
+        print(f'[instamart] Scraping error: {error}')
+        import traceback
+        traceback.print_exc()
+        return []
 
 
 def scrape_bigbasket(query, location, platform_config=None):

@@ -27,7 +27,7 @@ def set_location(page, location_name):
     first_result.click()
 
     page.wait_for_load_state("networkidle")
-    time.sleep(5)
+    time.sleep(3)
 
 def search_and_scroll(page, product_query):
     print(f"Searching for: {product_query}")
@@ -40,13 +40,15 @@ def search_and_scroll(page, product_query):
     search_input.fill(product_query)
     page.keyboard.press("Enter")
     
+    page.evaluate("document.body.style.zoom = '20%'")
+    time.sleep(3)
     page.wait_for_load_state("networkidle")
     
     # 2. Scroll Loop (5 times with 4s wait)
-    for i in range(5):
-        print(f"Scroll iteration {i+1}/15")
+    for i in range(2):
+        print(f"Scroll iteration {i+1}/2")
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-        time.sleep(4)
+        time.sleep(3)
 
 def extract_product_list(page):
     print("Extracting all items in one go...")
@@ -108,6 +110,7 @@ def save_to_timestamped_folder(data, platform_name, run_parent_folder=None):
     return json_path
 
 def run_zepto_flow(product_name, location, headless=True, max_products=50, run_parent_folder=None, platform_name='zepto'):
+    start_time = time.time()
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless)
         context = browser.new_context(
@@ -130,17 +133,16 @@ def run_zepto_flow(product_name, location, headless=True, max_products=50, run_p
             # Save to File with shared parent folder
             final_saved_path = save_to_timestamped_folder(final_data_list, platform_name, run_parent_folder=run_parent_folder)
 
+            time_end = time.time()
+            print(f"--- Zepto Total Time Taken: {time_end - start_time:.2f}) seconds ---")
             return final_data_list
 
         except Exception as e:
             print(f"Error: {e}")
         finally:
             browser.close()
-
-# # Example Usage
-# run_zepto_flow("Bandra", "Ghee")
-
+    
 
 # For standalone script execution
 if __name__ == "__main__":
-    run_zepto_flow(product_name="atta", location="Mumbai", headless=True, max_products=50)
+    run_zepto_flow(product_name="atta", location="Mumbai", headless=False, max_products=50)
