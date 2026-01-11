@@ -30,7 +30,7 @@ def setup_automatic_handlers(page):
     page.add_locator_handler(try_again_button, recover_from_error)
 
 
-    
+
 def set_location(page, location_name):
     
     print(f"Setting location to: {location_name}")
@@ -189,11 +189,9 @@ def run_instamart_flow(product_name, location, headless=True, max_products=50):
 
         except Exception as e:
             print(f"Extraction Error: {e}")
-            # Take a screenshot for debugging if it fails
-            page.screenshot(path="instamart_error.png")
         finally:
             browser.close()
 
 # For standalone script execution
 if __name__ == "__main__":
-    run_instamart_flow(product_name="atta", location="Mumbai", headless=False, max_products=50)
+    run_instamart_flow(product_name="cookie", location="Mumbai", headless=False, max_products=50)
