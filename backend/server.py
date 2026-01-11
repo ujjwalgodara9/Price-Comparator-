@@ -256,7 +256,7 @@ def search_platform(platform, query, location, run_parent_folder=None):
     
     platform_map = {
         'zepto': scrape_zepto,
-        # 'swiggy-instamart': scrape_swiggy_instamart,
+        'swiggy-instamart': scrape_instamart,
         # 'bigbasket': scrape_bigbasket,
         'blinkit': scrape_blinkit
     }
@@ -312,8 +312,9 @@ def scrape_zepto(query, location, platform_config=None, run_parent_folder=None, 
         return []
 
 
-def scrape_swiggy_instamart(query, location, platform_config=None, search_timestamp=None):
+def scrape_instamart(query, location, platform_config=None, run_parent_folder=None, platform_name='zepto'):
     """instamart Scraper - Uses Playwright to scrape instamart website"""
+    print(f"entered instamart")
     try:
         if not query:
             print('[instamart] Empty query, returning empty list')
@@ -328,21 +329,23 @@ def scrape_swiggy_instamart(query, location, platform_config=None, search_timest
         
         # Use the Playwright-based scraper from instamart_itemlist
         # JSON saving is handled within run_instamart_flow
-        products = run_instamart_flow(
+        raw_products = run_instamart_flow(
             product_name=query,
             location=location["city"],
             headless=headless,
             max_products=50,
-            search_debug=SEARCH_DEBUG,
-            search_timestamp=search_timestamp
+            run_parent_folder=run_parent_folder,
+            platform_name=platform_name
         )
         
         # Ensure products is a list
-        if products is None:
-            products = []
+        if raw_products is None:
+            raw_products = []
         
-        print(f'[instamart] Scrape completed: Found {len(products)} products for query "{query}"')
-        return products
+        normalized_products = [normalize_product_data(p, platform_name) for p in raw_products]
+
+        print(f'[instamart] Scrape completed: Found {len(normalized_products)} products for query "{query}"')
+        return normalized_products
     except ImportError as error:
         print(f'[instamart] Import error - Playwright may not be installed: {error}')
         import traceback

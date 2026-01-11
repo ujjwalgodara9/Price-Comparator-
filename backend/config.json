@@ -3,15 +3,15 @@
     "platform": {
         "zepto": {
             "scrape": true,
-            "headless": false
+            "headless": true
         },
         "blinkit": {
             "scrape": true,
-            "headless": false
+            "headless": true
         },
         "swiggy-instamart": {
-            "scrape": false,
-            "headless": false
+            "scrape": true,
+            "headless": true
         },
         "bigbasket": {
             "scrape": false,

@@ -143,21 +143,32 @@ def extract_product_list(page):
     products = page.evaluate(extraction_script)
     return [p for p in products if p['product_name'] != "N/A"]
 
-def save_to_timestamped_folder(data, platform_name):
-    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    run_folder = os.path.join(STORAGE_FOLDER, f"run-{timestamp}-{platform_name}")
-    os.makedirs(run_folder, exist_ok=True)
+def save_to_timestamped_folder(data, platform_name, run_parent_folder=None):
+    # If parent folder is provided, use it; otherwise create a new one
+    if run_parent_folder:
+        # Use the shared parent folder: product_data/run-2026-01-10_20-10-15/
+        run_folder = os.path.join(STORAGE_FOLDER, run_parent_folder)
+        os.makedirs(run_folder, exist_ok=True)
+    else:
+        # Fallback: Create a unique timestamp (e.g., 2026-01-10_01-30-45)
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        run_folder = os.path.join(STORAGE_FOLDER, f"run-{timestamp}-{platform_name.lower()}")
+        os.makedirs(run_folder, exist_ok=True)
     
+    # Define file path: run_folder/zepto.json (directly in parent folder)
     json_filename = f"{platform_name.lower()}.json"
     json_path = os.path.join(run_folder, json_filename)
     
+    # Save the data
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4)
         
-    print(f"--- {platform_name} Data Saved ---")
+    print(f"--- Data Saved Successfully ---")
+    print(f"Folder: {run_folder}")
+    print(f"File: {json_filename}")
     return json_path
 
-def run_instamart_flow(product_name, location, headless=True, max_products=50):
+def run_instamart_flow(product_name, location, headless=True, max_products=50, run_parent_folder=None, platform_name='instamart'):
     start_time = time.time()
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless)
@@ -180,11 +191,9 @@ def run_instamart_flow(product_name, location, headless=True, max_products=50):
             search_and_scroll(page, product_name)
             
             final_data_list = extract_product_list(page)
-            save_to_timestamped_folder(final_data_list, "instamart")
-
+            save_to_timestamped_folder(final_data_list, platform_name, run_parent_folder=run_parent_folder)
             time_end = time.time()
             print(f"--- Instamart Total Time Taken: {time_end - start_time:.2f}) seconds ---")
-
             return final_data_list
 
         except Exception as e:

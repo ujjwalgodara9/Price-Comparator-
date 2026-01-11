@@ -14,7 +14,7 @@ function App() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState<ComparisonFilters>({
-    platforms: ['zepto', 'blinkit'],
+    platforms: ['zepto', 'blinkit', 'swiggy-instamart'],
     sortBy: 'price-low',
   });
 
@@ -88,7 +88,7 @@ function App() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <Loader2 className="h-8 w-8 animate-spin text-primary" />
-          <p className="text-muted-foreground">Detecting your location...</p>
+          <p className="text-muted-foreground">Loading your search sit up tight...</p>
         </div>
       </div>
     );
@@ -142,7 +142,18 @@ function App() {
               </div>
             ) : !loading ? (
               Array.from(filteredGroupedProducts.entries())
-                .sort(([nameA], [nameB]) => nameA.localeCompare(nameB, undefined, { sensitivity: 'base', numeric: true }))
+                .sort(([nameA], [nameB]) => {
+                  // Custom sort: letters before numbers
+                  const startsWithLetterA = /^[a-zA-Z]/.test(nameA);
+                  const startsWithLetterB = /^[a-zA-Z]/.test(nameB);
+                  
+                  // If one starts with letter and other with number, letter comes first
+                  if (startsWithLetterA && !startsWithLetterB) return -1;
+                  if (!startsWithLetterA && startsWithLetterB) return 1;
+                  
+                  // Both start with same type (letter or number), sort normally
+                  return nameA.localeCompare(nameB, undefined, { sensitivity: 'base', numeric: true });
+                })
                 .map(([productName, productList]) => (
                   <ProductComparisonTable
                     key={productName}

@@ -406,9 +406,17 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
     return matched_products
 
 
+def _normalize_link(link_value):
+    """Helper to normalize link field - handles both string and array formats"""
+    if isinstance(link_value, list):
+        # If it's an array, take the first element or return empty string
+        return link_value[0] if len(link_value) > 0 else ''
+    return link_value if link_value else ''
+
+
 def normalize_product_data(raw_product: dict, platform_name: str) -> dict:
     """
-    Normalize product data from zepto/blinkit format to standard format
+    Normalize product data from zepto/blinkit/instamart format to standard format
     Handles fields like product_name -> name, price string -> number, etc.
     Can be used for both raw scraped data and JSON file data
     """
@@ -437,7 +445,7 @@ def normalize_product_data(raw_product: dict, platform_name: str) -> dict:
         'description': raw_product.get('description', ''),
         'deliveryTime': raw_product.get('delivery_time', raw_product.get('deliveryTime', 'N/A')),
         'deliveryFee': raw_product.get('deliveryFee', 0),
-        'link': raw_product.get('product_link', raw_product.get('link', '')),
+        'link': _normalize_link(raw_product.get('product_link', raw_product.get('link', ''))),
         'image': raw_product.get('image', ''),
         'rating': raw_product.get('rating', 0),
         'reviewCount': raw_product.get('reviewCount', raw_product.get('review_count', 0)),
@@ -617,42 +625,119 @@ def compare_products_in_memory(all_products: list, query: str, location: dict, c
                     })
             return matched_products
         
-        # Compare products from first two platforms (can be extended for more platforms)
-        platform1 = platform_names[0]
-        platform2 = platform_names[1] if len(platform_names) > 1 else None
-        
-        products1 = products_by_platform[platform1]
-        products2 = products_by_platform[platform2] if platform2 else []
-        
-        print(f'[Compare] Comparing {len(products1)} {platform1} products with {len(products2)} {platform2} products')
-        print(f'[Compare] Using similarity threshold: {config.get("similarity_threshold", 0.6)}, strict mode: {config.get("strict_matching", False)}')
-        
-        # Run comparison with configurable parameters
+        # Compare products across all platforms
+        # Start with first platform as base, then match remaining platforms incrementally
         similarity_threshold = config.get('similarity_threshold', 0.6)
-        matched_products = find_matching_products(products1, products2, similarity_threshold=similarity_threshold, config=config)
+        print(f'[Compare] Using similarity threshold: {similarity_threshold}, strict mode: {config.get("strict_matching", False)}')
         
-        # Add products from remaining platforms (if any)
-        for platform in platform_names[2:]:
+        # Initialize with first platform's products
+        base_platform = platform_names[0]
+        base_products = products_by_platform[base_platform]
+        matched_products = []
+        
+        # Convert base products to matched format
+        for product in base_products:
+            qty = extract_quantity(product.get('name', ''), product.get('description'))
+            matched_products.append({
+                'name': normalize_product_name(product.get('name', '')).title(),
+                'original_names': {
+                    base_platform: product.get('name', '')
+                },
+                'platforms': {
+                    base_platform: {
+                        'price': product.get('price', 0),
+                        'quantity': qty,
+                        'deliveryTime': product.get('deliveryTime', 'N/A'),
+                        'image': product.get('image', ''),
+                        'link': product.get('link', '')
+                    }
+                },
+                'similarity_score': None
+            })
+        
+        # Match remaining platforms against already matched products
+        for platform in platform_names[1:]:
             products = products_by_platform[platform]
-            # Compare with already matched products (simplified - could be improved)
-            for product in products:
-                qty = extract_quantity(product.get('name', ''), product.get('description'))
-                matched_products.append({
-                    'name': normalize_product_name(product.get('name', '')).title(),
-                    'original_names': {
-                        platform: product.get('name', '')
-                    },
-                    'platforms': {
-                        platform: {
-                            'price': product.get('price', 0),
-                            'quantity': qty,
-                            'deliveryTime': product.get('deliveryTime', 'N/A'),
-                            'image': product.get('image', ''),
-                            'link': product.get('link', '')
-                        }
-                    },
-                    'similarity_score': None
-                })
+            print(f'[Compare] Matching {len(products)} {platform} products against {len(matched_products)} existing products')
+            
+            # Track which products from this platform have been matched
+            used_product_indices = set()
+            
+            # Try to match each product from this platform with existing matched products
+            for idx, product in enumerate(products):
+                product_name = product.get('name', '')
+                qty = extract_quantity(product_name, product.get('description'))
+                normalized_name = normalize_product_name(product_name)
+                
+                best_match_idx = None
+                best_similarity = 0.0
+                
+                # Find best match among existing matched products
+                for idx, matched_product in enumerate(matched_products):
+                    # Check if this matched product already has this platform
+                    if platform in matched_product.get('platforms', {}):
+                        continue
+                    
+                    # Get the normalized name from the matched product
+                    matched_name = matched_product.get('name', '')
+                    matched_normalized = normalize_product_name(matched_name)
+                    
+                    # Calculate similarity
+                    similarity = calculate_similarity(product_name, matched_name, config)
+                    
+                    # Check quantity match if both have quantities
+                    matched_qty = None
+                    for plat_data in matched_product.get('platforms', {}).values():
+                        matched_qty = plat_data.get('quantity')
+                        break
+                    
+                    quantity_matches = compare_quantities(qty, matched_qty, config)
+                    
+                    # In strict mode, require quantity match
+                    if config.get('strict_matching', False) and not quantity_matches:
+                        continue
+                    
+                    # Update best match if this is better
+                    if similarity >= similarity_threshold and similarity > best_similarity:
+                        best_similarity = similarity
+                        best_match_idx = idx
+                
+                # If found a match, add this platform to the matched product
+                if best_match_idx is not None:
+                    matched_product = matched_products[best_match_idx]
+                    matched_product['original_names'][platform] = product_name
+                    matched_product['platforms'][platform] = {
+                        'price': product.get('price', 0),
+                        'quantity': qty,
+                        'deliveryTime': product.get('deliveryTime', 'N/A'),
+                        'image': product.get('image', ''),
+                        'link': product.get('link', '')
+                    }
+                    # Update similarity score if it was None or if this match is better
+                    if matched_product.get('similarity_score') is None or best_similarity > matched_product.get('similarity_score', 0):
+                        matched_product['similarity_score'] = best_similarity
+                    used_product_indices.add(idx)
+            
+            # Add unmatched products from this platform
+            for idx, product in enumerate(products):
+                if idx not in used_product_indices:
+                    qty = extract_quantity(product.get('name', ''), product.get('description'))
+                    matched_products.append({
+                        'name': normalize_product_name(product.get('name', '')).title(),
+                        'original_names': {
+                            platform: product.get('name', '')
+                        },
+                        'platforms': {
+                            platform: {
+                                'price': product.get('price', 0),
+                                'quantity': qty,
+                                'deliveryTime': product.get('deliveryTime', 'N/A'),
+                                'image': product.get('image', ''),
+                                'link': product.get('link', '')
+                            }
+                        },
+                        'similarity_score': None
+                    })
         
         print(f'[Compare] Comparison complete: {len(matched_products)} total products, {len([p for p in matched_products if p.get("similarity_score") is not None])} matched')
         
