@@ -70,6 +70,7 @@ UI -
 - Make UI better
 - Change in UI for same price
 
+
 Compare 
 - Price comparing
 - Filter should only run the compare again not to scrape again 
@@ -82,6 +83,11 @@ Scraping
 - For bigbasket the kg's are intact so the json will differ have to unified for all platforms
 - Remove the location hardcoded Mumbai
 
+scrolling zoomout optimization 
+image scraping methodology
+scrolling in instamart and integrate instamart
+bigbasket sort and integrate
+
 GCP
 - make the server.log active for GCP
 
@@ -92,3 +98,4 @@ Testing -
 - Test the compare 
 - Every search saving and flaging not to save
 - Cap on scrapping product
+- Filtering panel testing

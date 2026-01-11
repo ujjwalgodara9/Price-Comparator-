@@ -14,7 +14,7 @@ function App() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState<ComparisonFilters>({
-    platforms: ['zepto', 'blinkit'],
+    platforms: ['zepto', 'blinkit', 'swiggy-instamart'],
     sortBy: 'price-low',
   });
 
@@ -88,7 +88,7 @@ function App() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <Loader2 className="h-8 w-8 animate-spin text-primary" />
-          <p className="text-muted-foreground">Detecting your location...</p>
+          <p className="text-muted-foreground">Loading your search sit up tight...</p>
         </div>
       </div>
     );
