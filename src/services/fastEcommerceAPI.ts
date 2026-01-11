@@ -65,7 +65,7 @@ export class FastEcommerceAPI {
   /**
    * Get product comparison data from compare.json
    */
-  private static async getCompareData(): Promise<Product[]> {
+  static async getCompareData(): Promise<Product[]> {
     let url: string;
     if (this.API_BASE_URL.startsWith('http')) {
       url = `${this.API_BASE_URL}/api/compare`;

@@ -79,112 +79,12 @@ export class PlatformScraper {
    * Note: This will likely have CORS issues in browser, so use a backend proxy in production
    */
   private static async scrapeDirectly(
-    query: string,
-    location: LocationData,
+    _query: string,
+    _location: LocationData,
     platform: Platform
   ): Promise<ScrapeResult> {
     // This is a placeholder for actual scraping logic
-    // In production, implement platform-specific scrapers
-    
-    const scraperMap: Record<Platform, () => Promise<ScrapeResult>> = {
-      'google': () => this.scrapeGoogle(query, location),
-      'google-search': () => this.scrapeGoogleSearch(query, location),
-    };
-
-    const scraper = scraperMap[platform];
-    if (scraper) {
-      return scraper();
-    }
-
-    return { success: false, products: [], error: `Unknown platform: ${platform}` };
-  }
-
-  // Platform-specific scrapers
-  private static async scrapeZepto(query: string, location: LocationData): Promise<ScrapeResult> {
-    // Zepto API/Scraping logic
-    // Example: https://www.zepto.com/api/search?q={query}&location={location}
-    try {
-      // For now, return mock data structure - replace with actual API calls
-      // In production, use a backend service to avoid CORS
-      return {
-        success: true,
-        products: [], // Will be populated by actual API response
-      };
-    } catch (error) {
-      return { success: false, products: [], error: String(error) };
-    }
-  }
-
-  private static async scrapeSwiggyInstamart(query: string, location: LocationData): Promise<ScrapeResult> {
-    // Swiggy Instamart API/Scraping logic
-    try {
-      return {
-        success: true,
-        products: [],
-      };
-    } catch (error) {
-      return { success: false, products: [], error: String(error) };
-    }
-  }
-
-  private static async scrapeBigBasket(query: string, location: LocationData): Promise<ScrapeResult> {
-    // BigBasket API/Scraping logic
-    try {
-      return {
-        success: true,
-        products: [],
-      };
-    } catch (error) {
-      return { success: false, products: [], error: String(error) };
-    }
-  }
-
-  private static async scrapeFlipkartMinutes(query: string, location: LocationData): Promise<ScrapeResult> {
-    // Flipkart Minutes API/Scraping logic
-    try {
-      return {
-        success: true,
-        products: [],
-      };
-    } catch (error) {
-      return { success: false, products: [], error: String(error) };
-    }
-  }
-
-  private static async scrapeBlinkit(query: string, location: LocationData): Promise<ScrapeResult> {
-    // Blinkit API/Scraping logic
-    try {
-      return {
-        success: true,
-        products: [],
-      };
-    } catch (error) {
-      return { success: false, products: [], error: String(error) };
-    }
-  }
-
-  private static async scrapeDemartReady(query: string, location: LocationData): Promise<ScrapeResult> {
-    // Demart Ready API/Scraping logic
-    try {
-      return {
-        success: true,
-        products: [],
-      };
-    } catch (error) {
-      return { success: false, products: [], error: String(error) };
-    }
-  }
-
-  private static async scrapeAmazonPrimeNow(query: string, location: LocationData): Promise<ScrapeResult> {
-    // Amazon Prime Now API/Scraping logic
-    try {
-      return {
-        success: true,
-        products: [],
-      };
-    } catch (error) {
-      return { success: false, products: [], error: String(error) };
-    }
+    // In production, scraping should be done via backend API to avoid CORS
+    return { success: false, products: [], error: `Direct scraping not implemented for platform: ${platform}. Use backend API instead.` };
   }
 }
-
