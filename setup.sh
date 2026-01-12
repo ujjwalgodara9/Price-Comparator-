@@ -59,14 +59,14 @@ cd "$(dirname "$0")/backend" || exit 1
 
 # Create virtual environment
 echo ""
-echo -e "${YELLOW}Creating virtual environment...${NC}"
+echo -e "${YELLOW}Checking for virtual environment...${NC}"
 if [ -d "venv" ]; then
-    echo -e "${YELLOW}Virtual environment already exists. Removing old one...${NC}"
-    rm -rf venv
+    echo -e "${GREEN}✓ Virtual environment already exists${NC}"
+else
+    echo -e "${YELLOW}Creating virtual environment...${NC}"
+    $PYTHON_CMD -m venv venv
+    echo -e "${GREEN}✓ Virtual environment created${NC}"
 fi
-
-$PYTHON_CMD -m venv venv
-echo -e "${GREEN}✓ Virtual environment created${NC}"
 
 # Activate virtual environment
 echo ""
@@ -82,15 +82,80 @@ echo -e "${GREEN}✓ pip upgraded${NC}"
 
 # Install system dependencies (for Playwright)
 echo ""
-echo -e "${YELLOW}Checking for system dependencies...${NC}"
+echo -e "${YELLOW}Installing system dependencies for Playwright...${NC}"
 if command_exists apt-get; then
     echo "Detected apt-get (Ubuntu/Debian)"
-    echo "If Playwright fails, install dependencies with:"
-    echo "  sudo apt-get install -y libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libdbus-1-3 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2"
+    echo "Installing Playwright dependencies..."
+    sudo apt-get update -qq
+    sudo apt-get install -y \
+        libnss3 \
+        libnspr4 \
+        libatk1.0-0 \
+        libatk-bridge2.0-0 \
+        libcups2 \
+        libdrm2 \
+        libdbus-1-3 \
+        libxkbcommon0 \
+        libxcomposite1 \
+        libxdamage1 \
+        libxfixes3 \
+        libxrandr2 \
+        libgbm1 \
+        libasound2 \
+        libxshmfence1 \
+        libxcb1 \
+        libx11-6 \
+        libx11-xcb1 \
+        libxcomposite1 \
+        libxcursor1 \
+        libxdamage1 \
+        libxi6 \
+        libxtst6 \
+        libxrandr2 \
+        libasound2 \
+        libpangocairo-1.0-0 \
+        libatk1.0-0 \
+        libcairo-gobject2 \
+        libgtk-3-0 \
+        libgdk-pixbuf2.0-0
+    echo -e "${GREEN}✓ Playwright system dependencies installed${NC}"
 elif command_exists dnf; then
     echo "Detected dnf (Fedora/RHEL)"
-    echo "If Playwright fails, install dependencies with:"
-    echo "  sudo dnf install -y nss nspr atk at-spi2-atk cups-libs libdrm libXkbcommon libXcomposite libXdamage libXfixes libXrandr mesa-libgbm alsa-lib"
+    echo "Installing Playwright dependencies..."
+    sudo dnf install -y \
+        nss \
+        nspr \
+        atk \
+        at-spi2-atk \
+        cups-libs \
+        libdrm \
+        libXkbcommon \
+        libXcomposite \
+        libXdamage \
+        libXfixes \
+        libXrandr \
+        mesa-libgbm \
+        alsa-lib \
+        libxshmfence \
+        libX11 \
+        libX11-xcb \
+        libxcb \
+        libXcomposite \
+        libXcursor \
+        libXdamage \
+        libXi \
+        libXtst \
+        libXrandr \
+        alsa-lib \
+        pango \
+        atk \
+        cairo-gobject \
+        gtk3 \
+        gdk-pixbuf2
+    echo -e "${GREEN}✓ Playwright system dependencies installed${NC}"
+else
+    echo -e "${YELLOW}Unknown package manager. Please install Playwright dependencies manually.${NC}"
+    echo "See: https://playwright.dev/python/docs/deps"
 fi
 
 # Install Python dependencies
@@ -166,12 +231,35 @@ NPM_VERSION=$(npm --version)
 echo -e "${GREEN}✓ Node.js: $NODE_VERSION${NC}"
 echo -e "${GREEN}✓ npm: $NPM_VERSION${NC}"
 
-# Install frontend dependencies (optional)
+# Install frontend dependencies
 echo ""
 echo -e "${YELLOW}Installing frontend dependencies...${NC}"
 if [ -f "package.json" ]; then
-    npm install
-    echo -e "${GREEN}✓ Frontend dependencies installed${NC}"
+    # Ensure npm is available
+    if ! command_exists npm; then
+        echo -e "${RED}✗ npm not found. Make sure Node.js and npm are installed.${NC}"
+        exit 1
+    fi
+    
+    echo "Running npm install..."
+    npm install --verbose
+    if [ $? -eq 0 ]; then
+        echo -e "${GREEN}✓ Frontend dependencies installed${NC}"
+        
+        # Verify vite is installed
+        if [ -f "node_modules/.bin/vite" ] || [ -d "node_modules/vite" ]; then
+            echo -e "${GREEN}✓ Vite verified installed${NC}"
+            VITE_VERSION=$(npm list vite 2>/dev/null | grep vite@ | head -1 | awk '{print $2}' | tr -d '│├─└' || echo "unknown")
+            echo "  Vite version: $VITE_VERSION"
+        else
+            echo -e "${YELLOW}Warning: Vite not found in node_modules. Installing vite explicitly...${NC}"
+            npm install vite --save-dev
+            echo -e "${GREEN}✓ Vite installed${NC}"
+        fi
+    else
+        echo -e "${RED}✗ npm install failed${NC}"
+        exit 1
+    fi
 else
     echo -e "${YELLOW}package.json not found, skipping frontend dependencies${NC}"
 fi

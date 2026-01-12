@@ -69,8 +69,7 @@ UI -
 - Remove the detect my location in initial loading
 - Make UI better
 - Change in UI for same price
-
-
+    
 Compare 
 - Price comparing
 - Filter should only run the compare again not to scrape again 
@@ -78,18 +77,14 @@ Compare
 - Check the similarity score strict, Aashriwad organic atta 
 
 Scraping
+- Image scraping methodology
 - Scraping Image for product all the platformm because of product might not be present in all the platform
-- Show first which has all the matches in order
-- For bigbasket the kg's are intact so the json will differ have to unified for all platforms
 - Remove the location hardcoded Mumbai
-
-scrolling zoomout optimization 
-image scraping methodology
-scrolling in instamart and integrate instamart
-bigbasket sort and integrate
+- scrolling in instamart and integrate instamart
 
 GCP
 - make the server.log active for GCP
+- zepto on GCP not working
 
 Testing - 
 - Similarity matching for name 
