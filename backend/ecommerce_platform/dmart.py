@@ -76,51 +76,63 @@ def search_dmart_products(page, query):
     time.sleep(3)
 
     # 4. Scroll to load more products
-    for i in range(5):
-        print(f"Scrolling DMart... ({i+1}/5)")
+    for i in range(1):
+        print(f"Scrolling DMart... ({i+1}/1)")
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
         time.sleep(3)
 
-def extract_blinkit_data(page):
-    """Fast extraction using JS evaluate for React structure."""
+def extract_dmart_data(page):
     extraction_script = """
-        () => {
-        const items = document.querySelectorAll('.tw-relative.tw-flex');
-        
+    () => {
+        const items = document.querySelectorAll(
+            'div.w-\\\\[265px\\\\].h-\\\\[390px\\\\].bg-appWhite'
+        );
+
         return Array.from(items).map(item => {
-            // --- DEBUGGING LOGIC ---
-            // Try to find the ID in 3 different ways common in React apps
-            const roleBtn = item.querySelector('[role="button"]');
-            const anyWithId = item.querySelector('[id]');
-            const parentId = item.id; // Sometimes the parent itself has the ID
 
-            const productId = (roleBtn && roleBtn.id) || (anyWithId && anyWithId.id) || parentId || null;
-            
-            // --- DATA EXTRACTION ---
-            const nameEl = item.querySelector('.tw-text-300.tw-font-semibold');
-            const productName = nameEl ? nameEl.innerText.trim() : "";
+            // PRODUCT NAME (correct element)
+            const nameEl = item.querySelector("div.text-primaryColor.min-h-10")
+            const productName = nameEl ? nameEl.innerText.trim() : "N/A";
 
-            const slug = productName
-                .toLowerCase()
-                .replace(/[^a-z0-9]+/g, '-')
-                .replace(/^-+|-+$/g, '');
+            // PRODUCT LINK
+            let productLink = "N/A";
+            const linkEl = item.querySelector('a');
+            if (linkEl && linkEl.href) {
+                productLink = null
+            }
 
-            const productLink = productId 
-                ? `https://blinkit.com/prn/${slug}/prid/${productId}` 
-                : "N/A";
+            // PRICES
+            let mrp = "N/A";
+            let dmartPrice = "N/A";
 
-            const priceEl = item.querySelector('.tw-text-200.tw-font-semibold');
-            const descEl = item.querySelector('.tw-text-200.tw-font-medium.tw-line-clamp-1');
-            const timeEl = item.querySelector('.tw-text-050.tw-font-bold.tw-uppercase');
+            const priceTexts = Array.from(item.querySelectorAll('p'))
+                .map(p => p.innerText.trim())
+                .filter(t => t.startsWith("₹"));
+
+            if (priceTexts.length >= 2) {
+                mrp = priceTexts[0];
+                dmartPrice = priceTexts[1];
+            } else if (priceTexts.length === 1) {
+                dmartPrice = priceTexts[0];
+            }
+
+            // WEIGHT / PACK SIZE
+            const weightEl = item.querySelector('select, button, input, div[role="button"]');
+            const weight = weightEl ? weightEl.innerText.trim() : "N/A";
+
+            // IMAGE
+            const imgEl = item.querySelector('img');
+            const image = imgEl ? imgEl.src : "N/A";
 
             return {
-                "product_name": productName || "N/A",
-                "price": priceEl ? priceEl.innerText.trim() : "N/A",
-                "description": descEl ? descEl.innerText.trim() : "N/A",
-                "delivery_time": timeEl ? timeEl.innerText.trim() : "N/A",
-                "product_link": productLink,
+                product_name: productName,
+                product_link: productLink,
+                mrp: mrp,
+                dmart_price: dmartPrice,
+                weight: weight,
+                image: image
             };
-        }).filter(p => p.product_name !== "N/A");
+        });
     }
     """
     return page.evaluate(extraction_script)
@@ -168,10 +180,11 @@ def run_dmart_flow():
             page.goto("https://www.dmart.in/", wait_until="domcontentloaded")
             
             set_dmart_location(page, 'Mumbai')
-            search_dmart_products(page, 'aata')
+            search_dmart_products(page, 'Ghee')
             
-            final_list = extract_blinkit_data(page)
-            save_to_timestamped_folder(final_list, platform_name, run_parent_folder=run_parent_folder)
+            final_list = extract_dmart_data(page)
+            print("Final List: ", final_list)
+            # save_to_timestamped_folder(final_list, platform_name, run_parent_folder=run_parent_folder)
             
             # Return the products list so server.py can use them
             return final_list
