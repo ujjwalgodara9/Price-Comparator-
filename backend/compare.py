@@ -110,69 +110,81 @@ def normalize_product_name(name: str) -> str:
     return normalized
 
 
+def get_unit_patterns() -> str:
+    """
+    Get a generic regex pattern for all supported units
+    This makes the pattern matching generic and extensible
+    """
+    # Define unit categories - can be extended easily
+    weight_units = r'kg|g|gm|gram|grams?|kilogrammes?|kilograms?|lbs?|lb|oz'
+    volume_units = r'ltr|litre|liter|litres?|liters?|ml|millilitre|milliliter|millilitres?|milliliters?'
+    count_units = r'pack|packs|pkt|pkts|packet|packets|pcs?|piece|pieces|can|cans|bottle|bottles|tablet|tablets|strip|strips|jar|jars|box|boxes'
+    
+    # Combine all units
+    all_units = f'{weight_units}|{volume_units}|{count_units}'
+    return all_units
+
+
 def extract_quantity(name: str, description: str = None) -> Optional[str]:
     """
-    Extract quantity/weight from product name or description
-    Examples: "5 kg", "10 kg", "1 kg", "500 g", "1 pack (1 kg)", "500ml", "2ltr", "12 x 500ml"
+    Generic pattern-based quantity extraction
+    Uses a priority-based pattern matching system that is extensible
+    Examples: "5 kg", "10 kg", "1 kg", "500 g", "1 pack (5 kg)", "500ml", "2ltr", "12 x 500ml"
     Checks description field if provided (new format stores quantity there)
-    Supports comprehensive unit types: kg, g, ml, ltr, pack, pcs, bottle, can, tablet, strip, jar, packet, box, etc.
     """
     # First check description if provided (new format)
     text_to_search = description if description else name
     
-    # Comprehensive patterns to match all quantity/weight formats
+    if not text_to_search:
+        return None
+    
+    # Get generic unit patterns
+    units_pattern = get_unit_patterns()
+    
+    # Define patterns with priority order (higher priority first)
+    # Each pattern is a tuple: (pattern_regex, extractor_function, priority)
     patterns = [
-        # Pattern 1: Multi-pack patterns like "12 x 500ml", "6pk", "2x2ltr", "4pks"
-        r'(\d+)\s*[x×]\s*(\d+(?:\.\d+)?)\s*(kg|g|gm|gram|grams?|kilogrammes?|kilograms?|lbs?|lb|oz|ltr|litre|liter|ml|millilitre|milliliter|pcs?|pack|packs|bottle|bottles|can|cans|box|boxes)',
-        # Pattern 2: Standard quantity formats with all units
-        r'(\d+(?:\.\d+)?)\s*(kg|g|gm|gram|grams?|kilogrammes?|kilograms?|lbs?|lb|oz|ltr|litre|liter|ml|millilitre|milliliter|pack|packs|pcs|pieces?|can|cans|bottle|bottles|tablet|tablets|strip|strips|jar|jars|packet|pkts?|box|boxes)',
-        # Pattern 3: Weight in parentheses like "(1 kg)", "(500ml)"
-        r'\((\d+(?:\.\d+)?)\s*(kg|g|gm|gram|grams?|kilogrammes?|kilograms?|lbs?|lb|oz|ltr|litre|liter|ml|millilitre|milliliter)\)',
-        # Pattern 4: Pack/pieces with optional weight in parentheses like "1 pack (1 kg)"
-        r'(\d+(?:\.\d+)?)\s*(pack|packs|pcs|pieces?)(?:\s*\((\d+(?:\.\d+)?)\s*(kg|g|gm|gram|grams?|kilogrammes?|kilograms?|lbs?|lb|oz|ltr|litre|liter|ml|millilitre|milliliter)\))?',
+        # PRIORITY 1: Value in parentheses - highest priority (e.g., "1 pack (5 kg)" -> "5 kg")
+        # This prioritizes actual weight/volume over pack count
+        (
+            rf'\((\d+(?:\.\d+)?)\s*({units_pattern})\)',
+            lambda m: (m.group(1), m.group(2)),
+            1
+        ),
+        # PRIORITY 2: Multi-pack patterns (e.g., "12 x 500ml" -> "12 x 500 ml")
+        (
+            rf'(\d+)\s*[x×]\s*(\d+(?:\.\d+)?)\s*({units_pattern})',
+            lambda m: (f"{m.group(1)} x {m.group(2)}", m.group(3)),
+            2
+        ),
+        # PRIORITY 3: Standard quantity patterns (e.g., "5 kg", "1 pack")
+        (
+            rf'(\d+(?:\.\d+)?)\s*({units_pattern})',
+            lambda m: (m.group(1), m.group(2)),
+            3
+        ),
     ]
     
-    for pattern in patterns:
-        match = re.search(pattern, text_to_search, re.IGNORECASE)
+    # Try patterns in priority order (sorted by priority, lower number = higher priority)
+    sorted_patterns = sorted(patterns, key=lambda x: x[2])
+    
+    for pattern_regex, extractor, priority in sorted_patterns:
+        match = re.search(pattern_regex, text_to_search, re.IGNORECASE)
         if match:
-            groups = match.groups()
-            
-            # Handle multi-pack pattern (Pattern 1)
-            if len(groups) == 3 and 'x' in match.group(0).lower() or '×' in match.group(0):
-                count = groups[0]
-                value = groups[1]
-                unit = groups[2].lower()
-                # Normalize unit
+            try:
+                value_part, unit = extractor(match)
                 normalized_unit = normalize_unit(unit)
-                return f"{count} x {value} {normalized_unit}"
-            
-            # Handle standard quantity pattern (Pattern 2)
-            elif len(groups) == 2:
-                value = groups[0]
-                unit = groups[1].lower()
-                normalized_unit = normalize_unit(unit)
-                return f"{value} {normalized_unit}"
-            
-            # Handle weight in parentheses (Pattern 3)
-            elif len(groups) == 2 and match.group(0).startswith('('):
-                value = groups[0]
-                unit = groups[1].lower()
-                normalized_unit = normalize_unit(unit)
-                return f"{value} {normalized_unit}"
-            
-            # Handle pack with weight in parentheses (Pattern 4)
-            elif len(groups) >= 2 and ('pack' in groups[1].lower() or 'pc' in groups[1].lower() or 'piece' in groups[1].lower()):
-                pack_count = groups[0]
-                pack_unit = groups[1].lower()
-                if len(groups) >= 4 and groups[2] and groups[3]:
-                    # Has weight in parentheses
-                    weight_val = groups[2]
-                    weight_unit = groups[3].lower()
-                    normalized_weight_unit = normalize_unit(weight_unit)
-                    return f"{pack_count} {pack_unit} ({weight_val} {normalized_weight_unit})"
+                
+                # Format the result
+                if ' x ' in str(value_part):
+                    # Multi-pack format: "12 x 500 ml"
+                    return f"{value_part} {normalized_unit}"
                 else:
-                    # Just pack count
-                    return f"{pack_count} {pack_unit}"
+                    # Standard format: "5 kg"
+                    return f"{value_part} {normalized_unit}"
+            except (IndexError, AttributeError) as e:
+                # If extraction fails, try next pattern
+                continue
     
     return None
 
