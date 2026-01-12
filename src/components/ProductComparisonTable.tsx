@@ -8,19 +8,6 @@ interface ProductComparisonTableProps {
   matchedProduct: MatchedProduct;
 }
 
-// Helper function to extract numeric value from quantity string (e.g., "5 kg" -> 5)
-function extractQuantityValue(quantity: string | undefined): number {
-  if (!quantity) return 1;
-  const match = quantity.match(/(\d+(?:\.\d+)?)/);
-  return match ? parseFloat(match[1]) : 1;
-}
-
-// Helper function to calculate price per kg
-function calculatePricePerKg(price: number, quantity: string | undefined): number {
-  const qty = extractQuantityValue(quantity);
-  if (qty === 0) return price;
-  return price / qty;
-}
 
 export function ProductComparisonTable({ matchedProduct }: ProductComparisonTableProps) {
   const platforms = Object.keys(matchedProduct.platforms || {}) as Platform[];
@@ -69,7 +56,6 @@ export function ProductComparisonTable({ matchedProduct }: ProductComparisonTabl
           {sortedPlatforms.map((platformData) => {
             const isCheapest = platformData.price === cheapestPrice;
             const platformColor = platformColors[platformData.platform];
-            const pricePerKg = calculatePricePerKg(platformData.price, platformData.quantity);
             const quantity = platformData.quantity || '1 pack';
 
             return (
@@ -103,11 +89,6 @@ export function ProductComparisonTable({ matchedProduct }: ProductComparisonTabl
                     <span className="text-base font-bold">
                       ₹ {platformData.price.toLocaleString()}
                     </span>
-                    {platformData.quantity && (
-                      <span className="text-xs text-muted-foreground">
-                        (₹ {pricePerKg.toFixed(2)}/kg)
-                      </span>
-                    )}
                   </div>
                 </div>
 

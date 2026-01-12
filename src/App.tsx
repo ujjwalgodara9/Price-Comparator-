@@ -165,6 +165,15 @@ function App() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {filteredProducts
                   .sort((a, b) => {
+                    // First sort by number of platform matches (descending)
+                    const matchCountA = Object.keys(a.platforms || {}).length;
+                    const matchCountB = Object.keys(b.platforms || {}).length;
+                    
+                    if (matchCountA !== matchCountB) {
+                      return matchCountB - matchCountA; // Descending order (3 matches before 2 matches)
+                    }
+                    
+                    // If same number of matches, sort alphabetically
                     // Custom sort: letters before numbers
                     const nameA = a.name;
                     const nameB = b.name;

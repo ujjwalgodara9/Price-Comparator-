@@ -69,7 +69,7 @@ UI -
 - Remove the detect my location in initial loading
 - Make UI better
 - Change in UI for same price
-    
+
 Compare 
 - Price comparing
 - Filter should only run the compare again not to scrape again 
@@ -94,3 +94,39 @@ Testing -
 - Every search saving and flaging not to save
 - Cap on scrapping product
 - Filtering panel testing
+- Can give the automation for giving vivid product and auto assess the results from compare.json
+- Common item list - 
+        Milk
+        Curds / Dahi
+        Atta / Flour
+        Cooking Oil
+        Dosa Batter
+        Vegetable & Fruits
+        Potato Chips
+        Soft Drinks / Cold Beverages
+        Eggs
+        Bread / Bakery
+        Personal Care (soap, shampoo)
+        Toiletries
+        Condoms / Wellness Products
+        Biscuits / Namkeen
+        Pet Food
+        Ice Cubes & Frozen Items
+        Chocolates
+        Household Essentials (detergent, cleaners)
+
+- Change the UI.
+- Filter should not be blocker it should be responsive 
+- Change the theme and colour of the page
+    - Should look professional and deployed website not a demo website 
+    - Make it lively website
+- Remove the rating from filter
+- Remove review and highest rated from the order
+- Frontend needs to sort the product according to relevance
+
+- Change the print of other modules.
+- Check for log saving make a run logs and save it.
+- Merge the matching branch to UI and then change the UI, for filter to be secondary and not primary
+
+
+- UI shows kg for water too
