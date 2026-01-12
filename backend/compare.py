@@ -335,8 +335,12 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
             else:
                 product_name = name2_norm.title()
             
+            # Get image from first product (when matched, show only one image)
+            product_image = product1.get('image', '') or product2.get('image', '')
+            
             matched_product = {
                 'name': product_name,
+                'image': product_image,  # Single image for matched product
                 'original_names': {
                     product1.get('platform', 'unknown'): product1.get('name', ''),
                     product2.get('platform', 'unknown'): product2.get('name', '')
@@ -346,14 +350,12 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
                         'price': product1.get('price', 0),
                         'quantity': qty1,
                         'deliveryTime': product1.get('deliveryTime', 'N/A'),
-                        'image': product1.get('image', ''),
                         'link': product1.get('link', '')
                     },
                     product2.get('platform', 'unknown'): {
                         'price': product2.get('price', 0),
                         'quantity': qty2,
                         'deliveryTime': product2.get('deliveryTime', 'N/A'),
-                        'image': product2.get('image', ''),
                         'link': product2.get('link', '')
                     }
                 },
@@ -368,6 +370,7 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
             qty1 = extract_quantity(product1.get('name', ''), product1.get('description'))
             matched_products.append({
                 'name': normalize_product_name(product1.get('name', '')).title(),
+                'image': product1.get('image', ''),  # Image at product level
                 'original_names': {
                     product1.get('platform', 'unknown'): product1.get('name', '')
                 },
@@ -376,7 +379,6 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
                         'price': product1.get('price', 0),
                         'quantity': qty1,
                         'deliveryTime': product1.get('deliveryTime', 'N/A'),
-                        'image': product1.get('image', ''),
                         'link': product1.get('link', '')
                     }
                 },
@@ -388,6 +390,7 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
             qty2 = extract_quantity(product2.get('name', ''), product2.get('description'))
             matched_products.append({
                 'name': normalize_product_name(product2.get('name', '')).title(),
+                'image': product2.get('image', ''),  # Image at product level
                 'original_names': {
                     product2.get('platform', 'unknown'): product2.get('name', '')
                 },
@@ -396,7 +399,6 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
                         'price': product2.get('price', 0),
                         'quantity': qty2,
                         'deliveryTime': product2.get('deliveryTime', 'N/A'),
-                        'image': product2.get('image', ''),
                         'link': product2.get('link', '')
                     }
                 },
@@ -438,6 +440,9 @@ def normalize_product_data(raw_product: dict, platform_name: str) -> dict:
         price = float(price_str) if price_str else 0
     
     # Map field names from zepto/blinkit format to standard format
+    # Handle image field - check both 'image' and 'image_url' (scrapers use 'image_url')
+    image_value = raw_product.get('image') or raw_product.get('image_url') or ''
+    
     normalized = {
         'name': raw_product.get('product_name', raw_product.get('name', '')),
         'price': price,
@@ -446,7 +451,7 @@ def normalize_product_data(raw_product: dict, platform_name: str) -> dict:
         'deliveryTime': raw_product.get('delivery_time', raw_product.get('deliveryTime', 'N/A')),
         'deliveryFee': raw_product.get('deliveryFee', 0),
         'link': _normalize_link(raw_product.get('product_link', raw_product.get('link', ''))),
-        'image': raw_product.get('image', ''),
+        'image': image_value,
         'rating': raw_product.get('rating', 0),
         'reviewCount': raw_product.get('reviewCount', raw_product.get('review_count', 0)),
         'availability': raw_product.get('availability', True),
@@ -640,6 +645,7 @@ def compare_products_in_memory(all_products: list, query: str, location: dict, c
             qty = extract_quantity(product.get('name', ''), product.get('description'))
             matched_products.append({
                 'name': normalize_product_name(product.get('name', '')).title(),
+                'image': product.get('image', ''),  # Image at product level
                 'original_names': {
                     base_platform: product.get('name', '')
                 },
@@ -648,7 +654,6 @@ def compare_products_in_memory(all_products: list, query: str, location: dict, c
                         'price': product.get('price', 0),
                         'quantity': qty,
                         'deliveryTime': product.get('deliveryTime', 'N/A'),
-                        'image': product.get('image', ''),
                         'link': product.get('link', '')
                     }
                 },
@@ -710,9 +715,11 @@ def compare_products_in_memory(all_products: list, query: str, location: dict, c
                         'price': product.get('price', 0),
                         'quantity': qty,
                         'deliveryTime': product.get('deliveryTime', 'N/A'),
-                        'image': product.get('image', ''),
                         'link': product.get('link', '')
                     }
+                    # Set image if not already set (use first platform's image)
+                    if not matched_product.get('image'):
+                        matched_product['image'] = product.get('image', '')
                     # Update similarity score if it was None or if this match is better
                     if matched_product.get('similarity_score') is None or best_similarity > matched_product.get('similarity_score', 0):
                         matched_product['similarity_score'] = best_similarity
@@ -724,6 +731,7 @@ def compare_products_in_memory(all_products: list, query: str, location: dict, c
                     qty = extract_quantity(product.get('name', ''), product.get('description'))
                     matched_products.append({
                         'name': normalize_product_name(product.get('name', '')).title(),
+                        'image': product.get('image', ''),  # Image at product level
                         'original_names': {
                             platform: product.get('name', '')
                         },
@@ -732,7 +740,6 @@ def compare_products_in_memory(all_products: list, query: str, location: dict, c
                                 'price': product.get('price', 0),
                                 'quantity': qty,
                                 'deliveryTime': product.get('deliveryTime', 'N/A'),
-                                'image': product.get('image', ''),
                                 'link': product.get('link', '')
                             }
                         },

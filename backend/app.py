@@ -21,6 +21,8 @@ import uuid
 import os
 import threading
 import time
+import logging
+import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from ecommerce_platform.zepto import run_zepto_flow
 from ecommerce_platform.blinkit import run_blinkit_flow
@@ -34,6 +36,13 @@ from compare import (
     normalize_product_data,
     compare_products_in_memory,
     save_comparison_to_json
+)
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(process)d] [%(levelname)s] %(message)s",
+    handlers=[logging.StreamHandler(sys.stdout)],
 )
 
 app = Flask(__name__)
@@ -50,10 +59,10 @@ def load_config():
             config = json.load(f)
         return config
     except FileNotFoundError:
-        print(f'[Config] Warning: config.json not found at {config_path}, using defaults')
+        logging.warning(f'[Config] config.json not found at {config_path}, using defaults')
         return {}
     except json.JSONDecodeError as e:
-        print(f'[Config] Error: Invalid JSON in config.json: {e}')
+        logging.error(f'[Config] Invalid JSON in config.json: {e}')
         return {}
 
 # Load config on startup
@@ -86,7 +95,7 @@ def search_all_platforms():
         location = data.get('location', {})
         platforms = data.get('platforms', ['zepto'])
         
-        print(f'[API] Received search request: query="{query}", platforms={platforms}, location={location}')
+        logging.info(f'[API] Received search request: query="{query}", platforms={platforms}, location={location}')
         
         if not query or not query.strip():
             return jsonify({'error': 'Query is required'}), 400
@@ -94,7 +103,7 @@ def search_all_platforms():
         # Generate shared parent folder for this search run
         # Format: run-2026-01-10_13-28-30 (consistent format)
         run_parent_folder = f"run-{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
-        print(f'[API] Using parent folder: {run_parent_folder}')
+        logging.info(f'[API] Using parent folder: {run_parent_folder}')
         
         all_products = []
         
@@ -102,7 +111,7 @@ def search_all_platforms():
         products_by_platform = {}
         
         # Run all platforms in parallel using ThreadPoolExecutor
-        print(f'[API] Starting parallel search for {len(platforms)} platform(s)')
+        logging.info(f'[API] Starting parallel search for {len(platforms)} platform(s)')
         start_time = time.time()
         
         with ThreadPoolExecutor(max_workers=len(platforms)) as executor:
@@ -120,15 +129,15 @@ def search_all_platforms():
                     # Ensure products is a list before processing
                     if products is None:
                         products = []
-                    print(f'[API] ✓ Platform {platform} returned {len(products)} products')
+                    logging.info(f'[API] ✓ Platform {platform} returned {len(products)} products')
                     
                     # Debug: Check if products have platform field set
                     if products:
                         sample_product = products[0]
                         product_platform = sample_product.get('platform', 'MISSING')
-                        print(f'[API] Debug: Sample product from {platform} has platform field: "{product_platform}"')
+                        logging.debug(f'[API] Sample product from {platform} has platform field: "{product_platform}"')
                         if product_platform == 'MISSING' or product_platform != platform:
-                            print(f'[API] Warning: Platform field mismatch! Expected "{platform}", got "{product_platform}"')
+                            logging.warning(f'[API] Platform field mismatch! Expected "{platform}", got "{product_platform}"')
                             # Fix platform field if missing or incorrect
                             for p in products:
                                 p['platform'] = platform
@@ -136,27 +145,27 @@ def search_all_platforms():
                     all_products.extend(products)
                     products_by_platform[platform] = products
                 except Exception as error:
-                    print(f'[API] ✗ Error searching {platform}: {error}')
+                    logging.error(f'[API] ✗ Error searching {platform}: {error}')
                     import traceback
-                    traceback.print_exc()
+                    logging.error(traceback.format_exc())
                     # Continue with other platforms even if one fails
                     continue
         
         elapsed = time.time() - start_time
-        print(f'[API] Total products found: {len(all_products)} (completed in {elapsed:.2f}s)')
+        logging.info(f'[API] Total products found: {len(all_products)} (completed in {elapsed:.2f}s)')
         
         # Debug: Check platform distribution before comparison
         platform_distribution = {}
         for product in all_products:
             platform = product.get('platform', 'unknown')
             platform_distribution[platform] = platform_distribution.get(platform, 0) + 1
-        print(f'[API] Platform distribution in all_products: {platform_distribution}')
-        print(f'[API] Products by platform dict: {[(p, len(prods)) for p, prods in products_by_platform.items()]}')
+        logging.debug(f'[API] Platform distribution in all_products: {platform_distribution}')
+        logging.debug(f'[API] Products by platform dict: {[(p, len(prods)) for p, prods in products_by_platform.items()]}')
         
         # Automatically run comparison after search
         matched_products = []
         if len(all_products) > 0:
-            print(f'[API] Running automatic comparison...')
+            logging.info(f'[API] Running automatic comparison...')
             try:
                 # Pass matching config to comparison function
                 matching_config = CONFIG.get('matching', {})
@@ -165,13 +174,13 @@ def search_all_platforms():
                 if matched_products:
                     # Save comparison results to compare.json
                     save_comparison_to_json(matched_products, query, location)
-                    print(f'[API] Comparison complete: {len(matched_products)} products compared')
+                    logging.info(f'[API] Comparison complete: {len(matched_products)} products compared')
                 else:
-                    print(f'[API] Comparison returned no products')
+                    logging.warning(f'[API] Comparison returned no products')
             except Exception as compare_error:
-                print(f'[API] Error during automatic comparison: {compare_error}')
+                logging.error(f'[API] Error during automatic comparison: {compare_error}')
                 import traceback
-                traceback.print_exc()
+                logging.error(traceback.format_exc())
                 # Continue with returning all products even if comparison fails
         
         # If we have comparison results and multiple platforms, return comparison format
@@ -180,41 +189,38 @@ def search_all_platforms():
             # Transform comparison results to Product[] format for frontend
             products_for_frontend = []
             for item in matched_products:
+                # Get image from product level (single image for matched products)
+                product_image = item.get('image', '')
                 for platform_name, platform_data in item.get('platforms', {}).items():
                     # Only include products from requested platforms
                     if platform_name in platforms:
                         product = {
                             'id': f"{platform_name}-{item.get('name', '').lower().replace(' ', '-')[:20]}",
-                            'name': item.get('name', ''),
-                            'description': item.get('original_names', {}).get(platform_name, ''),
-                            'image': platform_data.get('image', ''),
+                            'name': item.get('original_names', {}).get(platform_name, item.get('name', '')),  # Use original name from platform
+                            'description': item.get('name', ''),  # Use normalized name as description
+                            'image': product_image,  # Use product-level image (same for all platforms when matched)
                             'price': platform_data.get('price', 0),
-                            'currency': platform_data.get('currency', 'INR'),
+                            'currency': 'INR',
                             'platform': platform_name,
-                            'availability': platform_data.get('availability', True),
-                            'rating': platform_data.get('rating', 0),
-                            'reviewCount': platform_data.get('reviewCount', 0),
                             'features': [],
                             'link': platform_data.get('link', ''),
                             'location': location.get('city', '') + ', ' + location.get('state', '') if isinstance(location, dict) else str(location),
                             'deliveryTime': platform_data.get('deliveryTime', 'N/A'),
-                            'deliveryFee': platform_data.get('deliveryFee', 0),
-                            'originalPrice': None,
                             'quantity': platform_data.get('quantity', None)
                         }
                         products_for_frontend.append(product)
             
             if products_for_frontend:
-                print(f'[API] Returning {len(products_for_frontend)} comparison results')
+                logging.info(f'[API] Returning {len(products_for_frontend)} comparison results')
                 return jsonify({'products': products_for_frontend})
         
         # Fallback: return raw products if comparison failed or single platform
-        print(f'[API] Returning {len(all_products)} raw products')
+        logging.info(f'[API] Returning {len(all_products)} raw products')
         return jsonify({'products': all_products})
     except Exception as error:
-        print(f'[API] Search error: {error}')
+        logging.error(f'[API] Search error: {error}')
         import traceback
-        traceback.print_exc()
+        logging.error(traceback.format_exc())
         return jsonify({'error': f'Failed to search products: {str(error)}'}), 500
 
 
@@ -229,18 +235,18 @@ def search_platform_endpoint(platform):
         query = data.get('query', '')
         location = data.get('location', {})
         
-        print(f'[API] Platform-specific search: platform={platform}, query="{query}"')
+        logging.info(f'[API] Platform-specific search: platform={platform}, query="{query}"')
         
         if not query or not query.strip():
             return jsonify({'error': 'Query is required'}), 400
         
         products = search_platform(platform, query, location)
-        print(f'[API] Platform {platform} returned {len(products)} products')
+        logging.info(f'[API] Platform {platform} returned {len(products)} products')
         return jsonify({'products': products})
     except Exception as error:
-        print(f'[API] Error searching {platform}: {error}')
+        logging.error(f'[API] Error searching {platform}: {error}')
         import traceback
-        traceback.print_exc()
+        logging.error(traceback.format_exc())
         return jsonify({'error': f'Failed to search on {platform}: {str(error)}'}), 500
 
 
@@ -251,7 +257,7 @@ def search_platform(platform, query, location, run_parent_folder=None):
     # Check if platform scraping is enabled in config
     platform_config = get_platform_config(platform)
     if not platform_config['scrape']:
-        print(f'[API] Platform {platform} is disabled in config.json, skipping...')
+        logging.info(f'[API] Platform {platform} is disabled in config.json, skipping...')
         return []
     
     platform_map = {
@@ -271,7 +277,7 @@ def scrape_zepto(query, location, platform_config=None, run_parent_folder=None, 
     """Zepto Scraper - Uses Playwright to scrape Zepto website"""
     try:
         if not query:
-            print('[Zepto] Empty query, returning empty list')
+            logging.warning('[Zepto] Empty query, returning empty list')
             return []
         
         # Get headless setting from config
@@ -279,7 +285,7 @@ def scrape_zepto(query, location, platform_config=None, run_parent_folder=None, 
             platform_config = get_platform_config('zepto')
         headless = platform_config.get('headless', True)
         
-        print(f'[Zepto] Starting scrape for query: "{query}" (headless={headless})')
+        logging.info(f'[Zepto] Starting scrape for query: "{query}" (headless={headless})')
         
         # Use the Playwright-based scraper from zepto
         raw_products = run_zepto_flow(
@@ -298,26 +304,26 @@ def scrape_zepto(query, location, platform_config=None, run_parent_folder=None, 
         # Normalize product data to standard format
         normalized_products = [normalize_product_data(p, platform_name) for p in raw_products]
         
-        print(f'[Zepto] Scrape completed: Found {len(normalized_products)} products for query "{query}"')
+        logging.info(f'[Zepto] Scrape completed: Found {len(normalized_products)} products for query "{query}"')
         return normalized_products
     except ImportError as error:
-        print(f'[Zepto] Import error - Playwright may not be installed: {error}')
+        logging.error(f'[Zepto] Import error - Playwright may not be installed: {error}')
         import traceback
-        traceback.print_exc()
+        logging.error(traceback.format_exc())
         return []
     except Exception as error:
-        print(f'[Zepto] Scraping error: {error}')
+        logging.error(f'[Zepto] Scraping error: {error}')
         import traceback
-        traceback.print_exc()
+        logging.error(traceback.format_exc())
         return []
 
 
 def scrape_instamart(query, location, platform_config=None, run_parent_folder=None, platform_name='zepto'):
     """instamart Scraper - Uses Playwright to scrape instamart website"""
-    print(f"entered instamart")
+    logging.info(f"[instamart] entered instamart")
     try:
         if not query:
-            print('[instamart] Empty query, returning empty list')
+            logging.warning('[instamart] Empty query, returning empty list')
             return []
         
         # Get headless setting from config
@@ -325,7 +331,7 @@ def scrape_instamart(query, location, platform_config=None, run_parent_folder=No
             platform_config = get_platform_config('instamart')
         headless = platform_config.get('headless', True)
         
-        print(f'[instamart] Starting scrape for query: "{query}" (headless={headless})')
+        logging.info(f'[instamart] Starting scrape for query: "{query}" (headless={headless})')
         
         # Use the Playwright-based scraper from instamart_itemlist
         # JSON saving is handled within run_instamart_flow
@@ -344,17 +350,17 @@ def scrape_instamart(query, location, platform_config=None, run_parent_folder=No
         
         normalized_products = [normalize_product_data(p, platform_name) for p in raw_products]
 
-        print(f'[instamart] Scrape completed: Found {len(normalized_products)} products for query "{query}"')
+        logging.info(f'[instamart] Scrape completed: Found {len(normalized_products)} products for query "{query}"')
         return normalized_products
     except ImportError as error:
-        print(f'[instamart] Import error - Playwright may not be installed: {error}')
+        logging.error(f'[instamart] Import error - Playwright may not be installed: {error}')
         import traceback
-        traceback.print_exc()
+        logging.error(traceback.format_exc())
         return []
     except Exception as error:
-        print(f'[instamart] Scraping error: {error}')
+        logging.error(f'[instamart] Scraping error: {error}')
         import traceback
-        traceback.print_exc()
+        logging.error(traceback.format_exc())
         return []
 
 
@@ -368,7 +374,7 @@ def scrape_blinkit(query, location, platform_config=None, run_parent_folder=None
     """Blinkit Scraper - Uses Playwright to scrape Blinkit website"""
     try:
         if not query:
-            print('[Blinkit] Empty query, returning empty list')
+            logging.warning('[Blinkit] Empty query, returning empty list')
             return []
         
         # Get headless setting from config
@@ -376,7 +382,7 @@ def scrape_blinkit(query, location, platform_config=None, run_parent_folder=None
             platform_config = get_platform_config('blinkit')
         headless = platform_config.get('headless', True)
         
-        print(f'[Blinkit] Starting scrape for query: "{query}" (headless={headless})')
+        logging.info(f'[Blinkit] Starting scrape for query: "{query}" (headless={headless})')
         
         # Use the Playwright-based scraper from blinkit
         raw_products = run_blinkit_flow(
@@ -395,17 +401,17 @@ def scrape_blinkit(query, location, platform_config=None, run_parent_folder=None
         # Normalize product data to standard format
         normalized_products = [normalize_product_data(p, platform_name) for p in raw_products]
         
-        print(f'[Blinkit] Scrape completed: Found {len(normalized_products)} products for query "{query}"')
+        logging.info(f'[Blinkit] Scrape completed: Found {len(normalized_products)} products for query "{query}"')
         return normalized_products
     except ImportError as error:
-        print(f'[Blinkit] Import error - Playwright may not be installed: {error}')
+        logging.error(f'[Blinkit] Import error - Playwright may not be installed: {error}')
         import traceback
-        traceback.print_exc()
+        logging.error(traceback.format_exc())
         return []
     except Exception as error:
-        print(f'[Blinkit] Scraping error: {error}')
+        logging.error(f'[Blinkit] Scraping error: {error}')
         import traceback
-        traceback.print_exc()
+        logging.error(traceback.format_exc())
         return []
 
 @app.route('/api/product/<platform>/<product_id>', methods=['GET'])
@@ -454,25 +460,22 @@ def get_compare_data():
         # Transform compare.json structure to Product[] format
         products = []
         for item in compare_data.get('products', []):
+            # Get image from product level (single image for matched products)
+            product_image = item.get('image', '')
             # Each item has a 'platforms' object with platform-specific data
             for platform_name, platform_data in item.get('platforms', {}).items():
                 product = {
                     'id': f"{platform_name}-{item.get('name', '').lower().replace(' ', '-')[:20]}",
-                    'name': item.get('name', ''),
-                    'description': item.get('original_names', {}).get(platform_name, ''),
-                    'image': platform_data.get('image', ''),
+                    'name': item.get('original_names', {}).get(platform_name, item.get('name', '')),  # Use original name from platform
+                    'description': item.get('name', ''),  # Use normalized name as description
+                    'image': product_image,  # Use product-level image (same for all platforms when matched)
                     'price': platform_data.get('price', 0),
-                    'currency': platform_data.get('currency', 'INR'),
+                    'currency': 'INR',
                     'platform': platform_name,
-                    'availability': platform_data.get('availability', True),
-                    'rating': platform_data.get('rating', 0),
-                    'reviewCount': platform_data.get('reviewCount', 0),
                     'features': [],
                     'link': platform_data.get('link', ''),
                     'location': compare_data.get('location', {}).get('city', '') + ', ' + compare_data.get('location', {}).get('state', ''),
                     'deliveryTime': platform_data.get('deliveryTime', 'N/A'),
-                    'deliveryFee': platform_data.get('deliveryFee', 0),
-                    'originalPrice': None,
                     'quantity': platform_data.get('quantity', None)
                 }
                 products.append(product)
@@ -495,9 +498,9 @@ def get_compare_data():
             'message': str(e)
         }), 500
     except Exception as error:
-        print(f'[API] Error loading compare.json: {error}')
+        logging.error(f'[API] Error loading compare.json: {error}')
         import traceback
-        traceback.print_exc()
+        logging.error(traceback.format_exc())
         return jsonify({
             'error': 'Failed to load comparison data',
             'message': str(error)
@@ -539,15 +542,14 @@ def not_found(error):
 
 
 if __name__ == '__main__':
-    print(f'Fast E-commerce API server (Flask) running on port {PORT}')
-    print(f'Set VITE_API_BASE_URL=http://localhost:{PORT} in your .env file')
-    print(f'\n[Config] Search Debug: {"✓ ENABLED (timestamped folders)" if SEARCH_DEBUG else "✗ DISABLED (overwrite mode)"}')
-    print('\n[Config] Platform scraping configuration:')
+    logging.info(f'Fast E-commerce API server (Flask) running on port {PORT}')
+    logging.info(f'Set VITE_API_BASE_URL=http://localhost:{PORT} in your .env file')
+    logging.info(f'[Config] Search Debug: {"✓ ENABLED (timestamped folders)" if SEARCH_DEBUG else "✗ DISABLED (overwrite mode)"}')
+    logging.info('[Config] Platform scraping configuration:')
     for platform, config in PLATFORM_CONFIG.items():
         status = '✓ ENABLED' if config.get('scrape', False) else '✗ DISABLED'
         headless = 'headless' if config.get('headless', True) else 'visible'
-        print(f'  {platform}: {status} ({headless})')
-    print()
+        logging.info(f'  {platform}: {status} ({headless})')
     app.run(host='0.0.0.0', port=PORT, debug=True)
 
 
