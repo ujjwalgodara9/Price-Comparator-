@@ -7,6 +7,24 @@ from playwright.sync_api import sync_playwright
 STORAGE_FOLDER = "product_data"
 os.makedirs(STORAGE_FOLDER, exist_ok=True)
 
+def remove_duplicate_products(product_list):
+    """
+    Removes exact duplicate dictionaries from a list while preserving order.
+    """
+    seen = set()
+    unique_products = []
+    
+    for product in product_list:
+        # Convert dict to a sorted tuple of items so it can be hashed/tracked
+        # sorting keys ensures {'a':1, 'b':2} and {'b':2, 'a':1} are seen as same
+        product_tuple = tuple(sorted(product.items()))
+        
+        if product_tuple not in seen:
+            unique_products.append(product)
+            seen.add(product_tuple)
+            
+    return unique_products
+
 def setup_automatic_handlers(page):
     # Defining the complex locator exactly as you requested
     try_again_button = page.locator('button.sc-iGgWBj.gVfwdV.hIVl0').filter(
@@ -97,45 +115,42 @@ def extract_product_list(page):
     
     extraction_script = """
     () => {
-        // 1. Select all product card containers
         const items = document.querySelectorAll('div._3Rr1X');
 
         return Array.from(items).map(item => {
-            
-            // --- DATA EXTRACTION ---
-
-            // Time (e.g., "10 MINS")
             const timeEl = item.querySelector('.sc-gEvEer.ePxHTM.GOJ8s._1y_Uf');
             const deliveryTime = timeEl ? timeEl.innerText.trim() : "N/A";
-
-            // Product Name
             const nameEl = item.querySelector('.sc-gEvEer.iPErou._1lbNR');
             const productName = nameEl ? nameEl.innerText.trim() : "N/A";
-
-            // Description (Special handling: text only, excluding child elements)
+            const imgEl = item.querySelector('img._16I1D');
+            const imageUrl = imgEl ? imgEl.getAttribute('src') : "N/A";
             const descEl = item.querySelector('.sc-gEvEer.bCqPoH._3wq_F');
             let description = "N/A";
             if (descEl) {
-                // This takes the direct text node of the div and ignores <span> or <div> children
                 description = Array.from(descEl.childNodes)
                     .filter(node => node.nodeType === Node.TEXT_NODE)
                     .map(node => node.textContent.trim())
                     .join(' ') || descEl.firstChild?.textContent?.trim() || "N/A";
             }
 
-            // Price
             const priceEl = item.querySelector('.sc-gEvEer.iQcBUp._2jn41');
             const price = priceEl ? priceEl.innerText.trim() : "N/A";
 
-            // --- LINK LOGIC ---
-            // to be done
+            const linkEl = item.closest('a') || item.querySelector('a');
+            let productLink = "N/A";
+            
+            if (linkEl) {
+                const href = linkEl.getAttribute('href');
+                productLink = href ? (href.startsWith('http') ? href : `https://www.swiggy.com${href}`) : "N/A";
+            }
 
             return {
                 "product_name": productName,
                 "price": price,
                 "description": description,
                 "delivery_time": deliveryTime,
-                "product_link": []
+                "product_link": productLink,
+                "image_url": imageUrl
             };
         }).filter(p => p.product_name !== "N/A");
     }
@@ -191,6 +206,10 @@ def run_instamart_flow(product_name, location, headless=True, max_products=50, r
             search_and_scroll(page, product_name)
             
             final_data_list = extract_product_list(page)
+
+            # Remove Duplicates
+            final_data_list = remove_duplicate_products(final_data_list)
+
             save_to_timestamped_folder(final_data_list, platform_name, run_parent_folder=run_parent_folder)
             time_end = time.time()
             print(f"--- Instamart Total Time Taken: {time_end - start_time:.2f}) seconds ---")
