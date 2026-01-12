@@ -5,13 +5,13 @@ import { ProductComparisonTable } from './components/ProductComparisonTable';
 import { LocationDisplay } from './components/LocationDisplay';
 import { LocationService } from './services/locationService';
 import { ProductService } from './services/productService';
-import { Product, LocationData, ComparisonFilters } from './types/product';
+import { Product, LocationData, ComparisonFilters, MatchedProduct, Platform } from './types/product';
 import { Loader2 } from 'lucide-react';
 
 function App() {
   const [location, setLocation] = useState<LocationData | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<MatchedProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState<ComparisonFilters>({
     platforms: ['zepto', 'blinkit', 'swiggy-instamart'],
@@ -72,15 +72,36 @@ function App() {
     setLoading(false);
   };
 
-  const groupedProducts = ProductService.groupProductsByName(products);
-  
+  // Products are already matched products with all platforms in one object
   // Filter to only show products where quantities match across all platforms
-  const filteredGroupedProducts = new Map<string, Product[]>();
-  groupedProducts.forEach((productList, productName) => {
-    // Only include if all products have matching quantities
-    if (ProductService.hasMatchingQuantities(productList)) {
-      filteredGroupedProducts.set(productName, productList);
-    }
+  const filteredProducts = products.filter(matchedProduct => {
+    const platformData = Object.values(matchedProduct.platforms || {});
+    if (platformData.length <= 1) return true; // Single platform, no comparison needed
+    
+    // Extract quantities
+    const quantities = platformData.map(p => p.quantity).filter(q => q);
+    if (quantities.length === 0) return true; // No quantities to compare
+    
+    // Check if all quantities match (using ProductService logic)
+    const mockProducts: Product[] = platformData.map((p, idx) => ({
+      id: `temp-${idx}`,
+      name: matchedProduct.name,
+      description: '',
+      image: matchedProduct.image,
+      price: p.price,
+      currency: 'INR',
+      platform: Object.keys(matchedProduct.platforms)[idx] as Platform,
+      availability: true,
+      rating: 0,
+      reviewCount: 0,
+      features: [],
+      link: p.link,
+      location: '',
+      deliveryTime: p.deliveryTime,
+      quantity: p.quantity
+    }));
+    
+    return ProductService.hasMatchingQuantities(mockProducts);
   });
 
   if (loading && !location) {
@@ -132,7 +153,7 @@ function App() {
               </div>
             )}
 
-            {!loading && filteredGroupedProducts.size === 0 ? (
+            {!loading && filteredProducts.length === 0 ? (
               <div className="text-center py-12">
                 <p className="text-muted-foreground text-lg">
                   {searchQuery
@@ -141,26 +162,29 @@ function App() {
                 </p>
               </div>
             ) : !loading ? (
-              Array.from(filteredGroupedProducts.entries())
-                .sort(([nameA], [nameB]) => {
-                  // Custom sort: letters before numbers
-                  const startsWithLetterA = /^[a-zA-Z]/.test(nameA);
-                  const startsWithLetterB = /^[a-zA-Z]/.test(nameB);
-                  
-                  // If one starts with letter and other with number, letter comes first
-                  if (startsWithLetterA && !startsWithLetterB) return -1;
-                  if (!startsWithLetterA && startsWithLetterB) return 1;
-                  
-                  // Both start with same type (letter or number), sort normally
-                  return nameA.localeCompare(nameB, undefined, { sensitivity: 'base', numeric: true });
-                })
-                .map(([productName, productList]) => (
-                  <ProductComparisonTable
-                    key={productName}
-                    products={productList}
-                    productName={productName}
-                  />
-                ))
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {filteredProducts
+                  .sort((a, b) => {
+                    // Custom sort: letters before numbers
+                    const nameA = a.name;
+                    const nameB = b.name;
+                    const startsWithLetterA = /^[a-zA-Z]/.test(nameA);
+                    const startsWithLetterB = /^[a-zA-Z]/.test(nameB);
+                    
+                    // If one starts with letter and other with number, letter comes first
+                    if (startsWithLetterA && !startsWithLetterB) return -1;
+                    if (!startsWithLetterA && startsWithLetterB) return 1;
+                    
+                    // Both start with same type (letter or number), sort normally
+                    return nameA.localeCompare(nameB, undefined, { sensitivity: 'base', numeric: true });
+                  })
+                  .map((matchedProduct) => (
+                    <ProductComparisonTable
+                      key={matchedProduct.name}
+                      matchedProduct={matchedProduct}
+                    />
+                  ))}
+              </div>
             ) : null}
           </div>
         </div>

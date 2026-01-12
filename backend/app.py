@@ -186,33 +186,31 @@ def search_all_platforms():
         # If we have comparison results and multiple platforms, return comparison format
         # Otherwise return raw products
         if matched_products and len(platforms) >= 1:
-            # Transform comparison results to Product[] format for frontend
-            products_for_frontend = []
+            # Filter matched products to only include requested platforms
+            filtered_matched_products = []
             for item in matched_products:
-                # Get image from product level (single image for matched products)
-                product_image = item.get('image', '')
-                for platform_name, platform_data in item.get('platforms', {}).items():
-                    # Only include products from requested platforms
-                    if platform_name in platforms:
-                        product = {
-                            'id': f"{platform_name}-{item.get('name', '').lower().replace(' ', '-')[:20]}",
-                            'name': item.get('original_names', {}).get(platform_name, item.get('name', '')),  # Use original name from platform
-                            'description': item.get('name', ''),  # Use normalized name as description
-                            'image': product_image,  # Use product-level image (same for all platforms when matched)
-                            'price': platform_data.get('price', 0),
-                            'currency': 'INR',
-                            'platform': platform_name,
-                            'features': [],
-                            'link': platform_data.get('link', ''),
-                            'location': location.get('city', '') + ', ' + location.get('state', '') if isinstance(location, dict) else str(location),
-                            'deliveryTime': platform_data.get('deliveryTime', 'N/A'),
-                            'quantity': platform_data.get('quantity', None)
-                        }
-                        products_for_frontend.append(product)
+                # Filter platforms to only include requested ones
+                filtered_platforms = {
+                    platform_name: platform_data 
+                    for platform_name, platform_data in item.get('platforms', {}).items()
+                    if platform_name in platforms
+                }
+                # Only include if there are platforms after filtering
+                if filtered_platforms:
+                    filtered_item = item.copy()
+                    filtered_item['platforms'] = filtered_platforms
+                    # Also filter original_names
+                    filtered_original_names = {
+                        platform_name: original_name
+                        for platform_name, original_name in item.get('original_names', {}).items()
+                        if platform_name in platforms
+                    }
+                    filtered_item['original_names'] = filtered_original_names
+                    filtered_matched_products.append(filtered_item)
             
-            if products_for_frontend:
-                logging.info(f'[API] Returning {len(products_for_frontend)} comparison results')
-                return jsonify({'products': products_for_frontend})
+            if filtered_matched_products:
+                logging.info(f'[API] Returning {len(filtered_matched_products)} matched products (with all platforms in each)')
+                return jsonify({'products': filtered_matched_products})
         
         # Fallback: return raw products if comparison failed or single platform
         logging.info(f'[API] Returning {len(all_products)} raw products')
@@ -457,33 +455,14 @@ def get_compare_data():
         with open(compare_path, 'r', encoding='utf-8') as f:
             compare_data = json.load(f)
         
-        # Transform compare.json structure to Product[] format
-        products = []
-        for item in compare_data.get('products', []):
-            # Get image from product level (single image for matched products)
-            product_image = item.get('image', '')
-            # Each item has a 'platforms' object with platform-specific data
-            for platform_name, platform_data in item.get('platforms', {}).items():
-                product = {
-                    'id': f"{platform_name}-{item.get('name', '').lower().replace(' ', '-')[:20]}",
-                    'name': item.get('original_names', {}).get(platform_name, item.get('name', '')),  # Use original name from platform
-                    'description': item.get('name', ''),  # Use normalized name as description
-                    'image': product_image,  # Use product-level image (same for all platforms when matched)
-                    'price': platform_data.get('price', 0),
-                    'currency': 'INR',
-                    'platform': platform_name,
-                    'features': [],
-                    'link': platform_data.get('link', ''),
-                    'location': compare_data.get('location', {}).get('city', '') + ', ' + compare_data.get('location', {}).get('state', ''),
-                    'deliveryTime': platform_data.get('deliveryTime', 'N/A'),
-                    'quantity': platform_data.get('quantity', None)
-                }
-                products.append(product)
+        # Return matched products in their original structure (with platforms object)
+        # Frontend will handle displaying all platforms in a single card
+        matched_products = compare_data.get('products', [])
         
         return jsonify({
-            'products': products,
+            'products': matched_products,
             'search_query': compare_data.get('search_query', ''),
-            'total_products': len(products),
+            'total_products': len(matched_products),
             'matched_products': compare_data.get('matched_products', 0),
             'location': compare_data.get('location', {})
         })

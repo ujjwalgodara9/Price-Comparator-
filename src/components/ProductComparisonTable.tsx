@@ -1,12 +1,11 @@
-import { Product } from '../types/product';
+import { MatchedProduct, Platform } from '../types/product';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { ExternalLink, Clock } from 'lucide-react';
 import { platformNames, platformColors } from '../data/platformData';
 
 interface ProductComparisonTableProps {
-  products: Product[];
-  productName: string;
+  matchedProduct: MatchedProduct;
 }
 
 // Helper function to extract numeric value from quantity string (e.g., "5 kg" -> 5)
@@ -23,28 +22,31 @@ function calculatePricePerKg(price: number, quantity: string | undefined): numbe
   return price / qty;
 }
 
-export function ProductComparisonTable({ products, productName }: ProductComparisonTableProps) {
-  if (products.length === 0) {
+export function ProductComparisonTable({ matchedProduct }: ProductComparisonTableProps) {
+  const platforms = Object.keys(matchedProduct.platforms || {}) as Platform[];
+  if (platforms.length === 0) {
     return null;
   }
 
-  // Sort products by price (lowest first)
-  const sortedProducts = [...products].sort((a, b) => a.price - b.price);
-  const cheapestProduct = sortedProducts[0];
-  const cheapestPrice = cheapestProduct.price;
+  // Convert platform data to array and sort by price (lowest first)
+  const platformEntries = platforms.map(platform => ({
+    platform,
+    ...matchedProduct.platforms[platform]
+  }));
+  const sortedPlatforms = platformEntries.sort((a, b) => a.price - b.price);
+  const cheapestPrice = sortedPlatforms[0].price;
 
-  // Get the first product's image (they should all be the same product)
-  const productImage = products[0]?.image || '';
-  const productDescription = products[0]?.description || '';
+  const productImage = matchedProduct.image || '';
+  const productName = matchedProduct.name || '';
 
   return (
-    <Card className="mb-8 bg-card border">
-      <CardContent className="p-6">
+    <Card className="h-full flex flex-col bg-card border">
+      <CardContent className="p-4 flex-1 flex flex-col">
         {/* Product Header Section */}
-        <div className="flex items-start gap-6 mb-6 pb-6 border-b">
+        <div className="mb-4">
           {/* Product Image */}
-          <div className="flex-shrink-0">
-            <div className="w-32 h-32 bg-muted rounded-lg overflow-hidden">
+          <div className="w-full mb-3">
+            <div className="aspect-square w-full bg-muted rounded-lg overflow-hidden">
               <img
                 src={productImage}
                 alt={productName}
@@ -57,79 +59,75 @@ export function ProductComparisonTable({ products, productName }: ProductCompari
           </div>
 
           {/* Product Info */}
-          <div className="flex-1">
-            <h3 className="text-xl font-semibold mb-2">{productName}</h3>
-            {productDescription && (
-              <p className="text-sm text-muted-foreground line-clamp-2">{productDescription}</p>
-            )}
+          <div>
+            <h3 className="text-lg font-semibold mb-1 line-clamp-2">{productName}</h3>
           </div>
         </div>
 
         {/* Platform Comparison Table */}
-        <div className="space-y-3">
-          {sortedProducts.map((product) => {
-            const isCheapest = product.price === cheapestPrice;
-            const platformColor = platformColors[product.platform];
-            const pricePerKg = calculatePricePerKg(product.price, product.quantity);
-            const quantity = product.quantity || '1 pack';
+        <div className="space-y-2 flex-1">
+          {sortedPlatforms.map((platformData) => {
+            const isCheapest = platformData.price === cheapestPrice;
+            const platformColor = platformColors[platformData.platform];
+            const pricePerKg = calculatePricePerKg(platformData.price, platformData.quantity);
+            const quantity = platformData.quantity || '1 pack';
 
             return (
               <div
-                key={product.id}
-                className={`flex items-center gap-4 p-4 rounded-lg border transition-colors ${
+                key={platformData.platform}
+                className={`p-3 rounded-lg border transition-colors ${
                   isCheapest ? 'bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800' : 'bg-muted/30'
                 }`}
               >
-                {/* Platform Badge */}
-                <div className="flex-shrink-0">
-                  <Badge className={platformColor} style={{ minWidth: '80px', justifyContent: 'center' }}>
-                    {platformNames[product.platform]}
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  {/* Platform Badge */}
+                  <Badge className={platformColor} style={{ fontSize: '0.75rem' }}>
+                    {platformNames[platformData.platform]}
                   </Badge>
+                  {/* Cheapest Badge */}
+                  {isCheapest && (
+                    <Badge className="bg-green-500 hover:bg-green-600 text-white" style={{ fontSize: '0.75rem' }}>
+                      CHEAPEST
+                    </Badge>
+                  )}
                 </div>
 
                 {/* Quantity */}
-                <div className="flex-shrink-0 min-w-[120px]">
-                  <div className="text-sm font-medium">{quantity}</div>
+                <div className="text-xs text-muted-foreground mb-2">
+                  {quantity}
                 </div>
 
                 {/* Price */}
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg font-bold">
-                      {product.currency} {product.price.toLocaleString()}
+                <div className="mb-2">
+                  <div className="flex items-center gap-1 flex-wrap">
+                    <span className="text-base font-bold">
+                      ₹ {platformData.price.toLocaleString()}
                     </span>
-                    {product.quantity && (
-                      <span className="text-sm text-muted-foreground">
-                        ({product.currency} {pricePerKg.toFixed(2)}/kg)
+                    {platformData.quantity && (
+                      <span className="text-xs text-muted-foreground">
+                        (₹ {pricePerKg.toFixed(2)}/kg)
                       </span>
                     )}
-                    <a
-                      href={product.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                    </a>
                   </div>
                 </div>
 
-                {/* Delivery Time */}
-                {product.deliveryTime && (
-                  <div className="flex-shrink-0 flex items-center gap-1 text-sm text-muted-foreground min-w-[100px]">
-                    <Clock className="h-4 w-4" />
-                    <span>{product.deliveryTime}</span>
-                  </div>
-                )}
-
-                {/* Cheapest Badge */}
-                {isCheapest && (
-                  <div className="flex-shrink-0">
-                    <Badge className="bg-green-500 hover:bg-green-600 text-white">
-                      CHEAPEST
-                    </Badge>
-                  </div>
-                )}
+                {/* Delivery Time and Link */}
+                <div className="flex items-center justify-between">
+                  {platformData.deliveryTime && (
+                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                      <Clock className="h-3 w-3" />
+                      <span>{platformData.deliveryTime}</span>
+                    </div>
+                  )}
+                  <a
+                    href={platformData.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                </div>
               </div>
             );
           })}

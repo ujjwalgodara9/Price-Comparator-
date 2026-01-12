@@ -1,5 +1,4 @@
-import { Product, Platform, LocationData } from '../types/product';
-import { PlatformScraper } from './platformScraper';
+import { Product, Platform, LocationData, MatchedProduct } from '../types/product';
 
 /**
  * Main API service for fast e-commerce platforms
@@ -18,7 +17,7 @@ export class FastEcommerceAPI {
     query: string,
     location: LocationData,
     platforms: Platform[]
-  ): Promise<Product[]> {
+  ): Promise<MatchedProduct[]> {
     console.log('[FastEcommerceAPI] searchProducts called:', {
       query,
       location,
@@ -41,9 +40,27 @@ export class FastEcommerceAPI {
       const products = await this.searchViaBackendAPI(query, location, platforms);
       
       if (products && products.length > 0) {
-        console.log(`[FastEcommerceAPI] Received ${products.length} products from search API`);
-        // Filter by selected platforms
-        return products.filter(p => platforms.includes(p.platform));
+        console.log(`[FastEcommerceAPI] Received ${products.length} matched products from search API`);
+        // Filter platforms within each matched product
+        return products.map(matchedProduct => {
+          const filteredPlatforms: Record<Platform, any> = {} as any;
+          const filteredOriginalNames: Record<Platform, string> = {} as any;
+          
+          Object.keys(matchedProduct.platforms || {}).forEach(platform => {
+            if (platforms.includes(platform as Platform)) {
+              filteredPlatforms[platform as Platform] = matchedProduct.platforms[platform as Platform];
+              if (matchedProduct.original_names?.[platform as Platform]) {
+                filteredOriginalNames[platform as Platform] = matchedProduct.original_names[platform as Platform];
+              }
+            }
+          });
+          
+          return {
+            ...matchedProduct,
+            platforms: filteredPlatforms,
+            original_names: filteredOriginalNames
+          };
+        }).filter(matchedProduct => Object.keys(matchedProduct.platforms).length > 0);
       }
       
       console.log('[FastEcommerceAPI] No products found in search results');
@@ -54,7 +71,10 @@ export class FastEcommerceAPI {
       // Fallback to PlatformScraper if API fails
       try {
         console.log('[FastEcommerceAPI] Fallback: attempting direct scraping');
-        return await PlatformScraper.searchProducts(query, location, platforms);
+        // Note: PlatformScraper returns Product[], but we need MatchedProduct[]
+        // For now, return empty array on fallback
+        console.warn('[FastEcommerceAPI] Fallback scraping not supported for MatchedProduct format');
+        return [];
       } catch (fallbackError) {
         console.error('[FastEcommerceAPI] Fallback also failed:', fallbackError);
         return [];
@@ -65,7 +85,7 @@ export class FastEcommerceAPI {
   /**
    * Get product comparison data from compare.json
    */
-  static async getCompareData(): Promise<Product[]> {
+  static async getCompareData(): Promise<MatchedProduct[]> {
     let url: string;
     if (this.API_BASE_URL.startsWith('http')) {
       url = `${this.API_BASE_URL}/api/compare`;
@@ -92,7 +112,7 @@ export class FastEcommerceAPI {
       console.log('[FastEcommerceAPI] Comparison data received:', {
         productCount: data.products?.length || 0,
       });
-      return data.products || [];
+      return data.products || []; // Returns MatchedProduct[]
     } catch (error) {
       console.error('[FastEcommerceAPI] Error fetching comparison data:', error);
       throw error;
@@ -106,7 +126,7 @@ export class FastEcommerceAPI {
     query: string,
     location: LocationData,
     platforms: Platform[]
-  ): Promise<Product[]> {
+  ): Promise<MatchedProduct[]> {
     // Build API URL - handle both absolute and relative paths
     let url: string;
     if (this.API_BASE_URL.startsWith('http')) {
