@@ -81,6 +81,32 @@ def search_dmart_products(page, query):
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
         time.sleep(3)
 
+def split_product_name(full_name):
+    """Split product name into name and description based on common patterns"""
+    if not full_name or full_name == "N/A":
+        return full_name, "N/A"
+    
+    # Common patterns to split on
+    patterns = [
+        r'\s*\(.*?\)\s*:\s*',  # Split on parentheses followed by colon
+        r'\s*:\s*',  # Split on colon (e.g., "Product : 500 ml")
+        r'\s*-\s*\d+',  # Split before dash followed by number
+    ]
+    
+    for pattern in patterns:
+        import re
+        match = re.search(pattern, full_name)
+        if match:
+            split_point = match.start()
+            name = full_name[:split_point].strip()
+            description = full_name[split_point:].strip()
+            # Clean up description by removing leading colons/dashes
+            description = re.sub(r'^[:\-\s]+', '', description)
+            return name, description
+    
+    # If no pattern matches, return original name with empty description
+    return full_name, "N/A"
+
 def extract_dmart_data(page):
     extraction_script = """
     () => {
@@ -94,15 +120,7 @@ def extract_dmart_data(page):
             const nameEl = item.querySelector("div.text-primaryColor.min-h-10")
             const productName = nameEl ? nameEl.innerText.trim() : "N/A";
 
-            // PRODUCT LINK
-            let productLink = "N/A";
-            const linkEl = item.querySelector('a');
-            if (linkEl && linkEl.href) {
-                productLink = null
-            }
-
             // PRICES
-            let mrp = "N/A";
             let dmartPrice = "N/A";
 
             const priceTexts = Array.from(item.querySelectorAll('p'))
@@ -110,35 +128,53 @@ def extract_dmart_data(page):
                 .filter(t => t.startsWith("₹"));
 
             if (priceTexts.length >= 2) {
-                mrp = priceTexts[0];
                 dmartPrice = priceTexts[1];
             } else if (priceTexts.length === 1) {
                 dmartPrice = priceTexts[0];
             }
 
-            // WEIGHT / PACK SIZE
-            const weightEl = item.querySelector('select, button, input, div[role="button"]');
-            const weight = weightEl ? weightEl.innerText.trim() : "N/A";
-
             // IMAGE
-            const imgEl = item.querySelector('img');
-            const image = imgEl ? imgEl.src : "N/A";
+            let image = "N/A";
+            const imgDiv = item.querySelector('div[style*="background-image"]');
+
+            if (imgDiv) {
+                const bg = imgDiv.style.backgroundImage;
+                // Extract first URL from: url("..."), url("...")
+                const match = bg.match(/url\(["']?(.*?)["']?\)/);
+                if (match && match[1]) {
+                    image = match[1];
+                }
+            }
 
             return {
-                product_name: productName,
-                product_link: productLink,
-                mrp: mrp,
-                dmart_price: dmartPrice,
-                weight: weight,
-                image: image
+                "product_name": productName,
+                "price": dmartPrice,
+                "delivery_time": "N/A",
+                "product_link": 'N/A',
+                "image_url": image
             };
         });
     }
     """
     return page.evaluate(extraction_script)
 
-
-
+def remove_duplicate_products(product_list):
+    """
+    Removes exact duplicate dictionaries from a list while preserving order.
+    """
+    seen = set()
+    unique_products = []
+    
+    for product in product_list:
+        # Convert dict to a sorted tuple of items so it can be hashed/tracked
+        # sorting keys ensures {'a':1, 'b':2} and {'b':2, 'a':1} are seen as same
+        product_tuple = tuple(sorted(product.items()))
+        
+        if product_tuple not in seen:
+            unique_products.append(product)
+            seen.add(product_tuple)
+            
+    return unique_products
 
 def save_to_timestamped_folder(data, platform_name, run_parent_folder=None):
     # If parent folder is provided, use it; otherwise create a new one
@@ -152,7 +188,7 @@ def save_to_timestamped_folder(data, platform_name, run_parent_folder=None):
         run_folder = os.path.join(STORAGE_FOLDER, f"run-{timestamp}-{platform_name.lower()}")
         os.makedirs(run_folder, exist_ok=True)
     
-    # Define file path: run_folder/blinkit.json (directly in parent folder)
+    # Define file path: run_folder/zepto.json (directly in parent folder)
     json_filename = f"{platform_name.lower()}.json"
     json_path = os.path.join(run_folder, json_filename)
     
@@ -167,9 +203,10 @@ def save_to_timestamped_folder(data, platform_name, run_parent_folder=None):
 
 
 # --- MAIN EXECUTION ---
-def run_dmart_flow():
+def run_dmart_flow(product_name, location, headless=True, max_products=50, run_parent_folder=None, platform_name='dmart'):
+    start_time = time.time()
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=headless)
         # Use a standard Chrome User-Agent
         user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
         context = browser.new_context(user_agent=user_agent)
@@ -179,23 +216,35 @@ def run_dmart_flow():
         try:
             page.goto("https://www.dmart.in/", wait_until="domcontentloaded")
             
-            set_dmart_location(page, 'Mumbai')
-            search_dmart_products(page, 'Ghee')
+            set_dmart_location(page, location)
+            search_dmart_products(page, product_name)
             
-            final_list = extract_dmart_data(page)
-            print("Final List: ", final_list)
-            # save_to_timestamped_folder(final_list, platform_name, run_parent_folder=run_parent_folder)
+            raw_list = extract_dmart_data(page)
             
-            # Return the products list so server.py can use them
-            return final_list
+            # Process each product to split name and description
+            final_list = []
+            for product in raw_list:
+                name, description = split_product_name(product['product_name'])
+                processed_product = product.copy()
+                processed_product['product_name'] = name
+                processed_product['description'] = description
+                final_list.append(processed_product)
+
+            final_data_list = remove_duplicate_products(final_list)
+            
+            final_saved_path = save_to_timestamped_folder(final_data_list, platform_name, run_parent_folder=run_parent_folder)
+
+            time_end = time.time()
+            print(f"--- Dmart Total Time Taken: {time_end - start_time:.2f}) seconds ---")
+            return final_data_list
             
         except Exception as e:
-            print(f"[Blinkit] Error during scraping: {e}")
+            print(f"[Dmart] Error during scraping: {e}")
             import traceback
             traceback.print_exc()
-            return []  # Return empty list on error
+            return [] 
         finally:
             browser.close()
 
 if __name__ == "__main__":
-    run_dmart_flow()
+    run_dmart_flow(product_name="atta", location="Mumbai", headless=False, max_products=50)
