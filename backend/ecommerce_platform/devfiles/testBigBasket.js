@@ -1,0 +1,31 @@
+async function testBigBasket(term = "jam") {
+  const url = `https://www.bigbasket.com/listing-svc/v1/product/term-completion?term=${encodeURIComponent(term)}`;
+
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "accept": "*/*",
+        "content-type": "application/json",
+        "common-client-static-version": "101",
+        "x-channel": "BB-WEB",
+        "x-entry-context": "bbnow",
+        "x-entry-context-id": "10",
+        "user-agent":
+          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+        "cookie": "_bb_locSrc=default; x-channel=web; _bb_aid=MjkxMzA4NDUzMA==; _bb_cid=1; _bb_vid=MTA3NjI1NjQ5MTM1MTg5MDkyNg==; _bb_nhid=7427; _bb_dsid=7427; _bb_dsevid=7427; _bb_bhid=; _bb_loid=; csrftoken=SwiGQIVI1T97eRb0MIlcHuqd9vBoAzCivIGo0SqwfJjo1opAQMdoMQW0jzv2NCJK; isintegratedsa=true; jentrycontextid=10; xentrycontextid=10; xentrycontext=bbnow; _bb_bb2.0=1; is_global=1; _bb_addressinfo=; _bb_pin_code=; _bb_sa_ids=19224; _is_tobacco_enabled=1; _is_bb1.0_supported=0; _bb_cda_sa_info=djIuY2RhX3NhLjEwLjE5MjI0; is_integrated_sa=1; is_subscribe_sa=0; bb2_enabled=true; csurftoken=FDRTEQ.MTA3NjI1NjQ5MTM1MTg5MDkyNg==.1768217087853.y2Lxh/Nt1swzPFnAb29ldAhs6HikYA6W/2AIPI12pQ0=; ufi=1; _gcl_gs=2.1.k1$i1768217087$u160754478; _gcl_au=1.1.897701106.1768217088; bigbasket.com=5f8b1c50-6d15-48da-abc7-224fc1ff7774; jarvis-id=46775868-b494-4ebc-a37e-6cb696a0eafa; _gid=GA1.2.896887431.1768217089; _gac_UA-27455376-1=1.1768217089.Cj0KCQiA1JLLBhCDARIsAAVfy7hLsP12dTqNRtIKxEJtumOHO_GQUZrgPfWotW5Uy_FgehpIWbSxQT8aAlbfEALw_wcB; _gat_UA-27455376-1=1; _fbp=fb.1.1768217088660.428091384467744066; _gcl_aw=GCL.1768217089.Cj0KCQiA1JLLBhCDARIsAAVfy7hLsP12dTqNRtIKxEJtumOHO_GQUZrgPfWotW5Uy_FgehpIWbSxQT8aAlbfEALw_wcB; _ga=GA1.1.807284223.1768217089; adb=0; bm_ss=ab8e18ef4e; bm_s=YAAQlvnaF18JYyibAQAAKufzsQR7ieLzWTIg3eaULG0efVzniOjeDrqBC6kZ24E/H4sxsr6oBs7FwVxVyXCoTuhabsrFaujZ4YYenlei64NI+Tq47bwMNVdEZsDtFVNAxIfYXFR9HIHKSpokIvKjGmlCa5xozz92QCnK3WexRw17GpjCOo6HUZG4nBVuTouqIy9FdAaMggulAz6hg0hWRWn+LQ7pA4KUdJoxrNeaih+ISyWpgFXE6JS9K+84gBlvUeUgJhUrNKOJPsLRe/AK7iMXI+0+sEgpcP0ypUe0KeDYc551hTxA9umC+qB7pVoMHheqbmvY4sXcwfEvsh7AtJs2nAJtIAeij+yWmMSVgM2z97dpLL7B6rSZGmuBeluf9Ie5o0aH6hk9OjfiENM6Bb9C27wSfxy6rNs1uvlgXQ8oS118ujTykOtmebFaygqI2ezeGNlg9rGijtGuIbmWDATf5G4MuhPc+MqOsBHUyF58yDxD2euefYJLyqhjwsqfuxTw7uF7eQVujUSRvyPBj02v67wb34RU7AI4BGZ9ahKURUwIj9+3yc8=; bm_so=E5FAD9A041E32AC1F43C4F87FE1DD556CBD498701B06213BF25EDA89A6D4D605~YAAQlvnaF2AJYyibAQAAKufzsQauzCZG964ejmLdMK2Hxk+SZ8NmzBpkbeBYxlH5W86wK5gssQkO34MC1rQDuBGe4x+4udz7yUu/yZ+sgTfnXdyUfnlaTRdT/yBFgYq+PITSYUHlP/wbbabRbnJrgEMYXS5PSshT7WljJ5xevGhlz8Kk3mh3/qUMcDmuu3RU+dcY+0Fv0LWb0AXUxoRLzJeSUekB52XxtPBWmxivbAoem2AFO77rH1kC1vYuyhpPRQ3Gv63ZPlvX2bWLjWVg5K1n0DCx1oQve+wpso5qtg3Rn1n1tEz3mi1V9ibAiQi2NVSQ/lJOfmtiKtL2sMVIEya6CTboktK/WY1QZOiI+jKm/AiDB/fKvIcDY2Q5EWymCabVoGnM9JdNp956nhaLwBtGWnYQVH5yEpH6u9NLZYP9Dn099MB2dg6tppSzy398xtywildXcwYrCN6LCyPLlUyd; ts=2026-01-12%2016:55:10.569; _ga_FRRYG5VKHX=GS2.1.s1768217088$o1$g1$t1768217110$j38$l0$h0"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(JSON.stringify(data, null, 2));
+  } catch (err) {
+    console.error("BigBasket API error:", err.message);
+  }
+}
+
+testBigBasket("jam");

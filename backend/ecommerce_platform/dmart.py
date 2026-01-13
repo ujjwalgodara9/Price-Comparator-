@@ -1,6 +1,8 @@
 import os
 import json
 import time
+import requests
+from urllib.parse import quote
 from datetime import datetime
 from playwright.sync_api import sync_playwright
 
@@ -9,6 +11,27 @@ from playwright.sync_api import sync_playwright
 STORAGE_FOLDER = os.path.join(os.path.dirname(os.path.dirname(__file__)), "product_data")
 os.makedirs(STORAGE_FOLDER, exist_ok=True)
 
+def search_dmart_api(query, page=1, size=40, store_id=10706):
+    print("DMart API called...")
+    """Make API call to DMart search endpoint"""
+    url = f"https://digital.dmart.in/api/v3/search/{quote(query)}?page={page}&size={size}&channel=web&searchTerm={quote(query)}&storeId={store_id}"
+    
+    headers = {
+        "X-REQUEST-ID": "ODdkN2I4MDAtMzU0Ni00Mjk0LThhZjgtODA0YjE2NWE2NjI4fHxTLTIwMjYwMTA2XzE1NDgyMnx8LTEwMDI=",
+        "storeId": str(store_id),
+        "d_info": "w-20260106_154822",
+        "Content-Type": "application/json;charset=UTF-8",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+    }
+    
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"DMart API error: {e}")
+        return None
+    
 def handle_popups(page):
     """Closes the Download App modal if it appears."""
     try:
@@ -41,14 +64,28 @@ def set_dmart_location(page, location_name):
     first_result.wait_for(state="visible", timeout=15000)
     first_result.click()
 
-    # 3. Wait for Confirm Location popup and click confirm
-    print("Waiting for Confirm Location popup...")
-    confirm_btn = page.locator('button:has-text("CONFIRM LOCATION")')
-    confirm_btn.wait_for(state="visible", timeout=15000)
-    confirm_btn.click()
+    # 3. Decide based on popup button
+    print("Checking location serviceability...")
 
-    print("DMart location fully set.")
-    time.sleep(3)
+    confirm_btn = page.locator('button:has-text("CONFIRM LOCATION")')
+    reject_btn  = page.locator('button:has-text("SELECT DIFFERENT LOCATION")')
+
+    # give UI time to render
+    page.wait_for_timeout(1500)
+
+    if reject_btn.is_visible():
+        print("❌ Location not serviceable by DMart. Aborting scraping.")
+        raise Exception("Pincode not serviceable")
+
+    elif confirm_btn.is_visible():
+        print("✅ Location serviceable. Confirming...")
+        confirm_btn.click()
+        print("DMart location fully set.")
+        time.sleep(3)
+
+    else:
+        raise Exception("No location confirmation button appeared (DOM changed)")
+
 
 def search_dmart_products(page, query):
     handle_popups(page)
@@ -115,14 +152,12 @@ def extract_dmart_data(page):
         );
 
         return Array.from(items).map(item => {
-
-            // PRODUCT NAME (correct element)
-            const nameEl = item.querySelector("div.text-primaryColor.min-h-10")
+            // PRODUCT NAME
+            const nameEl = item.querySelector("div.text-primaryColor.min-h-10");
             const productName = nameEl ? nameEl.innerText.trim() : "N/A";
 
             // PRICES
             let dmartPrice = "N/A";
-
             const priceTexts = Array.from(item.querySelectorAll('p'))
                 .map(p => p.innerText.trim())
                 .filter(t => t.startsWith("₹"));
