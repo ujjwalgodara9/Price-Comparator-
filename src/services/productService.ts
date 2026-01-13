@@ -1,4 +1,4 @@
-import { Product, ComparisonFilters, LocationData } from '../types/product';
+import { Product, ComparisonFilters, LocationData, MatchedProduct } from '../types/product';
 import { FastEcommerceAPI } from './fastEcommerceAPI';
 
 export class ProductService {
@@ -12,17 +12,17 @@ export class ProductService {
     query: string,
     location: LocationData,
     filters: ComparisonFilters
-  ): Promise<Product[]> {
+  ): Promise<MatchedProduct[]> {
     // Use cached results if available and fresh
     const cacheKey = `${query}-${JSON.stringify(location)}-${filters.platforms.join(',')}`;
     const cached = this.cachedProducts.get(cacheKey);
     
     if (cached && Date.now() - cached.timestamp < this.CACHE_DURATION) {
-      return this.applyFilters(cached.products, filters);
+      return (cached.products as unknown) as MatchedProduct[];
     }
 
     // Fetch fresh data from APIs
-    let results: Product[] = [];
+    let results: MatchedProduct[] = [];
     
     if (query.trim()) {
       try {
@@ -30,7 +30,7 @@ export class ProductService {
         
         // Cache the results
         this.cachedProducts.set(cacheKey, {
-          products: results,
+          products: results as any,
           timestamp: Date.now(),
         });
       } catch (error) {
@@ -40,8 +40,8 @@ export class ProductService {
       }
     }
 
-    // Apply filters
-    results = this.applyFilters(results, filters);
+    // Note: Filters are applied at the API level (platform filtering)
+    // Price and other filters can be added here if needed
 
     return results;
   }

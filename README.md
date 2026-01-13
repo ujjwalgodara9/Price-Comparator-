@@ -8,7 +8,7 @@ A modern product comparison website for quick delivery platforms like Zepto, Swi
 ```bash
 cd backend
 pip install -r requirements.txt
-python server.py
+python app.py
 ```
 
 **Terminal 2 - Frontend:**
@@ -43,7 +43,7 @@ src/
 └── data/              # Platform configurations
 
 backend/
-├── server.py          # Flask API server
+├── app.py             # Flask API server
 ├── requirements.txt   # Python dependencies
 └── zepto_headers_config.py
 ```
@@ -77,13 +77,14 @@ Compare
 - Check the similarity score strict, Aashriwad organic atta 
 
 Scraping
+- Image scraping methodology
 - Scraping Image for product all the platformm because of product might not be present in all the platform
-- Show first which has all the matches in order
-- For bigbasket the kg's are intact so the json will differ have to unified for all platforms
 - Remove the location hardcoded Mumbai
+- scrolling in instamart and integrate instamart
 
 GCP
 - make the server.log active for GCP
+- zepto on GCP not working
 
 Testing - 
 - Similarity matching for name 
@@ -92,3 +93,47 @@ Testing -
 - Test the compare 
 - Every search saving and flaging not to save
 - Cap on scrapping product
+- Filtering panel testing
+- Can give the automation for giving vivid product and auto assess the results from compare.json
+- Common item list - 
+        Milk
+        Curds / Dahi
+        Atta / Flour
+        Cooking Oil
+        Dosa Batter
+        Vegetable & Fruits
+        Potato Chips
+        Soft Drinks / Cold Beverages
+        Eggs
+        Bread / Bakery
+        Personal Care (soap, shampoo)
+        Toiletries
+        Condoms / Wellness Products
+        Biscuits / Namkeen
+        Pet Food
+        Ice Cubes & Frozen Items
+        Chocolates
+        Household Essentials (detergent, cleaners)
+
+- Change the UI.
+- Filter should not be blocker it should be responsive 
+- Change the theme and colour of the page
+    - Should look professional and deployed website not a demo website 
+    - Make it lively website
+- Remove the rating from filter
+- Remove review and highest rated from the order
+- Frontend needs to sort the product according to relevance
+
+- Change the print of other modules.
+- Check for log saving make a run logs and save it.
+- Merge the matching branch to UI and then change the UI, for filter to be secondary and not primary
+
+
+- UI shows kg for water too
+- While merging make sure app.py and scraping scripts are fine 
+- Logging and SS feature
+- Harsh setup 
+
+- Compare is happening between different kg's only problem with blinkit platform quantity mismatch
+
+- Reduce the search time for scraping

@@ -3,7 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { Star, ExternalLink } from 'lucide-react';
-import { platformNames, platformColors } from '../data/mockProducts';
+import { platformNames, platformColors } from '../data/platformData';
 
 interface ProductCardProps {
   product: Product;

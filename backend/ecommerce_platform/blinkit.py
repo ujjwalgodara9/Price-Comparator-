@@ -9,6 +9,24 @@ from playwright.sync_api import sync_playwright
 STORAGE_FOLDER = os.path.join(os.path.dirname(os.path.dirname(__file__)), "product_data")
 os.makedirs(STORAGE_FOLDER, exist_ok=True)
 
+def remove_duplicate_products(product_list):
+    """
+    Removes exact duplicate dictionaries from a list while preserving order.
+    """
+    seen = set()
+    unique_products = []
+    
+    for product in product_list:
+        # Convert dict to a sorted tuple of items so it can be hashed/tracked
+        # sorting keys ensures {'a':1, 'b':2} and {'b':2, 'a':1} are seen as same
+        product_tuple = tuple(sorted(product.items()))
+        
+        if product_tuple not in seen:
+            unique_products.append(product)
+            seen.add(product_tuple)
+            
+    return unique_products
+
 def handle_popups(page):
     """Closes the Download App modal if it appears."""
     try:
@@ -46,13 +64,13 @@ def set_blinkit_location(page, location_name):
     first_result = page.locator('.address-container-v1 [class*="LocationSearchList__LocationListContainer"]').first
     
     # Ensure it's ready for interaction
-    first_result.wait_for(state="visible", timeout=15000)
+    first_result.wait_for(state="visible", timeout=10000)
     first_result.click()
     
     # 4. Final stabilizing wait
     print("Location set. Refreshing catalog...")
     # page.wait_for_load_state("domcontentloaded")
-    time.sleep(5)
+    time.sleep(2)
 
 def search_blinkit_products(page, query):
     handle_popups(page)
@@ -65,15 +83,15 @@ def search_blinkit_products(page, query):
     time.sleep(2)
     page.keyboard.type(query)
     page.keyboard.press("Enter")
+    page.evaluate("document.body.style.zoom = '50%'")
     # page.wait_for_load_state("networkidle")
-    time.sleep(2)
+    time.sleep(3)
     
-    # 2. Scroll Loop (5 times, 4s wait)
     for i in range(5):
         handle_popups(page)
         print(f"Scrolling Blinkit... ({i+1}/5)")
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-        time.sleep(4)
+        time.sleep(3)
 
 def extract_blinkit_data(page):
     """Fast extraction using JS evaluate for React structure."""
@@ -82,17 +100,17 @@ def extract_blinkit_data(page):
         const items = document.querySelectorAll('.tw-relative.tw-flex');
         
         return Array.from(items).map(item => {
-            // --- DEBUGGING LOGIC ---
-            // Try to find the ID in 3 different ways common in React apps
             const roleBtn = item.querySelector('[role="button"]');
             const anyWithId = item.querySelector('[id]');
-            const parentId = item.id; // Sometimes the parent itself has the ID
+            const parentId = item.id;
 
             const productId = (roleBtn && roleBtn.id) || (anyWithId && anyWithId.id) || parentId || null;
             
-            // --- DATA EXTRACTION ---
             const nameEl = item.querySelector('.tw-text-300.tw-font-semibold');
             const productName = nameEl ? nameEl.innerText.trim() : "";
+
+            const imgEl = item.querySelector('img.tw-opacity-100');
+            const imageUrl = imgEl ? imgEl.getAttribute('src') : "N/A";
 
             const slug = productName
                 .toLowerCase()
@@ -100,6 +118,7 @@ def extract_blinkit_data(page):
                 .replace(/^-+|-+$/g, '');
 
             const productLink = productId 
+                .toLowerCase()
                 ? `https://blinkit.com/prn/${slug}/prid/${productId}` 
                 : "N/A";
 
@@ -113,6 +132,7 @@ def extract_blinkit_data(page):
                 "description": descEl ? descEl.innerText.trim() : "N/A",
                 "delivery_time": timeEl ? timeEl.innerText.trim() : "N/A",
                 "product_link": productLink,
+                "image_url": imageUrl
             };
         }).filter(p => p.product_name !== "N/A");
     }
@@ -150,6 +170,7 @@ def save_to_timestamped_folder(data, platform_name, run_parent_folder=None):
 
 # --- MAIN EXECUTION ---
 def run_blinkit_flow(product_name, location, headless=True, max_products=50, run_parent_folder=None, platform_name='blinkit'):
+    start_time = time.time()
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless)
         # Use a standard Chrome User-Agent
@@ -165,9 +186,15 @@ def run_blinkit_flow(product_name, location, headless=True, max_products=50, run
             search_blinkit_products(page, product_name)
             
             final_list = extract_blinkit_data(page)
+
+            # Remove Duplicates
+            final_list = remove_duplicate_products(final_list)
+
             save_to_timestamped_folder(final_list, platform_name, run_parent_folder=run_parent_folder)
             
             # Return the products list so server.py can use them
+            time_end = time.time()
+            print(f"--- Blinkit Total Time Taken: {time_end - start_time:.2f}) seconds ---")
             return final_list
             
         except Exception as e:
@@ -179,4 +206,4 @@ def run_blinkit_flow(product_name, location, headless=True, max_products=50, run
             browser.close()
 
 if __name__ == "__main__":
-    run_blinkit_flow(product_name="Ghee", location="Mumbai", headless=True, max_products=50)
+    run_blinkit_flow(product_name="atta", location="Mumbai", headless=False, max_products=50)

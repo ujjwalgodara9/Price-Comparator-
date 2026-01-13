@@ -9,6 +9,24 @@ from playwright.sync_api import sync_playwright
 STORAGE_FOLDER = os.path.join(os.path.dirname(os.path.dirname(__file__)), "product_data")
 os.makedirs(STORAGE_FOLDER, exist_ok=True)
 
+def remove_duplicate_products(product_list):
+    """
+    Removes exact duplicate dictionaries from a list while preserving order.
+    """
+    seen = set()
+    unique_products = []
+    
+    for product in product_list:
+        # Convert dict to a sorted tuple of items so it can be hashed/tracked
+        # sorting keys ensures {'a':1, 'b':2} and {'b':2, 'a':1} are seen as same
+        product_tuple = tuple(sorted(product.items()))
+        
+        if product_tuple not in seen:
+            unique_products.append(product)
+            seen.add(product_tuple)
+            
+    return unique_products
+
 def set_location(page, location_name):
     print(f"Setting location to: {location_name}")
     address_header = page.get_by_test_id("user-address")
@@ -66,13 +84,15 @@ def extract_product_list(page):
             const nameEl = item.querySelector('div.cQAjo6.ch5GgP');
             const descEl = item.querySelector('div.cyNbxx.c0ZFba span');
             const timeEl = item.querySelector('div.cTDqth.cTDqth');
+            const imgEl = item.querySelector('img.c2ahfT');
 
             return {
                 "product_name": nameEl ? nameEl.innerText.trim() : "N/A",
                 "price": priceEl ? priceEl.innerText.trim() : "N/A",
                 "description": descEl ? descEl.innerText.trim() : "N/A",
                 "delivery_time": timeEl ? timeEl.innerText.trim() : "N/A",
-                "product_link": fullLink
+                "product_link": fullLink,
+                "image_url": imgEl ? imgEl.getAttribute('src') : "N/A"
             };
         });
     }
@@ -129,6 +149,9 @@ def run_zepto_flow(product_name, location, headless=True, max_products=50, run_p
             
             # Scrape
             final_data_list = extract_product_list(page)
+
+            # Remove Duplicates
+            final_data_list = remove_duplicate_products(final_data_list)
 
             # Save to File with shared parent folder
             final_saved_path = save_to_timestamped_folder(final_data_list, platform_name, run_parent_folder=run_parent_folder)

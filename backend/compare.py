@@ -48,9 +48,11 @@ load_matching_config()
 
 def normalize_product_name(name: str) -> str:
     """
-    Normalize product name for better matching:
+    Normalize product name for better matching - STABLE VERSION
+    Creates a consistent normalized key that is order-independent and quantity-agnostic
     - Remove everything after first "|" (pipe character) - descriptive suffixes
     - Remove text in brackets (parentheses, square brackets, curly braces)
+    - Remove quantity/weight information (e.g., "5kg", "500g", "1 pack")
     - Convert to lowercase
     - Remove special characters and extra spaces
     - Remove common words that don't help matching
@@ -66,6 +68,33 @@ def normalize_product_name(name: str) -> str:
     # This removes things like "(5 kg)", "[Premium]", "{Organic}" etc.
     normalized = re.sub(r'[\(\[\{][^\)\]\}]*[\)\]\}]', '', normalized)
     
+    # Remove quantity/weight information - comprehensive patterns for all product types
+    # This is critical for stable matching - quantities should not affect name matching
+    
+    # Pattern 1: Standard quantity formats (kg, g, ml, ltr, pack, pcs, bottle, can, etc.)
+    normalized = re.sub(
+        r'\b\d+(?:\.\d+)?\s*(?:kg|g|gm|gram|grams?|kilogrammes?|kilograms?|lbs?|lb|oz|ltr|litre|liter|ml|millilitre|milliliter|pack|packs|pcs|pieces?|can|cans|bottle|bottles|tablet|tablets|strip|strips|jar|jars|packet|pkts?|box|boxes)\b',
+        '',
+        normalized,
+        flags=re.IGNORECASE
+    )
+    
+    # Pattern 2: Multi-pack patterns like "12 x 500ml", "6pk", "2x2ltr", "4pks"
+    normalized = re.sub(
+        r'\b\d+\s*[x×]\s*\d+(?:\.\d+)?\s*(?:kg|g|ltr|ml|pcs?|pack|bottle|can|box)\b',
+        '',
+        normalized,
+        flags=re.IGNORECASE
+    )
+    
+    # Pattern 3: Suffixes/prefixes like "500ml pack", "5kg bag", ", 5kg pack"
+    normalized = re.sub(
+        r'(?:,\s*)?\b\d+(?:\.\d+)?\s*(?:kg|g|ltr|ml|pcs?|pack|bottle|can|box)\s*(?:pack|bag|pouch|container)?\b',
+        '',
+        normalized,
+        flags=re.IGNORECASE
+    )
+    
     # Convert to lowercase
     normalized = normalized.lower()
     
@@ -75,49 +104,134 @@ def normalize_product_name(name: str) -> str:
     # Remove special characters but keep spaces
     normalized = re.sub(r'[^\w\s]', ' ', normalized)
     
-    # Remove extra whitespace
-    normalized = ' '.join(normalized.split())
+    # Clean up extra whitespace
+    normalized = re.sub(r'\s+', ' ', normalized).strip()
     
-    return normalized.strip()
+    return normalized
+
+
+def get_unit_patterns() -> str:
+    """
+    Get a generic regex pattern for all supported units
+    This makes the pattern matching generic and extensible
+    """
+    # Define unit categories - can be extended easily
+    weight_units = r'kg|g|gm|gram|grams?|kilogrammes?|kilograms?|lbs?|lb|oz'
+    volume_units = r'ltr|litre|liter|litres?|liters?|ml|millilitre|milliliter|millilitres?|milliliters?'
+    count_units = r'pack|packs|pkt|pkts|packet|packets|pcs?|piece|pieces|can|cans|bottle|bottles|tablet|tablets|strip|strips|jar|jars|box|boxes'
+    
+    # Combine all units
+    all_units = f'{weight_units}|{volume_units}|{count_units}'
+    return all_units
 
 
 def extract_quantity(name: str, description: str = None) -> Optional[str]:
     """
-    Extract quantity/weight from product name or description
-    Examples: "5 kg", "10 kg", "1 kg", "500 g", "1 pack (1 kg)"
+    Generic pattern-based quantity extraction
+    Uses a priority-based pattern matching system that is extensible
+    Examples: "5 kg", "10 kg", "1 kg", "500 g", "1 pack (5 kg)", "500ml", "2ltr", "12 x 500ml"
     Checks description field if provided (new format stores quantity there)
     """
     # First check description if provided (new format)
     text_to_search = description if description else name
     
-    # Pattern to match weight/quantity
+    if not text_to_search:
+        return None
+    
+    # Get generic unit patterns
+    units_pattern = get_unit_patterns()
+    
+    # Define patterns with priority order (higher priority first)
+    # Each pattern is a tuple: (pattern_regex, extractor_function, priority)
     patterns = [
-        r'(\d+(?:\.\d+)?)\s*(?:kg|g|gm|gram|kilograms?|grams?)',  # Standard weight formats
-        r'\((\d+(?:\.\d+)?)\s*(?:kg|g|gm|gram|kilograms?|grams?)\)',  # Weight in parentheses like "(1 kg)"
-        r'(\d+(?:\.\d+)?)\s*(?:pack|pcs?|pieces?)(?:\s*\([^\)]*\))?',  # Pack/pieces with optional weight in parentheses
+        # PRIORITY 1: Value in parentheses - highest priority (e.g., "1 pack (5 kg)" -> "5 kg")
+        # This prioritizes actual weight/volume over pack count
+        (
+            rf'\((\d+(?:\.\d+)?)\s*({units_pattern})\)',
+            lambda m: (m.group(1), m.group(2)),
+            1
+        ),
+        # PRIORITY 2: Multi-pack patterns (e.g., "12 x 500ml" -> "12 x 500 ml")
+        (
+            rf'(\d+)\s*[x×]\s*(\d+(?:\.\d+)?)\s*({units_pattern})',
+            lambda m: (f"{m.group(1)} x {m.group(2)}", m.group(3)),
+            2
+        ),
+        # PRIORITY 3: Standard quantity patterns (e.g., "5 kg", "1 pack")
+        (
+            rf'(\d+(?:\.\d+)?)\s*({units_pattern})',
+            lambda m: (m.group(1), m.group(2)),
+            3
+        ),
     ]
     
-    for pattern in patterns:
-        match = re.search(pattern, text_to_search, re.IGNORECASE)
+    # Try patterns in priority order (sorted by priority, lower number = higher priority)
+    sorted_patterns = sorted(patterns, key=lambda x: x[2])
+    
+    for pattern_regex, extractor, priority in sorted_patterns:
+        match = re.search(pattern_regex, text_to_search, re.IGNORECASE)
         if match:
-            value = match.group(1)
-            # Try to find unit in the match
-            full_match = match.group(0)
-            if 'kg' in full_match.lower() or 'kilogram' in full_match.lower():
-                return f"{value} kg"
-            elif 'g' in full_match.lower() or 'gram' in full_match.lower():
-                return f"{value} g"
-            elif 'pack' in full_match.lower() or 'pc' in full_match.lower() or 'piece' in full_match.lower():
-                # If it's a pack, try to extract weight from parentheses
-                weight_match = re.search(r'\((\d+(?:\.\d+)?)\s*(?:kg|g)', full_match, re.IGNORECASE)
-                if weight_match:
-                    weight_val = weight_match.group(1)
-                    weight_unit = 'kg' if 'kg' in weight_match.group(0).lower() else 'g'
-                    return f"{value} pack ({weight_val} {weight_unit})"
-                return full_match
-            return full_match
+            try:
+                value_part, unit = extractor(match)
+                normalized_unit = normalize_unit(unit)
+                
+                # Format the result
+                if ' x ' in str(value_part):
+                    # Multi-pack format: "12 x 500 ml"
+                    return f"{value_part} {normalized_unit}"
+                else:
+                    # Standard format: "5 kg"
+                    return f"{value_part} {normalized_unit}"
+            except (IndexError, AttributeError) as e:
+                # If extraction fails, try next pattern
+                continue
     
     return None
+
+
+def normalize_unit(unit: str) -> str:
+    """
+    Normalize unit string to standard format
+    Converts various unit formats to standard abbreviations
+    """
+    unit_lower = unit.lower().strip()
+    
+    # Weight units
+    if unit_lower in ['kg', 'kilogram', 'kilograms', 'kilogramme', 'kilogrammes']:
+        return 'kg'
+    elif unit_lower in ['g', 'gm', 'gram', 'grams']:
+        return 'g'
+    elif unit_lower in ['lb', 'lbs', 'pound', 'pounds']:
+        return 'lb'
+    elif unit_lower in ['oz', 'ounce', 'ounces']:
+        return 'oz'
+    
+    # Volume units
+    elif unit_lower in ['ltr', 'litre', 'liter', 'litres', 'liters']:
+        return 'ltr'
+    elif unit_lower in ['ml', 'millilitre', 'milliliter', 'millilitres', 'milliliters']:
+        return 'ml'
+    
+    # Count/package units
+    elif unit_lower in ['pack', 'packs', 'pkt', 'pkts', 'packet', 'packets']:
+        return 'pack'
+    elif unit_lower in ['pc', 'pcs', 'piece', 'pieces']:
+        return 'pcs'
+    elif unit_lower in ['can', 'cans']:
+        return 'can'
+    elif unit_lower in ['bottle', 'bottles']:
+        return 'bottle'
+    elif unit_lower in ['tablet', 'tablets']:
+        return 'tablet'
+    elif unit_lower in ['strip', 'strips']:
+        return 'strip'
+    elif unit_lower in ['jar', 'jars']:
+        return 'jar'
+    elif unit_lower in ['box', 'boxes']:
+        return 'box'
+    
+    # Return original if not recognized
+    return unit_lower
 
 
 def calculate_similarity(name1: str, name2: str, config: Dict = None) -> float:
@@ -169,28 +283,138 @@ def compare_quantities(qty1: Optional[str], qty2: Optional[str], config: Dict = 
     
     # Extract numeric values and units
     def parse_quantity(qty_str: str):
-        # Extract number and unit
-        match = re.search(r'(\d+(?:\.\d+)?)\s*(kg|g|gm|gram|kilograms?|grams?|pack|pcs?|pieces?)', qty_str, re.IGNORECASE)
+        """
+        Parse quantity string to extract value and normalized unit
+        Handles all unit types: kg, g, ml, ltr, pack, pcs, bottle, can, tablet, strip, jar, packet, box, etc.
+        Also handles multi-pack patterns like "12 x 500ml"
+        """
+        # Handle multi-pack pattern like "12 x 500ml"
+        multi_pack_match = re.search(r'(\d+)\s*[x×]\s*(\d+(?:\.\d+)?)\s*(kg|g|gm|gram|grams?|kilogrammes?|kilograms?|lbs?|lb|oz|ltr|litre|liter|ml|millilitre|milliliter|pcs?|pack|packs|bottle|bottles|can|cans|box|boxes)', qty_str, re.IGNORECASE)
+        if multi_pack_match:
+            count = float(multi_pack_match.group(1))
+            value = float(multi_pack_match.group(2))
+            unit = normalize_unit(multi_pack_match.group(3))
+            # Convert to base unit and multiply by count
+            base_value = convert_to_base_unit(value, unit)
+            return (base_value * count, 'base')
+        
+        # Handle standard quantity pattern with all units
+        match = re.search(r'(\d+(?:\.\d+)?)\s*(kg|g|gm|gram|grams?|kilogrammes?|kilograms?|lbs?|lb|oz|ltr|litre|liter|ml|millilitre|milliliter|pack|packs|pcs|pieces?|can|cans|bottle|bottles|tablet|tablets|strip|strips|jar|jars|packet|pkts?|box|boxes)', qty_str, re.IGNORECASE)
         if match:
             value = float(match.group(1))
-            unit = match.group(2).lower()
-            # Normalize units
-            if unit in ['kg', 'kilogram', 'kilograms']:
-                return (value, 'kg')
-            elif unit in ['g', 'gm', 'gram', 'grams']:
-                return (value / 1000, 'kg')  # Convert to kg for comparison
-            elif unit in ['pack', 'pcs', 'pieces', 'pc']:
+            unit = normalize_unit(match.group(2))
+            
+            # Check if it's a pack/pcs with weight in parentheses
+            if unit in ['pack', 'pcs']:
                 # Try to extract weight from parentheses in pack description
                 # e.g., "1 pack (1 kg)" -> extract weight
-                weight_match = re.search(r'\((\d+(?:\.\d+)?)\s*(kg|g|gm|gram)', qty_str, re.IGNORECASE)
+                weight_match = re.search(r'\((\d+(?:\.\d+)?)\s*(kg|g|gm|gram|grams?|kilogrammes?|kilograms?|lbs?|lb|oz|ltr|litre|liter|ml|millilitre|milliliter)\)', qty_str, re.IGNORECASE)
                 if weight_match:
                     weight_val = float(weight_match.group(1))
-                    weight_unit = weight_match.group(2).lower()
-                    if weight_unit in ['g', 'gm', 'gram', 'grams']:
-                        weight_val = weight_val / 1000  # Convert to kg
-                    return (weight_val * value, 'kg')  # Total weight = pack_count * weight_per_pack
-                return (value, 'pack')
+                    weight_unit = normalize_unit(weight_match.group(2))
+                    # Convert to base unit
+                    base_weight = convert_to_base_unit(weight_val, weight_unit)
+                    return (base_weight * value, 'base')  # Total = pack_count * weight_per_pack
+                return (value, unit)
+            
+            # Convert to base unit for comparison
+            base_value = convert_to_base_unit(value, unit)
+            return (base_value, 'base')
+        
         return None
+
+
+def convert_to_base_unit(value: float, unit: str) -> float:
+    """
+    Convert various units to a base unit for comparison
+    Weight units -> kg, Volume units -> ltr, Count units -> keep as-is
+    """
+    unit_lower = unit.lower()
+    
+    # Weight units -> convert to kg
+    if unit_lower == 'kg':
+        return value
+    elif unit_lower == 'g':
+        return value / 1000  # Convert grams to kg
+    elif unit_lower == 'lb':
+        return value * 0.453592  # Convert pounds to kg
+    elif unit_lower == 'oz':
+        return value * 0.0283495  # Convert ounces to kg
+    
+    # Volume units -> convert to ltr
+    elif unit_lower == 'ltr':
+        return value
+    elif unit_lower == 'ml':
+        return value / 1000  # Convert ml to ltr
+    
+    # Count/package units -> keep as-is (will be compared separately)
+    elif unit_lower in ['pack', 'pcs', 'can', 'bottle', 'tablet', 'strip', 'jar', 'box']:
+        return value
+    
+    # Default: return as-is
+    return value
+
+
+def compare_quantities(qty1: Optional[str], qty2: Optional[str], config: Dict = None) -> bool:
+    """
+    Compare two quantity strings to see if they represent the same quantity
+    Returns True if quantities match or are similar
+    Uses configurable tolerance-based matching
+    Supports all unit types: kg, g, ml, ltr, pack, pcs, bottle, can, tablet, strip, jar, packet, box, etc.
+    """
+    if config is None:
+        config = MATCHING_CONFIG
+    
+    if not qty1 or not qty2:
+        # In strict mode, reject matches if quantity is missing
+        if config.get('strict_matching', False):
+            return False
+        return True  # If one doesn't have quantity, don't reject the match
+    
+    # Extract numeric values and units using the comprehensive parser
+    def parse_quantity(qty_str: str):
+        """
+        Parse quantity string to extract value and normalized unit
+        Handles all unit types: kg, g, ml, ltr, pack, pcs, bottle, can, tablet, strip, jar, packet, box, etc.
+        Also handles multi-pack patterns like "12 x 500ml"
+        """
+        # Handle multi-pack pattern like "12 x 500ml"
+        multi_pack_match = re.search(r'(\d+)\s*[x×]\s*(\d+(?:\.\d+)?)\s*(kg|g|gm|gram|grams?|kilogrammes?|kilograms?|lbs?|lb|oz|ltr|litre|liter|ml|millilitre|milliliter|pcs?|pack|packs|bottle|bottles|can|cans|box|boxes)', qty_str, re.IGNORECASE)
+        if multi_pack_match:
+            count = float(multi_pack_match.group(1))
+            value = float(multi_pack_match.group(2))
+            unit = normalize_unit(multi_pack_match.group(3))
+            # Convert to base unit and multiply by count
+            base_value = convert_to_base_unit(value, unit)
+            return (base_value * count, 'base')
+        
+        # Handle standard quantity pattern with all units
+        match = re.search(r'(\d+(?:\.\d+)?)\s*(kg|g|gm|gram|grams?|kilogrammes?|kilograms?|lbs?|lb|oz|ltr|litre|liter|ml|millilitre|milliliter|pack|packs|pcs|pieces?|can|cans|bottle|bottles|tablet|tablets|strip|strips|jar|jars|packet|pkts?|box|boxes)', qty_str, re.IGNORECASE)
+        if match:
+            value = float(match.group(1))
+            unit = normalize_unit(match.group(2))
+            
+            # Check if it's a pack/pcs with weight in parentheses
+            if unit in ['pack', 'pcs']:
+                # Try to extract weight from parentheses in pack description
+                # e.g., "1 pack (1 kg)" -> extract weight
+                weight_match = re.search(r'\((\d+(?:\.\d+)?)\s*(kg|g|gm|gram|grams?|kilogrammes?|kilograms?|lbs?|lb|oz|ltr|litre|liter|ml|millilitre|milliliter)\)', qty_str, re.IGNORECASE)
+                if weight_match:
+                    weight_val = float(weight_match.group(1))
+                    weight_unit = normalize_unit(weight_match.group(2))
+                    # Convert to base unit
+                    base_weight = convert_to_base_unit(weight_val, weight_unit)
+                    return (base_weight * value, 'base')  # Total = pack_count * weight_per_pack
+                return (value, unit)
+            
+            # Convert to base unit for comparison
+            base_value = convert_to_base_unit(value, unit)
+            return (base_value, 'base')
+        
+        return None
+    
+    qty1_parsed = parse_quantity(qty1)
+    qty2_parsed = parse_quantity(qty2)
     
     qty1_parsed = parse_quantity(qty1)
     qty2_parsed = parse_quantity(qty2)
@@ -201,19 +425,19 @@ def compare_quantities(qty1: Optional[str], qty2: Optional[str], config: Dict = 
     value1, unit1 = qty1_parsed
     value2, unit2 = qty2_parsed
     
-    # If units are different and one is 'pack', we can't directly compare
+    # If one is base unit and other is count unit, or vice versa, can't directly compare
     # In that case, allow match (don't reject)
-    if (unit1 == 'pack' and unit2 != 'pack') or (unit1 != 'pack' and unit2 == 'pack'):
-        return True  # Can't compare pack with weight, don't reject
+    if (unit1 == 'base' and unit2 != 'base') or (unit1 != 'base' and unit2 == 'base'):
+        return True  # Can't compare different unit types, don't reject
     
-    # Both are weight-based (kg) - compare with tolerance
-    if unit1 == 'kg' and unit2 == 'kg':
+    # Both converted to base units - compare with tolerance
+    if unit1 == 'base' and unit2 == 'base':
         # Exact match (within floating point tolerance)
         if abs(value1 - value2) < 0.01:
             return True
         
         # Tolerance-based matching: allow quantities within configurable range
-        # This handles cases like 500g vs 1kg, 1kg vs 2kg, etc.
+        # This handles cases like 500g vs 1kg, 1kg vs 2kg, 500ml vs 1ltr, etc.
         # where products might be sold in slightly different sizes
         tolerance_ratio = config.get('quantity_tolerance_ratio', 2.0)
         tolerance_absolute = config.get('quantity_tolerance_absolute', 0.5)
@@ -221,7 +445,7 @@ def compare_quantities(qty1: Optional[str], qty2: Optional[str], config: Dict = 
         if config.get('strict_matching', False):
             # Strict mode: only exact matches or very close matches
             tolerance_ratio = 1.1  # Only 10% difference allowed
-            tolerance_absolute = 0.1  # Only 0.1kg difference allowed
+            tolerance_absolute = 0.1  # Only 0.1 base unit difference allowed
         
         ratio = max(value1, value2) / min(value1, value2) if min(value1, value2) > 0 else float('inf')
         if ratio <= tolerance_ratio:  # Within configured range (e.g., 0.5kg to 1kg, or 1kg to 2kg)
@@ -232,8 +456,15 @@ def compare_quantities(qty1: Optional[str], qty2: Optional[str], config: Dict = 
         if min(value1, value2) < 1.0 and abs(value1 - value2) < tolerance_absolute:
             return True
     
-    # Same unit and same value (for pack quantities)
-    if unit1 == unit2 and abs(value1 - value2) < 0.01:
+    # Same unit and same value (for count/package quantities like pack, pcs, can, bottle, etc.)
+    if unit1 == unit2 and unit1 not in ['base'] and abs(value1 - value2) < 0.01:
+        return True
+    
+    # If both are count units but different types (e.g., pack vs pcs), allow match if same value
+    # This handles cases where platforms use different terminology
+    if unit1 in ['pack', 'pcs', 'can', 'bottle', 'tablet', 'strip', 'jar', 'box'] and \
+       unit2 in ['pack', 'pcs', 'can', 'bottle', 'tablet', 'strip', 'jar', 'box'] and \
+       abs(value1 - value2) < 0.01:
         return True
     
     return False
@@ -335,8 +566,12 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
             else:
                 product_name = name2_norm.title()
             
+            # Get image from first product (when matched, show only one image)
+            product_image = product1.get('image', '') or product2.get('image', '')
+            
             matched_product = {
                 'name': product_name,
+                'image': product_image,  # Single image for matched product
                 'original_names': {
                     product1.get('platform', 'unknown'): product1.get('name', ''),
                     product2.get('platform', 'unknown'): product2.get('name', '')
@@ -346,14 +581,12 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
                         'price': product1.get('price', 0),
                         'quantity': qty1,
                         'deliveryTime': product1.get('deliveryTime', 'N/A'),
-                        'image': product1.get('image', ''),
                         'link': product1.get('link', '')
                     },
                     product2.get('platform', 'unknown'): {
                         'price': product2.get('price', 0),
                         'quantity': qty2,
                         'deliveryTime': product2.get('deliveryTime', 'N/A'),
-                        'image': product2.get('image', ''),
                         'link': product2.get('link', '')
                     }
                 },
@@ -368,6 +601,7 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
             qty1 = extract_quantity(product1.get('name', ''), product1.get('description'))
             matched_products.append({
                 'name': normalize_product_name(product1.get('name', '')).title(),
+                'image': product1.get('image', ''),  # Image at product level
                 'original_names': {
                     product1.get('platform', 'unknown'): product1.get('name', '')
                 },
@@ -376,7 +610,6 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
                         'price': product1.get('price', 0),
                         'quantity': qty1,
                         'deliveryTime': product1.get('deliveryTime', 'N/A'),
-                        'image': product1.get('image', ''),
                         'link': product1.get('link', '')
                     }
                 },
@@ -388,6 +621,7 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
             qty2 = extract_quantity(product2.get('name', ''), product2.get('description'))
             matched_products.append({
                 'name': normalize_product_name(product2.get('name', '')).title(),
+                'image': product2.get('image', ''),  # Image at product level
                 'original_names': {
                     product2.get('platform', 'unknown'): product2.get('name', '')
                 },
@@ -396,7 +630,6 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
                         'price': product2.get('price', 0),
                         'quantity': qty2,
                         'deliveryTime': product2.get('deliveryTime', 'N/A'),
-                        'image': product2.get('image', ''),
                         'link': product2.get('link', '')
                     }
                 },
@@ -406,9 +639,17 @@ def find_matching_products(products1: List[Dict], products2: List[Dict],
     return matched_products
 
 
+def _normalize_link(link_value):
+    """Helper to normalize link field - handles both string and array formats"""
+    if isinstance(link_value, list):
+        # If it's an array, take the first element or return empty string
+        return link_value[0] if len(link_value) > 0 else ''
+    return link_value if link_value else ''
+
+
 def normalize_product_data(raw_product: dict, platform_name: str) -> dict:
     """
-    Normalize product data from zepto/blinkit format to standard format
+    Normalize product data from zepto/blinkit/instamart format to standard format
     Handles fields like product_name -> name, price string -> number, etc.
     Can be used for both raw scraped data and JSON file data
     """
@@ -430,6 +671,9 @@ def normalize_product_data(raw_product: dict, platform_name: str) -> dict:
         price = float(price_str) if price_str else 0
     
     # Map field names from zepto/blinkit format to standard format
+    # Handle image field - check both 'image' and 'image_url' (scrapers use 'image_url')
+    image_value = raw_product.get('image') or raw_product.get('image_url') or ''
+    
     normalized = {
         'name': raw_product.get('product_name', raw_product.get('name', '')),
         'price': price,
@@ -437,8 +681,8 @@ def normalize_product_data(raw_product: dict, platform_name: str) -> dict:
         'description': raw_product.get('description', ''),
         'deliveryTime': raw_product.get('delivery_time', raw_product.get('deliveryTime', 'N/A')),
         'deliveryFee': raw_product.get('deliveryFee', 0),
-        'link': raw_product.get('product_link', raw_product.get('link', '')),
-        'image': raw_product.get('image', ''),
+        'link': _normalize_link(raw_product.get('product_link', raw_product.get('link', ''))),
+        'image': image_value,
         'rating': raw_product.get('rating', 0),
         'reviewCount': raw_product.get('reviewCount', raw_product.get('review_count', 0)),
         'availability': raw_product.get('availability', True),
@@ -617,46 +861,173 @@ def compare_products_in_memory(all_products: list, query: str, location: dict, c
                     })
             return matched_products
         
-        # Compare products from first two platforms (can be extended for more platforms)
-        platform1 = platform_names[0]
-        platform2 = platform_names[1] if len(platform_names) > 1 else None
+        # FIX 2: Global product usage guard - track used products across all platforms
+        # Key: (platform, product_id) where product_id is a unique identifier
+        # We'll use (platform, name, price, link) as a composite key for uniqueness
+        used_products = set()
         
-        products1 = products_by_platform[platform1]
-        products2 = products_by_platform[platform2] if platform2 else []
+        def get_product_key(platform: str, product: dict) -> tuple:
+            """Create a unique key for a product to prevent duplicates"""
+            return (
+                platform,
+                product.get('name', ''),
+                product.get('price', 0),
+                product.get('link', '')
+            )
         
-        print(f'[Compare] Comparing {len(products1)} {platform1} products with {len(products2)} {platform2} products')
-        print(f'[Compare] Using similarity threshold: {config.get("similarity_threshold", 0.6)}, strict mode: {config.get("strict_matching", False)}')
-        
-        # Run comparison with configurable parameters
+        # Compare products across all platforms
         similarity_threshold = config.get('similarity_threshold', 0.6)
-        matched_products = find_matching_products(products1, products2, similarity_threshold=similarity_threshold, config=config)
+        print(f'[Compare] Using similarity threshold: {similarity_threshold}, strict mode: {config.get("strict_matching", False)}')
         
-        # Add products from remaining platforms (if any)
-        for platform in platform_names[2:]:
+        # Initialize matched products list
+        matched_products = []
+        
+        # Process all platforms - match products to existing groups or create new groups
+        for platform in platform_names:
             products = products_by_platform[platform]
-            # Compare with already matched products (simplified - could be improved)
+            print(f'[Compare] Processing {len(products)} {platform} products')
+            
             for product in products:
-                qty = extract_quantity(product.get('name', ''), product.get('description'))
-                matched_products.append({
-                    'name': normalize_product_name(product.get('name', '')).title(),
-                    'original_names': {
-                        platform: product.get('name', '')
-                    },
-                    'platforms': {
-                        platform: {
-                            'price': product.get('price', 0),
-                            'quantity': qty,
-                            'deliveryTime': product.get('deliveryTime', 'N/A'),
+                # FIX 2: Check if this product is already used
+                product_key = get_product_key(platform, product)
+                if product_key in used_products:
+                    print(f'[Compare] Skipping already-used product: {product.get("name", "")[:50]}')
+                    continue
+                
+                product_name = product.get('name', '')
+                qty = extract_quantity(product_name, product.get('description'))
+                # FIX 1: Store normalized name for stable matching
+                product_norm_name = normalize_product_name(product_name)
+                
+                best_match_idx = None
+                best_similarity = 0.0
+                
+                # FIX 3: Find best match among existing matched products
+                # Compare against all variants in each group, not just canonical name
+                for idx, matched_product in enumerate(matched_products):
+                    # Check if this matched product already has this platform
+                    if platform in matched_product.get('platforms', {}):
+                        continue
+                    
+                    # FIX 3: Match against all variants in the group, not just canonical name
+                    # Get all normalized names from original_names in this group
+                    group_variants = []
+                    for orig_name in matched_product.get('original_names', {}).values():
+                        group_variants.append(normalize_product_name(orig_name))
+                    
+                    # Also include the canonical name
+                    canonical_norm = normalize_product_name(matched_product.get('name', ''))
+                    if canonical_norm not in group_variants:
+                        group_variants.append(canonical_norm)
+                    
+                    # Calculate similarity against all variants, take the best
+                    max_variant_similarity = 0.0
+                    for variant_norm in group_variants:
+                        # Use normalized names for comparison
+                        similarity = calculate_similarity(product_norm_name, variant_norm, config)
+                        if similarity > max_variant_similarity:
+                            max_variant_similarity = similarity
+                    
+                    similarity = max_variant_similarity
+                    
+                    # Check quantity match if both have quantities
+                    matched_qty = None
+                    for plat_data in matched_product.get('platforms', {}).values():
+                        matched_qty = plat_data.get('quantity')
+                        break
+                    
+                    quantity_matches = compare_quantities(qty, matched_qty, config)
+                    
+                    # In strict mode, require quantity match
+                    if config.get('strict_matching', False) and not quantity_matches:
+                        continue
+                    
+                    # Update best match if this is better
+                    if similarity >= similarity_threshold and similarity > best_similarity:
+                        best_similarity = similarity
+                        best_match_idx = idx
+                
+                # If found a match, add this platform to the matched product
+                if best_match_idx is not None:
+                    matched_product = matched_products[best_match_idx]
+                    matched_product['original_names'][platform] = product_name
+                    matched_product['platforms'][platform] = {
+                        'price': product.get('price', 0),
+                        'quantity': qty,
+                        'deliveryTime': product.get('deliveryTime', 'N/A'),
+                        'link': product.get('link', '')
+                    }
+                    # Set image if not already set (use first platform's image)
+                    if not matched_product.get('image'):
+                        matched_product['image'] = product.get('image', '')
+                    # Update similarity score if it was None or if this match is better
+                    if matched_product.get('similarity_score') is None or best_similarity > matched_product.get('similarity_score', 0):
+                        matched_product['similarity_score'] = best_similarity
+                    # FIX 2: Mark product as used immediately
+                    used_products.add(product_key)
+                else:
+                    # FIX 2: Safe unmatched creation - only create if not already used
+                    if product_key not in used_products:
+                        qty = extract_quantity(product.get('name', ''), product.get('description'))
+                        matched_products.append({
+                            'name': normalize_product_name(product.get('name', '')).title(),
                             'image': product.get('image', ''),
-                            'link': product.get('link', '')
-                        }
-                    },
-                    'similarity_score': None
-                })
+                            'original_names': {
+                                platform: product.get('name', '')
+                            },
+                            'platforms': {
+                                platform: {
+                                    'price': product.get('price', 0),
+                                    'quantity': qty,
+                                    'deliveryTime': product.get('deliveryTime', 'N/A'),
+                                    'link': product.get('link', '')
+                                }
+                            },
+                            'similarity_score': None
+                        })
+                        # FIX 2: Mark as used immediately
+                        used_products.add(product_key)
         
-        print(f'[Compare] Comparison complete: {len(matched_products)} total products, {len([p for p in matched_products if p.get("similarity_score") is not None])} matched')
+        # FIX 4: Post-pass deduplication - merge similar groups
+        print(f'[Compare] Running post-pass deduplication on {len(matched_products)} groups')
+        merged_indices = set()
+        final_matched_products = []
         
-        return matched_products
+        for i, group1 in enumerate(matched_products):
+            if i in merged_indices:
+                continue
+            
+            # Try to merge with other groups
+            current_group = group1.copy()
+            group1_norm = normalize_product_name(group1.get('name', ''))
+            
+            for j, group2 in enumerate(matched_products[i+1:], start=i+1):
+                if j in merged_indices:
+                    continue
+                
+                group2_norm = normalize_product_name(group2.get('name', ''))
+                similarity = calculate_similarity(group1_norm, group2_norm, config)
+                
+                # Merge if very similar (higher threshold for post-pass)
+                if similarity >= 0.9:  # Very high threshold for merging
+                    # print(f'[Compare] Merging groups: "{group1.get("name", "")[:50]}" and "{group2.get("name", "")[:50]}" (similarity: {similarity:.2f})')
+                    # Merge platforms and original_names
+                    current_group['platforms'].update(group2.get('platforms', {}))
+                    current_group['original_names'].update(group2.get('original_names', {}))
+                    # Keep best image
+                    if not current_group.get('image') and group2.get('image'):
+                        current_group['image'] = group2.get('image')
+                    # Update similarity score
+                    if group2.get('similarity_score') and (not current_group.get('similarity_score') or group2.get('similarity_score', 0) > current_group.get('similarity_score', 0)):
+                        current_group['similarity_score'] = group2.get('similarity_score')
+                    merged_indices.add(j)
+            
+            final_matched_products.append(current_group)
+            merged_indices.add(i)
+        
+        print(f'[Compare] Comparison complete: {len(final_matched_products)} total products (after dedup), {len([p for p in final_matched_products if p.get("similarity_score") is not None])} matched')
+        
+        return final_matched_products
         
     except Exception as error:
         print(f'[Compare] Error during comparison: {error}')

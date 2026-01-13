@@ -18,6 +18,19 @@ export interface Product {
   quantity?: string; // e.g., "5 kg", "10 kg", "1 kg"
 }
 
+// Matched product structure from backend (contains all platforms in one object)
+export interface MatchedProduct {
+  name: string;
+  image: string;
+  original_names: Record<Platform, string>;
+  platforms: Record<Platform, {
+    price: number;
+    quantity: string;
+    deliveryTime: string;
+    link: string;
+  }>;
+}
+
 export type Platform = 
   | 'zepto' 
   | 'swiggy-instamart' 

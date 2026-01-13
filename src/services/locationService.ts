@@ -2,7 +2,7 @@ import { LocationData } from '../types/product';
 
 export class LocationService {
   static async getCurrentLocation(): Promise<LocationData> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _reject) => {
       if (!navigator.geolocation) {
         // Fallback to default location if geolocation not available
         resolve({

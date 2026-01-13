@@ -10,8 +10,8 @@
             "headless": false
         },
         "swiggy-instamart": {
-            "scrape": false,
-            "headless": false
+            "scrape": true,
+            "headless": true
         },
         "bigbasket": {
             "scrape": false,
@@ -19,7 +19,7 @@
         }
     },
     "matching": {
-        "similarity_threshold": 0.8,
+        "similarity_threshold": 0.80,
         "strict_matching": false,
         "quantity_tolerance_ratio": 2.0,
         "quantity_tolerance_absolute": 0.5,
