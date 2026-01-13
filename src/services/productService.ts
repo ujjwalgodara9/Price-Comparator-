@@ -48,71 +48,74 @@ export class ProductService {
 
   /**
    * Apply filters to product results
+   * Note: Currently filters are applied at the API level (platform filtering)
+   * This method is kept for future use if client-side filtering is needed
    */
-  private static applyFilters(products: Product[], filters: ComparisonFilters): Product[] {
-    let filtered = products.filter(product => {
-      // Filter by platforms
-      if (filters.platforms.length > 0 && !filters.platforms.includes(product.platform)) {
-        return false;
-      }
+  // private static applyFilters(products: Product[], filters: ComparisonFilters): Product[] {
+  //   let filtered = products.filter(product => {
+  //     // Filter by platforms
+  //     if (filters.platforms.length > 0 && !filters.platforms.includes(product.platform)) {
+  //       return false;
+  //     }
 
-      // Filter by price range
-      if (filters.minPrice && product.price < filters.minPrice) {
-        return false;
-      }
-      if (filters.maxPrice && product.price > filters.maxPrice) {
-        return false;
-      }
+  //     // Filter by price range
+  //     if (filters.minPrice && product.price < filters.minPrice) {
+  //       return false;
+  //     }
+  //     if (filters.maxPrice && product.price > filters.maxPrice) {
+  //       return false;
+  //     }
 
-      // Filter by rating
-      if (filters.minRating && product.rating < filters.minRating) {
-        return false;
-      }
+  //     // Filter by rating
+  //     if (filters.minRating && product.rating < filters.minRating) {
+  //       return false;
+  //     }
 
-      // Filter by delivery time
-      if (filters.maxDeliveryTime && product.deliveryTime) {
-        const deliveryMinutes = this.parseDeliveryTime(product.deliveryTime);
-        if (deliveryMinutes > filters.maxDeliveryTime) {
-          return false;
-        }
-      }
+  //     // Filter by delivery time
+  //     if (filters.maxDeliveryTime && product.deliveryTime) {
+  //       const deliveryMinutes = this.parseDeliveryTime(product.deliveryTime);
+  //       if (deliveryMinutes > filters.maxDeliveryTime) {
+  //         return false;
+  //       }
+  //     }
 
-      return true;
-    });
+  //     return true;
+  //   });
 
-    // Sort results
-    filtered = this.sortProducts(filtered, filters.sortBy);
+  //   // Sort results
+  //   filtered = this.sortProducts(filtered, filters.sortBy);
 
-    return filtered;
-  }
+  //   return filtered;
+  // }
 
   /**
    * Parse delivery time string to minutes
    * e.g., "10-15 mins" -> 15, "30 mins" -> 30, "1 hour" -> 60
+   * Note: Currently unused, kept for future use if client-side filtering/sorting is needed
    */
-  private static parseDeliveryTime(deliveryTime: string): number {
-    const timeStr = deliveryTime.toLowerCase();
-    
-    // Handle hour format
-    const hourMatch = timeStr.match(/(\d+)\s*hour/);
-    if (hourMatch) {
-      return parseInt(hourMatch[1]) * 60;
-    }
+  // private static parseDeliveryTime(deliveryTime: string): number {
+  //   const timeStr = deliveryTime.toLowerCase();
+  //   
+  //   // Handle hour format
+  //   const hourMatch = timeStr.match(/(\d+)\s*hour/);
+  //   if (hourMatch) {
+  //     return parseInt(hourMatch[1]) * 60;
+  //   }
 
-    // Handle minute range (e.g., "10-15 mins")
-    const rangeMatch = timeStr.match(/(\d+)-(\d+)\s*min/);
-    if (rangeMatch) {
-      return parseInt(rangeMatch[2]); // Return max time
-    }
+  //   // Handle minute range (e.g., "10-15 mins")
+  //   const rangeMatch = timeStr.match(/(\d+)-(\d+)\s*min/);
+  //   if (rangeMatch) {
+  //     return parseInt(rangeMatch[2]); // Return max time
+  //   }
 
-    // Handle single minute format
-    const minMatch = timeStr.match(/(\d+)\s*min/);
-    if (minMatch) {
-      return parseInt(minMatch[1]);
-    }
+  //   // Handle single minute format
+  //   const minMatch = timeStr.match(/(\d+)\s*min/);
+  //   if (minMatch) {
+  //     return parseInt(minMatch[1]);
+  //   }
 
-    return 999; // Default to high value if can't parse
-  }
+  //   return 999; // Default to high value if can't parse
+  // }
 
   static groupProductsByName(products: Product[]): Map<string, Product[]> {
     const grouped = new Map<string, Product[]>();
@@ -220,35 +223,40 @@ export class ProductService {
     return { value, unit };
   }
 
-  private static sortProducts(products: Product[], sortBy: ComparisonFilters['sortBy']): Product[] {
-    const sorted = [...products];
-    
-    switch (sortBy) {
-      case 'price-low':
-        return sorted.sort((a, b) => {
-          const totalA = a.price + (a.deliveryFee || 0);
-          const totalB = b.price + (b.deliveryFee || 0);
-          return totalA - totalB;
-        });
-      case 'price-high':
-        return sorted.sort((a, b) => {
-          const totalA = a.price + (a.deliveryFee || 0);
-          const totalB = b.price + (b.deliveryFee || 0);
-          return totalB - totalA;
-        });
-      case 'rating':
-        return sorted.sort((a, b) => b.rating - a.rating);
-      case 'reviews':
-        return sorted.sort((a, b) => b.reviewCount - a.reviewCount);
-      case 'delivery-time':
-        return sorted.sort((a, b) => {
-          const timeA = a.deliveryTime ? this.parseDeliveryTime(a.deliveryTime) : 999;
-          const timeB = b.deliveryTime ? this.parseDeliveryTime(b.deliveryTime) : 999;
-          return timeA - timeB;
-        });
-      default:
-        return sorted;
-    }
-  }
+  /**
+   * Sort products by various criteria
+   * Note: Currently sorting is handled at the API/frontend level
+   * This method is kept for future use if client-side sorting is needed
+   */
+  // private static sortProducts(products: Product[], sortBy: ComparisonFilters['sortBy']): Product[] {
+  //   const sorted = [...products];
+  //   
+  //   switch (sortBy) {
+  //     case 'price-low':
+  //       return sorted.sort((a, b) => {
+  //         const totalA = a.price + (a.deliveryFee || 0);
+  //         const totalB = b.price + (b.deliveryFee || 0);
+  //         return totalA - totalB;
+  //       });
+  //     case 'price-high':
+  //       return sorted.sort((a, b) => {
+  //         const totalA = a.price + (a.deliveryFee || 0);
+  //         const totalB = b.price + (b.deliveryFee || 0);
+  //         return totalB - totalA;
+  //       });
+  //     case 'rating':
+  //       return sorted.sort((a, b) => b.rating - a.rating);
+  //     case 'reviews':
+  //       return sorted.sort((a, b) => b.reviewCount - a.reviewCount);
+  //     case 'delivery-time':
+  //       return sorted.sort((a, b) => {
+  //         const timeA = a.deliveryTime ? this.parseDeliveryTime(a.deliveryTime) : 999;
+  //         const timeB = b.deliveryTime ? this.parseDeliveryTime(b.deliveryTime) : 999;
+  //         return timeA - timeB;
+  //       });
+  //     default:
+  //       return sorted;
+  //   }
+  // }
 }
 

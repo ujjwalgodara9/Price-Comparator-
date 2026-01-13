@@ -1,6 +1,5 @@
 import { LocationData } from '../types/product';
 import { MapPin } from 'lucide-react';
-import { Badge } from './ui/badge';
 
 interface LocationDisplayProps {
   location: LocationData;

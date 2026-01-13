@@ -1,3246 +1,1950 @@
 {
-  "search_query": "atta",
-  "timestamp": "2026-01-11T15:25:28.771564",
-  "total_products": 195,
-  "matched_products": 14,
+  "search_query": "Toiletries",
+  "timestamp": "2026-01-14T01:03:09.882535",
+  "total_products": 121,
+  "matched_products": 0,
   "location": {
     "city": "Mumbai",
     "state": "Maharashtra",
     "country": "India",
     "coordinates": {
-      "lat": 13.035012080914507,
-      "lng": 77.53072749421935
+      "lat": 13.034908999999997,
+      "lng": 77.53077816666666
     }
   },
   "products": [
     {
-      "name": "Aashirvaad Atta Superior Mp Whole Wheat No Maida",
+      "name": "Jb Home Pvc Toiletry Bag Black",
+      "image": "https://cdn.dmart.in/images/products/JAN200001268xx4JAN25_5_P.jpg",
       "original_names": {
-        "zepto": "Aashirvaad Atta - Superior MP Whole Wheat, No Maida | Pouch"
+        "dmart": "JB Home PVC Toiletry Bag (Set of 3) - Black"
       },
       "platforms": {
-        "zepto": {
-          "price": 59,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/aashirvaad-atta-superior-mp-whole-wheat-no-maida-pouch/pvid/ae6045b0-0526-4401-8a18-cb55592249e6"
+        "dmart": {
+          "price": 399,
+          "quantity": null,
+          "deliveryTime": "N/A",
+          "link": "N/A"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Aashirvaad Chakki Mp Sehori Atta",
+      "name": "Jb Homes Hanging Toiletry Bag Navy Blue",
+      "image": "https://cdn.dmart.in/images/products/JAN200001272xx4JAN25_5_P.jpg",
       "original_names": {
-        "zepto": "Aashirvaad Chakki MP Sehori Atta | Gahu Lot | Gahu Peeth | Atta made from MP Sehori Wheat"
+        "dmart": "JB Homes Hanging Toiletry Bag - Navy Blue"
       },
       "platforms": {
-        "zepto": {
-          "price": 258,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/aashirvaad-chakki-mp-sehori-atta-gahu-lot-gahu-peeth-atta-made-from-mp-sehori-wheat/pvid/bbf3c3fc-2832-4634-bfc7-0f7c5f774e1e"
+        "dmart": {
+          "price": 349,
+          "quantity": null,
+          "deliveryTime": "N/A",
+          "link": "N/A"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Aashirvaad Atta Superior Mp Whole Wheat No Maida",
+      "name": "Plastic Hook Set Of 3",
+      "image": "https://cdn.dmart.in/images/products/FEB150001099xx23FEB23_5_P.jpg",
       "original_names": {
-        "zepto": "Aashirvaad Atta - Superior MP Whole Wheat, No Maida | Pouch"
+        "dmart": "Plastic Hook - Set of 3"
       },
       "platforms": {
-        "zepto": {
-          "price": 263,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/aashirvaad-atta-superior-mp-whole-wheat-no-maida-pouch/pvid/56d997f6-b45a-48bf-823d-c9b5acd6ac8f"
+        "dmart": {
+          "price": 99,
+          "quantity": null,
+          "deliveryTime": "N/A",
+          "link": "N/A"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Aashirvaad Chakki Premium Mp Sehori Atta",
+      "name": "Bath Mesh Sponge",
+      "image": "https://cdn.dmart.in/images/products/MAR190000168xx30MAR22_5_P.jpg",
       "original_names": {
-        "zepto": "Aashirvaad Chakki Premium MP Sehori Atta | Gahu Lot | Gahu Peeth",
-        "blinkit": "Aashirvaad Chakki Premium MP Sehori Atta"
+        "dmart": "Bath Mesh Sponge"
       },
       "platforms": {
-        "zepto": {
-          "price": 337,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/aashirvaad-chakki-premium-mp-sehori-atta-gahu-lot-gahu-peeth/pvid/8581e553-b32f-48a1-aec5-6c3c07e7b90b"
-        },
+        "dmart": {
+          "price": 35,
+          "quantity": "40 g",
+          "deliveryTime": "N/A",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Back Bath Mesh",
+      "image": "https://cdn.dmart.in/images/products/LGM1U010xx40520_5_P.jpg",
+      "original_names": {
+        "dmart": "Back Bath Mesh"
+      },
+      "platforms": {
+        "dmart": {
+          "price": 69,
+          "quantity": "70 g",
+          "deliveryTime": "N/A",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Joyo Plastic Bathroom Set Set Of 5",
+      "image": "https://cdn.dmart.in/images/products/OCT150005697xx30OCT23_5_P.jpg",
+      "original_names": {
+        "dmart": "Joyo Plastic Bathroom Set (Blue) - Set of 5"
+      },
+      "platforms": {
+        "dmart": {
+          "price": 449,
+          "quantity": null,
+          "deliveryTime": "N/A",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Pick Pocket Suede Organiser Pouch Navy Blue",
+      "image": "https://cdn.dmart.in/images/products/SEP200001216xx29Oct25_5_P.jpg",
+      "original_names": {
+        "dmart": "Pick Pocket Suede Organiser Pouch - Navy Blue"
+      },
+      "platforms": {
+        "dmart": {
+          "price": 249,
+          "quantity": null,
+          "deliveryTime": "N/A",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Pick Pocket Suede Organiser Pouch Olive Green",
+      "image": "https://cdn.dmart.in/images/products/SEP200001217xx29Oct25_5_P.jpg",
+      "original_names": {
+        "dmart": "Pick Pocket Suede Organiser Pouch - Olive Green"
+      },
+      "platforms": {
+        "dmart": {
+          "price": 249,
+          "quantity": null,
+          "deliveryTime": "N/A",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Kanvas Katha Vanity Pouch Mustard",
+      "image": "https://cdn.dmart.in/images/products/OCT200001549xx4NOV25_5_P.jpg",
+      "original_names": {
+        "dmart": "Kanvas Katha Vanity Pouch (KKCP001) Mustard"
+      },
+      "platforms": {
+        "dmart": {
+          "price": 199,
+          "quantity": null,
+          "deliveryTime": "N/A",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Kanvas Katha Vanity Pouch Purple",
+      "image": "https://cdn.dmart.in/images/products/OCT200001550xx4NOV25_5_P.jpg",
+      "original_names": {
+        "dmart": "Kanvas Katha Vanity Pouch (KKCP008) Purple"
+      },
+      "platforms": {
+        "dmart": {
+          "price": 199,
+          "quantity": null,
+          "deliveryTime": "N/A",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Kanvas Katha Vanity Pouch Plum",
+      "image": "https://cdn.dmart.in/images/products/OCT200001551xx4NOV25_5_P.jpg",
+      "original_names": {
+        "dmart": "Kanvas Katha Vanity Pouch (KKCP009) Plum"
+      },
+      "platforms": {
+        "dmart": {
+          "price": 199,
+          "quantity": null,
+          "deliveryTime": "N/A",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Kanvas Katha Vanity Pouch Green",
+      "image": "https://cdn.dmart.in/images/products/OCT200001552xx4NOV25_5_P.jpg",
+      "original_names": {
+        "dmart": "Kanvas Katha Vanity Pouch (KKCP010) Green"
+      },
+      "platforms": {
+        "dmart": {
+          "price": 199,
+          "quantity": null,
+          "deliveryTime": "N/A",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Kanvas Katha Vanity Pouch Grey",
+      "image": "https://cdn.dmart.in/images/products/OCT200001553xx4NOV25_5_P.jpg",
+      "original_names": {
+        "dmart": "Kanvas Katha Vanity Pouch (KKCP011) Grey"
+      },
+      "platforms": {
+        "dmart": {
+          "price": 199,
+          "quantity": null,
+          "deliveryTime": "N/A",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Boldfit Toiletry Travel Pouch",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png",
+      "original_names": {
+        "blinkit": "Boldfit Toiletry Travel Pouch (Black)"
+      },
+      "platforms": {
         "blinkit": {
-          "price": 379,
-          "quantity": "5 kg",
+          "price": 329,
+          "quantity": "1 pcs",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/aashirvaad-chakki-premium-mp-sehori-atta/prid/580837"
-        }
-      },
-      "similarity_score": 1.0
-    },
-    {
-      "name": "Aashirvaad Select Atta",
-      "original_names": {
-        "zepto": "Aashirvaad Select Atta | Made from 100% MP Sharbati Wheat for Softer Rotis"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 63,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/aashirvaad-select-atta-made-from-100-mp-sharbati-wheat-for-softer-rotis/pvid/4d8d3c69-074d-45bb-ab13-77f6f0e082ab"
+          "link": "https://blinkit.com/prn/boldfit-toiletry-travel-pouch-black/prid/631988"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Aashirvaad Select Atta",
+      "name": "Boldfit Shoe Travel Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/157a5e4b-ba9a-4730-8590-313c0989de9c.png",
       "original_names": {
-        "zepto": "Aashirvaad Select Atta | Made from 100% MP Sharbati Wheat for Softer Rotis"
+        "blinkit": "Boldfit Shoe Travel Bag (Black)"
       },
       "platforms": {
-        "zepto": {
-          "price": 63,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/aashirvaad-select-atta-made-from-100-mp-sharbati-wheat-for-softer-rotis/pvid/4d8d3c69-074d-45bb-ab13-77f6f0e082ab"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Atta Superior Mp Whole Wheat No Maida",
-      "original_names": {
-        "zepto": "Aashirvaad Atta - Superior MP Whole Wheat, No Maida | Pouch"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 526,
-          "quantity": "10 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/aashirvaad-atta-superior-mp-whole-wheat-no-maida-pouch/pvid/d156ac8e-53c1-4f40-aea8-3de5b28f948d"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Right Shift High Protein Multigrain Atta",
-      "original_names": {
-        "zepto": "Right Shift High Protein Multigrain + Atta | High fibre, Low GI | 18 g - 4 rotis"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 61,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/right-shift-high-protein-multigrain-atta-high-fibre-low-gi-18-g-4-rotis/pvid/ef1e569e-003e-43af-ab90-44bc8e2271a6"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Pillsbury Chakki Fresh Atta",
-      "original_names": {
-        "zepto": "Pillsbury Chakki Fresh Atta",
-        "blinkit": "Pillsbury Chakki Fresh Atta (100% atta, 0% Maida)"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 50,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/pillsbury-chakki-fresh-atta/pvid/74a23b37-47f9-4a66-a2fe-e185ee6c5fbd"
-        },
         "blinkit": {
-          "price": 63,
-          "quantity": "1 kg",
+          "price": 199,
+          "quantity": "6 pcs",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/pillsbury-chakki-fresh-atta-100-atta-0-maida/prid/58715"
-        }
-      },
-      "similarity_score": 1.0
-    },
-    {
-      "name": "24 Mantra Organic Whole Wheat Atta",
-      "original_names": {
-        "zepto": "24 Mantra Organic Whole Wheat Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 49,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/24-mantra-organic-whole-wheat-atta/pvid/0077f3d0-282a-413b-af13-d2ec99296ae7"
+          "link": "https://blinkit.com/prn/boldfit-shoe-travel-bag-black/prid/523984"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Samrat Mp Chakki Wheat Atta",
+      "name": "Urgo Large Compostable Grocery Carry Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/8cb0e835-d41a-4710-b4b8-d2ae81a50a5d.png",
       "original_names": {
-        "zepto": "Samrat Mp Chakki Wheat Atta"
+        "blinkit": "URGO Large Compostable Grocery Carry Bag"
       },
       "platforms": {
-        "zepto": {
-          "price": 215,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/samrat-mp-chakki-wheat-atta/pvid/70e94e84-6543-4a9a-bd5d-72afea4d338e"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Fortune Premium Sharbati Atta",
-      "original_names": {
-        "zepto": "Fortune Premium Sharbati Atta",
-        "blinkit": "Fortune Premium MP Sharbati Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 269,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/fortune-premium-sharbati-atta/pvid/715c2127-d8b8-4563-9064-5397e641baa9"
-        },
         "blinkit": {
-          "price": 289,
-          "quantity": "5 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/fortune-premium-mp-sharbati-atta/prid/544463"
-        }
-      },
-      "similarity_score": 0.8904918032786885
-    },
-    {
-      "name": "Pillsbury Atta Godihittu Chakki Fresh",
-      "original_names": {
-        "zepto": "Pillsbury Atta/Godihittu - Chakki Fresh"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 228,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/pillsbury-attagodihittu-chakki-fresh/pvid/9a99b440-cf97-4601-b478-1b6b7ef3f17c"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Mp Lokwan Atta Premium Blend",
-      "original_names": {
-        "zepto": "Aashirvaad MP Lokwan Atta Premium Blend"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 59,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/aashirvaad-mp-lokwan-atta-premium-blend/pvid/df4347cf-515f-4cb8-953a-7e84e5e6d3af"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Fortune Chakki Fresh Atta",
-      "original_names": {
-        "zepto": "Fortune Chakki Fresh Atta",
-        "blinkit": "Fortune Chakki Fresh Atta (0% Maida)"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 421,
-          "quantity": "10 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/fortune-chakki-fresh-atta/pvid/09100e95-eb80-4089-8f4a-7cad4fc65be7"
-        },
-        "blinkit": {
-          "price": 50,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/fortune-chakki-fresh-atta-0-maida/prid/400417"
-        }
-      },
-      "similarity_score": 1.0
-    },
-    {
-      "name": "Aashirvaad Chakki Mp Sehori Atta",
-      "original_names": {
-        "zepto": "Aashirvaad Chakki Mp Sehori Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 60,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/aashirvaad-chakki-mp-sehori-atta/pvid/315dca47-8635-4de6-84ca-243806cafd0b"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Chakki Mp Sehori Atta",
-      "original_names": {
-        "zepto": "Aashirvaad Chakki MP Sehori Atta | Gahu Lot | Gahu Peeth | Atta made from MP Sehori Wheat"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 258,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/aashirvaad-chakki-mp-sehori-atta-gahu-lot-gahu-peeth-atta-made-from-mp-sehori-wheat/pvid/bbf3c3fc-2832-4634-bfc7-0f7c5f774e1e"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Multigrain Atta",
-      "original_names": {
-        "zepto": "Aashirvaad Multigrain Atta | 3 Rotis Fulfils 35% Daily Fibre"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 67,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/aashirvaad-multigrain-atta-3-rotis-fulfils-35-daily-fibre/pvid/ef3f1913-a6e6-4bf6-a940-dc6d4651e88e"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Right Shift High Protein Multigrain Atta",
-      "original_names": {
-        "zepto": "Right Shift High Protein Multigrain + Atta | High fibre, Low GI | 18 g - 4 rotis"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 61,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/right-shift-high-protein-multigrain-atta-high-fibre-low-gi-18-g-4-rotis/pvid/ef1e569e-003e-43af-ab90-44bc8e2271a6"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Organic 100 Organic Whole Wheat Atta 0 Maida",
-      "original_names": {
-        "zepto": "Aashirvaad Organic 100% Organic Whole Wheat Atta, 0% Maida"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 64,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/aashirvaad-organic-100-organic-whole-wheat-atta-0-maida/pvid/d7ab0955-f1a3-44cc-a849-fa43a4bee931"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Organic 100 Organic Whole Wheat Atta 0 Maida",
-      "original_names": {
-        "zepto": "Aashirvaad Organic 100% Organic Whole Wheat Atta, 0% Maida"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 294,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/aashirvaad-organic-100-organic-whole-wheat-atta-0-maida/pvid/6b81904d-64e3-48a8-8218-0811995b817a"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nature Fresh Sampoorna Chakki Atta",
-      "original_names": {
-        "zepto": "Nature Fresh Sampoorna Chakki Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 434,
-          "quantity": "10 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/nature-fresh-sampoorna-chakki-atta/pvid/8bf25299-8a37-4698-afbc-926d36cb9a9e"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Whole Wheat Flour",
-      "original_names": {
-        "zepto": "Organic Tattva Whole Wheat Flour | Chakki Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 65,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/organic-tattva-whole-wheat-flour-chakki-atta/pvid/f91646e6-84e3-4cdd-b012-7dc6404325c3"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Patanjali Wheat Flour Atta Bran",
-      "original_names": {
-        "zepto": "Patanjali Wheat Flour Atta With Bran | Traditional Chakki Gehu Atta | For Soft and Fluffy Roti"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 234,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/patanjali-wheat-flour-atta-with-bran-traditional-chakki-gehu-atta-for-soft-and-fluffy-roti/pvid/0de96881-8bea-4c43-99a2-3b6e7a8a4404"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Chakki Premium Mp Sehori Atta",
-      "original_names": {
-        "zepto": "Aashirvaad Chakki Premium MP Sehori Atta | Gahu Lot | Gahu Peeth"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 337,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/aashirvaad-chakki-premium-mp-sehori-atta-gahu-lot-gahu-peeth/pvid/8581e553-b32f-48a1-aec5-6c3c07e7b90b"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Pillsbury Gold Sharbati Atta",
-      "original_names": {
-        "zepto": "Pillsbury Gold Sharbati Atta",
-        "blinkit": "Pillsbury Gold Sharbati Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 239,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/pillsbury-gold-sharbati-atta/pvid/219eef0d-a48a-428a-b4e8-ed6cf810ebda"
-        },
-        "blinkit": {
-          "price": 74,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/pillsbury-gold-sharbati-atta/prid/598883"
-        }
-      },
-      "similarity_score": 1.0
-    },
-    {
-      "name": "24 Mantra Organic Whole Wheat Atta",
-      "original_names": {
-        "zepto": "24 Mantra Organic Whole Wheat Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 49,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/24-mantra-organic-whole-wheat-atta/pvid/0077f3d0-282a-413b-af13-d2ec99296ae7"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Fortune Premium Sharbati Atta",
-      "original_names": {
-        "zepto": "Fortune Premium Sharbati Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 269,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/fortune-premium-sharbati-atta/pvid/715c2127-d8b8-4563-9064-5397e641baa9"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Patanjali Wheat Flour Atta Bran Traditional Chakki Gehu Atta Soft And Fluffy Roti",
-      "original_names": {
-        "zepto": "Patanjali Wheat Flour Atta With Bran Traditional Chakki Gehu Atta For Soft and Fluffy Roti"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 438,
-          "quantity": "10 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/patanjali-wheat-flour-atta-with-bran-traditional-chakki-gehu-atta-for-soft-and-fluffy-roti/pvid/4e461724-3f74-4323-9eae-01b75e0c1e4a"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Bajra Atta",
-      "original_names": {
-        "zepto": "Bhagirathi Bajra Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 31,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-bajra-atta/pvid/b2c64704-bbe5-450f-9c68-25ef26366125"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Chakki Premium Mp Sehori Atta",
-      "original_names": {
-        "zepto": "Aashirvaad Chakki Premium MP Sehori Atta | Gahu Lot | Gahu Peeth"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 337,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/aashirvaad-chakki-premium-mp-sehori-atta-gahu-lot-gahu-peeth/pvid/8581e553-b32f-48a1-aec5-6c3c07e7b90b"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Pillsbury Gold Sharbati Atta",
-      "original_names": {
-        "zepto": "Pillsbury Gold Sharbati Atta",
-        "blinkit": "Pillsbury Gold Sharbati Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 239,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/pillsbury-gold-sharbati-atta/pvid/219eef0d-a48a-428a-b4e8-ed6cf810ebda"
-        },
-        "blinkit": {
-          "price": 286,
-          "quantity": "5 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/pillsbury-gold-sharbati-atta/prid/497142"
-        }
-      },
-      "similarity_score": 1.0
-    },
-    {
-      "name": "24 Mantra Organic Whole Wheat Atta",
-      "original_names": {
-        "zepto": "24 Mantra Organic Whole Wheat Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 49,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/24-mantra-organic-whole-wheat-atta/pvid/0077f3d0-282a-413b-af13-d2ec99296ae7"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Fortune Premium Sharbati Atta",
-      "original_names": {
-        "zepto": "Fortune Premium Sharbati Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 269,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/fortune-premium-sharbati-atta/pvid/715c2127-d8b8-4563-9064-5397e641baa9"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Patanjali Wheat Flour Atta Bran Traditional Chakki Gehu Atta Soft And Fluffy Roti",
-      "original_names": {
-        "zepto": "Patanjali Wheat Flour Atta With Bran Traditional Chakki Gehu Atta For Soft and Fluffy Roti"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 438,
-          "quantity": "10 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/patanjali-wheat-flour-atta-with-bran-traditional-chakki-gehu-atta-for-soft-and-fluffy-roti/pvid/4e461724-3f74-4323-9eae-01b75e0c1e4a"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Bajra Atta",
-      "original_names": {
-        "zepto": "Bhagirathi Bajra Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 31,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-bajra-atta/pvid/b2c64704-bbe5-450f-9c68-25ef26366125"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Origgo Sharbati Stone Ground Atta Normal Pissai",
-      "original_names": {
-        "zepto": "Origgo Sharbati Stone Ground Atta-Normal Pissai"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 55,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/origgo-sharbati-stone-ground-atta-normal-pissai/pvid/0ea78117-8f1f-42cc-be6e-2e9f16dc00ce"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Pillsbury Atta Multigrains",
-      "original_names": {
-        "zepto": "Pillsbury Atta With Multigrains"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 267,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/pillsbury-atta-with-multigrains/pvid/8ad80401-e58f-4d29-8d64-feb8c9359248"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Origgo Mp Sehori Stone Ground Atta Normal Pissai",
-      "original_names": {
-        "zepto": "Origgo MP Sehori Stone Ground Atta-Normal Pissai"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 375,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/origgo-mp-sehori-stone-ground-atta-normal-pissai/pvid/3ce2b8eb-1859-426f-9ae4-db7a36e84e3f"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Jowar Atta",
-      "original_names": {
-        "zepto": "Bhagirathi Jowar Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 44,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-jowar-atta/pvid/f4f9fcc5-11f2-4258-a498-a18bfd72994d"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Wheat Flour",
-      "original_names": {
-        "zepto": "Organic Tattva Wheat Flour | Chakki Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 303,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/organic-tattva-wheat-flour-chakki-atta/pvid/3587eb86-cc71-4dda-aee1-786f8e1ae3dc"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Satyam Nachani",
-      "original_names": {
-        "zepto": "Satyam Nachani | Ragi Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 49,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/satyam-nachani-ragi-flour/pvid/9557fec4-be71-4f91-99ef-4e92b4dc851a"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "24 Mantra Organic Whole Wheat Atta",
-      "original_names": {
-        "zepto": "24 Mantra Organic Whole Wheat Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 239,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/24-mantra-organic-whole-wheat-atta/pvid/9a7eed43-18b1-4e8a-b2a5-38897c6cff87"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Makki Atta Maize Flour",
-      "original_names": {
-        "zepto": "Bhagirathi Makki Atta/ Maize Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 30,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-makki-atta-maize-flour/pvid/89d3ccbc-f2d0-475b-9f6c-c38b81575d6d"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Jiwa 30 Degree Wheat Flour",
-      "original_names": {
-        "zepto": "Jiwa 30 Degree Wheat Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 278,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/jiwa-30-degree-wheat-flour/pvid/e1a279eb-b1f0-40ab-b2d7-36077a5c10ba"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nutrapoorna Chapati Wheat Atta",
-      "original_names": {
-        "zepto": "Nutrapoorna Chapati Wheat Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 75,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/nutrapoorna-chapati-wheat-atta/pvid/7a187f51-0fe5-4488-b6fe-47ac49cfa974"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Satyam Jowari Flour",
-      "original_names": {
-        "zepto": "Satyam Jowari Flour",
-        "blinkit": "Satyam Jowar Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 49,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/satyam-jowari-flour/pvid/cf498012-e014-480e-9ce8-3db3124d93c0"
-        },
-        "blinkit": {
-          "price": 50,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/satyam-jowar-flour/prid/45082"
-        }
-      },
-      "similarity_score": 0.8504504504504504
-    },
-    {
-      "name": "Two Brothers Khapli",
-      "original_names": {
-        "zepto": "Two Brothers Khapli | Emmer Long Wheat Atta Stoneground"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 429,
-          "quantity": "2 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/two-brothers-khapli-emmer-long-wheat-atta-stoneground/pvid/370fe3c6-58c9-42a1-af1f-8ce189a3efae"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Multigrain Flour",
-      "original_names": {
-        "zepto": "Organic Tattva Multigrain Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 90,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/organic-tattva-multigrain-flour/pvid/c52204c0-8e23-404f-bc7e-dc0450a71696"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Praakritik Organic Jowar Atta",
-      "original_names": {
-        "zepto": "Praakritik Organic Jowar Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 80,
-          "quantity": "500 g",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/praakritik-organic-jowar-atta/pvid/90a6515d-1a09-4176-b9f8-378ecf404afd"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "24 Mantra Organic 7 Grain Atta",
-      "original_names": {
-        "zepto": "24 Mantra Organic 7 Grain Atta",
-        "blinkit": "24 Mantra Organic 7 Grain Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 89,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/24-mantra-organic-7-grain-atta/pvid/61da7bcb-1c93-4fbf-90cf-d9aed2be4c58"
-        },
-        "blinkit": {
-          "price": 101,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/24-mantra-organic-7-grain-atta/prid/437289"
-        }
-      },
-      "similarity_score": 1.0
-    },
-    {
-      "name": "Annapurna Chakki Whole Wheat Atta",
-      "original_names": {
-        "zepto": "Annapurna Chakki Whole Wheat Atta | No Maida | 10 Kg"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 461,
-          "quantity": "10 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/annapurna-chakki-whole-wheat-atta-no-maida-10-kg/pvid/ff3d3dba-8efb-434a-b978-5421aca71de5"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Jiwa 30 Degree Khapli Wheat Flour",
-      "original_names": {
-        "zepto": "Jiwa 30 Degree Khapli Wheat Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 211,
-          "quantity": "1 kg",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/jiwa-30-degree-khapli-wheat-flour/pvid/1216d6d9-ac4c-473a-a692-7fe6dd3cff97"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Kokos Natural Jowar Atta",
-      "original_names": {
-        "zepto": "Kokos Natural Jowar Atta | Sorghum"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 168,
-          "quantity": "1 kg",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/kokos-natural-jowar-atta-sorghum/pvid/61c8a16a-0d97-4780-a137-1f80623823bd"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Two Brothers Khapli",
-      "original_names": {
-        "zepto": "Two Brothers Khapli | Emmer Long Wheat Atta Stoneground"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 429,
-          "quantity": "2 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/two-brothers-khapli-emmer-long-wheat-atta-stoneground/pvid/370fe3c6-58c9-42a1-af1f-8ce189a3efae"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Multigrain Flour",
-      "original_names": {
-        "zepto": "Organic Tattva Multigrain Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 90,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/organic-tattva-multigrain-flour/pvid/c52204c0-8e23-404f-bc7e-dc0450a71696"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Praakritik Organic Jowar Atta",
-      "original_names": {
-        "zepto": "Praakritik Organic Jowar Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 80,
-          "quantity": "500 g",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/praakritik-organic-jowar-atta/pvid/90a6515d-1a09-4176-b9f8-378ecf404afd"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "24 Mantra Organic 7 Grain Atta",
-      "original_names": {
-        "zepto": "24 Mantra Organic 7 Grain Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 89,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/24-mantra-organic-7-grain-atta/pvid/61da7bcb-1c93-4fbf-90cf-d9aed2be4c58"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Annapurna Chakki Whole Wheat Atta",
-      "original_names": {
-        "zepto": "Annapurna Chakki Whole Wheat Atta | No Maida | 10 Kg"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 461,
-          "quantity": "10 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/annapurna-chakki-whole-wheat-atta-no-maida-10-kg/pvid/ff3d3dba-8efb-434a-b978-5421aca71de5"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Jiwa 30 Degree Khapli Wheat Flour",
-      "original_names": {
-        "zepto": "Jiwa 30 Degree Khapli Wheat Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 211,
-          "quantity": "1 kg",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/jiwa-30-degree-khapli-wheat-flour/pvid/1216d6d9-ac4c-473a-a692-7fe6dd3cff97"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Kokos Natural Jowar Atta",
-      "original_names": {
-        "zepto": "Kokos Natural Jowar Atta | Sorghum"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 168,
-          "quantity": "1 kg",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/kokos-natural-jowar-atta-sorghum/pvid/61c8a16a-0d97-4780-a137-1f80623823bd"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Satyam Bajari Flour",
-      "original_names": {
-        "zepto": "Satyam Bajari Flour",
-        "blinkit": "Satyam Bajra Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 40,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/satyam-bajari-flour/pvid/d7f12a7b-70ff-4a2b-8392-e4fe297ec4be"
-        },
-        "blinkit": {
-          "price": 47,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/satyam-bajra-flour/prid/45052"
-        }
-      },
-      "similarity_score": 0.8180180180180181
-    },
-    {
-      "name": "Satyam Rice Flour",
-      "original_names": {
-        "zepto": "Satyam Rice Flour",
-        "blinkit": "Satyam Rice Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 39,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/satyam-rice-flour/pvid/815133f7-2b4b-4760-a25b-ecee7f95a836"
-        },
-        "blinkit": {
-          "price": 39,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/satyam-rice-flour/prid/45115"
-        }
-      },
-      "similarity_score": 1.0
-    },
-    {
-      "name": "Rajdhani Besan Gram Flour",
-      "original_names": {
-        "zepto": "Rajdhani Besan Gram Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 101,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/rajdhani-besan-gram-flour/pvid/40b8a38c-9ce2-4b31-b59d-e3dc578c60c9"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nutrapoorna Phulka Atta",
-      "original_names": {
-        "zepto": "Nutrapoorna Phulka Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 367,
-          "quantity": "5 kg",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/nutrapoorna-phulka-atta/pvid/a6f782fe-9d67-49a9-a0a6-0c36d6579063"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Satyam Jowari Flour Combo",
-      "original_names": {
-        "zepto": "Satyam Jowari Flour Combo"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 98,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/satyam-jowari-flour-combo/pvid/201ed653-7911-4e07-836c-10b610be2e91"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Anveshan Cold Pressed Khapli Atta",
-      "original_names": {
-        "zepto": "Anveshan Cold Pressed Khapli Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 210,
-          "quantity": "1 kg",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/anveshan-cold-pressed-khapli-atta/pvid/19c3a92f-aeec-4066-9857-3380250dd1a5"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nutrapoorna Multigrain Wheat Atta",
-      "original_names": {
-        "zepto": "Nutrapoorna Multigrain Wheat Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 392,
-          "quantity": "5 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/nutrapoorna-multigrain-wheat-atta/pvid/39efe23b-18e6-4975-8228-dbf9016cc6ef"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Thalipeeth Bhajani",
-      "original_names": {
-        "zepto": "Bhagirathi Thalipeeth Bhajani | Multigrain Roasted Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 42,
-          "quantity": "200 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-thalipeeth-bhajani-multigrain-roasted-flour/pvid/998e451e-6ae1-4320-b1f6-3c8ef4d0eff9"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Satyam Nachani",
-      "original_names": {
-        "zepto": "Satyam Nachani | Ragi Flour Combo"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 98,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/satyam-nachani-ragi-flour-combo/pvid/44ed48a5-7bcb-4d80-8453-ae33adee43bf"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Jiwa 30 Degree Gluten Free Flour",
-      "original_names": {
-        "zepto": "Jiwa 30 Degree Gluten Free Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 196,
-          "quantity": "1 kg",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/jiwa-30-degree-gluten-free-flour/pvid/4e16139d-5448-415a-a6cd-3ba1808e62cd"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Multigrain Roasted Wada Flour",
-      "original_names": {
-        "zepto": "Bhagirathi Multigrain Roasted Wada Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 66,
-          "quantity": "500 g",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-multigrain-roasted-wada-flour/pvid/42650d27-1a2d-42f5-bc77-0315b1229515"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Rosier Foods Stoneground Organic Khapli Wheat Atta",
-      "original_names": {
-        "zepto": "Rosier Foods Stoneground Organic Khapli Wheat Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 436,
-          "quantity": "2 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/rosier-foods-stoneground-organic-khapli-wheat-atta/pvid/e4aff97c-3c7e-4963-b7a7-35f0b851c4ae"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Rice Atta",
-      "original_names": {
-        "zepto": "Bhagirathi Rice Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 73,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-rice-atta/pvid/4f533902-1768-4122-875c-b74d89c937d3"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nutrapoorna Makki Atta Maize Flour",
-      "original_names": {
-        "zepto": "Nutrapoorna Makki Atta/ Maize Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 49,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/nutrapoorna-makki-atta-maize-flour/pvid/8ae8fe84-e241-47fb-8581-99cbfcbd8beb"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nutrapoorna Kuttu Atta",
-      "original_names": {
-        "zepto": "Nutrapoorna Kuttu Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 25,
-          "quantity": "200 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/nutrapoorna-kuttu-atta/pvid/37bb458c-590b-4390-92ce-04b01f8c3bbe"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Daily Good Jowar Flour Sorghum Millet",
-      "original_names": {
-        "zepto": "Daily Good Jowar Flour / Sorghum Millet"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 40,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/daily-good-jowar-flour-sorghum-millet/pvid/295dca45-3a22-4ce7-a3ca-5345c2549eb0"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Organic Multigrain Flour",
-      "original_names": {
-        "zepto": "Organic Tattva Organic Multigrain Flour",
-        "blinkit": "Organic Tattva Organic Ragi Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 446,
-          "quantity": "5 kg",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/organic-tattva-organic-multigrain-flour/pvid/614e1f29-4932-4360-aa70-df2076d02f9a"
-        },
-        "blinkit": {
-          "price": 80,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/organic-tattva-organic-ragi-flour/prid/86974"
-        }
-      },
-      "similarity_score": 0.8333333333333334
-    },
-    {
-      "name": "Bhagirathi Thalipeeth Bhajani",
-      "original_names": {
-        "zepto": "Bhagirathi Thalipeeth Bhajani | Multigrain Roasted Flour"
-      },
-      "platforms": {
-        "zepto": {
           "price": 91,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-thalipeeth-bhajani-multigrain-roasted-flour/pvid/fe170ccf-5722-4a5d-9a76-c469ba4ddb81"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Earthen Story Organic Jowar Atta",
-      "original_names": {
-        "zepto": "Earthen Story Organic Jowar Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 132,
-          "quantity": "900 g",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/earthen-story-organic-jowar-atta/pvid/3faac475-b8fd-48a5-9862-225ecfb8fd9b"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Upwas Bhajani",
-      "original_names": {
-        "zepto": "Bhagirathi Upwas Bhajani | Farali Mix Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 143,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-upwas-bhajani-farali-mix-flour/pvid/54812e59-eeeb-4199-8536-e88fcaddedb1"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Jiwa 30 Degree Gluten Free Flour",
-      "original_names": {
-        "zepto": "Jiwa 30 Degree Gluten Free Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 196,
-          "quantity": "1 kg",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/jiwa-30-degree-gluten-free-flour/pvid/4e16139d-5448-415a-a6cd-3ba1808e62cd"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Multigrain Roasted Wada Flour",
-      "original_names": {
-        "zepto": "Bhagirathi Multigrain Roasted Wada Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 66,
-          "quantity": "500 g",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-multigrain-roasted-wada-flour/pvid/42650d27-1a2d-42f5-bc77-0315b1229515"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Rosier Foods Stoneground Organic Khapli Wheat Atta",
-      "original_names": {
-        "zepto": "Rosier Foods Stoneground Organic Khapli Wheat Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 436,
-          "quantity": "2 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/rosier-foods-stoneground-organic-khapli-wheat-atta/pvid/e4aff97c-3c7e-4963-b7a7-35f0b851c4ae"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Rice Atta",
-      "original_names": {
-        "zepto": "Bhagirathi Rice Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 73,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-rice-atta/pvid/4f533902-1768-4122-875c-b74d89c937d3"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nutrapoorna Makki Atta Maize Flour",
-      "original_names": {
-        "zepto": "Nutrapoorna Makki Atta/ Maize Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 49,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/nutrapoorna-makki-atta-maize-flour/pvid/8ae8fe84-e241-47fb-8581-99cbfcbd8beb"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nutrapoorna Kuttu Atta",
-      "original_names": {
-        "zepto": "Nutrapoorna Kuttu Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 25,
-          "quantity": "200 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/nutrapoorna-kuttu-atta/pvid/37bb458c-590b-4390-92ce-04b01f8c3bbe"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Daily Good Jowar Flour Sorghum Millet",
-      "original_names": {
-        "zepto": "Daily Good Jowar Flour / Sorghum Millet"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 40,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/daily-good-jowar-flour-sorghum-millet/pvid/295dca45-3a22-4ce7-a3ca-5345c2549eb0"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Organic Multigrain Flour",
-      "original_names": {
-        "zepto": "Organic Tattva Organic Multigrain Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 446,
-          "quantity": "5 kg",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/organic-tattva-organic-multigrain-flour/pvid/614e1f29-4932-4360-aa70-df2076d02f9a"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Thalipeeth Bhajani",
-      "original_names": {
-        "zepto": "Bhagirathi Thalipeeth Bhajani | Multigrain Roasted Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 91,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-thalipeeth-bhajani-multigrain-roasted-flour/pvid/fe170ccf-5722-4a5d-9a76-c469ba4ddb81"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Earthen Story Organic Jowar Atta",
-      "original_names": {
-        "zepto": "Earthen Story Organic Jowar Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 132,
-          "quantity": "900 g",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/earthen-story-organic-jowar-atta/pvid/3faac475-b8fd-48a5-9862-225ecfb8fd9b"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Upwas Bhajani",
-      "original_names": {
-        "zepto": "Bhagirathi Upwas Bhajani | Farali Mix Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 143,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-upwas-bhajani-farali-mix-flour/pvid/54812e59-eeeb-4199-8536-e88fcaddedb1"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Kulith Peeth Ready Mix Horse Gram Flour",
-      "original_names": {
-        "zepto": "Bhagirathi Kulith Peeth Ready Mix Horse Gram Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 66,
-          "quantity": "200 g",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-kulith-peeth-ready-mix-horse-gram-flour/pvid/7ec0b1de-e2e8-4ec5-b0dd-d96720823ce5"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Daily Good Corn Flour Starch",
-      "original_names": {
-        "zepto": "Daily Good Corn Flour/Starch"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 39,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/daily-good-corn-flourstarch/pvid/31ad3e8b-e689-48c1-956c-ca36d9fcac2c"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Rajgira Peeth",
-      "original_names": {
-        "zepto": "Bhagirathi Rajgira Peeth | Amaranth Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 61,
-          "quantity": "200 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-rajgira-peeth-amaranth-flour/pvid/19e82710-1f2e-4091-8c03-d493d137681b"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nutrapoorna Jowar Atta",
-      "original_names": {
-        "zepto": "Nutrapoorna Jowar Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 57,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/nutrapoorna-jowar-atta/pvid/48081596-f0a9-4165-88cc-eed7b55e3fc6"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nutrapoorna Rice Atta",
-      "original_names": {
-        "zepto": "Nutrapoorna Rice Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 49,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/nutrapoorna-rice-atta/pvid/6d2e94fe-44b7-46c1-a8c4-483666e75377"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "24 Mantra Organic Rice Flour",
-      "original_names": {
-        "zepto": "24 Mantra Organic Rice Flour",
-        "blinkit": "24 Mantra Organic Rice Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 50,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/24-mantra-organic-rice-flour/pvid/86d1f213-58df-4bca-869e-652e69d1b217"
-        },
-        "blinkit": {
-          "price": 62,
-          "quantity": "500 g",
+          "quantity": "15 pcs",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/24-mantra-organic-rice-flour/prid/3582"
-        }
-      },
-      "similarity_score": 1.0
-    },
-    {
-      "name": "Organic Tattva Jowar Flour",
-      "original_names": {
-        "zepto": "Organic Tattva Jowar Flour",
-        "blinkit": "Organic Tattva - Organic Jowar Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 65,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/organic-tattva-jowar-flour/pvid/76f03c75-396d-4c1a-89c3-44f50a7a5458"
-        },
-        "blinkit": {
-          "price": 77,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/organic-tattva-organic-jowar-flour/prid/676995"
-        }
-      },
-      "similarity_score": 0.92
-    },
-    {
-      "name": "Nutrapoorna Nachni Atta",
-      "original_names": {
-        "zepto": "Nutrapoorna Nachni Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 64,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/nutrapoorna-nachni-atta/pvid/75df71bf-9bb7-4bbe-b224-5fcf26c80d0f"
+          "link": "https://blinkit.com/prn/urgo-large-compostable-grocery-carry-bag/prid/557448"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Puramate Corn Flour",
+      "name": "Impulse Banyan Polyester Rucksack Rain Cover",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/b092aaab-1039-4920-9f8c-a9ebf6f1a4e3.png",
       "original_names": {
-        "zepto": "Puramate Corn Flour | Starch"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 32,
-          "quantity": "100 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/puramate-corn-flour-starch/pvid/eb96d63f-1c2d-436a-85f5-582ddbce6df3"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Upwas Bhajani",
-      "original_names": {
-        "zepto": "Bhagirathi Upwas Bhajani | Farali Mix Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 56,
-          "quantity": "200 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-upwas-bhajani-farali-mix-flour/pvid/e25bfc9f-7b7e-494b-90d6-eb79aeea1350"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Shingada Peeth",
-      "original_names": {
-        "zepto": "Bhagirathi Shingada Peeth | Water Chestnut Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 44,
-          "quantity": "200 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/bhagirathi-shingada-peeth-water-chestnut-flour/pvid/57c8fa24-5b38-4797-a16e-4f6cf8dae497"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Ragi Atta",
-      "original_names": {
-        "zepto": "Organic Tattva Ragi Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 70,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/organic-tattva-ragi-atta/pvid/c0781799-72e5-4bb2-8b82-d96ffe9aab6f"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Bajra Flour",
-      "original_names": {
-        "zepto": "Organic Tattva Bajra Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 61,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/organic-tattva-bajra-flour/pvid/a0be231a-63a3-472d-9a1b-d8844053f0c5"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Rice Flour",
-      "original_names": {
-        "zepto": "Organic Tattva Rice Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 57,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/organic-tattva-rice-flour/pvid/aa32268b-fa84-4350-a3b6-15bf0c5bd0ad"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nutrapoorna Khaman Atta",
-      "original_names": {
-        "zepto": "Nutrapoorna Khaman Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 117,
-          "quantity": "500 g",
-          "deliveryTime": "14 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/nutrapoorna-khaman-atta/pvid/63dff1c2-b9db-491f-bea6-d9dadf853b98"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Humpy Farms Ragi",
-      "original_names": {
-        "zepto": "Humpy Farms Ragi | Nachni Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 102,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/humpy-farms-ragi-nachni-flour/pvid/35f82b2f-d69c-4254-abdc-936bc1fb73c5"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "24 Mantra Organic Ragi Flour",
-      "original_names": {
-        "zepto": "24 Mantra Organic Ragi Flour",
-        "blinkit": "24 Mantra Organic Ragi Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 64,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/24-mantra-organic-ragi-flour/pvid/a7861fd9-190c-4bb1-9b00-00e402cf133f"
-        },
-        "blinkit": {
-          "price": 75,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/24-mantra-organic-ragi-flour/prid/5751"
-        }
-      },
-      "similarity_score": 1.0
-    },
-    {
-      "name": "Nutrapoorna Thalipith Atta",
-      "original_names": {
-        "zepto": "Nutrapoorna Thalipith Atta"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 118,
-          "quantity": "500 g",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/nutrapoorna-thalipith-atta/pvid/b85ee3eb-b737-429f-b8f0-04ecc3fcdbb6"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Jiwa 30 Degree Jowari Flour",
-      "original_names": {
-        "zepto": "Jiwa 30 Degree Jowari Flour"
-      },
-      "platforms": {
-        "zepto": {
-          "price": 166,
-          "quantity": "1 kg",
-          "deliveryTime": "9 mins",
-          "image": "",
-          "link": "https://www.zepto.com/pn/jiwa-30-degree-jowari-flour/pvid/5b7bbc76-53e8-4992-aab0-3c4ec8875668"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Chakki Premium Mp Sehori Atta",
-      "original_names": {
-        "blinkit": "Aashirvaad Chakki Premium MP Sehori Atta"
+        "blinkit": "Impulse Banyan Polyester Rucksack with Rain Cover (75 ltrs, Blue)"
       },
       "platforms": {
         "blinkit": {
-          "price": 379,
-          "quantity": "5 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/aashirvaad-chakki-premium-mp-sehori-atta/prid/580837"
+          "price": 1099,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/impulse-banyan-polyester-rucksack-with-rain-cover-75-ltrs-blue/prid/563944"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Fortune Chakki Fresh Atta",
+      "name": "Aristocrat Cabin Hard Trolley Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/f367cca9-aa35-478e-84fb-648df87fac07.png",
       "original_names": {
-        "blinkit": "Fortune Chakki Fresh Atta (0% Maida)"
+        "blinkit": "Aristocrat Cabin Hard Trolley Bag (Dark Green)"
       },
       "platforms": {
         "blinkit": {
-          "price": 50,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/fortune-chakki-fresh-atta-0-maida/prid/400417"
+          "price": 1950,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/aristocrat-cabin-hard-trolley-bag-dark-green/prid/698821"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Aashirvaad Superior Mp Atta",
+      "name": "Safari Porto Cabin Hard Trolley Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/d6599e85-8e76-4fe6-bcd9-2954c844feb5.png",
       "original_names": {
-        "blinkit": "Aashirvaad Superior MP Atta (100% Atta, 0% Maida)"
+        "blinkit": "Safari Porto Cabin Hard Trolley Bag (Cyan)"
       },
       "platforms": {
         "blinkit": {
-          "price": 272,
-          "quantity": "5 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/aashirvaad-superior-mp-atta-100-atta-0-maida/prid/344107"
+          "price": 1999,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/safari-porto-cabin-hard-trolley-bag-cyan/prid/594893"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Aashirvaad Organic Atta",
+      "name": "Safari Cabin Hard Trolley Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/37bc6a57-57b0-4670-b704-42b4f169ffa7.png",
       "original_names": {
-        "blinkit": "Aashirvaad Organic Atta"
+        "blinkit": "Safari Cabin Hard Trolley Bag (Cyan)"
       },
       "platforms": {
         "blinkit": {
-          "price": 63,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/aashirvaad-organic-atta/prid/436304"
+          "price": 1999,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/safari-cabin-hard-trolley-bag-cyan/prid/660288"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Aashirvaad Premium Blend Chakki Lokwan Atta",
+      "name": "Safari Citymills Cabin Hard Trolley Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/1c65fdad-aa54-4ecb-8cde-7433d4e3acef.png",
       "original_names": {
-        "blinkit": "Aashirvaad Premium Blend Chakki Lokwan Atta"
+        "blinkit": "Safari Citymiles Cabin Hard Trolley Bag (Thyme Green)"
       },
       "platforms": {
         "blinkit": {
-          "price": 63,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/aashirvaad-premium-blend-chakki-lokwan-atta/prid/611873"
+          "price": 2699,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/safari-citymiles-cabin-hard-trolley-bag-thyme-green/prid/594870"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Fortune Chakki Fresh Atta",
+      "name": "Safari Helium Checkin Luggage Medium Hard Trolley Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/3e3e3140-e807-457d-b14f-1ba62fa0d89a.png",
       "original_names": {
-        "blinkit": "Fortune Chakki Fresh (100% Atta, 0% Maida) Atta"
+        "blinkit": "Safari Helium Checkin Luggage Medium Hard Trolley Bag (Green)"
       },
       "platforms": {
         "blinkit": {
-          "price": 219,
-          "quantity": "5 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/fortune-chakki-fresh-100-atta-0-maida-atta/prid/380156"
+          "price": 2499,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/safari-helium-checkin-luggage-medium-hard-trolley-bag-green/prid/634681"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Aashirvaad High Fibre Atta Multigrains 5 Kg",
+      "name": "Urgo Medium Compostable Carry Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/c1473799-fb1f-4c76-9dbb-37553dede078.png",
       "original_names": {
-        "blinkit": "Aashirvaad High Fibre Atta with Multigrains - 5 kg"
+        "blinkit": "URGO Medium Compostable Carry Bag"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 99,
+          "quantity": "20 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/urgo-medium-compostable-carry-bag/prid/557447"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Safari Aviator Overnighter Cabin Hard Trolley Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/eba1c169-ea6d-4861-803f-09c346bb483e.png",
+      "original_names": {
+        "blinkit": "Safari Aviator Overnighter Cabin Hard Trolley Bag (Gun Metal)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 2989,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/safari-aviator-overnighter-cabin-hard-trolley-bag-gun-metal/prid/628454"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Safari Cabin Soft Trolley Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/cc84281c-2744-4558-8ad9-27f1538313c0.png",
+      "original_names": {
+        "blinkit": "Safari Cabin Soft Trolley Bag (Black)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 2999,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/safari-cabin-soft-trolley-bag-black/prid/665634"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Skybags Beat Pro Large Hard Trolley Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/fefc248a-aca7-46b9-9b90-7df4717c4f7f.png",
+      "original_names": {
+        "blinkit": "Skybags Beat Pro Large Hard Trolley Bag (Dark Green)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 3600,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/skybags-beat-pro-large-hard-trolley-bag-dark-green/prid/698805"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Impulse Cabin Hard Trolley Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/2e391c75-4575-4717-a917-ddfe95bf73af.png",
+      "original_names": {
+        "blinkit": "Impulse Cabin Hard Trolley Bag (Silver)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 1899,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/impulse-cabin-hard-trolley-bag-silver/prid/645931"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Safari Helium Large Hard Trolley Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/20bf76d7-6719-4694-9bfa-0375b59db4c7.png",
+      "original_names": {
+        "blinkit": "Safari Helium Large Hard Trolley Bag (Teal Green)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 3099,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/safari-helium-large-hard-trolley-bag-teal-green/prid/633939"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Mokobara Transit Pro Cabin Hard Trolley Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/9563f8e8-d1c3-44cb-bf39-867a210ce900.png",
+      "original_names": {
+        "blinkit": "Mokobara The Transit Pro Cabin Hard Trolley Bag (Black)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 6999,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/mokobara-the-transit-pro-cabin-hard-trolley-bag-black/prid/660310"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Homestrap Shoe Cover Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/243cdda0-649f-4740-9434-00d23f2812ce.png",
+      "original_names": {
+        "blinkit": "Homestrap Shoe Cover Bag (Grey)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 259,
+          "quantity": "4 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/homestrap-shoe-cover-bag-grey/prid/541452"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Lavie Betula Tote Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/507eb902-15d6-4d7e-9aaa-c2d4bf8ab191.png",
+      "original_names": {
+        "blinkit": "Lavie Betula Tote Bag (Mint Green)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 1049,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/lavie-betula-tote-bag-mint-green/prid/708152"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Ecoright Meridian Crossbody Sling Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/9330dcf5-78fe-42ff-bbe9-7be3ccd3f246.png",
+      "original_names": {
+        "blinkit": "Ecoright Meridian Crossbody Sling Bag (Brown)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 1499,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/ecoright-meridian-crossbody-sling-bag-brown/prid/711539"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Ecoright Fanny Madagascar Waist Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/87374599-75c0-4960-9376-b8592a644120.png",
+      "original_names": {
+        "blinkit": "Ecoright Fanny Madagascar Waist Bag (Multicolour)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 1079,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/ecoright-fanny-madagascar-waist-bag-multicolour/prid/613766"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Caprese Skylar Small Sling Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/24496d00-c625-4607-9bfd-57b395dbb4bc.png",
+      "original_names": {
+        "blinkit": "Caprese Skylar Small Sling Bag (Black)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 1499,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/caprese-skylar-small-sling-bag-black/prid/558043"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "De Maabs Women S Tote Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/f9723a77-48c1-4684-9fc3-b49788747f41.png",
+      "original_names": {
+        "blinkit": "De Maabs Women's Tote Bag (Black)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 1499,
+          "quantity": "1 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/de-maabs-women-s-tote-bag-black/prid/686471"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "House Of Quirk Nylon Insulated Lunch Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/a264a8e9-e195-47a2-887a-5166cfeb80e7.png",
+      "original_names": {
+        "blinkit": "House of Quirk Nylon Insulated Lunch Bag (3.5 ltrs, Green)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 399,
+          "quantity": "1 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/house-of-quirk-nylon-insulated-lunch-bag-3-5-ltrs-green/prid/664124"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Kipsta By Decathlon Sports Travel Duffle Bag",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/67885c19-9691-4d0a-9860-b1b4eefce06a.png",
+      "original_names": {
+        "blinkit": "Kipsta By Decathlon Sports Travel Duffle Bag (Polyester, Black)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 1419,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/kipsta-by-decathlon-sports-travel-duffle-bag-polyester-black/prid/569752"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Zouk Leather Laptop Backpack",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/09748fc6-ba37-4d35-b362-5b03e117f6cb.png",
+      "original_names": {
+        "blinkit": "Zouk Leather Laptop Backpack (Black)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 2629,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/zouk-leather-laptop-backpack-black/prid/606954"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Nasher Miles Pulse Polyester Backpack",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/d39e2483-efb3-4445-9ab1-9299cbb9550f.png",
+      "original_names": {
+        "blinkit": "Nasher Miles Pulse Polyester Backpack (White, Blue)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 1029,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/nasher-miles-pulse-polyester-backpack-white-blue/prid/554296"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Skybags Biz Polyester Laptop Backpack",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/778726b7-a9fa-4dda-bac0-3fad672adfeb.png",
+      "original_names": {
+        "blinkit": "Skybags Biz Polyester Laptop Backpack (Black)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 1199,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/skybags-biz-polyester-laptop-backpack-black/prid/546347"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Mokobara Neck Pillow",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/ab422e91-9d0b-416a-85f3-608ad0c9284d.png",
+      "original_names": {
+        "blinkit": "Mokobara Neck Pillow (Grey)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 1799,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/mokobara-neck-pillow-grey/prid/549156"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Jockey Men Cotton Crew Length Socks 22 Girth 9 5",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/d4e4cfa5-d546-4656-8d2c-9cbef88772b3.png",
+      "original_names": {
+        "blinkit": "Jockey Men Cotton Crew length Socks (Jet Black, Foot Length(cm): 22; Girth(cm): 9.5)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 169,
+          "quantity": null,
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/jockey-men-cotton-crew-length-socks-jet-black-foot-length-cm-22-girth-cm-9-5/prid/481242"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Jockey Men Cotton Ankle Length Socks 19 5 Girth 8 5",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/d4ecbcae-7674-48c5-a16d-71f3da2f425b.png",
+      "original_names": {
+        "blinkit": "Jockey Men Cotton Ankle Length Socks (Assorted, Foot Length(cm): 19.5; Girth(cm): 8.5)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 449,
+          "quantity": "1 pack",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/jockey-men-cotton-ankle-length-socks-assorted-foot-length-cm-19-5-girth-cm-8-5/prid/498485"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Bonjour Girls Kids Socks",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/cbc69ad8-80c8-4c73-b6b8-f7ed6b2f8a2f.png",
+      "original_names": {
+        "blinkit": "Bonjour Girls Kids Socks (Multicolour, 3 - 8 years)"
       },
       "platforms": {
         "blinkit": {
           "price": 330,
-          "quantity": "5 kg",
+          "quantity": "1 pack",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/aashirvaad-high-fibre-atta-with-multigrains-5-kg/prid/108301"
+          "link": "https://blinkit.com/prn/bonjour-girls-kids-socks-multicolour-3-8-years/prid/720184"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Aashirvaad Select 100 Mp Sharbati Atta",
+      "name": "Bonjour Women Woollen Thumb Socks",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/bb5e3fc5-fcd7-48c4-9518-0af212adc85f.png",
       "original_names": {
-        "blinkit": "Aashirvaad Select 100% MP Sharbati Atta"
+        "blinkit": "Bonjour Women Woollen Thumb Socks (Multicolour, Free Size)"
       },
       "platforms": {
         "blinkit": {
-          "price": 322,
-          "quantity": "5 kg",
+          "price": 705,
+          "quantity": null,
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/aashirvaad-select-100-mp-sharbati-atta/prid/7"
+          "link": "https://blinkit.com/prn/bonjour-women-woollen-thumb-socks-multicolour-free-size/prid/570047"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Samrat Premium Fresh Chakki Atta",
+      "name": "Socksxpress We Bare Bears Kids Socks",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/07cfa509-fed1-46c5-b9af-f0e6d07671fb.png",
       "original_names": {
-        "blinkit": "Samrat Premium Fresh Chakki Atta"
+        "blinkit": "SocksXpress We Bare Bears Kids Socks (Multicolour, 2 - 3 years)"
       },
       "platforms": {
         "blinkit": {
-          "price": 218,
-          "quantity": "5 kg",
+          "price": 449,
+          "quantity": "1 pack",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/samrat-premium-fresh-chakki-atta/prid/230656"
+          "link": "https://blinkit.com/prn/socksxpress-we-bare-bears-kids-socks-multicolour-2-3-years/prid/597755"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Whole Farm Chakki Atta",
+      "name": "Bonjour Women Sheer Socks",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/0060a9b0-940b-44cb-8df1-618ec46d246e.png",
       "original_names": {
-        "blinkit": "Whole Farm Chakki Atta (100% Atta, 0% Maida)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 200,
-          "quantity": "5 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/whole-farm-chakki-atta-100-atta-0-maida/prid/514893"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Whole Farm Chakki Atta",
-      "original_names": {
-        "blinkit": "Whole Farm Chakki Atta (100% Atta, 0% Maida)"
+        "blinkit": "Bonjour Women Sheer Socks (Beige, Free Size)"
       },
       "platforms": {
         "blinkit": {
           "price": 395,
-          "quantity": "10 kg",
+          "quantity": "1 pack",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/whole-farm-chakki-atta-100-atta-0-maida/prid/514892"
+          "link": "https://blinkit.com/prn/bonjour-women-sheer-socks-beige-free-size/prid/661878"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Silver Coin Traditional Chakki Atta",
+      "name": "Bonjour Fancy Crew Kids Socks",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/0021f15a-bd52-4cf0-a68f-848fca85536f.png",
       "original_names": {
-        "blinkit": "Silver Coin Traditional Chakki Atta"
+        "blinkit": "Bonjour Fancy Crew Kids Socks (Ivory, 6 - 12 months)"
       },
       "platforms": {
         "blinkit": {
-          "price": 214,
-          "quantity": "5 kg",
+          "price": 330,
+          "quantity": null,
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/silver-coin-traditional-chakki-atta/prid/174379"
+          "link": "https://blinkit.com/prn/bonjour-fancy-crew-kids-socks-ivory-6-12-months/prid/722480"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Better Nutrition Wheat Atta 2X Nutrition",
+      "name": "Bonjour Women Sheer Ankle Length Socks",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/e4866325-f6ed-4c83-87af-cbe8e30c98f5.png",
       "original_names": {
-        "blinkit": "Better Nutrition Wheat Atta – 2X Nutrition"
+        "blinkit": "Bonjour Women Sheer Ankle Length Socks (Black, Free Size)"
       },
       "platforms": {
         "blinkit": {
-          "price": 157,
-          "quantity": "2 kg",
+          "price": 395,
+          "quantity": "1 pack",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/better-nutrition-wheat-atta-2x-nutrition/prid/596996"
+          "link": "https://blinkit.com/prn/bonjour-women-sheer-ankle-length-socks-black-free-size/prid/662269"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Aashirvaad Organic Atta",
+      "name": "Nuluv Kids Socks",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/065ede86-5ad3-4b73-b634-46c1613f80d0.png",
       "original_names": {
-        "blinkit": "Aashirvaad Organic Atta"
+        "blinkit": "Nuluv Kids Socks (Blue, White, 3 - 6 months)"
       },
       "platforms": {
         "blinkit": {
-          "price": 289,
-          "quantity": "5 kg",
+          "price": 249,
+          "quantity": null,
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/aashirvaad-organic-atta/prid/436305"
+          "link": "https://blinkit.com/prn/nuluv-kids-socks-blue-white-3-6-months/prid/636765"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Aashirvaad Superior Mp Atta",
+      "name": "Bonjour Kids Socks",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/d1b271a4-2998-477b-a600-db8f5d4f08e2.png",
       "original_names": {
-        "blinkit": "Aashirvaad Superior MP Atta (100% Atta, 0% Maida) (10 kg)"
+        "blinkit": "Bonjour Kids Socks (Multicolour, 1 - 2 years)"
       },
       "platforms": {
         "blinkit": {
-          "price": 536,
-          "quantity": "10 kg",
+          "price": 484,
+          "quantity": null,
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/aashirvaad-superior-mp-atta-100-atta-0-maida-10-kg/prid/68483"
+          "link": "https://blinkit.com/prn/bonjour-kids-socks-multicolour-1-2-years/prid/720278"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Fortune Chakki Fresh Atta",
+      "name": "Plum Bodylovin Unisex Head To Toe Travel Kit",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/b296d376-e5b3-40d6-a54c-957bbe16c87a.png",
       "original_names": {
-        "blinkit": "Fortune Chakki Fresh (100% Atta, 0% Maida) Atta (10 kg)"
+        "blinkit": "Plum BodyLovin' Unisex Head to Toe Travel Kit"
       },
       "platforms": {
         "blinkit": {
-          "price": 434,
-          "quantity": "10 kg",
+          "price": 169,
+          "quantity": "3 pcs",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/fortune-chakki-fresh-100-atta-0-maida-atta-10-kg/prid/380157"
+          "link": "https://blinkit.com/prn/plum-bodylovin-unisex-head-to-toe-travel-kit/prid/547342"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Samrat Whole Wheat Atta",
+      "name": "Cetaphil Hydration Mini Travel Kit Gentle Face Wash Moisturizer",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/599a5415-f87c-4f93-b442-d480acae610a.png",
       "original_names": {
-        "blinkit": "Samrat Whole Wheat Atta"
+        "blinkit": "Cetaphil Hydration Mini Travel Kit Gentle Face Wash & Moisturizer"
       },
       "platforms": {
         "blinkit": {
-          "price": 413,
-          "quantity": "10 kg",
+          "price": 202,
+          "quantity": "2 x 25 ml",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/samrat-whole-wheat-atta/prid/14244"
+          "link": "https://blinkit.com/prn/cetaphil-hydration-mini-travel-kit-gentle-face-wash-moisturizer/prid/578196"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Pillsbury Chakki Fresh Atta",
+      "name": "Cetaphil Oil Control Mini Duo Travel Kit",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/5143f2a2-e39d-44df-94fb-74bf17ff9092.png",
       "original_names": {
-        "blinkit": "Pillsbury Chakki Fresh Atta (100% atta, 0% Maida)"
+        "blinkit": "Cetaphil Oil Control Mini Duo Travel Kit"
       },
       "platforms": {
         "blinkit": {
-          "price": 63,
-          "quantity": "1 kg",
+          "price": 237,
+          "quantity": "2 x 25 ml",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/pillsbury-chakki-fresh-atta-100-atta-0-maida/prid/58715"
+          "link": "https://blinkit.com/prn/cetaphil-oil-control-mini-duo-travel-kit/prid/580844"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Two Brothers Khapli Wheat Atta Stoneground",
+      "name": "Oral B Pro Clean Sensitive Gums Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/490ff690-2afa-45aa-9e0b-8b1ea31d4b7a.png",
       "original_names": {
-        "blinkit": "Two Brothers Khapli Wheat Atta, Stoneground"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 238,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/two-brothers-khapli-wheat-atta-stoneground/prid/579854"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Pillsbury Chakki Fresh Superior Quality Atta",
-      "original_names": {
-        "blinkit": "Pillsbury Chakki Fresh Superior-Quality Atta (100% atta, 0% Maida)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 239,
-          "quantity": "5 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/pillsbury-chakki-fresh-superior-quality-atta-100-atta-0-maida/prid/55399"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Silver Coin Traditional Chakki Fresh Atta 10 Kg",
-      "original_names": {
-        "blinkit": "Silver Coin Traditional Chakki Fresh Atta 10 kg"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 421,
-          "quantity": "10 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/silver-coin-traditional-chakki-fresh-atta-10-kg/prid/174378"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Superior Mp Atta L Kg",
-      "original_names": {
-        "blinkit": "Aashirvaad Superior MP Atta - l kg"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 67,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/aashirvaad-superior-mp-atta-l-kg/prid/68482"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Fortune Premium Mp Sharbati Atta",
-      "original_names": {
-        "blinkit": "Fortune Premium MP Sharbati Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 289,
-          "quantity": "5 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/fortune-premium-mp-sharbati-atta/prid/544463"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Pillsbury Chakki Fresh Atta",
-      "original_names": {
-        "blinkit": "Pillsbury Chakki Fresh Atta (100% atta, 0% Maida)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 129,
-          "quantity": "2 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/pillsbury-chakki-fresh-atta-100-atta-0-maida/prid/77876"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Pillsbury Gold Sharbati Atta",
-      "original_names": {
-        "blinkit": "Pillsbury Gold Sharbati Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 74,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/pillsbury-gold-sharbati-atta/prid/598883"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Pillsbury Chakki Fresh Atta",
-      "original_names": {
-        "blinkit": "Pillsbury Chakki-Fresh Atta (100% atta, 0% Maida)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 450,
-          "quantity": "10 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/pillsbury-chakki-fresh-atta-100-atta-0-maida/prid/23694"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Pillsbury Gold Sharbati Atta",
-      "original_names": {
-        "blinkit": "Pillsbury Gold Sharbati Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 286,
-          "quantity": "5 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/pillsbury-gold-sharbati-atta/prid/497142"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Patanjali Traditional Whole Wheat Chakki Atta",
-      "original_names": {
-        "blinkit": "Patanjali Traditional Whole Wheat Chakki Atta (with Bran)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 500,
-          "quantity": "10 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/patanjali-traditional-whole-wheat-chakki-atta-with-bran/prid/55388"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Amul Organic Atta",
-      "original_names": {
-        "blinkit": "Amul Organic Atta (Whole Wheat)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 56,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/amul-organic-atta-whole-wheat/prid/498764"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Select 100 Mp Sharbati Atta",
-      "original_names": {
-        "blinkit": "Aashirvaad Select 100% MP Sharbati Atta (10 kg)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 614,
-          "quantity": "10 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/aashirvaad-select-100-mp-sharbati-atta-10-kg/prid/200520"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Whole Farm Premium Makki Atta",
-      "original_names": {
-        "blinkit": "Whole Farm Premium Makki Atta (Maize Flour)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 31,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/whole-farm-premium-makki-atta-maize-flour/prid/537081"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Two Brothers Khapli Multigrain Atta",
-      "original_names": {
-        "blinkit": "Two Brothers Khapli Multigrain Atta (8 grains)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 182,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/two-brothers-khapli-multigrain-atta-8-grains/prid/626915"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Rajgira Flour",
-      "original_names": {
-        "blinkit": "Bhagirathi Rajgira Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 64,
-          "quantity": "200 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/bhagirathi-rajgira-flour/prid/381022"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Safe Harvest Pesticide Free Roasted Sooji Rava",
-      "original_names": {
-        "blinkit": "Safe Harvest Pesticide-Free Roasted Sooji/Rava"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 53,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/safe-harvest-pesticide-free-roasted-sooji-rava/prid/198081"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Two Brothers Roasted Bengal Gram Sattu Atta",
-      "original_names": {
-        "blinkit": "Two Brothers Roasted Bengal Gram Sattu Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 191,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/two-brothers-roasted-bengal-gram-sattu-atta/prid/626986"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Whole Farm Premium Rajgira Amaranth Millet Seeds",
-      "original_names": {
-        "blinkit": "Whole Farm Premium Rajgira/Amaranth Millet Seeds"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 85,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/whole-farm-premium-rajgira-amaranth-millet-seeds/prid/529762"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Makki Atta Makka Atta",
-      "original_names": {
-        "blinkit": "Organic Tattva - Makki Atta (Maize Flour)/Makka Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 60,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/organic-tattva-makki-atta-maize-flour-makka-atta/prid/481358"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Whole Farm Premium Rajgira Flour",
-      "original_names": {
-        "blinkit": "Whole Farm Premium Rajgira Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 39,
-          "quantity": "250 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/whole-farm-premium-rajgira-flour/prid/612724"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Multigrain Organic Atta",
-      "original_names": {
-        "blinkit": "Organic Tattva Multigrain Organic Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 102,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/organic-tattva-multigrain-organic-atta/prid/364786"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Praakritik Natural Organic Khapli Wheat Atta 1 Kg",
-      "original_names": {
-        "blinkit": "Praakritik Natural Organic Khapli Wheat Atta - 1 Kg"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 189,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/praakritik-natural-organic-khapli-wheat-atta-1-kg/prid/478956"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Two Brothers Khapli Wheat Atta Stoneground",
-      "original_names": {
-        "blinkit": "Two Brothers Khapli Wheat Atta, Stoneground"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 1118,
-          "quantity": "5 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/two-brothers-khapli-wheat-atta-stoneground/prid/653347"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "24 Mantra Organic 7 Grain Atta",
-      "original_names": {
-        "blinkit": "24 Mantra Organic 7 Grain Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 101,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/24-mantra-organic-7-grain-atta/prid/437289"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Lo Foods Ultra Low Carb Keto Atta",
-      "original_names": {
-        "blinkit": "Lo! Foods Ultra Low Carb Keto Atta (High Protein)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 559,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/lo-foods-ultra-low-carb-keto-atta-high-protein/prid/673525"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Multigrain Bhakri Atta",
-      "original_names": {
-        "blinkit": "Bhagirathi Multigrain Bhakri Atta"
+        "blinkit": "Oral-B Pro Clean Sensitive & Gums Toothbrush (Extra Soft, Colour may Vary)"
       },
       "platforms": {
         "blinkit": {
           "price": 43,
-          "quantity": "500 g",
+          "quantity": "1 pcs",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/bhagirathi-multigrain-bhakri-atta/prid/381039"
+          "link": "https://blinkit.com/prn/oral-b-pro-clean-sensitive-gums-toothbrush-extra-soft-colour-may-vary/prid/526484"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Sugar Watchers 7 Grain Low Gi Atta",
+      "name": "Colgate Zig Zag Deep Clean Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/7267573b-de5e-49e1-aac2-d89f41e9fec7.png",
       "original_names": {
-        "blinkit": "Sugar Watchers 7-Grain Low GI Atta"
+        "blinkit": "Colgate Zig Zag Deep Clean Toothbrush (Medium)"
       },
       "platforms": {
         "blinkit": {
-          "price": 139,
-          "quantity": "1 kg",
+          "price": 125,
+          "quantity": "6 pcs",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/sugar-watchers-7-grain-low-gi-atta/prid/455651"
+          "link": "https://blinkit.com/prn/colgate-zig-zag-deep-clean-toothbrush-medium/prid/376249"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Real Thai Rice Paper",
+      "name": "Oral B Cavity Defense Toothbrush Set",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/5ae4ff67-0907-449b-ba35-9deb056cea8a.png",
       "original_names": {
-        "blinkit": "Real Thai Rice Paper"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 190,
-          "quantity": "100 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/real-thai-rice-paper/prid/12035"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Organic Besan",
-      "original_names": {
-        "blinkit": "Organic Tattva Organic Besan"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 106,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/organic-tattva-organic-besan/prid/13452"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Organic White Poha",
-      "original_names": {
-        "blinkit": "Organic Tattva Organic White Poha"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 73,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/organic-tattva-organic-white-poha/prid/13466"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Organic Maida",
-      "original_names": {
-        "blinkit": "Organic Tattva Organic Maida"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 57,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/organic-tattva-organic-maida/prid/5748"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Organic Ragi Flour",
-      "original_names": {
-        "blinkit": "Organic Tattva Organic Ragi Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 80,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/organic-tattva-organic-ragi-flour/prid/86974"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "True Story Organic Bajra Flour",
-      "original_names": {
-        "blinkit": "True Story Organic Bajra Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 55,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/true-story-organic-bajra-flour/prid/518435"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "24 Mantra Organic Rice Flour",
-      "original_names": {
-        "blinkit": "24 Mantra Organic Rice Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 62,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/24-mantra-organic-rice-flour/prid/3582"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Natureland Wheat Organic Sooji",
-      "original_names": {
-        "blinkit": "Natureland Wheat Organic Sooji"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 65,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/natureland-wheat-organic-sooji/prid/475657"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "24 Mantra Organic Wheat Daliya",
-      "original_names": {
-        "blinkit": "24 Mantra Organic Wheat Daliya"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 58,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/24-mantra-organic-wheat-daliya/prid/32387"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Organic Jowar Flour",
-      "original_names": {
-        "blinkit": "Organic Tattva - Organic Jowar Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 77,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/organic-tattva-organic-jowar-flour/prid/676995"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "24 Mantra Organic Sattu",
-      "original_names": {
-        "blinkit": "24 Mantra Organic Sattu"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 124,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/24-mantra-organic-sattu/prid/3796"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "True Story Organic Jowar Flour",
-      "original_names": {
-        "blinkit": "True Story Organic Jowar Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 62,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/true-story-organic-jowar-flour/prid/518434"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Organic Red Poha 500 G",
-      "original_names": {
-        "blinkit": "Organic Tattva Organic Red Poha 500 g"
+        "blinkit": "Oral-B Cavity Defense Toothbrush Set (with Charcoal Extract)"
       },
       "platforms": {
         "blinkit": {
           "price": 90,
-          "quantity": "500 g",
+          "quantity": "4 pcs",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/organic-tattva-organic-red-poha-500-g/prid/86976"
+          "link": "https://blinkit.com/prn/oral-b-cavity-defense-toothbrush-set-with-charcoal-extract/prid/587180"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "24 Mantra Organic Ragi Flour",
+      "name": "Sensodyne Sensitive Toothbrush Buy 2 Get 1 Free",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/d90c2e05-d985-477d-89a6-92e2558eab4a.png",
       "original_names": {
-        "blinkit": "24 Mantra Organic Ragi Flour"
+        "blinkit": "Sensodyne Sensitive Toothbrush (With Soft Rounded Bristles) - Buy 2 Get 1 Free"
       },
       "platforms": {
         "blinkit": {
-          "price": 75,
-          "quantity": "500 g",
+          "price": 109,
+          "quantity": "3 pcs",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/24-mantra-organic-ragi-flour/prid/5751"
+          "link": "https://blinkit.com/prn/sensodyne-sensitive-toothbrush-with-soft-rounded-bristles-buy-2-get-1-free/prid/23704"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Natureland Organic Bajra Flour",
+      "name": "Oral B Kids Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/a32f7ba5-a719-4fa8-91cd-cfcafa7c4d77.png",
       "original_names": {
-        "blinkit": "Natureland - Organic Bajra Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 64,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/natureland-organic-bajra-flour/prid/506050"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Wheat Organic Daliya",
-      "original_names": {
-        "blinkit": "Organic Tattva Wheat Organic Daliya"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 60,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/organic-tattva-wheat-organic-daliya/prid/81286"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Pro Nature Red Organic Red Poha",
-      "original_names": {
-        "blinkit": "Pro Nature Red Organic Red Poha"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 91,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/pro-nature-red-organic-red-poha/prid/61810"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Whole Farm Premium Rice Flour Rice Atta",
-      "original_names": {
-        "blinkit": "Whole Farm Premium Rice Flour/Rice Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 27,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/whole-farm-premium-rice-flour-rice-atta/prid/527625"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Whole Farm Premium Jowar Flour",
-      "original_names": {
-        "blinkit": "Whole Farm Premium Jowar Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 39,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/whole-farm-premium-jowar-flour/prid/531198"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Whole Farm Premium Ragi Flour",
-      "original_names": {
-        "blinkit": "Whole Farm Premium Ragi Flour (Nachni/Nagli)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 49,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/whole-farm-premium-ragi-flour-nachni-nagli/prid/538338"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Weikfield Corn Flour",
-      "original_names": {
-        "blinkit": "Weikfield Corn Flour (Starch)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 33,
-          "quantity": "100 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/weikfield-corn-flour-starch/prid/10958"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Whole Farm Premium Bajra Flour",
-      "original_names": {
-        "blinkit": "Whole Farm Premium Bajra Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 39,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/whole-farm-premium-bajra-flour/prid/603526"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Rice Flour",
-      "original_names": {
-        "blinkit": "Bhagirathi Rice Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 37,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/bhagirathi-rice-flour/prid/32440"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Better Nutrition Bajra Flour 2X Nutrition",
-      "original_names": {
-        "blinkit": "Better Nutrition Bajra Flour – 2X Nutrition"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 110,
-          "quantity": "1 kg",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/better-nutrition-bajra-flour-2x-nutrition/prid/660494"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Katdare Thalipeeth Bhajani Flour Mix",
-      "original_names": {
-        "blinkit": "Katdare Thalipeeth Bhajani Flour Mix"
+        "blinkit": "Oral-B Kids Toothbrush (Colour may Vary)"
       },
       "platforms": {
         "blinkit": {
           "price": 50,
-          "quantity": "200 g",
+          "quantity": "3 pcs",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/katdare-thalipeeth-bhajani-flour-mix/prid/378786"
+          "link": "https://blinkit.com/prn/oral-b-kids-toothbrush-colour-may-vary/prid/443628"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "True Elements Super Grains Oats Flour",
+      "name": "Colgate Gentle Ultrafoam Bristles Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/fb49e86f-14dd-49cd-8ba0-32c1644b5a98.png",
       "original_names": {
-        "blinkit": "True Elements Super Grains Oats Flour (Oats Hittu)"
+        "blinkit": "Colgate Gentle UltraFoam Bristles Toothbrush (Ultra Soft)"
       },
       "platforms": {
         "blinkit": {
-          "price": 116,
-          "quantity": "500 g",
+          "price": 213,
+          "quantity": "2 pcs",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/true-elements-super-grains-oats-flour-oats-hittu/prid/539276"
+          "link": "https://blinkit.com/prn/colgate-gentle-ultrafoam-bristles-toothbrush-ultra-soft/prid/523328"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "K Pra Upwas Bhajani Flour Mix",
+      "name": "Colgate Gentle Sensitive Soft Bristles Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/e65b5c03-e051-4545-adc6-f9b8cca73996.png",
       "original_names": {
-        "blinkit": "K-Pra Upwas Bhajani Flour Mix"
+        "blinkit": "Colgate Gentle Sensitive Soft Bristles Toothbrush"
       },
       "platforms": {
         "blinkit": {
           "price": 61,
-          "quantity": "200 g",
+          "quantity": "1 pcs",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/k-pra-upwas-bhajani-flour-mix/prid/82401"
+          "link": "https://blinkit.com/prn/colgate-gentle-sensitive-soft-bristles-toothbrush/prid/276959"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Satyam Jowar Flour",
+      "name": "Oral B Vitality Pro Sensitive Plus Rotating Rechargeable Electric Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/8e781e87-70c3-4178-9c16-b6bcc8834f59.png",
       "original_names": {
-        "blinkit": "Satyam Jowar Flour"
+        "blinkit": "Oral-B Vitality Pro with Sensitive Plus Rotating Rechargeable Electric Toothbrush"
       },
       "platforms": {
         "blinkit": {
-          "price": 50,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/satyam-jowar-flour/prid/45082"
+          "price": 2050,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/oral-b-vitality-pro-with-sensitive-plus-rotating-rechargeable-electric-toothbrush/prid/623870"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Satyam Ragi Flour Nachani Flour",
+      "name": "Oral B Sensitive Care Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/6a47103c-0fc1-4f87-b152-b6ac6b5f709b.png",
       "original_names": {
-        "blinkit": "Satyam Ragi Flour/Nachani Flour"
+        "blinkit": "Oral-B Sensitive Care Toothbrush (Extra Soft)"
       },
       "platforms": {
         "blinkit": {
-          "price": 51,
-          "quantity": "500 g",
+          "price": 108,
+          "quantity": "5 pcs",
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/satyam-ragi-flour-nachani-flour/prid/32774"
+          "link": "https://blinkit.com/prn/oral-b-sensitive-care-toothbrush-extra-soft/prid/443627"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Bhagirathi Bajra Flour",
+      "name": "Colgate Batman Extra Soft Kids Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/379dbb4f-4d43-438e-abf2-04927861db15.png",
       "original_names": {
-        "blinkit": "Bhagirathi Bajra Flour"
+        "blinkit": "Colgate Batman Extra Soft Kids Toothbrush (5+ Years)"
       },
       "platforms": {
         "blinkit": {
-          "price": 40,
-          "quantity": "500 g",
+          "price": 72,
+          "quantity": null,
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/bhagirathi-bajra-flour/prid/32436"
+          "link": "https://blinkit.com/prn/colgate-batman-extra-soft-kids-toothbrush-5-years/prid/60645"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Satyam Rice Flour",
+      "name": "Colgate Periogard Gum Expert Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/c55616a5-50d5-437b-9d86-fbcf6e55c94a.png",
       "original_names": {
-        "blinkit": "Satyam Rice Flour"
+        "blinkit": "Colgate PerioGard Gum Expert Toothbrush"
       },
       "platforms": {
         "blinkit": {
-          "price": 39,
-          "quantity": "500 g",
+          "price": 141,
+          "quantity": null,
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/satyam-rice-flour/prid/45115"
+          "link": "https://blinkit.com/prn/colgate-periogard-gum-expert-toothbrush/prid/623667"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "K Pra Thalipeeth Bhajani Flour Mix",
+      "name": "Colgate Sensitive Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/22802e39-8671-4a57-8e29-2dcefb8a50f9.png",
       "original_names": {
-        "blinkit": "K-Pra Thalipeeth Bhajani Flour Mix"
+        "blinkit": "Colgate Sensitive Toothbrush (Ultra Soft Bristles)"
       },
       "platforms": {
         "blinkit": {
-          "price": 39,
-          "quantity": "200 g",
+          "price": 132,
+          "quantity": null,
           "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/k-pra-thalipeeth-bhajani-flour-mix/prid/48129"
+          "link": "https://blinkit.com/prn/colgate-sensitive-toothbrush-ultra-soft-bristles/prid/401193"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "K Pra Jowar Flour",
+      "name": "Colgate Smiles Barbie Extra Soft Kids Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/5e394302-b67c-4512-88a3-093d3d553250.png",
       "original_names": {
-        "blinkit": "K-Pra Jowar Flour"
+        "blinkit": "Colgate Smiles Barbie Extra Soft Kids Toothbrush (Ages 5+)"
       },
       "platforms": {
         "blinkit": {
+          "price": 72,
+          "quantity": null,
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/colgate-smiles-barbie-extra-soft-kids-toothbrush-ages-5/prid/195168"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Colgate Visible White O2 Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/f1da892a-60f0-40b6-b527-fe5a24589837.png",
+      "original_names": {
+        "blinkit": "Colgate Visible White O2 Toothbrush"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 196,
+          "quantity": "2 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/colgate-visible-white-o2-toothbrush/prid/507379"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Colgate Gentle Soft Kids Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/ee5d591e-87ee-4150-b22b-9a8f17be9e24.png",
+      "original_names": {
+        "blinkit": "Colgate (2+ Years) Gentle Soft Kids Toothbrush"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 64,
+          "quantity": "3 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/colgate-2-years-gentle-soft-kids-toothbrush/prid/401192"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Colgate Extra Soft Baby Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/2c132dd4-b414-449f-a7f1-172a4cf0cac6.png",
+      "original_names": {
+        "blinkit": "Colgate Extra Soft Baby Toothbrush (0 - 2 Years)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 27,
+          "quantity": null,
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/colgate-extra-soft-baby-toothbrush-0-2-years/prid/342498"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Colgate Slimsoft Charcoal Soft Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/2641be6b-e125-4783-b15b-c4bc6dfd8861.png",
+      "original_names": {
+        "blinkit": "Colgate SlimSoft Charcoal Soft Toothbrush"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 76,
+          "quantity": null,
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/colgate-slimsoft-charcoal-soft-toothbrush/prid/126165"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Agaro Cosmic Lite Sonic Electric Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/99c82b3c-6100-4f47-8378-4ab7a445f870.png",
+      "original_names": {
+        "blinkit": "Agaro Cosmic Lite Sonic Electric Toothbrush"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 400,
+          "quantity": null,
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/agaro-cosmic-lite-sonic-electric-toothbrush/prid/633836"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Oral B Criss Cross Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/e2379c17-89a7-4bea-b5c0-e930996c328f.png",
+      "original_names": {
+        "blinkit": "Oral-B Criss Cross Toothbrush"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 140,
+          "quantity": "4 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/oral-b-criss-cross-toothbrush/prid/496730"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Colgate Sensitive Care Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/18e5785e-1718-4686-8ad1-17e55ed7067b.png",
+      "original_names": {
+        "blinkit": "Colgate Sensitive Care Toothbrush (Ultra Soft)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 171,
+          "quantity": "5 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/colgate-sensitive-care-toothbrush-ultra-soft/prid/533288"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Mee Mee Tooth Gum Cleaning Finger Baby Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/9355dd1c-3da9-43f5-b16f-477e618b95a8.png",
+      "original_names": {
+        "blinkit": "Mee Mee Tooth & Gum Cleaning Finger Baby Toothbrush"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 85,
+          "quantity": "1 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/mee-mee-tooth-gum-cleaning-finger-baby-toothbrush/prid/477345"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Colgate Zig Zag Deep Clean Toothbrush Buy 2 Get 1 Free",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/6fdfc163-d572-4107-93d4-cacfe47e0896.png",
+      "original_names": {
+        "blinkit": "Colgate Zig Zag Deep Clean Toothbrush (Soft) - Buy 2 Get 1 Free"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 81,
+          "quantity": "3 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/colgate-zig-zag-deep-clean-toothbrush-soft-buy-2-get-1-free/prid/83078"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Sensodyne Deep Clean Toothbrush Buy 2 Get 1 Free",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/c7f9bbd9-1ae8-46b1-8078-a1720d80de5e.png",
+      "original_names": {
+        "blinkit": "Sensodyne Deep Clean Toothbrush - Buy 2 Get 1 Free"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 133,
+          "quantity": "3 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/sensodyne-deep-clean-toothbrush-buy-2-get-1-free/prid/506534"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Colgate Gentle Enamel Toothbrush Buy 2 Get 2 Free",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/1d3fae3f-b8f3-4ea7-9c49-e500e9a23588.png",
+      "original_names": {
+        "blinkit": "Colgate Gentle Enamel Toothbrush - Buy 2 Get 2 Free"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 228,
+          "quantity": "4 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/colgate-gentle-enamel-toothbrush-buy-2-get-2-free/prid/466068"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Colgate Zig Zag Charcoal Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/61931aac-b73f-4889-b327-489300acf824.png",
+      "original_names": {
+        "blinkit": "Colgate Zig Zag Charcoal Toothbrush (Medium)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 118,
+          "quantity": "4 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/colgate-zig-zag-charcoal-toothbrush-medium/prid/425783"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Oral B Crisscross Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/bea57b0f-c826-4ae9-99dd-f6859df87bf9.png",
+      "original_names": {
+        "blinkit": "Oral-B Crisscross Toothbrush (Buy 2 Get 2 Free)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 136,
+          "quantity": "4 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/oral-b-crisscross-toothbrush-buy-2-get-2-free/prid/587173"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Oral B Cross Action Electric Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/90a44ac6-60c1-4ac6-be54-8253750eb447.png",
+      "original_names": {
+        "blinkit": "Oral-B Cross Action Electric Toothbrush (Battery Powered)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 617,
+          "quantity": null,
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/oral-b-cross-action-electric-toothbrush-battery-powered/prid/475805"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Perfora Super Soft Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/4a4d3a1f-9b12-4000-bfb5-590f43a574c7.png",
+      "original_names": {
+        "blinkit": "Perfora Super Soft Toothbrush (OG Black)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 90,
+          "quantity": null,
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/perfora-super-soft-toothbrush-og-black/prid/554630"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Beco Wooden Bamboo Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/5d5fef36-87e9-412d-a2f4-1ba0a8d5fcaa.png",
+      "original_names": {
+        "blinkit": "Beco Wooden Bamboo Toothbrush"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 72,
+          "quantity": "1 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/beco-wooden-bamboo-toothbrush/prid/505514"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Colgate Minion Kids Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/24d5a3bd-6778-48cf-9f1f-137da985754f.png",
+      "original_names": {
+        "blinkit": "Colgate Minion Kids Toothbrush (with Toothpaste)"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 104,
+          "quantity": "2 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/colgate-minion-kids-toothbrush-with-toothpaste/prid/558869"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Agaro Cosmic Plus Sonic Electric Toothbrush",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/840da731-0fe5-446d-a092-f6e851d6775a.png",
+      "original_names": {
+        "blinkit": "Agaro Cosmic Plus Sonic Electric Toothbrush"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 1699,
+          "quantity": null,
+          "deliveryTime": "30 MINS",
+          "link": "https://blinkit.com/prn/agaro-cosmic-plus-sonic-electric-toothbrush/prid/530038"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Colgate Slimsoft Charcoal Toothbrush Buy 2 Get 2 Free",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/9128515a-b691-471d-a296-40c695757d27.png",
+      "original_names": {
+        "blinkit": "Colgate SlimSoft Charcoal Toothbrush - Buy 2 Get 2 Free"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 157,
+          "quantity": "4 pcs",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/colgate-slimsoft-charcoal-toothbrush-buy-2-get-2-free/prid/408372"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Perfora Activated Charcoal Pro Teeth Whitening Toothpaste Og Black Toothbrush Combo",
+      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/c41d73c0-8391-441d-8f12-eb6039d1f0bd.png",
+      "original_names": {
+        "blinkit": "Perfora Activated Charcoal PRO+ Teeth Whitening Toothpaste (Watermelon Mint) + OG Black Toothbrush Combo"
+      },
+      "platforms": {
+        "blinkit": {
+          "price": 181,
+          "quantity": "50 g",
+          "deliveryTime": "8 MINS",
+          "link": "https://blinkit.com/prn/perfora-activated-charcoal-pro-teeth-whitening-toothpaste-watermelon-mint-og-black-toothbrush-combo/prid/589160"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Urbanfix Travel Cum Toiletry Men Bag",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/7/11/f2f42839-ccc3-4cbb-a808-9330220ff9ba_HomeandKitchenNeeds_CD5VYT108X_MN.png",
+      "original_names": {
+        "swiggy-instamart": "UrbanFix Travel cum Toiletry Men Bag"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 399,
+          "quantity": "1 pcs",
+          "deliveryTime": "7 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Gubb Travel Bottles Toiletries",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/7/10/7af25915-de45-4d27-8db2-05214b50f3a9_HomeandKitchenNeeds_P5UK4KK4GU_MN.png",
+      "original_names": {
+        "swiggy-instamart": "Gubb Travel Bottles for Toiletries (75ml, Refillable Bottle Pump, Spray)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 247,
+          "quantity": "3 pcs",
+          "deliveryTime": "7 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Awestuffs Luxury Cosmetic Bag Handle",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2025/3/4/3f127957-29a8-4093-8aae-79a6d99eb242_287508_1.png",
+      "original_names": {
+        "swiggy-instamart": "Awestuffs Luxury Cosmetic Bag with Handle (Pink)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 379,
+          "quantity": "1 pcs",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Godrej Aer Power Pocket Bathroom Freshener Assorted Pack",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/3/28/78e96188-54b5-4b45-85db-95611992663b_freshenerfragrance_K2NLGH7U61_MN.png",
+      "original_names": {
+        "swiggy-instamart": "Godrej Aer Power Pocket Bathroom Freshener Assorted Pack"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 293,
+          "quantity": "50 g",
+          "deliveryTime": "7 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Prettykrafts Packing Organizers Travel Bags",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/8/23/2fb6b4dd-b13a-4bd5-8cde-13e2550bc3ab_112326_1.png",
+      "original_names": {
+        "swiggy-instamart": "PrettyKrafts Packing Organizers Travel Bags (Grey)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 270,
+          "quantity": "4 pcs",
+          "deliveryTime": "7 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Prettykrafts Plastic Multipurpose Checkered Travel Pouch",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/7/23/03878b0d-0853-4191-92e2-18dafeca3569_HomeandKitchenNeeds_4XLVAYS60F_MN.png",
+      "original_names": {
+        "swiggy-instamart": "PrettyKrafts Plastic Multipurpose Checkered Travel Pouch (Transparent)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 215,
+          "quantity": "3 pcs",
+          "deliveryTime": "7 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Pidilite Roff Cera Clean Advanced Tiles And Floor Cleaner",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/7/13/388d0861-e8c9-4b55-936e-968c7feb1884_surfacechemicalagents_NB0P43O68G_MN.png",
+      "original_names": {
+        "swiggy-instamart": "Pidilite Roff Cera Clean Advanced Tiles and Floor Cleaner"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 205,
+          "quantity": "1 ltr",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Oye Happy Emergency Kit",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/ciw/2025/12/5/8d19747c-2353-4e06-83e5-d3086fb03c9a_NPI-056911_1_20251205_091342.png",
+      "original_names": {
+        "swiggy-instamart": "Oye Happy Emergency Kit (Potli Bag)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 473,
+          "quantity": "1 pack",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Awestuffs Luggage Compression Pouches",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2025/3/4/9721d446-19dd-4fd0-adf2-417e98fc7f75_335202_1.png",
+      "original_names": {
+        "swiggy-instamart": "Awestuffs Luggage Compression Pouches (Navy Blue)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 529,
+          "quantity": "6 pcs",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Prettykrafts Storage Bag Organizer Handles",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/8/2/eb91269b-5d97-480c-97a5-3eccbbe2a219_75061_1.jpg",
+      "original_names": {
+        "swiggy-instamart": "PrettyKrafts Storage Bag Organizer with Handles (Non Woven, Brown)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 285,
+          "quantity": "1 pack",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Se7En Plastic Plain Soap Holder",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2025/3/6/f6c88c7b-e36e-4327-b6f6-2d7cd1eb92a8_68394_1.png",
+      "original_names": {
+        "swiggy-instamart": "SE7EN Plastic Plain Soap Holder (Assorted)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 49,
+          "quantity": "1 pcs",
+          "deliveryTime": "7 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Se7En Vacuum Storage Ziplock Bags Pump",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/8/7/a6a8ff73-781f-4696-98b9-b7821d793b29_606061_1.png",
+      "original_names": {
+        "swiggy-instamart": "SE7EN Vacuum Storage Ziplock Bags with Pump (Reusable, Multicolour)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 420,
+          "quantity": "6 pcs",
+          "deliveryTime": "7 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Gubb Transparent Hair Spray Bottle",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2025/10/1/5f5d215e-f7bd-43ef-a19a-05449e3c875f_46885.png",
+      "original_names": {
+        "swiggy-instamart": "Gubb 250ml Transparent Hair Spray Bottle"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 147,
+          "quantity": "50 g",
+          "deliveryTime": "7 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Home Truths Air Freshener Jasmine",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/48fdfb9b52043c9b7a9698d28d847969",
+      "original_names": {
+        "swiggy-instamart": "Home Truths Air Freshener - Jasmine"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 30,
+          "quantity": "50 g",
+          "deliveryTime": "7 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Se7En Travel Folding Bag Pocket",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2025/3/6/269713ff-408f-43d0-8ec2-83b322708ded_579885_1.png",
+      "original_names": {
+        "swiggy-instamart": "SE7EN Travel Folding Bag with Pocket (39x42 cm, Assorted)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 515,
+          "quantity": "1 pcs",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Urbanfix Plastic Toothbrush And Toothpaste Stand Holder",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/9/10/f749f31f-678e-4d97-93df-c9401e751fc0_541497_1.png",
+      "original_names": {
+        "swiggy-instamart": "UrbanFix Plastic Toothbrush and Toothpaste Stand Holder (White)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 259,
+          "quantity": "1 pcs",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Homestrap Portable First Aid Kit Bag",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/11/14/277e3de1-50ed-4204-b225-9a44159f247c_193055_1.png",
+      "original_names": {
+        "swiggy-instamart": "HomeStrap Portable First Aid Kit Bag (Red)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 369,
+          "quantity": "1 pcs",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Awestuffs Jewellery Storage Travel Case",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2025/3/4/6b8eb0cb-086e-421f-a36a-42cf61344e42_414123_1.png",
+      "original_names": {
+        "swiggy-instamart": "Awestuffs Jewellery Storage Travel Case (5 Compartments, Pink)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 599,
+          "quantity": "1 pcs",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Jaypee Plus Plastic Waves Hygiene Bathroom Set",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2025/9/21/fed6fe71-a6ed-4795-a724-819e4f8a383e_234246_1.png",
+      "original_names": {
+        "swiggy-instamart": "Jaypee Plus Plastic Waves Hygiene Bathroom Set (Black)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 504,
+          "quantity": "3 pcs",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Jaypee Plus Plastic Bathline Shower Vanity Removable Tumbler",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/11/27/c4ff042e-3e5e-43ca-9325-b452b14e54e6_459232_1.png",
+      "original_names": {
+        "swiggy-instamart": "Jaypee Plus Plastic Bathline Shower Vanity with Removable Tumbler (Grey)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 299,
+          "quantity": "1 pcs",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Joyo Plastic Bathroom Set",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2025/3/8/5c587dd6-8d7c-47f7-9f7c-a4aeadc35249_49731_1.png",
+      "original_names": {
+        "swiggy-instamart": "Joyo Plastic Bathroom Set (Grey and Black)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 215,
+          "quantity": "4 pcs",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Home Centre Monique Marco Ribbed Polyresin Bathroom Set",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2025/12/1/f1691538-c37f-4b7b-adb9-e325e9005fa9_203454_1.png",
+      "original_names": {
+        "swiggy-instamart": "Home Centre Monique Marco Ribbed Polyresin 5 Piece Bathroom Set (Black)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 1899,
+          "quantity": "1 pack",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Gala Plastic Toilex Toilet Brush Round Container",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/10/18/990df839-aae5-42e4-bcad-4c547f1d5c6f_15329_1.png",
+      "original_names": {
+        "swiggy-instamart": "Gala Plastic Toilex Toilet Brush with Round Container (1.3feet, White and Blue)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 239,
+          "quantity": "2 pcs",
+          "deliveryTime": "7 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Joyo Plastic Honey Comb Patla Stool",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2025/3/8/6a6b4ae4-2d2f-4411-9d9a-710a8377f9cf_710660_1.png",
+      "original_names": {
+        "swiggy-instamart": "Joyo Plastic Honey Comb Patla/Stool (30cm, Medium, Pleasant Blue)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 234,
+          "quantity": "1 pcs",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Chakaachak Plastic Glide Toilet Brush Container",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/8/5/71cf4c79-257a-4b2e-8831-a23143ecd39c_22196_1.png",
+      "original_names": {
+        "swiggy-instamart": "Chakaachak Plastic Glide Toilet Brush with Container (Grey)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 129,
+          "quantity": "1 pcs",
+          "deliveryTime": "7 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Kohler Purewash M050 Portable Bidet Jet Spray",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2025/5/4/cb7877de-725d-4259-99cc-29dd973762ff_115304_1.png",
+      "original_names": {
+        "swiggy-instamart": "Kohler Purewash M050 Portable Bidet Jet Spray (Black)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 2740,
+          "quantity": "1 pack",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Smart Shelter Fully Automatic Washing Machine Inlet Pipe",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2025/6/17/13beef8f-72ae-4897-9a5e-31ebcda6f623_538058_1.png",
+      "original_names": {
+        "swiggy-instamart": "Smart Shelter Fully Automatic Washing Machine Inlet Pipe (2m, with Universal Tap Adaptor Connector)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 319,
+          "quantity": "1 pack",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Chakaachak Easy Drain Toilet Plunger",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/8/22/5c3e4588-7faa-4f5a-967a-a245640adf9a_22247_1.png",
+      "original_names": {
+        "swiggy-instamart": "Chakaachak Easy Drain Toilet Plunger (Grey)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 66,
+          "quantity": "1 pcs",
+          "deliveryTime": "7 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Home Centre Vicente Fragrance Gift Set",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2025/9/26/c368a777-fed3-4014-adcb-8ceed4033caa_791213_1.png",
+      "original_names": {
+        "swiggy-instamart": "Home Centre Vicente Fragrance Gift Set (White Jasmine And Tuberose)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 699,
+          "quantity": "1 pack",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Hindware Flora Health Faucet Toilet 1 2 M Flexible Stainless Steel Hose And Hook",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/ciw/2025/9/29/8479aef8-cf1e-4f64-ab31-aaf8f465d9d7_NPI-028910_1_20250903_104940.png",
+      "original_names": {
+        "swiggy-instamart": "Hindware Flora Health Faucet For Toilet With 1.2 m Flexible Stainless Steel Hose and Hook"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 1005,
+          "quantity": "1 pcs",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Hindware Jet Black Health Faucet Toilet 1 2 M Flexible Stainless Steel Tube And Hook",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/ciw/2025/9/29/9387a083-99ec-4e48-ba64-d5c3f7f182d5_NPI-028908_1_20250903_103606.png",
+      "original_names": {
+        "swiggy-instamart": "Hindware Jet Black Health Faucet For Toilet With 1.2 m Flexible Stainless Steel Tube and Hook"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 1010,
+          "quantity": "1 pcs",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Better Home Plastic Soap Dispenser Set",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/12/2/86a7d995-347f-444a-bab6-ced9d9e6e6c9_733749_1.png",
+      "original_names": {
+        "swiggy-instamart": "The Better Home Plastic Soap Dispenser Set (White)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
+          "price": 2209,
+          "quantity": "3 pcs",
+          "deliveryTime": "17 MINS",
+          "link": "N/A"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Clean Champ Bathroom Scrubber",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/7/24/c933414f-052b-4d1d-b71f-1cdec8837385_surfacecleaningaids_QQLWVYIOWH_MN.png",
+      "original_names": {
+        "swiggy-instamart": "Clean Champ Bathroom Scrubber (White and Maroon)"
+      },
+      "platforms": {
+        "swiggy-instamart": {
           "price": 60,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/k-pra-jowar-flour/prid/556782"
+          "quantity": "1 pcs",
+          "deliveryTime": "7 MINS",
+          "link": "N/A"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Bhagirathi Nachani Ragi Flour",
+      "name": "Gala Rubber Toilet Plunger",
+      "image": "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_544,w_504/NI_CATALOG/IMAGES/CIW/2024/8/22/c8e85a32-84f7-4e2f-a946-8ce655212513_50499_1.png",
       "original_names": {
-        "blinkit": "Bhagirathi Nachani / Ragi Flour"
+        "swiggy-instamart": "Gala Rubber Toilet Plunger (48cm, Multicolour)"
       },
       "platforms": {
-        "blinkit": {
-          "price": 55,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/bhagirathi-nachani-ragi-flour/prid/381019"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Satyam Bajra Flour",
-      "original_names": {
-        "blinkit": "Satyam Bajra Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 47,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/satyam-bajra-flour/prid/45052"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Double Horse Appam Idiyappam Pathiri Rice Flour",
-      "original_names": {
-        "blinkit": "Double Horse Appam Idiyappam Pathiri Rice Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 57,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/double-horse-appam-idiyappam-pathiri-rice-flour/prid/136970"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Katdare Upvas Bhajani Flour Mix",
-      "original_names": {
-        "blinkit": "Katdare Upvas Bhajani Flour Mix"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 65,
-          "quantity": "200 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/katdare-upvas-bhajani-flour-mix/prid/378779"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Double Horse White Puttupodi Rice Flour",
-      "original_names": {
-        "blinkit": "Double Horse White Puttupodi Rice Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 65,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/double-horse-white-puttupodi-rice-flour/prid/189142"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Madam Rice Flour",
-      "original_names": {
-        "blinkit": "Madam Rice Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 43,
-          "quantity": "500 g",
-          "deliveryTime": "8 MINS",
-          "image": "",
-          "link": "https://blinkit.com/prn/madam-rice-flour/prid/36819"
+        "swiggy-instamart": {
+          "price": 110,
+          "quantity": "1 pcs",
+          "deliveryTime": "7 MINS",
+          "link": "N/A"
         }
       },
       "similarity_score": null
