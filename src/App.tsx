@@ -6,6 +6,7 @@ import { LocationService } from './services/locationService';
 import { ProductService } from './services/productService';
 import { LocationData, ComparisonFilters, MatchedProduct, Platform } from './types/product';
 import { Loader2, Sparkles, TrendingDown, Zap } from 'lucide-react';
+import groeaseLogo from './images/groease.jpg';
 
 function App() {
   const [location, setLocation] = useState<LocationData | null>(null);
@@ -81,30 +82,32 @@ function App() {
 
   if (loading && !location) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-blue-50/30 to-white">
         <div className="flex flex-col items-center gap-4">
           <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
-          <p className="text-gray-600 font-medium">Loading your location...</p>
+          <p className="text-blue-700 font-medium">Loading your location...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/20 to-gray-50">
-      {/* Modern Minimal Header with Gradient */}
-      <header className="bg-gradient-to-r from-white via-blue-50/30 to-white border-b border-gray-200 shadow-sm sticky top-0 z-50 backdrop-blur-sm">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/30 to-white">
+      {/* GROEASE Header with Logo */}
+      <header className="bg-gradient-to-r from-white via-blue-50/40 to-white border-b border-blue-100 shadow-sm sticky top-0 z-50 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-gradient-to-br from-blue-600 to-green-600 rounded-xl shadow-md">
-                <Sparkles className="h-6 w-6 text-white" />
-              </div>
+            <div className="flex items-center gap-4">
+              <img 
+                src={groeaseLogo} 
+                alt="GROEASE Logo" 
+                className="h-12 w-12 object-contain"
+              />
               <div>
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent tracking-tight">
-                  Product Compare
+                <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent tracking-tight">
+                  GROEASE
                 </h1>
-                <p className="text-sm text-gray-500 mt-1">Compare prices across platforms instantly</p>
+                <p className="text-sm text-blue-600 font-medium mt-0.5">ONE APP. ENDLESS EASE</p>
               </div>
             </div>
             {location && <LocationDisplay location={location} onRefresh={handleRefreshLocation} />}
@@ -118,14 +121,14 @@ function App() {
         {loading && searchQuery && location && (
           <div className="mb-8 flex items-center justify-center gap-3 py-12">
             <Loader2 className="h-5 w-5 animate-spin text-blue-600" />
-            <p className="text-gray-600 font-medium">Searching for products...</p>
+            <p className="text-blue-700 font-medium">Searching for products...</p>
           </div>
         )}
         
         {!loading && searchQuery && (
           <div className="mb-6">
-            <p className="text-gray-600 text-sm">
-              Found <span className="font-semibold text-gray-900">{products.length}</span> product{products.length !== 1 ? 's' : ''} for <span className="font-medium">"{searchQuery}"</span>
+            <p className="text-blue-700 text-sm">
+              Found <span className="font-semibold text-blue-900">{products.length}</span> product{products.length !== 1 ? 's' : ''} for <span className="font-medium">"{searchQuery}"</span>
             </p>
           </div>
         )}
@@ -137,11 +140,15 @@ function App() {
               {/* Decorative Elements */}
               <div className="relative mb-8">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-32 bg-gradient-to-br from-blue-100 to-green-100 rounded-full blur-3xl opacity-50"></div>
+                  <div className="w-32 h-32 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full blur-3xl opacity-50"></div>
                 </div>
                 <div className="relative flex justify-center mb-6">
-                  <div className="p-4 bg-gradient-to-br from-blue-50 to-green-50 rounded-2xl shadow-lg">
-                    <Sparkles className="h-12 w-12 text-blue-600 mx-auto" />
+                  <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg border border-blue-200">
+                    <img 
+                      src={groeaseLogo} 
+                      alt="GROEASE Logo" 
+                      className="h-16 w-16 object-contain mx-auto"
+                    />
                   </div>
                 </div>
               </div>
@@ -150,35 +157,35 @@ function App() {
               <div className="space-y-6">
                 <blockquote className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
                   <span className="text-blue-600">"</span>
-                  <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
-                    Smart shopping starts with smart comparison
+                  <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
+                    ONE PRODUCT. MULTIPLE APPS. ONE BEST DEAL.
                   </span>
-                  <span className="text-green-600">"</span>
+                  <span className="text-blue-600">"</span>
                 </blockquote>
                 
-                <p className="text-lg text-gray-600 font-medium">
-                  Compare prices across platforms and save time, money, and effort
+                <p className="text-lg text-blue-700 font-medium">
+                  Compare prices across quick-commerce apps and choose the smartest option, every time
                 </p>
 
                 {/* Feature Icons */}
-                <div className="flex flex-wrap items-center justify-center gap-8 mt-10 pt-8 border-t border-gray-200">
+                <div className="flex flex-wrap items-center justify-center gap-8 mt-10 pt-8 border-t border-blue-200">
                   <div className="flex flex-col items-center gap-2">
-                    <div className="p-3 bg-blue-50 rounded-xl">
+                    <div className="p-3 bg-blue-50 rounded-xl border border-blue-100">
                       <TrendingDown className="h-6 w-6 text-blue-600" />
                     </div>
-                    <span className="text-sm font-medium text-gray-700">Best Prices</span>
+                    <span className="text-sm font-medium text-blue-700">Best Prices</span>
                   </div>
                   <div className="flex flex-col items-center gap-2">
-                    <div className="p-3 bg-green-50 rounded-xl">
-                      <Zap className="h-6 w-6 text-green-600" />
+                    <div className="p-3 bg-blue-50 rounded-xl border border-blue-100">
+                      <Zap className="h-6 w-6 text-blue-600" />
                     </div>
-                    <span className="text-sm font-medium text-gray-700">Fast Delivery</span>
+                    <span className="text-sm font-medium text-blue-700">Quick Delivery</span>
                   </div>
                   <div className="flex flex-col items-center gap-2">
-                    <div className="p-3 bg-orange-50 rounded-xl">
-                      <Sparkles className="h-6 w-6 text-orange-600" />
+                    <div className="p-3 bg-blue-50 rounded-xl border border-blue-100">
+                      <Sparkles className="h-6 w-6 text-blue-600" />
                     </div>
-                    <span className="text-sm font-medium text-gray-700">Easy Comparison</span>
+                    <span className="text-sm font-medium text-blue-700">Transparent Shopping</span>
                   </div>
                 </div>
               </div>
@@ -187,17 +194,17 @@ function App() {
         ) : !loading && filteredProducts.length === 0 && searchQuery ? (
           <div className="text-center py-16">
             <div className="max-w-md mx-auto">
-              <div className="mb-4 p-4 bg-gray-100 rounded-full w-16 h-16 mx-auto flex items-center justify-center">
-                <Sparkles className="h-8 w-8 text-gray-400" />
+              <div className="mb-4 p-4 bg-blue-50 rounded-full w-16 h-16 mx-auto flex items-center justify-center border border-blue-100">
+                <Sparkles className="h-8 w-8 text-blue-400" />
               </div>
-              <p className="text-gray-600 text-lg mb-2 font-medium">
+              <p className="text-blue-700 text-lg mb-2 font-medium">
                 No products found with matching quantities across platforms.
               </p>
-              <p className="text-gray-500 text-sm mt-2">Try a different search term</p>
+              <p className="text-blue-600 text-sm mt-2">Try a different search term</p>
             </div>
           </div>
         ) : !loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
             {filteredProducts
               .sort((a, b) => {
                 // First sort by number of platform matches (descending)

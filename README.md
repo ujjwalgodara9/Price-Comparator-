@@ -130,3 +130,8 @@ Testing -
 
 
 - UI shows kg for water too
+- While merging make sure app.py and scraping scripts are fine 
+- Logging and SS feature
+- Harsh setup 
+
+- Compare is happening between different kg's

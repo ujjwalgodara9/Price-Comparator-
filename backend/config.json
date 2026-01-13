@@ -19,7 +19,7 @@
         }
     },
     "matching": {
-        "similarity_threshold": 0.85,
+        "similarity_threshold": 0.80,
         "strict_matching": false,
         "quantity_tolerance_ratio": 2.0,
         "quantity_tolerance_absolute": 0.5,
