@@ -134,4 +134,6 @@ Testing -
 - Logging and SS feature
 - Harsh setup 
 
-- Compare is happening between different kg's
+- Compare is happening between different kg's only problem with blinkit platform quantity mismatch
+
+- Reduce the search time for scraping

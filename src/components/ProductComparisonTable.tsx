@@ -120,15 +120,17 @@ export function ProductComparisonTable({ matchedProduct }: ProductComparisonTabl
                         <span className="font-medium">{platformData.deliveryTime}</span>
                       </div>
                     )}
-                    <a
-                      href={platformData.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 px-2 py-1 bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-semibold rounded transition-colors border border-blue-200 shadow-sm hover:shadow"
-                    >
-                      <span>View</span>
-                      <ExternalLink className="h-3 w-3" />
-                    </a>
+                    {platformData.link && platformData.link !== 'N/A' && platformData.link.trim() !== '' && (
+                      <a
+                        href={platformData.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 px-2 py-1 bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-semibold rounded transition-colors border border-blue-200 shadow-sm hover:shadow"
+                      >
+                        <span>View</span>
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    )}
                   </div>
                 </div>
               );
