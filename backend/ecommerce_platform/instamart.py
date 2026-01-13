@@ -4,7 +4,8 @@ import time
 from datetime import datetime
 from playwright.sync_api import sync_playwright
 
-STORAGE_FOLDER = "product_data"
+# Storage folder for product data
+STORAGE_FOLDER = "/var/lib/product-compare/product_data"
 os.makedirs(STORAGE_FOLDER, exist_ok=True)
 
 def remove_duplicate_products(product_list):

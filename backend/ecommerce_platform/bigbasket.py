@@ -3,8 +3,8 @@ import json
 from datetime import datetime
 from playwright.sync_api import sync_playwright
 
-# Setup storage folder
-STORAGE_FOLDER = os.path.join(os.path.dirname(os.path.dirname(__file__)), "product_data")
+# Storage folder for product data
+STORAGE_FOLDER = "/var/lib/product-compare/product_data"
 os.makedirs(STORAGE_FOLDER, exist_ok=True)
 
 def set_location(page, location_name):
