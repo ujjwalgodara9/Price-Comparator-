@@ -35,7 +35,8 @@ export type Platform =
   | 'zepto' 
   | 'swiggy-instamart' 
   | 'bigbasket' 
-  | 'blinkit';
+  | 'blinkit'
+  | 'dmart';
 
 export interface LocationData {
   city: string;

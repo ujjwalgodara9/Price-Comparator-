@@ -16,6 +16,10 @@
         "bigbasket": {
             "scrape": false,
             "headless": false
+        },
+        "dmart": {
+            "scrape": true,
+            "headless": false
         }
     },
     "matching": {

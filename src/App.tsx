@@ -15,7 +15,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   
   // Default platforms to search (no filters panel, so hardcoded)
-  const defaultPlatforms: Platform[] = ['zepto', 'blinkit', 'swiggy-instamart'];
+  const defaultPlatforms: Platform[] = ['zepto', 'blinkit', 'swiggy-instamart', 'bigbasket', 'dmart'];
 
   useEffect(() => {
     // Get user location on mount

@@ -27,6 +27,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from ecommerce_platform.zepto import run_zepto_flow
 from ecommerce_platform.blinkit import run_blinkit_flow
 from ecommerce_platform.instamart import run_instamart_flow
+from ecommerce_platform.dmart import run_dmart_flow
 from datetime import datetime
 # Import comparison functions from compare.py
 from compare import (
@@ -183,33 +184,31 @@ def search_all_platforms():
                 logging.error(traceback.format_exc())
                 # Continue with returning all products even if comparison fails
         
-        # If we have comparison results and multiple platforms, return comparison format
-        # Otherwise return raw products
-        if matched_products and len(platforms) >= 1:
-            # Filter matched products to only include requested platforms
+        # If we have comparison results, return MatchedProduct[] format for frontend
+        # Frontend expects products grouped by name with platforms object
+        if matched_products and len(matched_products) > 0:
+            # Filter platforms in each matched product to only include requested platforms
             filtered_matched_products = []
             for item in matched_products:
-                # Filter platforms to only include requested ones
+                # Filter platforms dict to only include requested platforms
                 filtered_platforms = {
                     platform_name: platform_data 
                     for platform_name, platform_data in item.get('platforms', {}).items()
                     if platform_name in platforms
                 }
+                
                 # Only include if there are platforms after filtering
                 if filtered_platforms:
-                    filtered_item = item.copy()
-                    filtered_item['platforms'] = filtered_platforms
-                    # Also filter original_names
-                    filtered_original_names = {
-                        platform_name: original_name
-                        for platform_name, original_name in item.get('original_names', {}).items()
-                        if platform_name in platforms
+                    matched_product = {
+                        'name': item.get('name', ''),
+                        'image': item.get('image', ''),
+                        'original_names': item.get('original_names', {}),
+                        'platforms': filtered_platforms
                     }
-                    filtered_item['original_names'] = filtered_original_names
-                    filtered_matched_products.append(filtered_item)
+                    filtered_matched_products.append(matched_product)
             
             if filtered_matched_products:
-                logging.info(f'[API] Returning {len(filtered_matched_products)} matched products (with all platforms in each)')
+                logging.info(f'[API] Returning {len(filtered_matched_products)} matched products (MatchedProduct format)')
                 return jsonify({'products': filtered_matched_products})
         
         # Fallback: return raw products if comparison failed or single platform
@@ -262,12 +261,16 @@ def search_platform(platform, query, location, run_parent_folder=None):
         'zepto': scrape_zepto,
         'swiggy-instamart': scrape_instamart,
         # 'bigbasket': scrape_bigbasket,
-        'blinkit': scrape_blinkit
+        'blinkit': scrape_blinkit,
+        'dmart': scrape_dmart
     }
     
     scraper = platform_map.get(platform)
     if scraper:
+        logging.info(f'[API] Calling scraper for platform: {platform}')
         return scraper(query, location, platform_config, run_parent_folder=run_parent_folder, platform_name=platform)
+    else:
+        logging.warning(f'[API] No scraper found for platform: {platform}. Available platforms: {list(platform_map.keys())}')
     return []
 
 
@@ -412,6 +415,61 @@ def scrape_blinkit(query, location, platform_config=None, run_parent_folder=None
         logging.error(traceback.format_exc())
         return []
 
+
+def scrape_dmart(query, location, platform_config=None, run_parent_folder=None, platform_name='dmart'):
+    """Dmart Scraper - Uses Playwright to scrape Dmart website"""
+    try:
+        if not query:
+            logging.warning('[Dmart] Empty query, returning empty list')
+            return []
+        
+        # Get headless setting from config
+        if platform_config is None:
+            platform_config = get_platform_config('dmart')
+        headless = platform_config.get('headless', True)
+        
+        logging.info(f'[Dmart] Starting scrape for query: "{query}" (headless={headless})')
+        
+        # Get location - handle both dict and string formats
+        if isinstance(location, dict):
+            location_name = location.get("city") or location.get("state") or str(location)
+        else:
+            location_name = str(location)
+        
+        logging.info(f'[Dmart] Using location: "{location_name}"')
+        
+        # Use the Playwright-based scraper from dmart
+        raw_products = run_dmart_flow(
+            product_name=query,
+            location=location_name,
+            headless=headless,
+            max_products=50,
+            run_parent_folder=run_parent_folder,
+            platform_name=platform_name
+        )
+        
+        # Ensure products is a list
+        if raw_products is None:
+            raw_products = []
+        
+        # Normalize product data to standard format
+        normalized_products = [normalize_product_data(p, platform_name) for p in raw_products]
+        
+        logging.info(f'[Dmart] Scrape completed: Found {len(normalized_products)} products for query "{query}"')
+        return normalized_products
+    except ImportError as error:
+        logging.error(f'[Dmart] Import error - Playwright may not be installed: {error}')
+        import traceback
+        logging.error(traceback.format_exc())
+        return []
+    except Exception as error:
+        logging.error(f'[Dmart] Scraping error: {error}')
+        import traceback
+        logging.error(traceback.format_exc())
+        return []
+
+
+
 @app.route('/api/product/<platform>/<product_id>', methods=['GET'])
 def get_product_details(platform, product_id):
     """Get product details"""
@@ -455,12 +513,12 @@ def get_compare_data():
         with open(compare_path, 'r', encoding='utf-8') as f:
             compare_data = json.load(f)
         
-        # Return matched products in their original structure (with platforms object)
-        # Frontend will handle displaying all platforms in a single card
+        # Return MatchedProduct[] format (same as /api/search endpoint)
+        # compare.json already has the correct MatchedProduct format
         matched_products = compare_data.get('products', [])
         
         return jsonify({
-            'products': matched_products,
+            'products': matched_products,  # MatchedProduct[] format
             'search_query': compare_data.get('search_query', ''),
             'total_products': len(matched_products),
             'matched_products': compare_data.get('matched_products', 0),
