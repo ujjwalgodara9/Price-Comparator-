@@ -39,15 +39,43 @@ from compare import (
     save_comparison_to_json
 )
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(process)d] [%(levelname)s] %(message)s",
-    handlers=[logging.StreamHandler(sys.stdout)],
-)
+# Configure logging - both to console and file
+log_format = "%(asctime)s [%(process)d] [%(levelname)s] %(message)s"
+log_file = os.path.join(os.path.dirname(__file__), 'server.log')
+
+# Create file handler
+file_handler = logging.FileHandler(log_file, encoding='utf-8')
+file_handler.setLevel(logging.INFO)
+file_handler.setFormatter(logging.Formatter(log_format))
+
+# Create console handler - ensure it flushes immediately
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setLevel(logging.INFO)
+console_handler.setFormatter(logging.Formatter(log_format))
+# Force immediate flushing
+console_handler.stream = sys.stdout
+
+# Configure root logger
+root_logger = logging.getLogger()
+root_logger.setLevel(logging.INFO)
+root_logger.handlers = []  # Clear any existing handlers
+root_logger.addHandler(console_handler)
+root_logger.addHandler(file_handler)
+
+# Also configure Flask's logger
+flask_logger = logging.getLogger('werkzeug')
+flask_logger.setLevel(logging.INFO)
+flask_logger.addHandler(console_handler)
+flask_logger.addHandler(file_handler)
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
+
+# Configure Flask's logger to also output to console
+app.logger.setLevel(logging.INFO)
+app.logger.handlers = []  # Clear default handlers
+app.logger.addHandler(console_handler)
+app.logger.addHandler(file_handler)
 
 PORT = 8080
 
@@ -579,7 +607,16 @@ def not_found(error):
 
 
 if __name__ == '__main__':
+    print(f'\n{"="*60}')
+    print(f'Fast E-commerce API server (Flask)')
+    print(f'{"="*60}')
+    print(f'Server running on: http://0.0.0.0:{PORT}')
+    print(f'Set VITE_API_BASE_URL=http://localhost:{PORT} in your .env file')
+    print(f'Logs are being written to: {log_file}')
+    print(f'{"="*60}\n')
+    
     logging.info(f'Fast E-commerce API server (Flask) running on port {PORT}')
+    logging.info(f'Logs are being written to: {log_file}')
     logging.info(f'Set VITE_API_BASE_URL=http://localhost:{PORT} in your .env file')
     logging.info(f'[Config] Search Debug: {"✓ ENABLED (timestamped folders)" if SEARCH_DEBUG else "✗ DISABLED (overwrite mode)"}')
     logging.info('[Config] Platform scraping configuration:')
@@ -587,6 +624,9 @@ if __name__ == '__main__':
         status = '✓ ENABLED' if config.get('scrape', False) else '✗ DISABLED'
         headless = 'headless' if config.get('headless', True) else 'visible'
         logging.info(f'  {platform}: {status} ({headless})')
-    app.run(host='0.0.0.0', port=PORT, debug=True)
+    # Ensure stdout is unbuffered for immediate log display
+    sys.stdout.reconfigure(line_buffering=True) if hasattr(sys.stdout, 'reconfigure') else None
+    
+    app.run(host='0.0.0.0', port=PORT, debug=True, use_reloader=False)
 
 

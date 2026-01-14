@@ -139,7 +139,13 @@ export class FastEcommerceAPI {
     
     const payload = {
       query,
-      location,
+      location: {
+        address: (location as any).address || `${location.city}, ${location.state}`,
+        city: location.city,
+        state: location.state,
+        country: location.country || 'India',
+        coordinates: location.coordinates
+      },
       platforms,
     };
     

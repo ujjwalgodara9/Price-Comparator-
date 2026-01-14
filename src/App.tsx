@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { SearchBar } from './components/SearchBar';
 import { ProductComparisonTable } from './components/ProductComparisonTable';
 import { LocationDisplay } from './components/LocationDisplay';
+import { LocationPopup } from './components/LocationPopup';
 import { LocationService } from './services/locationService';
 import { ProductService } from './services/productService';
 import { LocationData, ComparisonFilters, MatchedProduct, Platform } from './types/product';
@@ -13,16 +14,16 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [products, setProducts] = useState<MatchedProduct[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showLocationPopup, setShowLocationPopup] = useState(true); // Show popup by default
   
   // Default platforms to search (no filters panel, so hardcoded)
   const defaultPlatforms: Platform[] = ['zepto', 'blinkit', 'swiggy-instamart', 'bigbasket', 'dmart'];
 
   useEffect(() => {
-    // Get user location on mount
-    LocationService.getCurrentLocation().then((loc) => {
-      setLocation(loc);
-      setLoading(false);
-    });
+    // Always show popup first when site loads - don't check localStorage
+    // User must select location every time they visit
+    setLoading(false);
+    setShowLocationPopup(true);
   }, []);
 
   useEffect(() => {
@@ -69,11 +70,33 @@ function App() {
     setSearchQuery(query);
   };
 
-  const handleRefreshLocation = async () => {
+  const handleRefreshLocation = () => {
+    setShowLocationPopup(true);
+  };
+
+  const handleLocationSet = async (locationData: { address: string; lat: number; lng: number }) => {
+    // Location is mandatory - don't allow closing without setting location
+    if (!locationData.address || locationData.lat === 0 || locationData.lng === 0) {
+      return; // Don't close popup if location is not set
+    }
+
     setLoading(true);
-    const newLocation = await LocationService.getCurrentLocation();
-    setLocation(newLocation);
-    setLoading(false);
+    try {
+      // Convert Google Places location to LocationData format
+      const locationDataFormatted = await LocationService.convertGooglePlacesToLocationData(
+        locationData.address,
+        locationData.lat,
+        locationData.lng
+      );
+      
+      setLocation(locationDataFormatted);
+      localStorage.setItem('userLocation', JSON.stringify(locationDataFormatted));
+      setShowLocationPopup(false);
+    } catch (error) {
+      console.error('Error setting location:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   // Show all matched products - don't filter by quantity matching
@@ -93,6 +116,11 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/30 to-white">
+      {/* Location Popup */}
+      {showLocationPopup && (
+        <LocationPopup onClose={handleLocationSet} />
+      )}
+
       {/* GROEASE Header with Logo */}
       <header className="bg-gradient-to-r from-white via-blue-50/40 to-white border-b border-blue-100 shadow-sm sticky top-0 z-50 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
