@@ -14,10 +14,38 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [products, setProducts] = useState<MatchedProduct[]>([]);
   const [loading, setLoading] = useState(false);
+  const [searchProgress, setSearchProgress] = useState(0);
   const [showLocationPopup, setShowLocationPopup] = useState(true); // Show popup by default
   
   // Default platforms to search (no filters panel, so hardcoded)
   const defaultPlatforms: Platform[] = ['zepto', 'blinkit', 'swiggy-instamart', 'bigbasket', 'dmart'];
+
+  // Progress bar animation effect - uses easing curve that progresses over 40s then stops at 90%
+  useEffect(() => {
+    if (!loading) {
+      setSearchProgress(0);
+      return;
+    }
+
+    const startTime = Date.now();
+    // Progress over 40 seconds to reach 90%
+    const durationTo90 = 40000; // 40 seconds to reach 90%
+    
+    // Easing function: ease-in-out cubic for realistic progress
+    const easeInOutCubic = (t: number): number => {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    };
+
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / durationTo90, 1); // Progress over 40s
+      const easedProgress = easeInOutCubic(progress);
+      // Cap at 90% and hold there until search completes
+      setSearchProgress(Math.min(easedProgress * 90, 90));
+    }, 100); // Update every 100ms for smooth animation
+
+    return () => clearInterval(interval);
+  }, [loading]);
 
   useEffect(() => {
     if (location) {
@@ -34,10 +62,12 @@ function App() {
           console.log('[App] Empty query, skipping search');
           setProducts([]);
           setLoading(false);
+          setSearchProgress(0);
           return;
         }
         
         setLoading(true);
+        setSearchProgress(0);
         try {
           // Use default filters with hardcoded platforms
           const defaultFilters: ComparisonFilters = {
@@ -47,11 +77,17 @@ function App() {
           const results = await ProductService.searchProducts(searchQuery, location, defaultFilters);
           console.log('[App] Search results:', results.length, 'products');
           setProducts(results);
+          setSearchProgress(100); // Complete the progress bar
+          // Wait a moment to show 100% before hiding
+          setTimeout(() => {
+            setLoading(false);
+            setSearchProgress(0);
+          }, 500);
         } catch (error) {
           console.error('[App] Error searching products:', error);
           setProducts([]);
-        } finally {
           setLoading(false);
+          setSearchProgress(0);
         }
       };
       searchProducts();
@@ -143,9 +179,21 @@ function App() {
       {/* Main Content */}
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {loading && searchQuery && location && (
-          <div className="mb-8 flex items-center justify-center gap-3 py-12">
-            <Loader2 className="h-5 w-5 animate-spin text-blue-600" />
-            <p className="text-blue-700 font-medium">Searching for products...</p>
+          <div className="mb-8 py-8">
+            <div className="max-w-2xl mx-auto">
+              <div className="mb-4">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-blue-700 font-medium">Searching for products...</p>
+                  <span className="text-blue-600 text-sm font-medium">{Math.round(searchProgress)}%</span>
+                </div>
+                <div className="w-full bg-blue-100 rounded-full h-2.5 overflow-hidden">
+                  <div
+                    className="bg-gradient-to-r from-blue-500 to-blue-600 h-2.5 rounded-full transition-all duration-300 ease-out"
+                    style={{ width: `${searchProgress}%` }}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         )}
         
