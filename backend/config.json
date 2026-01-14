@@ -24,9 +24,9 @@
     },
     "matching": {
         "similarity_threshold": 0.80,
-        "strict_matching": false,
-        "quantity_tolerance_ratio": 2.0,
-        "quantity_tolerance_absolute": 0.5,
+        "strict_matching": true,
+        "quantity_tolerance_ratio": 1.1,
+        "quantity_tolerance_absolute": 0.1,
         "boost_similarity_on_quantity_match": 0.2,
         "word_similarity_weight": 0.4,
         "sequence_similarity_weight": 0.6

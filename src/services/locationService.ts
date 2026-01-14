@@ -1,4 +1,5 @@
 import { LocationData } from '../types/product';
+import { loadGoogleMaps } from '../utils/loadGoogleMaps';
 
 export class LocationService {
   static async getCurrentLocation(): Promise<LocationData> {
@@ -17,8 +18,37 @@ export class LocationService {
         async (position) => {
           const { latitude, longitude } = position.coords;
           
-          // In a real app, you'd call a reverse geocoding API
-          // For now, we'll use a simple mock based on coordinates
+          // Try to use Google Maps reverse geocoding if available
+          try {
+            await loadGoogleMaps();
+            if (window.google && window.google.maps) {
+              const geocoder = new window.google.maps.Geocoder();
+              geocoder.geocode(
+                { location: { lat: latitude, lng: longitude } },
+                (results, status) => {
+                  if (window.google && status === window.google.maps.GeocoderStatus.OK && results && results.length > 0) {
+                    const location = this.extractLocationFromGeocodeResult(results[0]);
+                    resolve({
+                      ...location,
+                      coordinates: { lat: latitude, lng: longitude },
+                    });
+                  } else {
+                    // Fallback to mock location
+                    const location = this.getLocationFromCoordinates(latitude, longitude);
+                    resolve({
+                      ...location,
+                      coordinates: { lat: latitude, lng: longitude },
+                    });
+                  }
+                }
+              );
+              return;
+            }
+          } catch (error) {
+            console.warn('Google Maps not available, using fallback:', error);
+          }
+          
+          // Fallback to mock location
           const location = this.getLocationFromCoordinates(latitude, longitude);
           resolve({
             ...location,
@@ -36,6 +66,113 @@ export class LocationService {
         }
       );
     });
+  }
+
+  /**
+   * Convert Google Places location data to LocationData format
+   */
+  static async convertGooglePlacesToLocationData(
+    address: string,
+    lat: number,
+    lng: number
+  ): Promise<LocationData> {
+    try {
+      await loadGoogleMaps();
+      if (window.google && window.google.maps) {
+        const geocoder = new window.google.maps.Geocoder();
+        return new Promise((resolve) => {
+          geocoder.geocode(
+            { location: { lat, lng } },
+            (results, status) => {
+              if (window.google && status === window.google.maps.GeocoderStatus.OK && results && results.length > 0) {
+                const location = this.extractLocationFromGeocodeResult(results[0]);
+                resolve({
+                  ...location,
+                  coordinates: { lat, lng },
+                });
+              } else {
+                // Fallback: try to parse from address string
+                const parsed = this.parseLocationFromAddress(address);
+                resolve({
+                  ...parsed,
+                  coordinates: { lat, lng },
+                });
+              }
+            }
+          );
+        });
+      }
+    } catch (error) {
+      console.warn('Google Maps not available, parsing from address:', error);
+    }
+
+    // Fallback: parse from address string
+    const parsed = this.parseLocationFromAddress(address);
+    return {
+      ...parsed,
+      coordinates: { lat, lng },
+    };
+  }
+
+  /**
+   * Extract city, state, country from Google Geocoder result
+   */
+  private static extractLocationFromGeocodeResult(result: any): LocationData {
+    let city = '';
+    let state = '';
+    let country = 'India';
+
+    for (const component of result.address_components || []) {
+      const types = component.types;
+      
+      if (types.includes('locality') || types.includes('sublocality') || types.includes('sublocality_level_1')) {
+        city = component.long_name;
+      } else if (types.includes('administrative_area_level_1')) {
+        state = component.long_name;
+      } else if (types.includes('country')) {
+        country = component.long_name;
+      }
+    }
+
+    // Fallback if city not found
+    if (!city) {
+      for (const component of result.address_components || []) {
+        if (component.types.includes('administrative_area_level_2')) {
+          city = component.long_name;
+          break;
+        }
+      }
+    }
+
+    // Fallback values
+    if (!city) city = 'Mumbai';
+    if (!state) state = 'Maharashtra';
+    if (!country) country = 'India';
+
+    return { city, state, country };
+  }
+
+  /**
+   * Parse location from address string (fallback method)
+   */
+  private static parseLocationFromAddress(address: string): LocationData {
+    // Try to extract city and state from address
+    // Common format: "Street, City, State, Country"
+    const parts = address.split(',').map(p => p.trim());
+    
+    let city = 'Mumbai';
+    let state = 'Maharashtra';
+    let country = 'India';
+
+    if (parts.length >= 2) {
+      city = parts[parts.length - 3] || parts[parts.length - 2] || 'Mumbai';
+      state = parts[parts.length - 2] || parts[parts.length - 1] || 'Maharashtra';
+      country = parts[parts.length - 1] || 'India';
+    } else if (parts.length === 1) {
+      city = parts[0];
+    }
+
+    return { city, state, country };
   }
 
   private static getLocationFromCoordinates(lat: number, lng: number): LocationData {
