@@ -29,7 +29,7 @@ function App() {
 
     const startTime = Date.now();
     // Progress over 40 seconds to reach 90%
-    const durationTo90 = 40000; // 40 seconds to reach 90%
+    const durationTo90 = 20000; // 40 seconds to reach 90%
     
     // Easing function: ease-in-out cubic for realistic progress
     const easeInOutCubic = (t: number): number => {

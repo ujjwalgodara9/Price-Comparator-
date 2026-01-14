@@ -86,7 +86,7 @@ def search_blinkit_products(page, query):
     # page.wait_for_load_state("networkidle")
     time.sleep(3)
     
-    for i in range(5):
+    for i in range(1):
         handle_popups(page)
         print(f"Scrolling Blinkit... ({i+1}/5)")
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")

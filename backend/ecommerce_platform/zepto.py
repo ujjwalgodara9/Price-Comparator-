@@ -62,7 +62,7 @@ def search_and_scroll(page, product_query):
     page.wait_for_load_state("networkidle")
     
     # 2. Scroll Loop (5 times with 4s wait)
-    for i in range(2):
+    for i in range(1):
         print(f"Scroll iteration {i+1}/2")
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
         time.sleep(3)
