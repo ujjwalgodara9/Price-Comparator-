@@ -96,15 +96,29 @@ function App() {
   // Users can see all products even if quantities differ (useful for comparison)
   const filteredProducts = products;
 
+  if (loading && !location) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-blue-50/30 to-white">
+        <div className="flex flex-col items-center gap-4">
+          <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
+          <p className="text-blue-700 font-medium">Loading your location...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Debug: Log popup state
+  console.log('[App] Render - showLocationPopup:', showLocationPopup, 'location:', location);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/30 to-white">
-      {/* Location Popup */}
+      {/* Location Popup - Must render first */}
       {showLocationPopup && (
         <LocationPopup onClose={handleLocationSet} />
       )}
 
       {/* GROEASE Header with Logo */}
-      <header className="bg-gradient-to-r from-white via-blue-50/40 to-white border-b border-blue-100 shadow-sm sticky top-0 z-50 backdrop-blur-sm">
+      <header className="bg-gradient-to-r from-white via-blue-50/40 to-white border-b border-blue-100 shadow-sm sticky top-0 z-40 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
             <div className="flex items-center gap-4">
