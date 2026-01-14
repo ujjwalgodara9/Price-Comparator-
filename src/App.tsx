@@ -209,7 +209,7 @@ function App() {
                     <div className="p-3 bg-blue-50 rounded-xl border border-blue-100">
                       <Sparkles className="h-6 w-6 text-blue-600" />
                     </div>
-                    <span className="text-sm font-medium text-blue-700">Transparent Shopping</span>
+                    <span className="text-sm font-medium text-blue-700">Transparent <br /> Shopping</span>
                   </div>
                 </div>
               </div>

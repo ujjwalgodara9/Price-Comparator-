@@ -90,11 +90,9 @@ Testing -
 - Similarity matching for name 
 - test the price matching in algorithm after name
 - Test the dataset generation and flagging
-- Test the compare 
-- Every search saving and flaging not to save
-- Cap on scrapping product
-- Filtering panel testing
+
 - Can give the automation for giving vivid product and auto assess the results from compare.json
+
 - Common item list - 
         Milk
         Curds / Dahi
@@ -115,25 +113,9 @@ Testing -
         Chocolates
         Household Essentials (detergent, cleaners)
 
-- Change the UI.
-- Filter should not be blocker it should be responsive 
-- Change the theme and colour of the page
-    - Should look professional and deployed website not a demo website 
-    - Make it lively website
-- Remove the rating from filter
-- Remove review and highest rated from the order
-- Frontend needs to sort the product according to relevance
-
-- Change the print of other modules.
-- Check for log saving make a run logs and save it.
-- Merge the matching branch to UI and then change the UI, for filter to be secondary and not primary
-
 
 - UI shows kg for water too
-- While merging make sure app.py and scraping scripts are fine 
-- Logging and SS feature
-- Harsh setup 
-
-- Compare is happening between different kg's only problem with blinkit platform quantity mismatch
-
-- Reduce the search time for scraping
+- Harsh setup
+    - blinkit location and merge
+- Naveen instamart merge
+- reduce search time 
