@@ -10,7 +10,7 @@
             "headless": true
         },
         "swiggy-instamart": {
-            "scrape": true,
+            "scrape": false,
             "headless": true
         },
         "bigbasket": {
