@@ -13,18 +13,11 @@ function App() {
   const [location, setLocation] = useState<LocationData | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [products, setProducts] = useState<MatchedProduct[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [showLocationPopup, setShowLocationPopup] = useState(true); // Show popup by default
   
   // Default platforms to search (no filters panel, so hardcoded)
   const defaultPlatforms: Platform[] = ['zepto', 'blinkit', 'swiggy-instamart', 'bigbasket', 'dmart'];
-
-  useEffect(() => {
-    // Always show popup first when site loads - don't check localStorage
-    // User must select location every time they visit
-    setLoading(false);
-    setShowLocationPopup(true);
-  }, []);
 
   useEffect(() => {
     if (location) {
@@ -102,17 +95,6 @@ function App() {
   // Show all matched products - don't filter by quantity matching
   // Users can see all products even if quantities differ (useful for comparison)
   const filteredProducts = products;
-
-  if (loading && !location) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-blue-50/30 to-white">
-        <div className="flex flex-col items-center gap-4">
-          <Loader2 className="h-8 w-8 animate-spin text-blue-600" />
-          <p className="text-blue-700 font-medium">Loading your location...</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/30 to-white">
