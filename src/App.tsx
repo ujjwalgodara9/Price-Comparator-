@@ -7,7 +7,9 @@ import { LocationService } from './services/locationService';
 import { ProductService } from './services/productService';
 import { LocationData, ComparisonFilters, MatchedProduct, Platform } from './types/product';
 import { Loader2, Sparkles, TrendingDown, Zap } from 'lucide-react';
-import groeaseLogo from './images/groease.jpg';
+import { Badge } from './components/ui/badge';
+import groeaseLogo from './images/groease_logo_crop.jpg';
+import groeaseCenter from './images/groease.jpeg';
 
 function App() {
   const [location, setLocation] = useState<LocationData | null>(null);
@@ -161,14 +163,11 @@ function App() {
               <img 
                 src={groeaseLogo} 
                 alt="GROEASE Logo" 
-                className="h-12 w-12 object-contain"
+                className="h-24 w-auto object-contain"
               />
-              <div>
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent tracking-tight">
-                  GROEASE
-                </h1>
-                <p className="text-sm text-blue-600 font-medium mt-0.5">ONE APP. ENDLESS EASE</p>
-              </div>
+              <Badge variant="outline" className="bg-yellow-50 border-yellow-300 text-yellow-700 text-xs font-medium">
+                Currently in Beta - Under Active Development
+              </Badge>
             </div>
             {location && <LocationDisplay location={location} onRefresh={handleRefreshLocation} />}
           </div>
@@ -217,7 +216,7 @@ function App() {
                 <div className="relative flex justify-center mb-6">
                   <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg border border-blue-200">
                     <img 
-                      src={groeaseLogo} 
+                      src={groeaseCenter} 
                       alt="GROEASE Logo" 
                       className="h-16 w-16 object-contain mx-auto"
                     />
