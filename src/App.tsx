@@ -159,13 +159,13 @@ function App() {
       <header className="bg-gradient-to-r from-white via-blue-50/40 to-white border-b border-blue-100 shadow-sm sticky top-0 z-40 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
               <img 
                 src={groeaseLogo} 
                 alt="GROEASE Logo" 
                 className="h-24 w-auto object-contain"
               />
-              <Badge variant="outline" className="bg-yellow-50 border-yellow-300 text-yellow-700 text-xs font-medium">
+              <Badge variant="outline" className="bg-yellow-50 border-yellow-300 text-yellow-700 text-[10px] sm:text-xs font-medium whitespace-nowrap">
                 Currently in Beta - Under Active Development
               </Badge>
             </div>
