@@ -1,11 +1,10 @@
 import { LocationData } from '../types/product';
-import { loadGoogleMaps } from '../utils/loadGoogleMaps';
+import { reverseGeocode, type GeoapifyResult } from './geoapifyService';
 
 export class LocationService {
   static async getCurrentLocation(): Promise<LocationData> {
     return new Promise((resolve, _reject) => {
       if (!navigator.geolocation) {
-        // Fallback to default location if geolocation not available
         resolve({
           city: 'Mumbai',
           state: 'Maharashtra',
@@ -17,38 +16,19 @@ export class LocationService {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const { latitude, longitude } = position.coords;
-          
-          // Try to use Google Maps reverse geocoding if available
           try {
-            await loadGoogleMaps();
-            if (window.google && window.google.maps) {
-              const geocoder = new window.google.maps.Geocoder();
-              geocoder.geocode(
-                { location: { lat: latitude, lng: longitude } },
-                (results, status) => {
-                  if (window.google && status === window.google.maps.GeocoderStatus.OK && results && results.length > 0) {
-                    const location = this.extractLocationFromGeocodeResult(results[0]);
-                    resolve({
-                      ...location,
-                      coordinates: { lat: latitude, lng: longitude },
-                    });
-                  } else {
-                    // Fallback to mock location
-                    const location = this.getLocationFromCoordinates(latitude, longitude);
-                    resolve({
-                      ...location,
-                      coordinates: { lat: latitude, lng: longitude },
-                    });
-                  }
-                }
-              );
+            const result = await reverseGeocode(latitude, longitude);
+            if (result) {
+              const location = this.extractLocationFromGeoapify(result);
+              resolve({
+                ...location,
+                coordinates: { lat: latitude, lng: longitude },
+              });
               return;
             }
-          } catch (error) {
-            console.warn('Google Maps not available, using fallback:', error);
+          } catch (e) {
+            console.warn('Geoapify reverse geocode not available, using fallback:', e);
           }
-          
-          // Fallback to mock location
           const location = this.getLocationFromCoordinates(latitude, longitude);
           resolve({
             ...location,
@@ -56,7 +36,6 @@ export class LocationService {
           });
         },
         (error) => {
-          // Fallback to default location
           console.warn('Geolocation error:', error);
           resolve({
             city: 'Mumbai',
@@ -69,101 +48,58 @@ export class LocationService {
   }
 
   /**
-   * Convert Google Places location data to LocationData format
+   * Convert address + coordinates (and optional city/state/country from Geoapify) to LocationData
    */
+  static async convertAddressToLocationData(
+    address: string,
+    lat: number,
+    lng: number,
+    options?: { city?: string; state?: string; country?: string }
+  ): Promise<LocationData> {
+    if (options?.city || options?.state || options?.country) {
+      return {
+        city: options.city || 'Mumbai',
+        state: options.state || 'Maharashtra',
+        country: options.country || 'India',
+        coordinates: { lat, lng },
+      };
+    }
+    try {
+      const result = await reverseGeocode(lat, lng);
+      if (result) {
+        const location = this.extractLocationFromGeoapify(result);
+        return { ...location, coordinates: { lat, lng } };
+      }
+    } catch (e) {
+      console.warn('Geoapify reverse geocode failed, parsing from address:', e);
+    }
+    const parsed = this.parseLocationFromAddress(address);
+    return { ...parsed, coordinates: { lat, lng } };
+  }
+
+  /** @deprecated Use convertAddressToLocationData */
   static async convertGooglePlacesToLocationData(
     address: string,
     lat: number,
-    lng: number
+    lng: number,
+    options?: { city?: string; state?: string; country?: string }
   ): Promise<LocationData> {
-    try {
-      await loadGoogleMaps();
-      if (window.google && window.google.maps) {
-        const geocoder = new window.google.maps.Geocoder();
-        return new Promise((resolve) => {
-          geocoder.geocode(
-            { location: { lat, lng } },
-            (results, status) => {
-              if (window.google && status === window.google.maps.GeocoderStatus.OK && results && results.length > 0) {
-                const location = this.extractLocationFromGeocodeResult(results[0]);
-                resolve({
-                  ...location,
-                  coordinates: { lat, lng },
-                });
-              } else {
-                // Fallback: try to parse from address string
-                const parsed = this.parseLocationFromAddress(address);
-                resolve({
-                  ...parsed,
-                  coordinates: { lat, lng },
-                });
-              }
-            }
-          );
-        });
-      }
-    } catch (error) {
-      console.warn('Google Maps not available, parsing from address:', error);
-    }
+    return this.convertAddressToLocationData(address, lat, lng, options);
+  }
 
-    // Fallback: parse from address string
-    const parsed = this.parseLocationFromAddress(address);
+  private static extractLocationFromGeoapify(result: GeoapifyResult): LocationData {
     return {
-      ...parsed,
-      coordinates: { lat, lng },
+      city: result.city || 'Mumbai',
+      state: result.state || 'Maharashtra',
+      country: result.country || 'India',
     };
   }
 
-  /**
-   * Extract city, state, country from Google Geocoder result
-   */
-  private static extractLocationFromGeocodeResult(result: any): LocationData {
-    let city = '';
-    let state = '';
-    let country = 'India';
-
-    for (const component of result.address_components || []) {
-      const types = component.types;
-      
-      if (types.includes('locality') || types.includes('sublocality') || types.includes('sublocality_level_1')) {
-        city = component.long_name;
-      } else if (types.includes('administrative_area_level_1')) {
-        state = component.long_name;
-      } else if (types.includes('country')) {
-        country = component.long_name;
-      }
-    }
-
-    // Fallback if city not found
-    if (!city) {
-      for (const component of result.address_components || []) {
-        if (component.types.includes('administrative_area_level_2')) {
-          city = component.long_name;
-          break;
-        }
-      }
-    }
-
-    // Fallback values
-    if (!city) city = 'Mumbai';
-    if (!state) state = 'Maharashtra';
-    if (!country) country = 'India';
-
-    return { city, state, country };
-  }
-
-  /**
-   * Parse location from address string (fallback method)
-   */
   private static parseLocationFromAddress(address: string): LocationData {
-    // Try to extract city and state from address
-    // Common format: "Street, City, State, Country"
-    const parts = address.split(',').map(p => p.trim());
-    
+    const parts = address.split(',').map((p) => p.trim());
     let city = 'Mumbai';
     let state = 'Maharashtra';
     let country = 'India';
-
     if (parts.length >= 2) {
       city = parts[parts.length - 3] || parts[parts.length - 2] || 'Mumbai';
       state = parts[parts.length - 2] || parts[parts.length - 1] || 'Maharashtra';
@@ -171,23 +107,14 @@ export class LocationService {
     } else if (parts.length === 1) {
       city = parts[0];
     }
-
     return { city, state, country };
   }
 
   private static getLocationFromCoordinates(lat: number, lng: number): LocationData {
-    // Mock location mapping - in production, use reverse geocoding API
-    // This is a simplified version for demo purposes
-    if (lat > 19 && lat < 20 && lng > 72 && lng < 73) {
-      return { city: 'Mumbai', state: 'Maharashtra', country: 'India' };
-    } else if (lat > 28 && lat < 29 && lng > 76 && lng < 78) {
-      return { city: 'Delhi', state: 'Delhi', country: 'India' };
-    } else if (lat > 12 && lat < 13 && lng > 77 && lng < 78) {
-      return { city: 'Bangalore', state: 'Karnataka', country: 'India' };
-    } else if (lat > 18 && lat < 19 && lng > 72 && lng < 73) {
-      return { city: 'Pune', state: 'Maharashtra', country: 'India' };
-    }
-    
+    if (lat > 19 && lat < 20 && lng > 72 && lng < 73) return { city: 'Mumbai', state: 'Maharashtra', country: 'India' };
+    if (lat > 28 && lat < 29 && lng > 76 && lng < 78) return { city: 'Delhi', state: 'Delhi', country: 'India' };
+    if (lat > 12 && lat < 13 && lng > 77 && lng < 78) return { city: 'Bangalore', state: 'Karnataka', country: 'India' };
+    if (lat > 18 && lat < 19 && lng > 72 && lng < 73) return { city: 'Pune', state: 'Maharashtra', country: 'India' };
     return { city: 'Mumbai', state: 'Maharashtra', country: 'India' };
   }
 
@@ -195,4 +122,3 @@ export class LocationService {
     return `${location.city}, ${location.state}`;
   }
 }
-

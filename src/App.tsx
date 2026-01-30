@@ -105,7 +105,7 @@ function App() {
     setShowLocationPopup(true);
   };
 
-  const handleLocationSet = async (locationData: { address: string; lat: number; lng: number }) => {
+  const handleLocationSet = async (locationData: { address: string; lat: number; lng: number; city?: string; state?: string; country?: string }) => {
     // Location is mandatory - don't allow closing without setting location
     if (!locationData.address || locationData.lat === 0 || locationData.lng === 0) {
       return; // Don't close popup if location is not set
@@ -113,11 +113,14 @@ function App() {
 
     setLoading(true);
     try {
-      // Convert Google Places location to LocationData format
-      const locationDataFormatted = await LocationService.convertGooglePlacesToLocationData(
+      // Convert address + optional Geoapify city/state/country to LocationData format
+      const locationDataFormatted = await LocationService.convertAddressToLocationData(
         locationData.address,
         locationData.lat,
-        locationData.lng
+        locationData.lng,
+        locationData.city != null || locationData.state != null || locationData.country != null
+          ? { city: locationData.city, state: locationData.state, country: locationData.country }
+          : undefined
       );
       
       setLocation(locationDataFormatted);

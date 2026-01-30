@@ -16,9 +16,11 @@ Then set VITE_API_BASE_URL=http://localhost:3001 in your .env file
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
+from dotenv import load_dotenv
 import json
 import uuid
 import os
+from urllib.parse import quote
 import threading
 import time
 import logging
@@ -28,6 +30,7 @@ from ecommerce_platform.zepto import run_zepto_flow
 from ecommerce_platform.blinkit import run_blinkit_flow
 from ecommerce_platform.instamart import run_instamart_flow
 from ecommerce_platform.dmart import run_dmart_flow
+from ecommerce_platform.bigbasket import run_bigbasket_flow
 from datetime import datetime
 # Import comparison functions from compare.py
 from compare import (
@@ -94,9 +97,13 @@ def load_config():
         logging.error(f'[Config] Invalid JSON in config.json: {e}')
         return {}
 
+# Load .env for Geoapify API key (optional)
+load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
+
 # Load config on startup
 CONFIG = load_config()
 PLATFORM_CONFIG = CONFIG.get('platform', {})
+GEOAPIFY_API_KEY = os.environ.get('GEOAPIFY_API_KEY', '')
 SEARCH_DEBUG = CONFIG.get('search_debug', False)
 MATCHING_CONFIG = CONFIG.get('matching', {})
 
@@ -288,7 +295,7 @@ def search_platform(platform, query, location, run_parent_folder=None):
     platform_map = {
         'zepto': scrape_zepto,
         'swiggy-instamart': scrape_instamart,
-        # 'bigbasket': scrape_bigbasket,
+        'bigbasket': scrape_bigbasket,
         'blinkit': scrape_blinkit,
         'dmart': scrape_dmart
     }
@@ -393,10 +400,49 @@ def scrape_instamart(query, location, platform_config=None, run_parent_folder=No
         return []
 
 
-def scrape_bigbasket(query, location, platform_config=None):
-    """BigBasket Scraper"""
-    # Implement BigBasket scraping
-    return []
+def scrape_bigbasket(query, location, platform_config=None, run_parent_folder=None, platform_name='bigbasket'):
+    """BigBasket Scraper - Uses Playwright to scrape BigBasket website"""
+    try:
+        if not query:
+            logging.warning('[BigBasket] Empty query, returning empty list')
+            return []
+        
+        # Get headless setting from config
+        if platform_config is None:
+            platform_config = get_platform_config('bigbasket')
+        headless = platform_config.get('headless', True)
+        
+        logging.info(f'[BigBasket] Starting scrape for query: "{query}" (headless={headless})')
+        
+        # Use the Playwright-based scraper from bigbasket
+        raw_products = run_bigbasket_flow(
+            product_name=query,
+            location=location["city"],
+            headless=headless,
+            max_products=50,
+            run_parent_folder=run_parent_folder,
+            platform_name=platform_name
+        )
+        
+        # Ensure products is a list
+        if raw_products is None:
+            raw_products = []
+        
+        # Normalize product data to standard format
+        normalized_products = [normalize_product_data(p, platform_name) for p in raw_products]
+        
+        logging.info(f'[BigBasket] Scrape completed: Found {len(normalized_products)} products for query "{query}"')
+        return normalized_products
+    except ImportError as error:
+        logging.error(f'[BigBasket] Import error - Playwright may not be installed: {error}')
+        import traceback
+        logging.error(traceback.format_exc())
+        return []
+    except Exception as error:
+        logging.error(f'[BigBasket] Scraping error: {error}')
+        import traceback
+        logging.error(traceback.format_exc())
+        return []
 
 
 def scrape_blinkit(query, location, platform_config=None, run_parent_folder=None, platform_name='blinkit'):
@@ -517,6 +563,48 @@ def check_availability():
 def health_check():
     """Health check endpoint"""
     return jsonify({'status': 'ok', 'message': 'Server is running'})
+
+
+@app.route('/api/autocomplete', methods=['GET'])
+def geoapify_autocomplete():
+    """Proxy Geoapify autocomplete so API key stays on server (reference: server.js)"""
+    text = (request.args.get('text') or '').strip()
+    if not text:
+        return jsonify([])
+    if not GEOAPIFY_API_KEY:
+        logging.warning('[Geoapify] GEOAPIFY_API_KEY not set')
+        return jsonify({'error': 'GEOAPIFY_API_KEY not set. Add it to .env'}), 500
+    url = f"https://api.geoapify.com/v1/geocode/autocomplete?text={quote(text)}&format=json&limit=8&filter=countrycode:in&apiKey={GEOAPIFY_API_KEY}"
+    try:
+        r = requests.get(url, timeout=10)
+        r.raise_for_status()
+        data = r.json()
+        return jsonify(data.get('results', []))
+    except requests.RequestException as e:
+        logging.error(f'[Geoapify] Autocomplete request failed: {e}')
+        return jsonify({'error': 'Autocomplete request failed'}), 502
+
+
+@app.route('/api/geocode/reverse', methods=['GET'])
+def geoapify_reverse():
+    """Proxy Geoapify reverse geocode for lat/lon -> address (reference: server.js)"""
+    lat = request.args.get('lat')
+    lon = request.args.get('lon')
+    if lat is None or lon is None:
+        return jsonify({'error': 'lat and lon required'}), 400
+    if not GEOAPIFY_API_KEY:
+        return jsonify({'error': 'GEOAPIFY_API_KEY not set'}), 500
+    url = f"https://api.geoapify.com/v1/geocode/reverse?lat={lat}&lon={lon}&format=json&apiKey={GEOAPIFY_API_KEY}"
+    try:
+        r = requests.get(url, timeout=10)
+        r.raise_for_status()
+        data = r.json()
+        results = data.get('results', [])
+        return jsonify(results[0] if results else {})
+    except requests.RequestException as e:
+        logging.error(f'[Geoapify] Reverse geocode failed: {e}')
+        return jsonify({'error': 'Reverse geocode failed'}), 502
+
 
 @app.route('/api/config', methods=['GET'])
 def get_config():

@@ -1,114 +1,76 @@
-import { useEffect, useState, useRef } from "react";
-import { loadGoogleMaps } from "../utils/loadGoogleMaps";
+import { useEffect, useState } from "react";
+import { fetchAutocomplete, type GeoapifyResult } from "../services/geoapifyService";
 
 interface LocationPopupProps {
   onClose: (location: {
     address: string;
     lat: number;
     lng: number;
+    city?: string;
+    state?: string;
+    country?: string;
   }) => void;
 }
 
 export const LocationPopup = ({ onClose }: LocationPopupProps) => {
   const [query, setQuery] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
+  const [suggestions, setSuggestions] = useState<GeoapifyResult[]>([]);
   const [loading, setLoading] = useState(false);
-  
-  // These keep the Google services active without reloading them
-  const autocompleteService = useRef<any>(null);
-  const placesService = useRef<any>(null);
-  const geocoder = useRef<any>(null);
 
-  // 1. Initialize Google Maps Services
-  useEffect(() => {
-    loadGoogleMaps().then(() => {
-      if (window.google && window.google.maps && window.google.maps.places) {
-        autocompleteService.current = new window.google.maps.places.AutocompleteService();
-        placesService.current = new window.google.maps.places.PlacesService(document.createElement("div"));
-        geocoder.current = new window.google.maps.Geocoder();
-      }
-    }).catch(() => {
-      console.error("Failed to load Google Maps API");
-    });
-  }, []);
-
-  // 2. Fetch Suggestions when query changes
+  // Fetch suggestions when query changes (Geoapify autocomplete via backend)
   useEffect(() => {
     if (!query.trim()) {
       setSuggestions([]);
       return;
     }
 
-    // Debounce to avoid too many requests
     const delay = setTimeout(() => {
-      if (!autocompleteService.current) return;
-
-      const request = {
-        input: query,
-        componentRestrictions: { country: "in" }, // Restrict to India
-      };
-
-      autocompleteService.current.getPlacePredictions(request, (predictions: any, status: any) => {
-        if (window.google && status === window.google.maps.places.PlacesServiceStatus.OK && predictions) {
-          setSuggestions(predictions);
-        } else {
+      fetchAutocomplete(query)
+        .then(setSuggestions)
+        .catch((err) => {
+          console.warn("[LocationPopup] Autocomplete error:", err);
           setSuggestions([]);
-        }
-      });
+        });
     }, 400);
 
     return () => clearTimeout(delay);
   }, [query]);
 
-  // 3. Handle User Selection
-  const handleSelect = (place: any) => {
-    if (!placesService.current) return;
-
+  const handleSelect = (result: GeoapifyResult) => {
     setLoading(true);
-    const request = {
-      placeId: place.place_id,
-      fields: ["geometry", "formatted_address", "address_components"],
-    };
-
-    placesService.current.getDetails(request, (placeDetails: any, status: any) => {
-      if (window.google && status === window.google.maps.places.PlacesServiceStatus.OK) {
-        const location = placeDetails.geometry.location;
-        onClose({
-          address: placeDetails.formatted_address,
-          lat: location.lat(),
-          lng: location.lng(),
-        });
-      } else {
-        console.error("Failed to fetch place details");
-        setLoading(false);
-      }
+    const lat = result.lat ?? 0;
+    const lon = result.lon ?? 0;
+    const address = result.formatted || [result.address_line1, result.address_line2].filter(Boolean).join(", ") || `${result.city || ""}, ${result.state || ""}`.trim() || "Unknown";
+    onClose({
+      address,
+      lat,
+      lng: lon,
+      city: result.city,
+      state: result.state,
+      country: result.country,
     });
+    setLoading(false);
   };
 
-
-  // Debug log
-  console.log('[LocationPopup] Rendering popup');
-
   return (
-    <div 
+    <div
       className="fixed inset-0 flex items-center justify-center p-4"
-      style={{ 
+      style={{
         zIndex: 9999,
-        position: 'fixed',
+        position: "fixed",
         top: 0,
         left: 0,
         right: 0,
         bottom: 0,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
-      <div 
+      <div
         className="bg-white w-full max-w-[420px] rounded-lg shadow-xl border border-blue-100 overflow-hidden"
-        style={{ position: 'relative', zIndex: 10000 }}
+        style={{ position: "relative", zIndex: 10000 }}
       >
-        {/* Header with blue gradient */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
@@ -120,7 +82,6 @@ export const LocationPopup = ({ onClose }: LocationPopupProps) => {
           </div>
         </div>
 
-        {/* Content */}
         <div className="p-6">
           <div className="relative">
             <input
@@ -137,20 +98,19 @@ export const LocationPopup = ({ onClose }: LocationPopupProps) => {
             )}
           </div>
 
-          {/* Suggestions */}
           {suggestions.length > 0 && (
             <div className="border-2 border-blue-100 rounded-lg mt-3 max-h-60 overflow-y-auto bg-white shadow-lg">
-              {suggestions.map((item: any) => (
+              {suggestions.map((item, idx) => (
                 <div
-                  key={item.place_id}
+                  key={`${item.lat}-${item.lon}-${idx}`}
                   onClick={() => handleSelect(item)}
                   className="px-4 py-3 cursor-pointer hover:bg-blue-50 border-b border-blue-50 last:border-b-0 transition-colors"
                 >
                   <p className="font-medium text-sm text-gray-900">
-                    {item.structured_formatting.main_text}
+                    {item.address_line1 || item.city || item.formatted || "Address"}
                   </p>
                   <p className="text-xs text-blue-600 mt-0.5">
-                    {item.structured_formatting.secondary_text}
+                    {[item.city, item.state, item.country].filter(Boolean).join(", ") || item.formatted}
                   </p>
                 </div>
               ))}
