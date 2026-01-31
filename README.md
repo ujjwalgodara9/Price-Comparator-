@@ -1,6 +1,6 @@
 # Fast E-commerce Product Compare
 
-A modern product comparison website for quick delivery platforms like Zepto, Swiggy Instamart, BigBasket, and Blinkit.
+A modern product comparison website for quick delivery platforms.
 
 ## Quick Start
 
@@ -45,12 +45,9 @@ src/
 backend/
 ├── app.py             # Flask API server
 ├── requirements.txt   # Python dependencies
-└── zepto_headers_config.py
 ```
 
 ## Supported Platforms
-
-Zepto • Swiggy Instamart • BigBasket • Blinkit • Dunzo • Demart Ready • Flipkart Minutes • Amazon Prime Now
 
 Architecture
 - Location finding for all the platform
@@ -61,42 +58,3 @@ Architecture
 - Architecture can be async as it gets the data algorithm should start searching and as it gets the pairs in platform start displaying it on website
 - Have to give the merging for quantities too so the search should decrease accross the platforms 
 
-Common item list - 
-    Milk
-    Curds / Dahi
-    Atta / Flour
-    Cooking Oil
-    Dosa Batter
-    Vegetable & Fruits
-    Potato Chips
-    Soft Drinks / Cold Beverages
-    Eggs
-    Bread / Bakery
-    Personal Care (soap, shampoo)
-    Toiletries
-    Condoms / Wellness Products
-    Biscuits / Namkeen
-    Pet Food
-    Ice Cubes & Frozen Items
-    Chocolates
-    Household Essentials (detergent, cleaners)
-
-Testing - 
-- Similarity matching for name 
-- test the price matching in algorithm after name
-- Test the dataset generation and flagging
-- Can give the automation for giving vivid product and auto assess the results from compare.json
-
-Task - 
-
-UI -
-- Exposing location API key, have to hide it    
-
-GCP
-- make the server.log active for GCP
-- zepto on GCP not working
-- UI shows kg for water too
-- Harsh setup
-    - blinkit location and merge
-- Naveen instamart merge
-- reduce search time 
