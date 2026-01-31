@@ -7,8 +7,9 @@ import { Footer } from './components/Footer';
 import { LocationService } from './services/locationService';
 import { ProductService } from './services/productService';
 import { LocationData, ComparisonFilters, MatchedProduct, Platform } from './types/product';
-import { Loader2, Sparkles, TrendingDown, Zap } from 'lucide-react';
+import { Loader2, Sparkles, ShoppingCart, Clock, Banknote, Package, Search, GitCompare } from 'lucide-react';
 import { Badge } from './components/ui/badge';
+import { Button } from './components/ui/button';
 import groeaseLogo from './images/groease_logo_crop.jpg';
 import groeaseCenter from './images/groease.jpeg';
 import groeaseBanner from './images/Groease_banner.png';
@@ -182,7 +183,7 @@ function App() {
       )}
 
       {/* GROEASE Header with Logo */}
-      <header className="bg-gradient-to-r from-white via-blue-50/40 to-white border-b border-blue-100 shadow-sm sticky top-0 z-40 backdrop-blur-sm">
+      <header id="search-area" className="bg-gradient-to-r from-white via-blue-50/40 to-white border-b border-blue-100 shadow-sm sticky top-0 z-40 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
@@ -231,94 +232,176 @@ function App() {
         )}
 
         {!loading && filteredProducts.length === 0 && !searchQuery ? (
-          /* Initial State with Creative Quote */
-          <div className="flex items-center justify-center min-h-[60vh]">
-            <div className="max-w-2xl mx-auto text-center px-4">
-              {/* Decorative Elements */}
-              <div className="relative mb-8">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-32 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full blur-3xl opacity-50"></div>
-                </div>
-                <div className="relative flex justify-center mb-6">
-                  <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg border border-blue-200">
-                    <img 
-                      src={groeaseCenter} 
-                      alt="GROEASE Logo" 
-                      className="h-16 w-16 object-contain mx-auto"
-                    />
-                  </div>
+          /* Landing Page */
+          <div className="max-w-4xl mx-auto space-y-16 md:space-y-24">
+            {/* Hero */}
+            <div className="text-center space-y-6">
+              <div className="flex justify-center mb-6">
+                <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl shadow-lg border border-blue-200">
+                  <img src={groeaseCenter} alt="GROEASE Logo" className="h-20 w-20 object-contain mx-auto" />
                 </div>
               </div>
-
-              {/* Creative Quote */}
-              <div className="space-y-6">
-                <blockquote className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-                  <span className="text-blue-600">"</span>
-                  <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
-                    ONE PRODUCT. MULTIPLE APPS. ONE BEST DEAL.
-                  </span>
-                  <span className="text-blue-600">"</span>
-                </blockquote>
-                
-                <p className="text-lg text-blue-700 font-medium">
-                  Compare prices across quick-commerce apps and choose the smartest option, every time
-                </p>
-
-                {/* Feature Icons */}
-                <div className="flex flex-wrap items-center justify-center gap-8 mt-10 pt-8 border-t border-blue-200">
-                  <div className="flex flex-col items-center gap-2">
-                    <div className="p-3 bg-blue-50 rounded-xl border border-blue-100">
-                      <TrendingDown className="h-6 w-6 text-blue-600" />
-                    </div>
-                    <span className="text-sm font-medium text-blue-700">Best Prices</span>
-                  </div>
-                  <div className="flex flex-col items-center gap-2">
-                    <div className="p-3 bg-blue-50 rounded-xl border border-blue-100">
-                      <Zap className="h-6 w-6 text-blue-600" />
-                    </div>
-                    <span className="text-sm font-medium text-blue-700">Quick Delivery</span>
-                  </div>
-                  <div className="flex flex-col items-center gap-2">
-                    <div className="p-3 bg-blue-50 rounded-xl border border-blue-100">
-                      <Sparkles className="h-6 w-6 text-blue-600" />
-                    </div>
-                    <span className="text-sm font-medium text-blue-700">Transparent <br /> Shopping</span>
-                  </div>
-                </div>
-
-              {/* Groease Banner slideshow — full width to screen edges, no cropping */}
-              <section className="w-screen relative left-1/2 -translate-x-1/2 mt-10 pt-4 pb-2">
-                <div className="w-full rounded-none overflow-hidden shadow-md border-0 border-y border-blue-100 bg-blue-50/30">
-                  {BANNER_SLIDES.map((slide, i) => (
-                    <div
-                      key={i}
-                      className={`transition-opacity duration-500 ${i === bannerIndex ? 'opacity-100' : 'opacity-0 absolute inset-0 pointer-events-none invisible'}`}
-                      aria-hidden={i !== bannerIndex}
-                    >
-                      <img
-                        src={slide.src}
-                        alt={slide.alt}
-                        className="w-full h-auto block"
-                      />
-                    </div>
-                  ))}
-                </div>
-                <div className="flex justify-center gap-2 mt-3">
-                  {BANNER_SLIDES.map((_, i) => (
-                    <button
-                      key={i}
-                      type="button"
-                      onClick={() => setBannerIndex(i)}
-                      className={`h-2 rounded-full transition-all ${
-                        i === bannerIndex ? 'w-6 bg-blue-600' : 'w-2 bg-blue-200 hover:bg-blue-300'
-                      }`}
-                      aria-label={`Go to slide ${i + 1}`}
-                    />
-                  ))}
-                </div>
-              </section>
+              <p className="text-3xl md:text-4xl font-bold leading-tight bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
+                India&apos;s first quick commerce comparison app.
+              </p>
+              <div className="text-lg text-blue-700 font-medium space-y-1">
+                <p>Search once.</p>
+                <p>Compare across multiple quick-commerce platforms.</p>
+                <p>Choose the best option.</p>
               </div>
             </div>
+
+            {/* Banner slideshow */}
+            <section className="w-screen relative left-1/2 -translate-x-1/2">
+              <div className="w-full rounded-none overflow-hidden shadow-md border-0 border-y border-blue-100 bg-blue-50/30">
+                {BANNER_SLIDES.map((slide, i) => (
+                  <div
+                    key={i}
+                    className={`transition-opacity duration-500 ${i === bannerIndex ? 'opacity-100' : 'opacity-0 absolute inset-0 pointer-events-none invisible'}`}
+                    aria-hidden={i !== bannerIndex}
+                  >
+                    <img src={slide.src} alt={slide.alt} className="w-full h-auto block" />
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-center gap-2 py-3">
+                {BANNER_SLIDES.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setBannerIndex(i)}
+                    className={`h-2 rounded-full transition-all ${i === bannerIndex ? 'w-6 bg-blue-600' : 'w-2 bg-blue-200 hover:bg-blue-300'}`}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </section>
+
+            {/* WHY GROEASE? */}
+            <section>
+              <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-8 text-center">WHY GROEASE?</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="p-5 bg-white rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="p-3 bg-blue-50 rounded-xl w-fit mb-3">
+                    <ShoppingCart className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <h3 className="font-semibold text-blue-900 mb-1">One Search</h3>
+                  <p className="text-sm text-blue-700">Multiple apps, one screen.</p>
+                </div>
+                <div className="p-5 bg-white rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="p-3 bg-blue-50 rounded-xl w-fit mb-3">
+                    <Clock className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <h3 className="font-semibold text-blue-900 mb-1">Delivery Clarity</h3>
+                  <p className="text-sm text-blue-700">Know who&apos;s faster.</p>
+                </div>
+                <div className="p-5 bg-white rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="p-3 bg-blue-50 rounded-xl w-fit mb-3">
+                    <Banknote className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <h3 className="font-semibold text-blue-900 mb-1">Price Visibility</h3>
+                  <p className="text-sm text-blue-700">See the best deal.</p>
+                </div>
+                <div className="p-5 bg-white rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="p-3 bg-blue-50 rounded-xl w-fit mb-3">
+                    <Package className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <h3 className="font-semibold text-blue-900 mb-1">Live Availability</h3>
+                  <p className="text-sm text-blue-700">Only what&apos;s in stock.</p>
+                </div>
+              </div>
+            </section>
+
+            {/* HOW IT WORKS */}
+            <section className="bg-white/60 rounded-2xl border border-blue-100 p-6 md:p-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-6 text-center">HOW IT WORKS</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4">
+                <div className="relative flex flex-col items-center p-5 rounded-xl bg-blue-50/80 border border-blue-100">
+                  <div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg mb-3">1</div>
+                  <Search className="h-7 w-7 text-blue-600 mb-2" />
+                  <p className="font-semibold text-blue-900 text-center">Search a product</p>
+                  <div className="hidden md:block absolute top-1/2 -right-3 -translate-y-1/2 text-blue-300 text-xl">→</div>
+                </div>
+                <div className="relative flex flex-col items-center p-5 rounded-xl bg-blue-50/80 border border-blue-100">
+                  <div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg mb-3">2</div>
+                  <GitCompare className="h-7 w-7 text-blue-600 mb-2" />
+                  <p className="font-semibold text-blue-900 text-center">Compare options</p>
+                  <div className="hidden md:block absolute top-1/2 -right-3 -translate-y-1/2 text-blue-300 text-xl">→</div>
+                </div>
+                <div className="flex flex-col items-center p-5 rounded-xl bg-blue-50/80 border border-blue-100">
+                  <div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg mb-3">3</div>
+                  <ShoppingCart className="h-7 w-7 text-blue-600 mb-2" />
+                  <p className="font-semibold text-blue-900 text-center">Order smart</p>
+                </div>
+              </div>
+              <p className="text-center text-blue-600 font-semibold mt-4 text-sm uppercase tracking-wide">Simple. Quick. Efficient.</p>
+            </section>
+
+            {/* WHO IT'S FOR + WHY WE BUILT GROEASE — side-by-side layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* WHO IT'S FOR */}
+              <section className="bg-white rounded-2xl border border-blue-100 shadow-sm p-6 md:p-8">
+                <h2 className="text-xl md:text-2xl font-bold text-blue-900 mb-6">WHO IT&apos;S FOR</h2>
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-blue-50/50 border border-blue-50">
+                    <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0" />
+                    <span className="text-blue-800 font-medium">Urban shoppers</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-blue-50/50 border border-blue-50">
+                    <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0" />
+                    <span className="text-blue-800 font-medium">College students & Gen Z</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-blue-50/50 border border-blue-50">
+                    <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0" />
+                    <span className="text-blue-800 font-medium">Working professionals</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-blue-50/50 border border-blue-50">
+                    <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0" />
+                    <span className="text-blue-800 font-medium">Families</span>
+                  </div>
+                </div>
+                <p className="text-blue-700 font-medium text-sm">If you shop groceries online, Groease works for you.</p>
+              </section>
+
+              {/* WHY WE BUILT GROEASE */}
+              <section className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-2xl border border-blue-100 shadow-sm p-6 md:p-8">
+                <h2 className="text-xl md:text-2xl font-bold text-blue-900 mb-6">WHY WE BUILT GROEASE</h2>
+                <div className="space-y-4">
+                  <p className="text-blue-800 font-medium">Too many apps.</p>
+                  <p className="text-blue-800 font-medium">Too many decisions.</p>
+                  <p className="text-blue-900 font-semibold pt-2 border-t border-blue-200">
+                    Groease simplifies grocery shopping by giving you clarity first.
+                  </p>
+                </div>
+              </section>
+            </div>
+
+            {/* FOUNDER'S NOTE */}
+            <section className="bg-white rounded-2xl border border-blue-100 shadow-md p-6 md:p-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-6 text-center">FOUNDER&apos;S NOTE</h2>
+              <blockquote className="text-blue-800 space-y-4 max-w-3xl mx-auto">
+                <p>During exam season, I found myself juggling multiple grocery apps, checking prices, delivery slots, and availability, all while short on time.</p>
+                <p>That frustration turned into an idea. An idea that became Groease.</p>
+                <p>I later pitched this on Ideabaaz, where the problem instantly resonated. Arjun Vaidya showed strong interest, calling it a solution he&apos;d personally use.</p>
+                <p>Groease is built by a user, for users. What started as a daily inconvenience is now designed to make everyday shopping easier for everyone.</p>
+                <footer className="pt-4 border-t border-blue-100 text-blue-700 font-medium italic">
+                  — Aliza Saifi, Founder, Groease
+                </footer>
+              </blockquote>
+            </section>
+
+            {/* FINAL CTA */}
+            <section className="text-center py-8">
+              <p className="text-2xl font-bold text-blue-900 mb-2">Less switching.</p>
+              <p className="text-2xl font-bold text-blue-900 mb-6">More ease.</p>
+              <Button
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-xl"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                Try Groease
+              </Button>
+            </section>
           </div>
         ) : !loading && filteredProducts.length === 0 && searchQuery ? (
           <div className="text-center py-16">

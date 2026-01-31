@@ -1,4 +1,4 @@
-import { Instagram, Linkedin, Facebook, Youtube } from 'lucide-react';
+import { Instagram, Linkedin, Facebook, Youtube, Mail } from 'lucide-react';
 
 function XIcon({ className }: { className?: string }) {
   return (
@@ -19,10 +19,41 @@ const SOCIAL_LINKS = [
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-blue-100 bg-gradient-to-r from-white via-blue-50/40 to-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="flex flex-col items-center gap-4">
-          <p className="text-sm text-blue-700 font-medium">Follow us</p>
-          <div className="flex items-center justify-center gap-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+          {/* Brand & contact */}
+          <div className="space-y-3">
+            <h3 className="text-xl font-bold text-blue-900">Groease</h3>
+            <p className="text-blue-700 text-sm max-w-xs">
+              India&apos;s grocery comparison platform.
+            </p>
+            <a
+              href="mailto:Groeaseindia@gmail.com"
+              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm font-medium"
+            >
+              <Mail className="h-4 w-4" />
+              Groeaseindia@gmail.com
+            </a>
+          </div>
+
+          {/* Links */}
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <a href="#" className="text-blue-600 hover:text-blue-700 hover:underline">
+              Privacy Policy
+            </a>
+            <a href="#" className="text-blue-600 hover:text-blue-700 hover:underline">
+              Terms & Conditions
+            </a>
+            <a href="#" className="text-blue-600 hover:text-blue-700 hover:underline">
+              Partner with Us
+            </a>
+          </div>
+        </div>
+
+        {/* Social icons */}
+        <div className="mt-8 pt-6 border-t border-blue-100">
+          <p className="text-sm text-blue-700 font-medium mb-3">Follow us</p>
+          <div className="flex items-center gap-3">
             {SOCIAL_LINKS.map(({ href, icon: Icon, label }) => (
               <a
                 key={label}
@@ -36,8 +67,9 @@ export function Footer() {
               </a>
             ))}
           </div>
-          <p className="text-xs text-blue-600/80">© Groease — Compare smarter, shop better</p>
         </div>
+
+        <p className="mt-6 text-xs text-blue-600/80">© Groease</p>
       </div>
     </footer>
   );
