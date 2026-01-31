@@ -3,6 +3,7 @@ import { SearchBar } from './components/SearchBar';
 import { ProductComparisonTable } from './components/ProductComparisonTable';
 import { LocationDisplay } from './components/LocationDisplay';
 import { LocationPopup } from './components/LocationPopup';
+import { Footer } from './components/Footer';
 import { LocationService } from './services/locationService';
 import { ProductService } from './services/productService';
 import { LocationData, ComparisonFilters, MatchedProduct, Platform } from './types/product';
@@ -10,6 +11,19 @@ import { Loader2, Sparkles, TrendingDown, Zap } from 'lucide-react';
 import { Badge } from './components/ui/badge';
 import groeaseLogo from './images/groease_logo_crop.jpg';
 import groeaseCenter from './images/groease.jpeg';
+import groeaseBanner from './images/Groease_banner.png';
+import groeaseBanner2 from './images/Groease_banner_2 .png';
+import groeaseBanner3 from './images/Groease_banner_3.png';
+import groeaseBanner4 from './images/Groease_banner_4.png';
+
+const BANNER_SLIDES = [
+  { src: groeaseBanner, alt: 'Groease — As seen on Ideabaaz. One app, endless ease.' },
+  { src: groeaseBanner2, alt: 'Groease — As seen on Ideabaaz. Youngest contestant.' },
+  { src: groeaseBanner3, alt: 'Groease — As seen on Ideabaaz. Real titans, real solution.' },
+  { src: groeaseBanner4, alt: 'Groease — As seen on Ideabaaz. One app, endless ease.' },
+];
+
+const BANNER_INTERVAL_MS = 5000;
 
 function App() {
   const [location, setLocation] = useState<LocationData | null>(null);
@@ -18,6 +32,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [searchProgress, setSearchProgress] = useState(0);
   const [showLocationPopup, setShowLocationPopup] = useState(true); // Show popup by default
+  const [bannerIndex, setBannerIndex] = useState(0);
   
   // Default platforms to search (no filters panel, so hardcoded)
   const defaultPlatforms: Platform[] = ['zepto', 'blinkit', 'swiggy-instamart', 'bigbasket', 'dmart'];
@@ -96,6 +111,14 @@ function App() {
     }
   }, [location, searchQuery]);
 
+  // Banner slideshow auto-advance
+  useEffect(() => {
+    const id = setInterval(() => {
+      setBannerIndex((i) => (i + 1) % BANNER_SLIDES.length);
+    }, BANNER_INTERVAL_MS);
+    return () => clearInterval(id);
+  }, []);
+
   const handleSearch = (query: string) => {
     console.log('[App] handleSearch called with query:', query);
     setSearchQuery(query);
@@ -152,7 +175,7 @@ function App() {
   console.log('[App] Render - showLocationPopup:', showLocationPopup, 'location:', location);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/30 to-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white via-blue-50/30 to-white">
       {/* Location Popup - Must render first */}
       {showLocationPopup && (
         <LocationPopup onClose={handleLocationSet} />
@@ -169,7 +192,7 @@ function App() {
                 className="h-24 w-auto object-contain"
               />
               <Badge variant="outline" className="bg-yellow-50 border-yellow-300 text-yellow-700 text-[10px] sm:text-xs font-medium whitespace-nowrap">
-                Currently in Beta - Under Active Development
+                Beta
               </Badge>
             </div>
             {location && <LocationDisplay location={location} onRefresh={handleRefreshLocation} />}
@@ -262,6 +285,38 @@ function App() {
                     <span className="text-sm font-medium text-blue-700">Transparent <br /> Shopping</span>
                   </div>
                 </div>
+
+              {/* Groease Banner slideshow — full width to screen edges, no cropping */}
+              <section className="w-screen relative left-1/2 -translate-x-1/2 mt-10 pt-4 pb-2">
+                <div className="w-full rounded-none overflow-hidden shadow-md border-0 border-y border-blue-100 bg-blue-50/30">
+                  {BANNER_SLIDES.map((slide, i) => (
+                    <div
+                      key={i}
+                      className={`transition-opacity duration-500 ${i === bannerIndex ? 'opacity-100' : 'opacity-0 absolute inset-0 pointer-events-none invisible'}`}
+                      aria-hidden={i !== bannerIndex}
+                    >
+                      <img
+                        src={slide.src}
+                        alt={slide.alt}
+                        className="w-full h-auto block"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="flex justify-center gap-2 mt-3">
+                  {BANNER_SLIDES.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => setBannerIndex(i)}
+                      className={`h-2 rounded-full transition-all ${
+                        i === bannerIndex ? 'w-6 bg-blue-600' : 'w-2 bg-blue-200 hover:bg-blue-300'
+                      }`}
+                      aria-label={`Go to slide ${i + 1}`}
+                    />
+                  ))}
+                </div>
+              </section>
               </div>
             </div>
           </div>
@@ -312,6 +367,7 @@ function App() {
           </div>
         ) : null}
       </main>
+      <Footer />
     </div>
   );
 }

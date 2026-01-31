@@ -10,11 +10,11 @@
             "headless": true
         },
         "swiggy-instamart": {
-            "scrape": true,
+            "scrape": false,
             "headless": true
         },
         "bigbasket": {
-            "scrape": true,
+            "scrape": false,
             "headless": true
         },
         "dmart": {
