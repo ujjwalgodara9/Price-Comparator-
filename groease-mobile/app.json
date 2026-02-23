@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "PricePulse",
+    "slug": "pricepulse",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "_iconComment": "Add a 1024x1024 PNG at assets/icon.png before building for stores",
+    "scheme": "pricepulse",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#1D4ED8"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.groease.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Allow PricePulse to access your location for local product search."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#1D4ED8"
+      },
+      "package": "com.groease.app",
+      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"]
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow PricePulse to use your location for local product search."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": false
+    }
+  }
+}

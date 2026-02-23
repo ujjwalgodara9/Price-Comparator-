@@ -26,6 +26,23 @@ def remove_duplicate_products(product_list):
             
     return unique_products
 
+def set_location_by_geolocation(page):
+    """Set location using Zepto's 'Use My Current Location' button (requires geolocation on context)."""
+    print("Setting location using browser geolocation...")
+    address_header = page.get_by_test_id("user-address")
+    address_header.wait_for(state="visible")
+    address_header.click()
+
+    saved_container = page.get_by_test_id("saved-address-container")
+    saved_container.wait_for(state="visible", timeout=10000)
+
+    enable_btn = saved_container.get_by_role("button", name="Enable")
+    enable_btn.click()
+
+    page.wait_for_load_state("networkidle")
+    time.sleep(3)
+
+
 def set_location(page, location_name):
     print(f"Setting location to: {location_name}")
     address_header = page.get_by_test_id("user-address")
@@ -48,13 +65,21 @@ def set_location(page, location_name):
 
 def search_and_scroll(page, product_query):
     print(f"Searching for: {product_query}")
-    # 1. Click search icon and type
+    # 1. Click search icon to open the search overlay
     search_icon = page.get_by_test_id("search-bar-icon")
     search_icon.click()
-    
-    # Zepto search input usually appears after clicking icon
-    search_input = page.get_by_placeholder("Search for", exact=False)
-    search_input.fill(product_query)
+
+    # Wait for the search input to appear (overlay is client-side rendered).
+    # Don't rely on placeholder text — Zepto changes it; match any visible input instead.
+    try:
+        page.wait_for_selector('input:not([type="hidden"])', state="visible", timeout=10000)
+        search_input = page.locator('input:not([type="hidden"])').first
+        search_input.click()
+        search_input.fill(product_query)
+    except Exception:
+        # Fallback: if the click auto-focused the input, type directly
+        time.sleep(1)
+        page.keyboard.type(product_query)
     page.keyboard.press("Enter")
     
     page.evaluate("document.body.style.zoom = '20%'")
@@ -130,22 +155,61 @@ def save_to_timestamped_folder(data, platform_name, run_parent_folder=None):
 
 def run_zepto_flow(product_name, location, headless=True, max_products=50, run_parent_folder=None, platform_name='zepto'):
     start_time = time.time()
+
+    # Accept location as a dict (with city + coordinates) or a plain string
+    if isinstance(location, dict):
+        location_name = location.get("city") or location.get("address") or "Mumbai"
+        coords = location.get("coordinates", {})
+        lat = coords.get("lat")
+        lng = coords.get("lng")
+    else:
+        location_name = str(location)
+        lat = None
+        lng = None
+
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=headless)
-        context = browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-        )
+
+        context_kwargs = {
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        }
+        if lat and lng:
+            context_kwargs["geolocation"] = {"latitude": lat, "longitude": lng}
+            context_kwargs["permissions"] = ["geolocation"]
+
+        context = browser.new_context(**context_kwargs)
         page = context.new_page()
 
         try:
             page.goto("https://www.zepto.com", wait_until="networkidle")
-            
-            # Location
-            set_location(page, location)
-            
+
+            # Location: prefer geolocation (uses actual coordinates) over text search
+            # Text search for "New Delhi" picks Rajpath/Rashtrapati Bhavan — a government zone
+            # that shows "Coming Soon", so coordinates-based detection is more reliable.
+            if lat and lng:
+                try:
+                    set_location_by_geolocation(page)
+                except Exception as e:
+                    print(f"Geolocation failed ({e}), falling back to text search")
+                    set_location(page, location_name)
+            else:
+                set_location(page, location_name)
+
+            # Detect "coming soon" page — means Zepto doesn't serve this area
+            if page.locator("text=We're Coming Soon").count() > 0:
+                print("[Zepto] Location not serviceable, returning empty list")
+                return []
+
             # Search and Scroll
             search_and_scroll(page, product_name)
-            
+
+            # Wait for React to render product cards before extracting
+            try:
+                page.wait_for_selector('.B4vNQ', timeout=20000)
+            except Exception:
+                print("No .B4vNQ product cards appeared — returning empty list")
+                return []
+
             # Scrape
             final_data_list = extract_product_list(page)
 

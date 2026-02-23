@@ -73,11 +73,11 @@ def set_dmart_location(page, location_name):
     page.wait_for_timeout(1500)
 
     if reject_btn.is_visible():
-        print("❌ Location not serviceable by DMart. Aborting scraping.")
+        print("[FAIL] Location not serviceable by DMart. Aborting scraping.")
         raise Exception("Pincode not serviceable")
 
     elif confirm_btn.is_visible():
-        print("✅ Location serviceable. Confirming...")
+        print("[OK] Location serviceable. Confirming...")
         confirm_btn.click()
         print("DMart location fully set.")
         time.sleep(3)

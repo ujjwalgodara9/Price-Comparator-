@@ -32,3 +32,17 @@ __pycache__/
 
 venv/
 .env
+
+# Scraped product data (runtime artifacts)
+backend/product_data/
+backend/ecommerce_platform/product_data/
+backend/search_results.json
+backend/server.log
+
+# Claude AI memory / editor configs
+.claude/
+.cursor/
+
+# Expo / Metro
+groease-mobile/.expo/
+groease-mobile/metro.log

@@ -14,7 +14,7 @@
             "headless": true
         },
         "bigbasket": {
-            "scrape": false,
+            "scrape": true,
             "headless": true
         },
         "dmart": {

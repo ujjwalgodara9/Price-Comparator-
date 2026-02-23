@@ -80,7 +80,7 @@ app.logger.handlers = []  # Clear default handlers
 app.logger.addHandler(console_handler)
 app.logger.addHandler(file_handler)
 
-PORT = 8080
+PORT = int(os.environ.get('PORT', 8080))
 
 # Load configuration from config.json
 def load_config():
@@ -165,7 +165,7 @@ def search_all_platforms():
                     # Ensure products is a list before processing
                     if products is None:
                         products = []
-                    logging.info(f'[API] ✓ Platform {platform} returned {len(products)} products')
+                    logging.info(f'[API] [OK] Platform {platform} returned {len(products)} products')
                     
                     # Debug: Check if products have platform field set
                     if products:
@@ -181,7 +181,7 @@ def search_all_platforms():
                     all_products.extend(products)
                     products_by_platform[platform] = products
                 except Exception as error:
-                    logging.error(f'[API] ✗ Error searching {platform}: {error}')
+                    logging.error(f'[API] [X] Error searching {platform}: {error}')
                     import traceback
                     logging.error(traceback.format_exc())
                     # Continue with other platforms even if one fails
@@ -326,7 +326,7 @@ def scrape_zepto(query, location, platform_config=None, run_parent_folder=None, 
         # Use the Playwright-based scraper from zepto
         raw_products = run_zepto_flow(
             product_name=query,
-            location=location["city"],
+            location=location,
             headless=headless,
             max_products=50,
             run_parent_folder=run_parent_folder,
@@ -706,10 +706,10 @@ if __name__ == '__main__':
     logging.info(f'Fast E-commerce API server (Flask) running on port {PORT}')
     logging.info(f'Logs are being written to: {log_file}')
     logging.info(f'Set VITE_API_BASE_URL=http://localhost:{PORT} in your .env file')
-    logging.info(f'[Config] Search Debug: {"✓ ENABLED (timestamped folders)" if SEARCH_DEBUG else "✗ DISABLED (overwrite mode)"}')
+    logging.info(f'[Config] Search Debug: {"[OK] ENABLED (timestamped folders)" if SEARCH_DEBUG else "[X] DISABLED (overwrite mode)"}')
     logging.info('[Config] Platform scraping configuration:')
     for platform, config in PLATFORM_CONFIG.items():
-        status = '✓ ENABLED' if config.get('scrape', False) else '✗ DISABLED'
+        status = '[OK] ENABLED' if config.get('scrape', False) else '[X] DISABLED'
         headless = 'headless' if config.get('headless', True) else 'visible'
         logging.info(f'  {platform}: {status} ({headless})')
     # Ensure stdout is unbuffered for immediate log display
