@@ -1,11 +1,7 @@
-// React Native version of web src/components/LocationPopup.tsx
-// Changes:
-//   - Fixed overlay <div> → Modal component (slides up from bottom)
-//   - <input> → TextInput
-//   - onClick dropdown → FlatList
-//   - CSS → StyleSheet
-//   - KeyboardAvoidingView handles keyboard pushing content up on both iOS and Android
-// Logic (debounced autocomplete, suggestion selection) is identical
+// Location picker modal
+// Two ways to set location:
+//   1. "Use my current location" — GPS via expo-location + reverse geocode
+//   2. Type to search — Geoapify autocomplete
 
 import React, { useState, useEffect, useRef } from 'react';
 import {
@@ -19,9 +15,9 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Platform as RNPlatform,
-  ScrollView,
 } from 'react-native';
 import { fetchAutocomplete, type GeoapifyResult } from '../services/geoapifyService';
+import { LocationService } from '../services/locationService';
 
 interface LocationModalProps {
   visible: boolean;
@@ -40,9 +36,10 @@ export function LocationModal({ visible, onSelect, onClose }: LocationModalProps
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState<GeoapifyResult[]>([]);
   const [loading, setLoading] = useState(false);
+  const [gpsLoading, setGpsLoading] = useState(false);
   const inputRef = useRef<TextInput>(null);
 
-  // Debounced autocomplete — identical logic to web LocationPopup
+  // Debounced autocomplete
   useEffect(() => {
     if (!query.trim()) {
       setSuggestions([]);
@@ -72,17 +69,30 @@ export function LocationModal({ visible, onSelect, onClose }: LocationModalProps
       `${result.city || ''}, ${result.state || ''}`.trim() ||
       'Unknown';
 
-    onSelect({
-      address,
-      lat,
-      lng: lon,
-      city: result.city,
-      state: result.state,
-      country: result.country,
-    });
-
+    onSelect({ address, lat, lng: lon, city: result.city, state: result.state, country: result.country });
     setQuery('');
     setSuggestions([]);
+  };
+
+  const handleUseCurrentLocation = async () => {
+    setGpsLoading(true);
+    try {
+      const loc = await LocationService.getCurrentLocation();
+      onSelect({
+        address: `${loc.city}, ${loc.state}`,
+        lat: loc.coordinates?.lat ?? 0,
+        lng: loc.coordinates?.lng ?? 0,
+        city: loc.city,
+        state: loc.state,
+        country: loc.country,
+      });
+      setQuery('');
+      setSuggestions([]);
+    } catch (e) {
+      console.warn('[LocationModal] GPS error:', e);
+    } finally {
+      setGpsLoading(false);
+    }
   };
 
   return (
@@ -92,18 +102,16 @@ export function LocationModal({ visible, onSelect, onClose }: LocationModalProps
       transparent
       statusBarTranslucent
       onShow={() => {
-        // Focus input after modal animation completes
         setTimeout(() => inputRef.current?.focus(), 300);
       }}
     >
-      {/* Dimmed backdrop — tap outside does nothing since location is required */}
       <KeyboardAvoidingView
         style={styles.overlay}
         behavior={RNPlatform.OS === 'ios' ? 'padding' : 'height'}
         keyboardVerticalOffset={0}
       >
         <View style={styles.sheet}>
-          {/* Blue header */}
+          {/* Header */}
           <View style={styles.header}>
             <View style={styles.headerRow}>
               <View style={{ flex: 1 }}>
@@ -120,6 +128,30 @@ export function LocationModal({ visible, onSelect, onClose }: LocationModalProps
             </View>
           </View>
 
+          {/* Use current location button */}
+          <TouchableOpacity
+            style={styles.gpsButton}
+            onPress={handleUseCurrentLocation}
+            activeOpacity={0.75}
+            disabled={gpsLoading}
+          >
+            {gpsLoading ? (
+              <ActivityIndicator size="small" color="#059669" />
+            ) : (
+              <Text style={styles.gpsIcon}>📍</Text>
+            )}
+            <Text style={styles.gpsText}>
+              {gpsLoading ? 'Detecting location...' : 'Use my current location'}
+            </Text>
+          </TouchableOpacity>
+
+          {/* Divider */}
+          <View style={styles.dividerRow}>
+            <View style={styles.dividerLine} />
+            <Text style={styles.dividerText}>or search</Text>
+            <View style={styles.dividerLine} />
+          </View>
+
           {/* Search input */}
           <View style={styles.inputWrapper}>
             <TextInput
@@ -134,15 +166,11 @@ export function LocationModal({ visible, onSelect, onClose }: LocationModalProps
               returnKeyType="search"
             />
             {loading && (
-              <ActivityIndicator
-                style={styles.spinner}
-                size="small"
-                color="#2563EB"
-              />
+              <ActivityIndicator style={styles.spinner} size="small" color="#2563EB" />
             )}
           </View>
 
-          {/* Location suggestions — ScrollView so it doesn't fight keyboard */}
+          {/* Suggestions */}
           <FlatList
             data={suggestions}
             keyExtractor={(item, idx) => `${item.lat}-${item.lon}-${idx}`}
@@ -160,8 +188,7 @@ export function LocationModal({ visible, onSelect, onClose }: LocationModalProps
                   {item.address_line1 || item.city || item.formatted || 'Address'}
                 </Text>
                 <Text style={styles.suggestionSub}>
-                  {[item.city, item.state, item.country].filter(Boolean).join(', ') ||
-                    item.formatted}
+                  {[item.city, item.state, item.country].filter(Boolean).join(', ') || item.formatted}
                 </Text>
               </TouchableOpacity>
             )}
@@ -187,13 +214,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
-    // Use flex instead of maxHeight so KeyboardAvoidingView can shrink it
     maxHeight: '90%',
     paddingBottom: RNPlatform.OS === 'android' ? 16 : 32,
     overflow: 'hidden',
   },
   header: {
-    backgroundColor: '#2563EB',
+    backgroundColor: '#1D4ED8',
     paddingHorizontal: 20,
     paddingTop: 24,
     paddingBottom: 20,
@@ -212,24 +238,46 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     marginTop: 2,
   },
-  closeBtnText: {
-    fontSize: 16,
-    color: '#FFFFFF',
+  closeBtnText: { fontSize: 16, color: '#FFFFFF', fontWeight: '700' },
+  title: { fontSize: 20, fontWeight: '800', color: '#FFFFFF' },
+  subtitle: { fontSize: 13, color: '#BFDBFE', marginTop: 4 },
+
+  // GPS button
+  gpsButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    marginHorizontal: 20,
+    marginTop: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 13,
+    backgroundColor: '#ECFDF5',
+    borderRadius: 12,
+    borderWidth: 1.5,
+    borderColor: '#6EE7B7',
+  },
+  gpsIcon: { fontSize: 18 },
+  gpsText: {
+    fontSize: 15,
     fontWeight: '700',
+    color: '#059669',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: '800',
-    color: '#FFFFFF',
+
+  // Divider
+  dividerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 20,
+    marginTop: 16,
+    gap: 10,
   },
-  subtitle: {
-    fontSize: 13,
-    color: '#BFDBFE',
-    marginTop: 4,
-  },
+  dividerLine: { flex: 1, height: 1, backgroundColor: '#E5E7EB' },
+  dividerText: { fontSize: 12, fontWeight: '600', color: '#9CA3AF' },
+
+  // Search input
   inputWrapper: {
     paddingHorizontal: 20,
-    paddingTop: 20,
+    paddingTop: 12,
     paddingBottom: 8,
   },
   input: {
@@ -242,34 +290,17 @@ const styles = StyleSheet.create({
     color: '#111827',
     backgroundColor: '#F8FAFF',
   },
-  spinner: {
-    position: 'absolute',
-    right: 32,
-    top: 32,
-  },
-  list: {
-    flexGrow: 0,
-    paddingHorizontal: 20,
-    maxHeight: 300,
-  },
-  listContent: {
-    paddingBottom: 8,
-  },
+  spinner: { position: 'absolute', right: 32, top: 24 },
+
+  list: { flexGrow: 0, paddingHorizontal: 20, maxHeight: 260 },
+  listContent: { paddingBottom: 8 },
   suggestionItem: {
     paddingVertical: 14,
     borderBottomWidth: 1,
     borderBottomColor: '#EFF6FF',
   },
-  suggestionMain: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#111827',
-  },
-  suggestionSub: {
-    fontSize: 12,
-    color: '#2563EB',
-    marginTop: 2,
-  },
+  suggestionMain: { fontSize: 14, fontWeight: '600', color: '#111827' },
+  suggestionSub: { fontSize: 12, color: '#2563EB', marginTop: 2 },
   emptyText: {
     textAlign: 'center',
     color: '#9CA3AF',
