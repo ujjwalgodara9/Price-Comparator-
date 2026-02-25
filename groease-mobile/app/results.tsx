@@ -32,7 +32,7 @@ import {
 
 const DEFAULT_FILTERS: ComparisonFilters = {
   platforms: [...allPlatforms],
-  sortBy: 'price-low',
+  sortBy: 'rating',
 };
 
 const SORT_LABELS: Record<ComparisonFilters['sortBy'], string> = {

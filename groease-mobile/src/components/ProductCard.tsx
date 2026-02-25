@@ -37,10 +37,9 @@ export function ProductCard({ matchedProduct }: ProductCardProps) {
   const handleOpenLink = async (link: string) => {
     if (!link || link === 'N/A' || !link.trim()) return;
     try {
-      const canOpen = await Linking.canOpenURL(link);
-      if (canOpen) await Linking.openURL(link);
+      await Linking.openURL(link);
     } catch (e) {
-      console.warn('[ProductCard] Cannot open URL:', link);
+      console.warn('[ProductCard] Cannot open URL:', link, e);
     }
   };
 
