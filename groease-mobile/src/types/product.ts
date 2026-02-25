@@ -44,6 +44,7 @@ export interface LocationData {
   city: string;
   state: string;
   country: string;
+  displayName?: string;   // e.g. "Dwarka Sector 26, New Delhi" — shown in UI
   coordinates?: {
     lat: number;
     lng: number;

@@ -32,10 +32,16 @@ export class LocationService {
       try {
         const result = await reverseGeocode(latitude, longitude);
         if (result) {
+          const city = result.city || 'Mumbai';
+          const area = result.address_line1 || '';
+          const displayName = area && area !== city
+            ? `${area}, ${city}`
+            : city;
           return {
-            city: result.city || 'Mumbai',
+            city,
             state: result.state || 'Maharashtra',
             country: result.country || 'India',
+            displayName,
             coordinates: { lat: latitude, lng: longitude },
           };
         }
@@ -64,20 +70,31 @@ export class LocationService {
     options?: { city?: string; state?: string; country?: string }
   ): Promise<LocationData> {
     if (options?.city || options?.state || options?.country) {
+      // Build a displayName from the raw address + city
+      const city = options.city || 'Mumbai';
+      const addressLine = address.split(',')[0]?.trim() || '';
+      const displayName = addressLine && addressLine !== city
+        ? `${addressLine}, ${city}`
+        : city;
       return {
-        city: options.city || 'Mumbai',
+        city,
         state: options.state || 'Maharashtra',
         country: options.country || 'India',
+        displayName,
         coordinates: { lat, lng },
       };
     }
     try {
       const result = await reverseGeocode(lat, lng);
       if (result) {
+        const city = result.city || 'Mumbai';
+        const area = result.address_line1 || '';
+        const displayName = area && area !== city ? `${area}, ${city}` : city;
         return {
-          city: result.city || 'Mumbai',
+          city,
           state: result.state || 'Maharashtra',
           country: result.country || 'India',
+          displayName,
           coordinates: { lat, lng },
         };
       }
@@ -85,11 +102,11 @@ export class LocationService {
       console.warn('[LocationService] Reverse geocode failed:', e);
     }
     const parsed = this.parseLocationFromAddress(address);
-    return { ...parsed, coordinates: { lat, lng } };
+    return { ...parsed, displayName: address.split(',')[0]?.trim() || parsed.city, coordinates: { lat, lng } };
   }
 
   static getLocationString(location: LocationData): string {
-    return `${location.city}, ${location.state}`;
+    return location.displayName || `${location.city}, ${location.state}`;
   }
 
   private static getDefaultLocation(): LocationData {
