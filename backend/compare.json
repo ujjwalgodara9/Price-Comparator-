@@ -1,2370 +1,911 @@
 {
-  "search_query": "Atta",
-  "timestamp": "2026-02-23T22:01:45.361617",
-  "total_products": 145,
-  "matched_products": 3,
+  "search_query": "Rice",
+  "timestamp": "2026-02-25T20:28:43.351721",
+  "total_products": 56,
+  "matched_products": 0,
   "location": {
-    "address": "Mumbai, Maharashtra",
-    "city": "Mumbai",
-    "state": "Maharashtra",
+    "address": "Delhi, Delhi",
+    "city": "Delhi",
+    "state": "Delhi",
     "country": "India",
     "coordinates": {
-      "lat": 19.054999,
-      "lng": 72.8692035
+      "lat": 28.5437005,
+      "lng": 77.0471028
     }
   },
   "products": [
     {
-      "name": "Aashirvaad Chakki Mp Sehori Atta Gahu Lot Gahu Peeth",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/52166f0a-e96e-47d7-b147-8b7f6083f127.png",
+      "name": "Daawat Rozana Super Basmati Rice",
       "original_names": {
-        "blinkit": "Aashirvaad Chakki MP Sehori Atta, Gahu Lot/ Gahu Peeth"
+        "zepto": "Daawat Rozana Super Basmati Rice | Medium Grain"
       },
       "platforms": {
-        "blinkit": {
-          "price": 279,
-          "quantity": "5 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/aashirvaad-chakki-mp-sehori-atta-gahu-lot-gahu-peeth/prid/580836"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Organic Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/b9bb083d-b44f-42a7-922c-39abd37a446c.png",
-      "original_names": {
-        "blinkit": "Aashirvaad Organic Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 316,
-          "quantity": "5 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/aashirvaad-organic-atta/prid/436305"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Fortune Chakki Fresh Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1769779424274-262.png",
-      "original_names": {
-        "blinkit": "Fortune Chakki Fresh (100% Atta, 0% Maida) Atta (10 kg)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 424,
-          "quantity": "10 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/fortune-chakki-fresh-100-atta-0-maida-atta-10-kg/prid/380157"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Whole Farm Chakki Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/63708712-d1dd-4676-9da1-8ad476fe29ac.png",
-      "original_names": {
-        "blinkit": "Whole Farm Chakki Atta (100% Atta, 0% Maida)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 400,
-          "quantity": "10 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/whole-farm-chakki-atta-100-atta-0-maida/prid/514892"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Chakki Premium Mp Sehori Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/473af2cd-9aa6-4ef2-97f8-f2e0a42e38b1.png",
-      "original_names": {
-        "blinkit": "Aashirvaad Chakki Premium MP Sehori Atta",
-        "bigbasket": "Aashirvaad Chakki Premium MP Sehori Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 379,
-          "quantity": "5 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/aashirvaad-chakki-premium-mp-sehori-atta/prid/580837"
-        },
-        "bigbasket": {
-          "price": 405,
-          "quantity": "5 kg",
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40333893/aashirvaad-chakki-premium-mp-sehori-attagahu-lotgahu-peeth-5-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=19&t_s=Chakki+Premium+MP+Sehori+Atta"
-        }
-      },
-      "similarity_score": 0.8666666666666667
-    },
-    {
-      "name": "Aashirvaad High Fibre Atta Multigrains",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/99c07f65-9c5b-4fc4-927b-7be3f2bea854.png",
-      "original_names": {
-        "blinkit": "Aashirvaad High Fibre Atta with Multigrains - 10 kg"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 635,
-          "quantity": "10 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/aashirvaad-high-fibre-atta-with-multigrains-10-kg/prid/200521"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Superior Mp Atta L Kg",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/f76cdc7d-828a-4036-b119-fdea66b9156b.png",
-      "original_names": {
-        "blinkit": "Aashirvaad Superior MP Atta - l kg"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 62,
-          "quantity": "1 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/aashirvaad-superior-mp-atta-l-kg/prid/68482"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Select 100 Mp Sharbati Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/c2ccf85e-bf1c-4786-99b0-aee6ff00e7e0.png",
-      "original_names": {
-        "blinkit": "Aashirvaad Select 100% MP Sharbati Atta",
-        "bigbasket": "Aashirvaad Select MP Sharbati Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 322,
-          "quantity": "5 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/aashirvaad-select-100-mp-sharbati-atta/prid/7"
-        },
-        "bigbasket": {
-          "price": 687.6,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40236231/aashirvaad-select-sharbati-atta-100-mp-whole-wheat-rotis-stay-softer-for-longer-10-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=2&t_s=Select+MP+Sharbati+Atta"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Better Nutrition Wheat Atta 2X Nutrition",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1770788511345-902.png",
-      "original_names": {
-        "blinkit": "Better Nutrition Wheat Atta – 2X Nutrition"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 153,
-          "quantity": "2 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/better-nutrition-wheat-atta-2x-nutrition/prid/596996"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Silver Coin Traditional Chakki Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/af2537af-8706-41e2-88f0-34f8787f2e49.png",
-      "original_names": {
-        "blinkit": "Silver Coin Traditional Chakki Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 214,
-          "quantity": "5 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/silver-coin-traditional-chakki-atta/prid/174379"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Premium Blend Chakki Lokwan Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/3f4ebc8f-8b8a-47fc-8d2e-21db4db9f78b.png",
-      "original_names": {
-        "blinkit": "Aashirvaad Premium Blend Chakki Lokwan Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 309,
-          "quantity": "5 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/aashirvaad-premium-blend-chakki-lokwan-atta/prid/611872"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Samrat Premium Fresh Chakki Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/1ce45cec-b5b4-43d2-8c49-9cd54cdfcb57.png",
-      "original_names": {
-        "blinkit": "Samrat Premium Fresh Chakki Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 218,
-          "quantity": "5 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/samrat-premium-fresh-chakki-atta/prid/230656"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Superior Mp Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/74371e5a-f158-4aaa-b02e-304b296ca182.png",
-      "original_names": {
-        "blinkit": "Aashirvaad Superior MP Atta (100% Atta, 0% Maida) (10 kg)",
-        "dmart": "Aashirvaad Superior MP Wheat Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 536,
-          "quantity": "10 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/aashirvaad-superior-mp-atta-100-atta-0-maida-10-kg/prid/68483"
-        },
-        "dmart": {
-          "price": 514,
-          "quantity": "10 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": 0.8600000000000001
-    },
-    {
-      "name": "Pillsbury Chakki Fresh Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/81d17187-b0f3-4010-84f3-14b0596b9478.png",
-      "original_names": {
-        "blinkit": "Pillsbury Chakki Fresh Atta (100% atta, 0% Maida)",
-        "dmart": "Pillsbury Chakki Fresh Wheat Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 123,
-          "quantity": "2 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/pillsbury-chakki-fresh-atta-100-atta-0-maida/prid/77876"
-        },
-        "dmart": {
-          "price": 416,
-          "quantity": "10 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": 0.8600000000000001
-    },
-    {
-      "name": "Samrat Whole Wheat Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/c8658726-c677-44e0-94f4-069d14c702c3.png",
-      "original_names": {
-        "blinkit": "Samrat Whole Wheat Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 413,
-          "quantity": "10 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/samrat-whole-wheat-atta/prid/14244"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Two Brothers Khapli Wheat Atta Stoneground",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/52d57049-04a4-4cc0-ae12-608b6672f0a6.png",
-      "original_names": {
-        "blinkit": "Two Brothers Khapli Wheat Atta, Stoneground"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 238,
-          "quantity": "1 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/two-brothers-khapli-wheat-atta-stoneground/prid/579854"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Wheat Organic Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/a6be257d-8d32-4b37-9f15-a72398d6a2fd.png",
-      "original_names": {
-        "blinkit": "Organic Tattva Wheat Organic Atta - 5 kg"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 309,
-          "quantity": "5 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/organic-tattva-wheat-organic-atta-5-kg/prid/86973"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Silver Coin Traditional Chakki Fresh Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/dd645505-0b00-43f9-b805-9c46dc444ed2.png",
-      "original_names": {
-        "blinkit": "Silver Coin Traditional Chakki Fresh Atta 10 kg"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 429,
-          "quantity": "10 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/silver-coin-traditional-chakki-fresh-atta-10-kg/prid/174378"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Patanjali Whole Wheat Chakki Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/bc0577fb-33d8-4fff-80f7-61596307537c.png",
-      "original_names": {
-        "blinkit": "Patanjali Whole Wheat Chakki Atta (with Bran) 5 kg"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 265,
-          "quantity": "5 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/patanjali-whole-wheat-chakki-atta-with-bran-5-kg/prid/55389"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Patanjali Traditional Whole Wheat Chakki Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/0cf8e9a9-af49-4f0c-9f6a-c3623efceebd.png",
-      "original_names": {
-        "blinkit": "Patanjali Traditional Whole Wheat Chakki Atta (with Bran)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 500,
-          "quantity": "10 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/patanjali-traditional-whole-wheat-chakki-atta-with-bran/prid/55388"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Whole Farm Premium Makki Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/9c94f71f-4f87-40b4-a431-d81ef5e36799.png",
-      "original_names": {
-        "blinkit": "Whole Farm Premium Makki Atta (Maize Flour)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 29,
-          "quantity": "500 g",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/whole-farm-premium-makki-atta-maize-flour/prid/537081"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Two Brothers Khapli Multigrain Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/3cd47b19-15d1-456d-b6ba-78755055f424.png",
-      "original_names": {
-        "blinkit": "Two Brothers Khapli Multigrain Atta (8 grains)"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 182,
-          "quantity": "1 kg",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/two-brothers-khapli-multigrain-atta-8-grains/prid/626915"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Safe Harvest Pesticide Free Roasted Sooji Rava",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/d85eba1d-8557-4ae0-b223-f4bbbb44db8f.png",
-      "original_names": {
-        "blinkit": "Safe Harvest Pesticide-Free Roasted Sooji/Rava"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 55,
-          "quantity": "500 g",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/safe-harvest-pesticide-free-roasted-sooji-rava/prid/198081"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Rajgira Flour",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/3d148234-b0f2-4ae9-86f0-e4a83aeba74f.png",
-      "original_names": {
-        "blinkit": "Bhagirathi Rajgira Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 64,
-          "quantity": "200 g",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/bhagirathi-rajgira-flour/prid/381022"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Two Brothers Jowar Flour Stoneground",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/c01a2040-7002-41cc-983c-fb4b8bc083ae.png",
-      "original_names": {
-        "blinkit": "Two Brothers Jowar Flour, Stoneground"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 98,
-          "quantity": "500 g",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/two-brothers-jowar-flour-stoneground/prid/626513"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Two Brothers Roasted Bengal Gram Sattu Atta",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/f68fb651-48a8-49ad-b974-1532246af1be.png",
-      "original_names": {
-        "blinkit": "Two Brothers Roasted Bengal Gram Sattu Atta"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 191,
-          "quantity": "500 g",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/two-brothers-roasted-bengal-gram-sattu-atta/prid/626986"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Praakritik Singhara Flour",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/67bad83a-f2e8-464d-baa5-cab7997d6676.png",
-      "original_names": {
-        "blinkit": "Praakritik Singhara Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 216,
-          "quantity": "500 g",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/praakritik-singhara-flour/prid/478957"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Whole Farm Premium Kuttu Flour",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/e21ddad3-a5be-4c73-9d0d-1bdacf9b816b.png",
-      "original_names": {
-        "blinkit": "Whole Farm Premium Kuttu Flour"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 29,
-          "quantity": "250 g",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/whole-farm-premium-kuttu-flour/prid/612720"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Whole Farm Premium Rajgira Amaranth Millet Seeds",
-      "image": "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/8824303e-9e67-4298-a083-e32e4a9cdf6a.png",
-      "original_names": {
-        "blinkit": "Whole Farm Premium Rajgira/Amaranth Millet Seeds"
-      },
-      "platforms": {
-        "blinkit": {
-          "price": 86,
-          "quantity": "500 g",
-          "deliveryTime": "11 MINS",
-          "link": "https://blinkit.com/prn/whole-farm-premium-rajgira-amaranth-millet-seeds/prid/529762"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Select Sharbati Wheat Atta",
-      "image": "https://cdn.dmart.in/images/products/IAtta5kgASHW3501xx150421_5_P.jpg",
-      "original_names": {
-        "dmart": "Aashirvaad Select Sharbati Wheat Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 288,
-          "quantity": "5 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Multigrain Atta",
-      "image": "https://cdn.dmart.in/images/products/IMultigrainAtta5kgASHW3538xx150421_5_P.jpg",
-      "original_names": {
-        "dmart": "Aashirvaad Multigrain Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 299,
-          "quantity": "5 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Samrat Mp Chakki Wheat Atta",
-      "image": "https://cdn.dmart.in/images/products/JUN110000177xx28JUN22_5_P.jpg",
-      "original_names": {
-        "dmart": "Samrat MP Chakki Wheat Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 390,
-          "quantity": "10 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Fortune Chakki Fresh Whole Wheat Atta",
-      "image": "https://cdn.dmart.in/images/products/JUN110001410xx28JUN22_5_P.jpg",
-      "original_names": {
-        "dmart": "Fortune Chakki Fresh Whole Wheat Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 411,
-          "quantity": "10 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Taste Life Mp Sihore Chapati Fine Wheat Atta",
-      "image": "https://cdn.dmart.in/images/products/DEC110001322xx17DEC21_5_P.jpg",
-      "original_names": {
-        "dmart": "Taste For Life MP Sihore Chapati Fine Wheat Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 393,
-          "quantity": "5 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Pillsbury Sharbati Wheat Gold Atta",
-      "image": "https://cdn.dmart.in/images/products/MAY110004273xx28MAY25_5_P.jpg",
-      "original_names": {
-        "dmart": "Pillsbury Sharbati Wheat Gold Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 251,
-          "quantity": "5 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nature Fresh Sampoorna Superior Mp Wheat Atta",
-      "image": "https://cdn.dmart.in/images/products/AUG110000183xx11AUG23_5_P.jpg",
-      "original_names": {
-        "dmart": "Nature Fresh Sampoorna Superior MP Wheat Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 469,
-          "quantity": "10 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Pillsbury Multi Grain Atta",
-      "image": "https://cdn.dmart.in/images/products/DEC110000197xx27DEC24_5_P.jpg",
-      "original_names": {
-        "dmart": "Pillsbury Multi Grain Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 275,
-          "quantity": "5 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Dmart Premia Rice Atta",
-      "image": "https://cdn.dmart.in/images/products/SEP110004065xx11SEP23_5_P.jpg",
-      "original_names": {
-        "dmart": "DMart Premia Rice Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 50,
-          "quantity": "1 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Dmart Premia Sharbati Atta",
-      "image": "https://cdn.dmart.in/images/products/JUN110004491xx24JUN24_5_P.jpg",
-      "original_names": {
-        "dmart": "DMart Premia Sharbati Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 267,
-          "quantity": "5 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Organic Wheat Flour",
-      "image": "https://cdn.dmart.in/images/products/JUN110003114xx9JUN22_5_P.jpg",
-      "original_names": {
-        "dmart": "Organic Tattva Organic Wheat Flour"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 308,
-          "quantity": "5 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Dmart Premia Jawari Atta",
-      "image": "https://cdn.dmart.in/images/products/SEP110004089xx19SEP23_5_P.jpg",
-      "original_names": {
-        "dmart": "DMart Premia Jawari Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 33,
-          "quantity": "500 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Taste Life Premium Khapli Wheat Atta",
-      "image": "https://cdn.dmart.in/images/products/FEB110003228xx6FEB25_5_P.jpg",
-      "original_names": {
-        "dmart": "Taste For Life Premium Khapli Wheat Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 163,
-          "quantity": "1 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Taste Life Mp Sihore Wheat Multigrain Atta",
-      "image": "https://cdn.dmart.in/images/products/FEB110001413xx6FEB25_5_P.jpg",
-      "original_names": {
-        "dmart": "Taste For Life MP Sihore Wheat + Multigrain Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 87,
-          "quantity": "1 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "24 Mantra Organic Whole Wheat Atta",
-      "image": "https://cdn.dmart.in/images/products/JUL110000993xx18JUL25_5_P.jpg",
-      "original_names": {
-        "dmart": "24 Mantra Organic Whole Wheat Atta",
-        "bigbasket": "24 Mantra Organic Whole Wheat Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 349,
-          "quantity": "5 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        },
-        "bigbasket": {
-          "price": 297.5,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/100448228/24-mantra-organic-whole-wheat-atta-5-kg-pouch/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=20&t_s=Whole+Wheat+Atta"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Dmart Premia Makai Atta",
-      "image": "https://cdn.dmart.in/images/products/DEC110004098xx25DEC23_5_P.jpg",
-      "original_names": {
-        "dmart": "DMart Premia Makai Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 21,
-          "quantity": "500 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Praakritik Khapli Wheat Atta",
-      "image": "https://cdn.dmart.in/images/products/DEC110005357xx1DEC25_5_P.jpg",
-      "original_names": {
-        "dmart": "Praakritik Khapli Wheat Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 145,
-          "quantity": "1 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Sattu Atta",
-      "image": "https://cdn.dmart.in/images/products/JUN110003016xx1JUN22_5_P.jpg",
-      "original_names": {
-        "dmart": "Bhagirathi Sattu Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 33,
-          "quantity": "200 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Gokul 4 In 1 Stainless Steel Interchangeable Sieve Set",
-      "image": "https://cdn.dmart.in/images/products/SEP150007633xx12SEP24_5_P.jpg",
-      "original_names": {
-        "dmart": "Gokul 4 in 1 Stainless Steel Interchangeable Sieve Set"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 187,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Multigrain Bhakari Atta",
-      "image": "https://cdn.dmart.in/images/products/JUN110000883xx1JUN22_5_P.jpg",
-      "original_names": {
-        "dmart": "Bhagirathi Multigrain Bhakari Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 40,
-          "quantity": "500 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Rajgira Atta",
-      "image": "https://cdn.dmart.in/images/products/DEC110000885xx8DEC21_5_P.jpg",
-      "original_names": {
-        "dmart": "Bhagirathi Rajgira Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 48,
-          "quantity": "200 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Dmart Premia Bajari Atta",
-      "image": "https://cdn.dmart.in/images/products/DEC110004069xx20DEC23_5_P.jpg",
-      "original_names": {
-        "dmart": "DMart Premia Bajari Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 28,
-          "quantity": "500 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Elephant Stainless Steel Atta Maida",
-      "image": "https://cdn.dmart.in/images/products/JAN150005956xx3JAN24_5_P.jpg",
-      "original_names": {
-        "dmart": "Elephant Stainless Steel Atta/Maida"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 92,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Shingada Atta",
-      "image": "https://cdn.dmart.in/images/products/DEC110000886xx8DEC21_5_P.jpg",
-      "original_names": {
-        "dmart": "Bhagirathi Shingada Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 89,
-          "quantity": "200 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Bajra Atta",
-      "image": "https://cdn.dmart.in/images/products/JUN110000876xx1JUN22_5_P.jpg",
-      "original_names": {
-        "dmart": "Bhagirathi Bajra Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 32,
-          "quantity": "500 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Rice Atta",
-      "image": "https://cdn.dmart.in/images/products/DEC110000879xx8DEC21_5_P.jpg",
-      "original_names": {
-        "dmart": "Bhagirathi Rice Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 34,
-          "quantity": "500 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Dmart Premia Ragi Flour",
-      "image": "https://cdn.dmart.in/images/products/SEP110004122xx19SEP23_5_P.jpg",
-      "original_names": {
-        "dmart": "DMart Premia Ragi Flour"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 46,
-          "quantity": "500 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Nachani Atta",
-      "image": "https://cdn.dmart.in/images/products/JUN110000878xx1JUN22_5_P.jpg",
-      "original_names": {
-        "dmart": "Bhagirathi Nachani (Ragi) Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 45,
-          "quantity": "500 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Jowar Atta",
-      "image": "https://cdn.dmart.in/images/products/JUN110000880xx1JUN22_5_P.jpg",
-      "original_names": {
-        "dmart": "Bhagirathi Jowar Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 44,
-          "quantity": "500 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Satyam Rice Atta",
-      "image": "https://cdn.dmart.in/images/products/JOtherFlours500gmSTYM544xx205021_5_P.jpg",
-      "original_names": {
-        "dmart": "Satyam Rice Atta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 40,
-          "quantity": "500 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Sunfeast Yippee Power Up Masala Atta Noodles",
-      "image": "https://cdn.dmart.in/images/products/LNOODLES280gmSunf30xx110520211509_5_P.jpg",
-      "original_names": {
-        "dmart": "Sunfeast Yippee Power Up Masala Atta Noodles"
-      },
-      "platforms": {
-        "dmart": {
+        "zepto": {
           "price": 80,
-          "quantity": "280 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Maggi Masala Veg Atta Noodles",
-      "image": "https://cdn.dmart.in/images/products/MAY120004028xx14MAY25_5_P.jpg",
-      "original_names": {
-        "dmart": "Maggi Masala Veg Atta Noodles"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 128,
-          "quantity": "435 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "India Gate Basmati Rice Mini Mogra Ii Kanki",
-      "image": "https://cdn.dmart.in/images/products/Oct110000329xx23Oct25vvG10kg_5_P.jpg",
-      "original_names": {
-        "dmart": "India Gate Basmati Rice - Mini Mogra-II - Kanki"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 429,
-          "quantity": "10 kg",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Grand Chapati Contest By Asha Nehemiah",
-      "image": "https://cdn.dmart.in/images/products/NOV270000686xx13NOV25vvG1u_5_P.jpg",
-      "original_names": {
-        "dmart": "The Grand Chapati Contest By Asha Nehemiah"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 149,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Satyam Rajgira Flour",
-      "image": "https://cdn.dmart.in/images/products/IRajgiraAtta500gSTYM3542xx205021_5_P.jpg",
-      "original_names": {
-        "dmart": "Satyam Rajgira Flour"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 112,
-          "quantity": "500 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bedekar Upwas Bhajni",
-      "image": "https://cdn.dmart.in/images/products/NOV110001112xx23NOV23_5_P.jpg",
-      "original_names": {
-        "dmart": "Bedekar Upwas Bhajni"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 59,
-          "quantity": "200 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bedekar Thalipith Bhajni",
-      "image": "https://cdn.dmart.in/images/products/FEB110001113xx26FEB24_5_P.jpg",
-      "original_names": {
-        "dmart": "Bedekar Thalipith Bhajni"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 40,
-          "quantity": "200 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Thalipeeth Bhajni",
-      "image": "https://cdn.dmart.in/images/products/DEC110000881xx8DEC21_5_P.jpg",
-      "original_names": {
-        "dmart": "Bhagirathi Thalipeeth Bhajni"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 41,
-          "quantity": "200 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Upwas Bhajani",
-      "image": "https://cdn.dmart.in/images/products/JUN110000887xx1JUN22_5_P.jpg",
-      "original_names": {
-        "dmart": "Bhagirathi Upwas Bhajani"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 52,
-          "quantity": "200 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Ghavane Flour",
-      "image": "https://cdn.dmart.in/images/products/SEP110003507xx11SEP25_5_P.jpg",
-      "original_names": {
-        "dmart": "Bhagirathi Ghavane Flour"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 37,
-          "quantity": "500 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Joyo Plastic Kitchen King Storage Container 20 5 L",
-      "image": "https://cdn.dmart.in/images/products/JUN150005342xx26JUN23_5_P.jpg",
-      "original_names": {
-        "dmart": "Joyo Plastic Kitchen King Storage Container (Brown) - 16.5 L"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 249,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Unica Multipurpose Storage Container Set Of 3",
-      "image": "https://cdn.dmart.in/images/products/OCT150008109xx24OCT24_5_P.jpg",
-      "original_names": {
-        "dmart": "Unica Multipurpose Storage Container (Blue) - Set of 3"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 299,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Unica Splendido Multipurpose Storage Container Set Of 7",
-      "image": "https://cdn.dmart.in/images/products/OCT150008104xx24OCT24_5_P.jpg",
-      "original_names": {
-        "dmart": "Unica Splendido Multipurpose Storage Container (Blue) - Set of 7"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 499,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Slurrp Farm Little Millet Mild Masala Noodles",
-      "image": "https://cdn.dmart.in/images/products/DEC120005584xx29DEC23_5_P.jpg",
-      "original_names": {
-        "dmart": "Slurrp Farm Little Millet Mild Masala Noodles"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 46,
-          "quantity": "192 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Slurrp Farm Millet Classic Masala Noodles",
-      "image": "https://cdn.dmart.in/images/products/DEC120005583xx29DEC23_5_P.jpg",
-      "original_names": {
-        "dmart": "Slurrp Farm Millet Classic Masala Noodles"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 46,
-          "quantity": "192 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Slurrp Farm Curry Masala Noodles",
-      "image": "https://cdn.dmart.in/images/products/MAR120006126xx2MAR23_5_P.jpg",
-      "original_names": {
-        "dmart": "Slurrp Farm Curry Masala Noodles"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 46,
-          "quantity": "192 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "House Of Festivals White Marble Shivling",
-      "image": "https://cdn.dmart.in/images/products/OCT150010516xx5OCT25_5_P.jpg",
-      "original_names": {
-        "dmart": "House Of Festivals White Marble Shivling"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 149,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "House Of Festivals Transparent Shivling",
-      "image": "https://cdn.dmart.in/images/products/OCT150010518xx5OCT25_5_P.jpg",
-      "original_names": {
-        "dmart": "House Of Festivals Transparent Shivling"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 259,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Ecraftindia Brown Resin Meditating Lord Shiva Statue",
-      "image": "https://cdn.dmart.in/images/products/JAN150011312xx8JAN26vvG1u_5_P.jpg",
-      "original_names": {
-        "dmart": "eCraftIndia Brown Resin Meditating Lord Shiva Statue"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 549,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Ecraftindia White Resin Meditating Lord Shiva Statue",
-      "image": "https://cdn.dmart.in/images/products/JAN150011313xx8JAN26vvG1u_5_P.jpg",
-      "original_names": {
-        "dmart": "eCraftIndia White Resin Meditating Lord Shiva Statue"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 349,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Ecraftindia Golden Black Metal Shivling Naag Devta",
-      "image": "https://cdn.dmart.in/images/products/JAN150011314xx8JAN26vvG1u_5_P.jpg",
-      "original_names": {
-        "dmart": "eCraftIndia Golden Black Metal Shivling with Naag Devta"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 199,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nidhi Hard Anodised Tawa 27 5 Cm",
-      "image": "https://cdn.dmart.in/images/products/SEP150007879xx7SEP24_5_P.jpg",
-      "original_names": {
-        "dmart": "Nidhi Hard Anodised Tawa (Black) - 27.5 cm"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 562,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nidhi Omega Non Stick Set Set Of 4",
-      "image": "https://cdn.dmart.in/images/products/SEP150007886xx7SEP24_5_P.jpg",
-      "original_names": {
-        "dmart": "Nidhi Omega Non Stick Set (Golden) - Set Of 4"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 1218,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nidhi Non Stick Spatter Cookware Set",
-      "image": "https://cdn.dmart.in/images/products/OCT150008064xx24OCT24_5_P.jpg",
-      "original_names": {
-        "dmart": "Nidhi Non-Stick Spatter Cookware Set (Green) - 3 Pieces"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 843,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nidhi Hard Anodised Non Stick Smart Tawa 28 5 Cm",
-      "image": "https://cdn.dmart.in/images/products/OCT150008067xx24OCT24_5_P.jpg",
-      "original_names": {
-        "dmart": "Nidhi Hard Anodised Non-Stick Smart Tawa (Black) - 28.5 cm"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 749,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nidhi Hard Anodised Non Stick Smart Tawa 31 Cm",
-      "image": "https://cdn.dmart.in/images/products/OCT150008068xx24OCT24_5_P.jpg",
-      "original_names": {
-        "dmart": "Nidhi Hard Anodised Non-Stick Smart Tawa (Black) - 31 cm"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 796,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bergner Samsara 26 Cm Triply Roti Tawa",
-      "image": "https://cdn.dmart.in/images/products/AUG150009754xx12AUG25_5_P.jpg",
-      "original_names": {
-        "dmart": "Bergner Samsara 26 cm Triply Roti Tawa"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 1875,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nidhi Cookware Hard Anodised Tawa 27 5 Cm",
-      "image": "https://cdn.dmart.in/images/products/SEP150009990xx2SEP25vvG1u_5_P.jpg",
-      "original_names": {
-        "dmart": "Nidhi cookware Hard Anodised Tawa - 27.5 cm"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 703,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Om White Polpat",
-      "image": "https://cdn.dmart.in/images/products/JAN150001597xx11JAN22_5_P.jpg",
-      "original_names": {
-        "dmart": "Om White Polpat"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 185,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Prestige Ceraglide Non Stick Omni Tawa Aluminium",
-      "image": "https://cdn.dmart.in/images/products/OCT150007974xx17OCT24_5_P.jpg",
-      "original_names": {
-        "dmart": "Prestige Ceraglide Non Stick Omni Tawa - Aluminium"
-      },
-      "platforms": {
-        "dmart": {
-          "price": 788,
-          "quantity": null,
-          "deliveryTime": "N/A",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Atta Ghau Peeth Whole Wheat",
-      "image": "https://www.bbassets.com/media/uploads/p/m/126906_10-aashirvaad-atta-whole-wheat.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Aashirvaad Atta/Ghau Peeth - Whole Wheat"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 555.97,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/126906/aashirvaad-atta-whole-wheat-10-kg-pouch/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=1&t_s=Atta%252FGhau+Peeth+-+Whole+Wheat"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Chakki Fresh Wheat Atta Ghau Peeth Fortified",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40099240_9-bb-royal-chakki-fresh-wheat-atta-fortified.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "bb Royal Chakki-Fresh-Wheat-Atta/Ghau Peeth - Fortified"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 224,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40099240/bb-royal-chakki-fresh-wheat-atta-fortified-5-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=3&t_s=Chakki-Fresh-Wheat-Atta%252FGhau+Peeth+-+Fortified"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Fortune Chakki Fresh Atta Ghau Peeth",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40120174_7-fortune-chakki-fresh-atta-100-atta-0-maida.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Fortune Chakki Fresh Atta/Ghau Peeth"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 243.23,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40120174/fortune-chakki-fresh-atta-100-atta-0-maida-5-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=4&t_s=Chakki+Fresh+Atta%252FGhau+Peeth"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Superior Mp Sharbati Atta Ghau Peeth Fortified",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40189429_4-bb-royal-superior-mp-sharbati-atta-fortified.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "bb Royal Superior-Mp-Sharbati-Atta/Ghau Peeth - Fortified"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 507,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40189429/bb-royal-superior-mp-sharbati-atta-fortified-10-kg-pouch/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=5&t_s=Superior-Mp-Sharbati-Atta%252FGhau+Peeth+-+Fortified"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Organic Whole Wheat Atta",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40202316_7-aashirvaad-natures-super-foods-organic-atta.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Aashirvaad Organic Whole Wheat Atta"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 357.9,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40202316/aashirvaad-natures-super-foods-organic-atta-5-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=6&t_s=Organic+Whole+Wheat+Atta"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Atta Multigrains",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40236230_12-aashirvaad-atta-with-multigrains-high-fibre-soft-rotis.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Aashirvaad Atta With Multigrains"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 695.7,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40236230/aashirvaad-atta-with-multigrains-high-fibre-soft-rotis-10-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=7&t_s=Atta+With+Multigrains"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Organic Sharbati Atta",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40079750_16-bb-royal-organic-whole-wheat-atta.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "bb Royal Organic Sharbati Atta"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 249,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40079750/bb-royal-organic-whole-wheat-atta-5-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=8&t_s=Organic+Sharbati+Atta"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Pillsbury Atta Ghau Peeth Chakki Fresh",
-      "image": "https://www.bbassets.com/media/uploads/p/m/124657_10-pillsbury-atta-chakki-fresh.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Pillsbury Atta/Ghau Peeth - Chakki Fresh"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 494.83,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/124657/pillsbury-atta-chakki-fresh-10-kg-pouch/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=9&t_s=Atta%252FGhau+Peeth+-+Chakki+Fresh"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Flour Jowar",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40128955_1-bb-royal-flour-jowar.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "bb Royal Flour - Jowar"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 58,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40128955/bb-royal-flour-jowar-1-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=10&t_s=Flour+-+Jowar"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Organic Wheat Flour Chakki Atta",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40009444_6-organic-tattva-wheat-flour-atta.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Organic Tattva Organic Wheat Flour/ Chakki Atta"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 344.98,
-          "quantity": "5 kg",
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40009444/organic-tattva-wheat-flour-atta-5-kg-pouch/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=11&t_s=Organic+Wheat+Flour%252F+Chakki+Atta"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Two Brothers Organic Farms Khapli Flour Emmer Wheat",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40345016_3-two-brothers-organic-farms-khapli-flour-emmer-wheat.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Two Brothers Organic Farms Khapli Flour Emmer Wheat"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 1115,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40345016/two-brothers-organic-farms-khapli-flour-emmer-wheat-5-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=13&t_s=Khapli+Flour+Emmer+Wheat"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Bajra Flour Bajri Pith",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40018191_8-bb-royal-bajra-flour.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "bb Royal Bajra Flour/Bajri Pith"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 30,
-          "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40018191/bb-royal-bajra-flour-500-g-pouch/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=14&t_s=Bajra+Flour%252FBajri+Pith"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Jowar Atta Ready Mix",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40293048_2-bhagirathi-jowar-atta-ready-mix.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Bhagirathi Jowar Atta - Ready Mix"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 53,
-          "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40293048/bhagirathi-jowar-atta-ready-mix-500-g/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=15&t_s=Jowar+Atta+-+Ready+Mix"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Pillsbury Atta Ghau Peeth Gold",
-      "image": "https://www.bbassets.com/media/uploads/p/m/290131_6-pillsbury-atta-gold.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Pillsbury Atta/Ghau Peeth - Gold"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 303,
-          "quantity": "5 kg",
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/290131/pillsbury-atta-gold-5-kg-pouch/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=16&t_s=Atta%252FGhau+Peeth+-+Gold"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nutrapoorna M P Lokwan Wheat Atta Premium Fresh Rich In Nutrients No Preservatives",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40267444_1-nutrapoorna-mp-lokwan-wheat-atta-premium-fresh-rich-in-nutrients-no-preservatives.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Nutrapoorna M.P Lokwan Wheat Atta - Premium, Fresh, Rich In Nutrients, No Preservatives"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 90,
           "quantity": "1 kg",
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40267444/nutrapoorna-mp-lokwan-wheat-atta-premium-fresh-rich-in-nutrients-no-preservatives-1-kg-pouch/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=17&t_s=M.P+Lokwan+Wheat+Atta+-+Premium%252C+Fresh%252C+Rich+In+Nutrients%252C+No+Preservatives"
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1200,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/ae77ca37-418b-4b8c-9e12-7bfb0a6c320b.jpeg",
+          "link": "https://www.zepto.com/pn/daawat-rozana-super-basmati-rice-medium-grain/pvid/6b78d070-ba4c-459c-9d4d-fe058f71d5cf"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Bb Royal Organic Sooji Rava",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40072490_15-bb-royal-organic-soojirawa.jpg?tr=w-154,q-80",
+      "name": "Daawat Rozana Basmati Rice Gold",
       "original_names": {
-        "bigbasket": "bb Royal Organic Sooji/Rava"
+        "zepto": "Daawat Rozana Basmati Rice Gold | Medium Grain"
       },
       "platforms": {
-        "bigbasket": {
-          "price": 67,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40072490/bb-royal-organic-soojirawa-1-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=18&t_s=Organic+Sooji%252FRava"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nature Fresh Sampoorna Chakki Atta Ghau Peeth",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40000095_13-nature-fresh-sampoorna-chakki-atta.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Nature Fresh Sampoorna Chakki Atta/Ghau Peeth"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 510,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40000095/nature-fresh-sampoorna-chakki-atta-10-kg-bag/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=1&t_s=Sampoorna+Chakki+Atta%252FGhau+Peeth"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Ragi Flour Nachni Peeth Nachni Atta",
-      "image": "https://www.bbassets.com/media/uploads/p/m/10000473_15-bb-royal-ragi-flournachni-atta.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "bb Royal Ragi Flour/Nachni Peeth/Nachni Atta"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 50,
-          "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/10000473/bb-royal-ragi-flournachni-atta-500-g-pouch/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=2&t_s=Ragi+Flour%252FNachni+Peeth%252FNachni+Atta"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Bajra Atta Loaded Nutrients",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40293047_2-bhagirathi-bajra-atta-loaded-with-nutrients.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Bhagirathi Bajra Atta - Loaded With Nutrients"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 40,
-          "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40293047/bhagirathi-bajra-atta-loaded-with-nutrients-500-g/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=3&t_s=Bajra+Atta+-+Loaded+With+Nutrients"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Sugar Release Control Atta Ghau Peeth",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40077103_12-aashirvaad-sugar-release-control-atta.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Aashirvaad Sugar Release Control Atta/Ghau Peeth"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 523.8,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40077103/aashirvaad-sugar-release-control-atta-5-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=4&t_s=Sugar+Release+Control+Atta%252FGhau+Peeth"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Premium Mp Sharabati Whole Wheat Atta Fine Ground",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40293083_1-bhagirathi-premium-mp-sharabati-whole-wheat-atta-fine-ground.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Bhagirathi Premium MP Sharabati Whole Wheat Atta - Fine Ground"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 420,
+        "zepto": {
+          "price": 395,
           "quantity": "5 kg",
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40293083/bhagirathi-premium-mp-sharabati-whole-wheat-atta-fine-ground-5-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=5&t_s=Premium+MP+Sharabati+Whole+Wheat+Atta+-+Fine+Ground"
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1200,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/4fca667e-7ef0-4a44-a279-d04fc15a08ef.jpeg",
+          "link": "https://www.zepto.com/pn/daawat-rozana-basmati-rice-gold-medium-grain/pvid/43e7fb9a-67eb-4447-998f-7853d8aac77c"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Bhagirathi Nachani Atta Flour Loaded Nutrients",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40293050_2-bhagirathi-nachani-atta-flour-loaded-with-nutrients.jpg?tr=w-154,q-80",
+      "name": "Fortune Rozana Gold Basmati Rice",
       "original_names": {
-        "bigbasket": "Bhagirathi Nachani Atta Flour - Loaded With Nutrients"
+        "zepto": "Fortune Rozana Gold Basmati Rice"
       },
       "platforms": {
-        "bigbasket": {
-          "price": 55,
-          "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40293050/bhagirathi-nachani-atta-flour-loaded-with-nutrients-500-g/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=6&t_s=Nachani+Atta+Flour+-+Loaded+With+Nutrients"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Organic Bajra Atta",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40203904_1-bb-royal-organic-bajra-atta.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "bb Royal Organic - Bajra Atta"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 65.72,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40203904/bb-royal-organic-bajra-atta-1-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=7&t_s=Organic+-+Bajra+Atta"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Multigrain Roasted Thalipeeth Bhajani Flour Loaded Nutrients",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40293068_2-bhagirathi-multigrain-roasted-thalipeeth-bhajani-flour-loaded-with-nutrients.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Bhagirathi Multigrain Roasted Thalipeeth Bhajani Flour - Loaded With Nutrients"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 125,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40293068/bhagirathi-multigrain-roasted-thalipeeth-bhajani-flour-loaded-with-nutrients-500-g/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=8&t_s=Multigrain+Roasted+Thalipeeth+Bhajani+Flour+-+Loaded+With+Nutrients"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Maize Flour Makka Atta",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40018183_5-bb-royal-maize-flourmakka-atta.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "bb Royal Maize Flour/Makka Atta"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 27,
-          "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40018183/bb-royal-maize-flourmakka-atta-500-g/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=9&t_s=Maize+Flour%252FMakka+Atta"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Sri Sri Tattva Whole Wheat Atta",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40216166_6-sri-sri-tattva-whole-wheat-atta.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Sri Sri Tattva Whole Wheat Atta"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 74.8,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40216166/sri-sri-tattva-whole-wheat-atta-1-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=10&t_s=Whole+Wheat+Atta"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Multigrain Atta",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40214912_1-bb-royal-multigrain-atta.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "bb Royal Multigrain Atta"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 525,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40214912/bb-royal-multigrain-atta-10-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=11&t_s=Multigrain+Atta"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Organic Barley Flour Jau Atta",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40168531_3-bb-royal-organic-barley-atta.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "bb Royal Organic - Barley Flour/Jau Atta"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 73,
-          "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40168531/bb-royal-organic-barley-atta-500-g/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=12&t_s=Organic+-+Barley+Flour%252FJau+Atta"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Singara Flour",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40087376_4-bb-royal-singara-flour-upwas.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "bb Royal Singara Flour"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 58,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40087376/bb-royal-singara-flour-upwas-200-g/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=13&t_s=Singara+Flour"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Chakki Mp Sehori Atta",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40358277_1-aashirvaad-chakki-mp-sehori-atta.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Aashirvaad Chakki MP Sehori Atta"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 62.1,
+        "zepto": {
+          "price": 81,
           "quantity": "1 kg",
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40358277/aashirvaad-chakki-mp-sehori-atta-1-kg-pouch/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=14&t_s=Chakki+MP+Sehori+Atta"
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1100-1100,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/2c1c1957-149a-4e68-bf10-a055f2b0fd72.jpeg",
+          "link": "https://www.zepto.com/pn/fortune-rozana-gold-basmati-rice/pvid/18e5789f-aab8-4281-8db4-380bb50a1c29"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Bhagirathi Amaranth Flour Loaded Nutrients",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40293056_2-bhagirathi-amaranth-flour-loaded-with-nutrients.jpg?tr=w-154,q-80",
+      "name": "Zeeba Everyday Basmati Rice",
       "original_names": {
-        "bigbasket": "Bhagirathi Amaranth Flour - Loaded With Nutrients"
+        "zepto": "Zeeba Everyday Basmati Rice"
       },
       "platforms": {
-        "bigbasket": {
-          "price": 55.25,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40293056/bhagirathi-amaranth-flour-loaded-with-nutrients-200-g/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=15&t_s=Amaranth+Flour+-+Loaded+With+Nutrients"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Nutrapoorna Premium Gold Wheat Atta Rich In Nutrients Fresh No Preservatives",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40267438_1-nutrapoorna-premium-gold-wheat-atta-rich-in-nutrients-fresh-no-preservatives.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Nutrapoorna Premium Gold Wheat Atta - Rich In Nutrients, Fresh, No Preservatives"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 457.75,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40267438/nutrapoorna-premium-gold-wheat-atta-rich-in-nutrients-fresh-no-preservatives-5-kg-pouch/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=16&t_s=Premium+Gold+Wheat+Atta+-+Rich+In+Nutrients%252C+Fresh%252C+No+Preservatives"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Organic Maize Flour Makka Atta",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40135848_3-bb-royal-organic-maize-flourmakka-atta.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "bb Royal Organic - Maize flour/Makka Atta"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 51,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40135848/bb-royal-organic-maize-flourmakka-atta-1-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=17&t_s=Organic+-+Maize+flour%252FMakka+Atta"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Organic Rice Flour Tandul Peeth",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40072486_7-bb-royal-organic-rice-flour.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "bb Royal Organic - Rice Flour/Tandul Peeth"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 96,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40072486/bb-royal-organic-rice-flour-1-kg/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=18&t_s=Organic+-+Rice+Flour%252FTandul+Peeth"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Madam Atta Rice",
-      "image": "https://www.bbassets.com/media/uploads/p/m/289936_1-madam-atta-rice.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "Madam Atta - Rice"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 43,
-          "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/289936/madam-atta-rice-500-g-pouch/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=19&t_s=Atta+-+Rice"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Sama Bhagar Rice",
-      "image": "https://www.bbassets.com/media/uploads/p/m/40087375_3-bb-royal-samak-ricesamvat-chawal.jpg?tr=w-154,q-80",
-      "original_names": {
-        "bigbasket": "bb Royal Sama/Bhagar Rice"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 25,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "https://www.bigbasket.com/pd/40087375/bb-royal-samak-ricesamvat-chawal-200-g/?nc=cl-prod-list&t_pos_sec=1&t_pos_item=20&t_s=Sama%252FBhagar+Rice"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bhagirathi Water Chestnut Flour Loaded Nutrients",
-      "image": "N/A",
-      "original_names": {
-        "bigbasket": "Bhagirathi Water Chestnut Flour - Loaded With Nutrients"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 99,
-          "quantity": "200 g",
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Aashirvaad Nature S Super Foods Ragi Flour Nachni Peeth",
-      "image": "N/A",
-      "original_names": {
-        "bigbasket": "Aashirvaad Nature's Super Foods - Ragi Flour/Nachni Peeth"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 102.6,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Fortune Premium Sharbati Atta",
-      "image": "N/A",
-      "original_names": {
-        "bigbasket": "Fortune Premium Sharbati Atta"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 285.01,
+        "zepto": {
+          "price": 320,
           "quantity": "5 kg",
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1100-1100,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/4162a953-56ad-4e8e-9d86-d9e75ae7fcbe.jpeg",
+          "link": "https://www.zepto.com/pn/zeeba-everyday-basmati-rice/pvid/2a5da16b-3752-48ea-88a6-35221f870ae8"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Jiwa 30 Degree Wheat Flour",
-      "image": "N/A",
+      "name": "Daawat Rozana Super Basmati Rice",
       "original_names": {
-        "bigbasket": "Jiwa 30 Degree Wheat Flour"
+        "zepto": "Daawat Rozana Super Basmati Rice | Medium Grain"
       },
       "platforms": {
-        "bigbasket": {
-          "price": 270.01,
+        "zepto": {
+          "price": 338,
           "quantity": "5 kg",
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1200,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/365a1d60-25be-4124-a839-79b0ea311b8b.jpeg",
+          "link": "https://www.zepto.com/pn/daawat-rozana-super-basmati-rice-medium-grain/pvid/7851f4a9-cab6-4b75-bae2-bcbc43bf0bdb"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Bb Royal Organic Besan Flour",
-      "image": "N/A",
+      "name": "Daawat Super Basmati Rice",
       "original_names": {
-        "bigbasket": "bb Royal Organic - Besan Flour"
+        "zepto": "Daawat Super Basmati Rice | Long Grain"
       },
       "platforms": {
-        "bigbasket": {
-          "price": 102,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
+        "zepto": {
+          "price": 148,
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1200,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/1645b590-5017-4afe-9a15-b8d0a1914677.jpeg",
+          "link": "https://www.zepto.com/pn/daawat-super-basmati-rice-long-grain/pvid/e2acbaf7-88ed-4603-bd53-33868c3f1ae0"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "24 Mantra Organic Besan Flour",
-      "image": "N/A",
+      "name": "Daawat Pulav Basmati Rice",
       "original_names": {
-        "bigbasket": "24 Mantra Organic Besan Flour"
+        "zepto": "Daawat Pulav Basmati Rice | Long Grain"
       },
       "platforms": {
-        "bigbasket": {
-          "price": 112.5,
-          "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Organic Suji",
-      "image": "N/A",
-      "original_names": {
-        "bigbasket": "Organic Tattva Organic Suji"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 63.41,
-          "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Organic Maida",
-      "image": "N/A",
-      "original_names": {
-        "bigbasket": "Organic Tattva Organic Maida"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 55.36,
-          "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Organic Bajra Flour",
-      "image": "N/A",
-      "original_names": {
-        "bigbasket": "Organic Tattva Organic Bajra Flour"
-      },
-      "platforms": {
-        "bigbasket": {
+        "zepto": {
           "price": 75,
           "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1200,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/19b0b091-07e3-40b6-b60e-0719e39caf64.jpeg",
+          "link": "https://www.zepto.com/pn/daawat-pulav-basmati-rice-long-grain/pvid/96b12acf-bdcd-47bb-a9e9-a04364fd30e1"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "24 Mantra Organic Organic Sattu",
-      "image": "N/A",
+      "name": "921 Everyday Long Grain Rice",
       "original_names": {
-        "bigbasket": "24 Mantra Organic Organic Sattu"
+        "zepto": "921 Everyday Long Grain Rice"
       },
       "platforms": {
-        "bigbasket": {
-          "price": 133,
-          "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Organic Urad Dal Urid Dal Atta",
-      "image": "N/A",
-      "original_names": {
-        "bigbasket": "bb Royal Organic - Urad Dal/Urid Dal, Atta"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 113,
-          "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Organic Tattva Jowar Flour Jower Peeth",
-      "image": "N/A",
-      "original_names": {
-        "bigbasket": "Organic Tattva Jowar Flour/Jower Peeth"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 72.8,
-          "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Blue Bird Corn Flour",
-      "image": "N/A",
-      "original_names": {
-        "bigbasket": "Blue Bird Corn Flour"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 55,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Rice Flour Tandool Pith",
-      "image": "N/A",
-      "original_names": {
-        "bigbasket": "bb Royal Rice Flour/Tandool Pith"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 58.84,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Bb Royal Corn Flour",
-      "image": "N/A",
-      "original_names": {
-        "bigbasket": "bb Royal Corn Flour"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 37,
-          "quantity": "500 g",
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
-        }
-      },
-      "similarity_score": null
-    },
-    {
-      "name": "Lo Foods Gluten Smart Multi Millet Atta",
-      "image": "N/A",
-      "original_names": {
-        "bigbasket": "Lo Foods Gluten Smart Multi Millet Atta"
-      },
-      "platforms": {
-        "bigbasket": {
-          "price": 224.1,
+        "zepto": {
+          "price": 62,
           "quantity": "1 kg",
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1328-1683,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/13707550-0d56-4d9e-9136-fa61df37770f.jpeg",
+          "link": "https://www.zepto.com/pn/921-everyday-long-grain-rice/pvid/96cef6a4-6b36-47d4-83b4-96b0f2e25b10"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Bhagirathi Sattu Atta Loaded Nutrients",
-      "image": "N/A",
+      "name": "Daawat Pulav Basmati Rice",
       "original_names": {
-        "bigbasket": "Bhagirathi Sattu Atta - Loaded With Nutrients"
+        "zepto": "Daawat Pulav Basmati Rice | Long Grain"
       },
       "platforms": {
-        "bigbasket": {
+        "zepto": {
+          "price": 132,
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1200,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/9f3e06aa-16e1-4e44-87c1-b0b111980fa6.jpeg",
+          "link": "https://www.zepto.com/pn/daawat-pulav-basmati-rice-long-grain/pvid/deb559af-97ec-4725-86e9-ca42cec0dcb5"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Fortune Rozana Gold Basmati Rice",
+      "original_names": {
+        "zepto": "Fortune Rozana Gold Basmati Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 345,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2400-2400,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/7047d933-0aec-4950-b883-c9b81a93c4c5.jpeg",
+          "link": "https://www.zepto.com/pn/fortune-rozana-gold-basmati-rice/pvid/8188d4ba-20c4-4774-80fa-ccb1e3b6ba4a"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "India Gate Flavourful And Fine Dubar Basmati Rice",
+      "original_names": {
+        "zepto": "India Gate Flavourful and Fine Dubar Basmati Rice | Long and Slender Grains | Naturally Aged"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 123,
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1752-1752,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/3f57f38e-5e06-4bf8-9c66-8112c31fac91.jpeg",
+          "link": "https://www.zepto.com/pn/india-gate-flavourful-and-fine-dubar-basmati-rice-long-and-slender-grains-naturally-aged/pvid/ca22643f-69a5-4e44-88ca-0a13ec97f149"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Charminar Long Grain Rice",
+      "original_names": {
+        "zepto": "Charminar Long Grain Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 305,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-4500-4500,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/82f142d1-a5ff-4e41-85b6-f1def4985d9c.jpeg",
+          "link": "https://www.zepto.com/pn/charminar-long-grain-rice/pvid/9912456c-2321-492c-a1ab-49474987d97c"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aravalli Parmal Raw Rice",
+      "original_names": {
+        "zepto": "Aravalli Parmal Raw Rice"
+      },
+      "platforms": {
+        "zepto": {
           "price": 40,
-          "quantity": "200 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1080-1080,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/800814d5-29cb-4cd7-8648-52dbba9c42fc.jpeg",
+          "link": "https://www.zepto.com/pn/aravalli-parmal-raw-rice/pvid/907cd6b7-3a2a-4e28-939d-8b2e9583b378"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "Bb Royal Organic Maida",
-      "image": "N/A",
+      "name": "India Gate All Rounder Feast Rozzana Basmati Rice",
       "original_names": {
-        "bigbasket": "bb Royal Organic - Maida"
+        "zepto": "India Gate All Rounder Feast Rozzana Basmati Rice | Aged Rice | Fluffy and Non-Sticky"
       },
       "platforms": {
-        "bigbasket": {
+        "zepto": {
+          "price": 98,
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1746-1746,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/6f5888a8-609e-4afd-94f8-259326642350.jpeg",
+          "link": "https://www.zepto.com/pn/india-gate-all-rounder-feast-rozzana-basmati-rice-aged-rice-fluffy-and-non-sticky/pvid/7a91e366-3ec1-410b-8d41-83d011eb3a86"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "India Gate All Rounder Everyday Basmati Rice",
+      "original_names": {
+        "zepto": "India Gate All Rounder Everyday Basmati Rice | Aged Rice | Fluffy and Non-Sticky"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 337,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1803-1803,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/4ff9ec43-915f-4826-ac2b-03b3179f4578.jpeg",
+          "link": "https://www.zepto.com/pn/india-gate-all-rounder-everyday-basmati-rice-aged-rice-fluffy-and-non-sticky/pvid/62b069eb-400c-4420-a173-e8f48a13a4b6"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "India Gate Daily Delight Basmati Rice",
+      "original_names": {
+        "zepto": "India Gate Daily Delight Basmati Rice | Short Grain"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 314,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1826,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/cf3a5072-03d1-4f4b-878e-98cc3651837f.jpeg",
+          "link": "https://www.zepto.com/pn/india-gate-daily-delight-basmati-rice-short-grain/pvid/ac686508-b9e5-45a2-8476-f2de4d7728eb"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "India Gate All Rounder Feast Rozzana Basmati Rice",
+      "original_names": {
+        "zepto": "India Gate All Rounder Feast Rozzana Basmati Rice | Aged Rice | Fluffy and Non-Sticky"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 408,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1810,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/b4f12a19-82bd-43ad-8340-f945305f2bda.jpeg",
+          "link": "https://www.zepto.com/pn/india-gate-all-rounder-feast-rozzana-basmati-rice-aged-rice-fluffy-and-non-sticky/pvid/75118c7a-2b92-441a-995c-ea416b67c05e"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Fortune Rozana Super",
+      "original_names": {
+        "zepto": "Fortune Rozana Super"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 324,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2292-2292,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/f3e41dab-9e6a-4355-b485-3bd9de696d41.jpg",
+          "link": "https://www.zepto.com/pn/fortune-rozana-super/pvid/efde57c1-5864-4f70-a47f-6703098b9b20"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "India Gate Mini Mogra Ii Rice",
+      "original_names": {
+        "zepto": "India Gate Mini Mogra II Rice | Aged Rice | Smart Choice | 1 Cup Serves 5"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 458,
+          "quantity": "10 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2000-2000,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/d1ecfda7-3963-449a-a1b5-2dede21d9770.jpeg",
+          "link": "https://www.zepto.com/pn/india-gate-mini-mogra-ii-rice-aged-rice-smart-choice-1-cup-serves-5/pvid/824aeab3-ec99-449a-a631-c87533ead8de"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "India Gate 1 Cup Serves 5 Mogra Basmati Rice",
+      "original_names": {
+        "zepto": "India Gate 1 Cup Serves 5 Mogra Basmati Rice | Aged Rice | Smart Choice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 335,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1814,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/a4f8a954-eb52-437c-9070-fba5bb7369f0.jpeg",
+          "link": "https://www.zepto.com/pn/india-gate-1-cup-serves-5-mogra-basmati-rice-aged-rice-smart-choice/pvid/818ba829-7ac3-4294-adbf-6619b55724d3"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "India Gate Rozzana Lite",
+      "original_names": {
+        "zepto": "India Gate Rozzana Lite"
+      },
+      "platforms": {
+        "zepto": {
           "price": 77,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2000-2000,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/7477986a-b09c-4dc3-ac9d-9752ab162712.jpeg",
+          "link": "https://www.zepto.com/pn/india-gate-rozzana-lite/pvid/c60bc536-4aa8-472c-b3dc-59b182e9f45c"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "True Elements Oats Flour",
-      "image": "N/A",
+      "name": "Haryana King Mini Mogra Basmti Rice",
       "original_names": {
-        "bigbasket": "True Elements Oats Flour"
+        "zepto": "Haryana King mini mogra basmti rice"
       },
       "platforms": {
-        "bigbasket": {
-          "price": 520,
-          "quantity": null,
-          "deliveryTime": "12 MINS",
-          "link": "N/A"
+        "zepto": {
+          "price": 479,
+          "quantity": "10 kg",
+          "deliveryTime": "28 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1080-1080,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/16e0947e-b06c-484b-8899-e3a2a5711269.jpeg",
+          "link": "https://www.zepto.com/pn/haryana-king-mini-mogra-basmti-rice/pvid/b5b2ccc1-68ef-45be-8837-ad5b6715c853"
         }
       },
       "similarity_score": null
     },
     {
-      "name": "24 Mantra Organic Organic Flour Jowar",
-      "image": "N/A",
+      "name": "India Gate 1 Cup Serves 5 Mini Mogra Basmati Rice",
       "original_names": {
-        "bigbasket": "24 Mantra Organic Organic Flour - Jowar"
+        "zepto": "India Gate 1 Cup Serves 5 Mini Mogra Basmati Rice | Aged Rice | Smart Choice"
       },
       "platforms": {
-        "bigbasket": {
-          "price": 80.75,
+        "zepto": {
+          "price": 516,
+          "quantity": "10 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2000-2000,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/356508cd-12cf-4a68-aba4-8be6e300ae1f.jpeg",
+          "link": "https://www.zepto.com/pn/india-gate-1-cup-serves-5-mini-mogra-basmati-rice-aged-rice-smart-choice/pvid/a5ca22ef-e4f7-4c06-b60e-0360b5b7be7d"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Aravalli Parmal Raw Rice",
+      "original_names": {
+        "zepto": "Aravalli Parmal Raw Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 196,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1000-1000,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/14e00e1b-4fe7-4256-a738-02c9dc4b6ad9.jpg",
+          "link": "https://www.zepto.com/pn/aravalli-parmal-raw-rice/pvid/28e04c87-7169-4db7-8bb8-d2accd18270a"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Fortune Rozana Super",
+      "original_names": {
+        "zepto": "Fortune Rozana Super"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 83,
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2292-2292,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/a986b183-034d-4e12-8c11-d5da5940942e.jpg",
+          "link": "https://www.zepto.com/pn/fortune-rozana-super/pvid/6fde8985-a5f9-4de6-902c-9ad20238f82a"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daawat Rozana Mini Mogra Rice",
+      "original_names": {
+        "zepto": "Daawat Rozana Mini Mogra Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 280,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1200,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/2bc4faef-ae09-4892-93e9-a2786f884455.jpeg",
+          "link": "https://www.zepto.com/pn/daawat-rozana-mini-mogra-rice/pvid/3f3e18bb-6556-4a3f-9be6-c27897f3f814"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Pansari Mahak Basmati Rice",
+      "original_names": {
+        "zepto": "Pansari Mahak Basmati Rice | Mogra Basmati Chawal | Broken Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 560,
+          "quantity": "10 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2400-2400,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/1db1d900-4716-4afa-919e-ac74c056b0c9.jpeg",
+          "link": "https://www.zepto.com/pn/pansari-mahak-basmati-rice-mogra-basmati-chawal-broken-rice/pvid/e16808c3-30b4-4f09-a234-99e1d88a92e5"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "921 Rozana Basmati Rice",
+      "original_names": {
+        "zepto": "921 Rozana Basmati Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 65,
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1338-1679,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/755c32c5-49a3-4315-bbe6-818228627da8.jpeg",
+          "link": "https://www.zepto.com/pn/921-rozana-basmati-rice/pvid/2cebc141-7a38-4503-9842-92d933cd375f"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Pansari Daily Basmati Rice",
+      "original_names": {
+        "zepto": "Pansari Daily Basmati Rice | Roazana Basmati Rice | Super Dubar Basmati Chawal"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 331,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2500-2500,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/b47ebaf9-d078-4b65-9c77-6aedef573d47.jpg",
+          "link": "https://www.zepto.com/pn/pansari-daily-basmati-rice-roazana-basmati-rice-super-dubar-basmati-chawal/pvid/8aebe459-b9b8-4d71-b1d5-be402c79141c"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "India Gate 1 Cup Serves 5 Mogra Basmati Rice",
+      "original_names": {
+        "zepto": "India Gate 1 Cup Serves 5 Mogra Basmati Rice | Aged Rice | Smart Choice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 661,
+          "quantity": "10 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2000-2000,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/4371bdeb-425f-4255-90eb-64adecc0bb7b.jpeg",
+          "link": "https://www.zepto.com/pn/india-gate-1-cup-serves-5-mogra-basmati-rice-aged-rice-smart-choice/pvid/4136c3a8-1aba-4eca-b82e-c4452904cd57"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Zeeba Everyday Basmati Rice",
+      "original_names": {
+        "zepto": "Zeeba Everyday Basmati Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 91,
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1100-1100,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/1f3b1897-0cf9-4117-b1ce-530dd8825977.jpeg",
+          "link": "https://www.zepto.com/pn/zeeba-everyday-basmati-rice/pvid/8e0d4e05-a67b-4310-98d9-12cc7abf9705"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Pansari Khana Basmati Rice",
+      "original_names": {
+        "zepto": "Pansari Khana Basmati Rice | Pulao Rice | Super Basmati Chawal"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 117,
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1000-1000,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/4fe21592-0f39-4ab3-ade9-d704be13ca27.jpeg",
+          "link": "https://www.zepto.com/pn/pansari-khana-basmati-rice-pulao-rice-super-basmati-chawal/pvid/aaa7f4e8-5216-48b2-a3b7-642de444e45f"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daily Good Mogra Basmati Rice",
+      "original_names": {
+        "zepto": "Daily Good Mogra Basmati Rice | Broken Grain"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 65,
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2400-2400,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/d17d19e4-b3ac-452e-8c7f-059bfd4528bd.jpeg",
+          "link": "https://www.zepto.com/pn/daily-good-mogra-basmati-rice-broken-grain/pvid/e4a33da2-2226-440d-8a84-ff657c6ec0c5"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Fortune Hamesha Mini Dubar Basmati Rice",
+      "original_names": {
+        "zepto": "Fortune Hamesha Mini Dubar Basmati Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 331,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1200,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/c0bd3342-c15a-481a-9b46-2a4148414960.jpeg",
+          "link": "https://www.zepto.com/pn/fortune-hamesha-mini-dubar-basmati-rice/pvid/d3ebb554-7fb4-4883-831b-ae95c80d6f39"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Pansari Mahak Basmati Rice",
+      "original_names": {
+        "zepto": "Pansari Mahak Basmati Rice | Mogra Basmati Chawal | Broken Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 313,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2400-2400,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/9d69274e-052d-4d7a-b357-e950c927bda3.jpeg",
+          "link": "https://www.zepto.com/pn/pansari-mahak-basmati-rice-mogra-basmati-chawal-broken-rice/pvid/76239a9b-cc1c-4051-9644-12915e99a0c1"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Haryana King Mini Mogra Ii",
+      "original_names": {
+        "zepto": "Haryana King mini mogra II"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 371,
+          "quantity": "10 kg",
+          "deliveryTime": "28 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1500-1500,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/b8efb096-d33b-4722-86ec-891325c0fa8c.jpeg",
+          "link": "https://www.zepto.com/pn/haryana-king-mini-mogra-ii/pvid/ea6f525e-b04e-477e-9ca4-d38571f49391"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Steamed Rice",
+      "original_names": {
+        "zepto": "Steamed Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 109,
+          "quantity": "280 g",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2921-2921,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/ff4774ba-dc13-42d6-9a76-9b097817574e.jpeg",
+          "link": "https://www.zepto.com/pn/steamed-rice/pvid/6b744fa4-f7e0-4cb9-8b3e-3befcf1ecb2d"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daily Good Parmal Raw Rice",
+      "original_names": {
+        "zepto": "Daily Good Parmal Raw Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 62,
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1412-1412,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/f70985b1-91e3-4464-b38e-a5bdb95f12d1.jpg",
+          "link": "https://www.zepto.com/pn/daily-good-parmal-raw-rice/pvid/dbcb2d9c-01fe-4245-8cc3-80e7ba2fe928"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daily Good Rozana Regular Basmati Rice",
+      "original_names": {
+        "zepto": "Daily Good Rozana Regular Basmati Rice | Medium Grain"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 85,
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2400-2400,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/b850a8c3-864d-467b-a197-c4aac60bb48c.jpg",
+          "link": "https://www.zepto.com/pn/daily-good-rozana-regular-basmati-rice-medium-grain/pvid/1a821406-c8ed-45be-bdd8-457fc71cb7ef"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "921 Mini Mogra Basmati Rice",
+      "original_names": {
+        "zepto": "921 Mini Mogra Basmati Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 266,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1310-1607,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/451432ec-6bec-46a4-b862-20c987fa17f1.jpeg",
+          "link": "https://www.zepto.com/pn/921-mini-mogra-basmati-rice/pvid/b01ce71b-cb04-4569-95f0-ebed29ad6de3"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Haryana King Mogra Special Basmati Rice",
+      "original_names": {
+        "zepto": "Haryana King mogra special basmati rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 313,
+          "quantity": "5 kg",
+          "deliveryTime": "28 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1500-1500,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/1d7bfd75-bbd6-4d8e-ad0a-aa059ea9b0fb.jpeg",
+          "link": "https://www.zepto.com/pn/haryana-king-mogra-special-basmati-rice/pvid/9722f664-54ce-4905-90a9-0502e1319cb4"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "India Gate Flavourful And Fine Super Basmati Rice",
+      "original_names": {
+        "zepto": "India Gate Flavourful and Fine Super Basmati Rice | Perfectly Aged Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 719,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1293-1953,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/4f27de9f-198d-40de-9980-098594dfc506.jpeg",
+          "link": "https://www.zepto.com/pn/india-gate-flavourful-and-fine-super-basmati-rice-perfectly-aged-rice/pvid/1de4add4-6913-4493-8c8a-623a9f93611c"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Pansari Daily Basmati Rice",
+      "original_names": {
+        "zepto": "Pansari Daily Basmati Rice | Roazana Basmati Rice | Super Dubar Basmati Chawal"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 637,
+          "quantity": "10 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1500-1500,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/108cd19f-72f8-44fd-9c86-9990ec3107e5.jpeg",
+          "link": "https://www.zepto.com/pn/pansari-daily-basmati-rice-roazana-basmati-rice-super-dubar-basmati-chawal/pvid/1408e283-d7e7-43fb-acfe-571736b020e6"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daawat Rozana Mogra Rice",
+      "original_names": {
+        "zepto": "Daawat Rozana Mogra Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 329,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1200,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/e48e0b52-7933-46d3-8b4e-8741a752559e.jpeg",
+          "link": "https://www.zepto.com/pn/daawat-rozana-mogra-rice/pvid/8d9a353f-2365-447a-b5bd-13240cb5350b"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Devaaya Basmati Rice",
+      "original_names": {
+        "zepto": "Devaaya Basmati Rice | Aromatic | Long And Fluffy | Medium Grain"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 447,
+          "quantity": "5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1000-1000,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/cc1a167b-222b-418a-91be-398bc342f43e.jpeg",
+          "link": "https://www.zepto.com/pn/devaaya-basmati-rice-aromatic-long-and-fluffy-medium-grain/pvid/dc08d538-2786-4aca-9302-8608221fd376"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Kohinoor Mini Mogra 2 Rice Broken",
+      "original_names": {
+        "zepto": "Kohinoor Mini Mogra 2 Rice Broken"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 442,
+          "quantity": "10 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2400-2400,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/5fec742a-2c52-4128-a970-46cbd7927470.jpeg",
+          "link": "https://www.zepto.com/pn/kohinoor-mini-mogra-2-rice-broken/pvid/29792d4d-52f1-4042-85ad-1156d721ebcd"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Haryana King Select Basmati Rice",
+      "original_names": {
+        "zepto": "Haryana King select basmati rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 117,
+          "quantity": "1 kg",
+          "deliveryTime": "28 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1080-1080,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/7475b083-40cf-4fee-af49-bccebb97bdf8.jpeg",
+          "link": "https://www.zepto.com/pn/haryana-king-select-basmati-rice/pvid/f9d2ce1b-7539-42b2-a7e4-72db95813e06"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daawat Rozana Super 90",
+      "original_names": {
+        "zepto": "Daawat Rozana Super 90"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 689,
+          "quantity": "10 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1200,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/b188bb08-6c1d-4deb-9179-108de0d7635b.jpeg",
+          "link": "https://www.zepto.com/pn/daawat-rozana-super-90/pvid/e8ae4671-7e51-4d77-8238-0def4e7f2141"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daawat Biryani Rice",
+      "original_names": {
+        "zepto": "Daawat Biryani Rice | Long Grain"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 110,
           "quantity": "500 g",
-          "deliveryTime": "N/A",
-          "link": "N/A"
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1200,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/457274b7-7004-4c16-b3d5-e5916799c8a0.jpeg",
+          "link": "https://www.zepto.com/pn/daawat-biryani-rice-long-grain/pvid/70be1dee-ad9f-4821-994e-d3382258fcd4"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "India Gate Flavourful And Fine Super Basmati Rice",
+      "original_names": {
+        "zepto": "India Gate Flavourful and Fine Super Basmati Rice | Perfectly Aged Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 235,
+          "quantity": "1.5 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1200-1740,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/935d6c00-bb42-4121-bad5-039c9e842dc3.jpeg",
+          "link": "https://www.zepto.com/pn/india-gate-flavourful-and-fine-super-basmati-rice-perfectly-aged-rice/pvid/25aad153-12ee-41c5-94ab-bc6243b30f7f"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "India Gate All Rounder Everyday Basmati Rice",
+      "original_names": {
+        "zepto": "India Gate All Rounder Everyday Basmati Rice | Aged Rice | Fluffy & Non-Sticky"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 693,
+          "quantity": "10 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-748-1280,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/5a8270d4-6b51-4a32-8360-c044f7872f73.jpg",
+          "link": "https://www.zepto.com/pn/india-gate-all-rounder-everyday-basmati-rice-aged-rice-fluffy-non-sticky/pvid/93000378-d265-4e03-a4be-3b9e51adac1f"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Pansari Royal Basmati Rice",
+      "original_names": {
+        "zepto": "Pansari Royal Basmati Rice | XXL Biryani Rice | Super Premium Basmati Chawal"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 142,
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2400-2400,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/96ea3cd2-96db-41a7-b5eb-9652ede62c93.jpeg",
+          "link": "https://www.zepto.com/pn/pansari-royal-basmati-rice-xxl-biryani-rice-super-premium-basmati-chawal/pvid/87213503-54e3-4822-a6c7-666c47c7741c"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daawat Rozana Mini Mogra Rice",
+      "original_names": {
+        "zepto": "Daawat Rozana Mini Mogra Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 573,
+          "quantity": "10 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1000-1000,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/9cfb5971-7503-48a9-9c60-84f6f808f92e.jpeg",
+          "link": "https://www.zepto.com/pn/daawat-rozana-mini-mogra-rice/pvid/4155ac97-c7b4-4a87-9e6a-9276b286809a"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daily Good Rozana Premium Basmati Rice",
+      "original_names": {
+        "zepto": "Daily Good Rozana Premium Basmati Rice | Medium Grain"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 85,
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2400-2400,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/c9e740fe-ab51-4631-a55d-fa0718876231.jpg",
+          "link": "https://www.zepto.com/pn/daily-good-rozana-premium-basmati-rice-medium-grain/pvid/81daeca5-c5f0-4fd4-8218-7f26a3896673"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Daawat Rozana Gold Rice",
+      "original_names": {
+        "zepto": "Daawat Rozana Gold Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 324,
+          "quantity": "4 kg",
+          "deliveryTime": "28 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-2100-2379,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/5844aead-b92b-42d4-b160-246a69642f24.jpeg",
+          "link": "https://www.zepto.com/pn/daawat-rozana-gold-rice/pvid/a0a7eaaa-31a9-4d3e-b0ee-884c363ef569"
+        }
+      },
+      "similarity_score": null
+    },
+    {
+      "name": "Farmart Pantry Daily Delight Basmati Rice",
+      "original_names": {
+        "zepto": "FarMart Pantry Daily Delight Basmati Rice"
+      },
+      "platforms": {
+        "zepto": {
+          "price": 76,
+          "quantity": "1 kg",
+          "deliveryTime": "21 mins",
+          "image": "https://cdn.zeptonow.com/production/tr:w-403,ar-1000-1000,pr-true,f-auto,,q-40,dpr-2/cms/product_variant/1e23ffa6-758f-4acb-bee7-de0af954955e.jpeg",
+          "link": "https://www.zepto.com/pn/farmart-pantry-daily-delight-basmati-rice/pvid/3fac5461-8925-4b8a-96cd-09b6f8492d3b"
         }
       },
       "similarity_score": null
